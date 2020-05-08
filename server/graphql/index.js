@@ -5,11 +5,11 @@ const { buildSchema } = require('graphql')
 
 const schema = buildSchema(`
   type Query {
-    hello: String
+    name: String
   }
 `)
 
-var root = { hello: () => 'Hello world!' };
+var root = { name: 'Hello world!' }
 
 router.use('/', graphqlHTTP({
   schema: schema,
