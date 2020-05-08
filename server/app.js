@@ -6,6 +6,8 @@ const chalk = require('chalk')
 const path = require('path'); 
 const PORT = process.env.PORT || 8332
 const https = require('https')
+const graphqlHTTP = require('express-graphql')
+const { buildSchema } = require('graphql')
 const fs = require('fs')
 const dir = require('os').homedir()
 
@@ -17,6 +19,8 @@ const options = {
 }
 
 const server = https.createServer(options, app)
+
+app.use(`/graphql`, require('./graphql'))
 
 app.use(volleyball)
 app.use(bodyParser.json())
@@ -30,6 +34,7 @@ const run = () => {
   PORT === 8332 ?
     app.listen(PORT, () => {
       console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`))
+      console.log(chalk.red.bgWhite.bold('Now browse to localhost:8332/graphql'))
     })
     :
     server.listen(PORT, () => {
