@@ -20,7 +20,9 @@ Cart.hasMany(LineItem, { as: 'item' })
 LineItem.belongsTo(Cart)
 
 //Product and Item
-Product.hasMany(LineItem, { as: 'item' })
+Product.hasMany(LineItem, { constraints: false })
+// LineItem.belongsTo(Product)
+
 module.exports = {
   Product,
   Category,
