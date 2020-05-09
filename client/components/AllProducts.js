@@ -9,6 +9,7 @@ const getAllProducts = gql`
       id
       name
       description
+      categories
     }
   }
 `
