@@ -1,6 +1,6 @@
 const db = require('./server/db')
 const chalk = require('chalk')
-const { Product, Category, Review } = require('./server/db/models')
+const { Product, Category, Review, ProductCategory } = require('./server/db/models')
 
 async function seed () {
   await db.sync({force: true})
@@ -32,6 +32,11 @@ async function seed () {
 
   const categories = await Promise.all([
     Category.create({ name: 'columbian', description: 'the finest coffee from columbia' })
+  ])
+
+  const ProductCategories = await Promise.all([
+    ProductCategory.create({ categoryId: 1, productId: 1 }),
+    ProductCategory.create({ categoryId: 1, productId: 2 })
   ])
 
   const reviews = await Promise.all([
