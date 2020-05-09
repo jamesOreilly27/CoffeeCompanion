@@ -34,7 +34,7 @@ const ProductDetailType = new GraphQLObjectType({
       description: 'a list of reviews for this product',
       args: { id: { type: GraphQLInt }},
       resolve: product => {
-        return product.getReview()
+        return product.getReviews()
         .then(reviews => reviews)
         .catch(err => console.log(err))
       }
@@ -69,9 +69,47 @@ const CategoryType = new GraphQLObjectType({
   })
 })
 
+const LineItemType = new GraphQLObjectType({
+  name: 'lineitem',
+  description: 'a line item from a cart',
+  fields: () => ({
+    price: { type: GraphQLNonNull(GraphQLInt) },
+    quantity: { type: GraphQLNonNull(GraphQLInt) },
+    product: {
+      type: ProductDetailType,
+      description: 'line item product details',
+      resolve: lineitem => {
+        console.log('TESTING', lineitem)
+        return lineitem.getProduct()
+        .then(product => product)
+        .catch(err => console.log(err))
+      }
+    }
+  })
+})
+
+const CartType = new GraphQLObjectType({
+  name: 'cart',
+  description: 'a cart of items',
+  fields: () => ({
+    status: { type: GraphQLString },
+    lineitem: {
+      type: new GraphQLList(LineItemType),
+      description: 'line item on a cart',
+      resolve: cart => {
+        return cart.getItems()
+        .then(lineitem => lineitem)
+        .catch(err => console.log(err))
+      }
+    }
+  })
+})
+
 module.exports = {
   CategoryType,
   ProductType,
   ProductDetailType,
-  ReviewType
+  ReviewType,
+  CartType,
+  LineItemType
 }
