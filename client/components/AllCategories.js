@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { gql } from 'apollo-boost'
 import { graphql } from 'react-apollo'
+import { SingleCategory } from '../components'
 
 const getAllCategories = gql`
 {
@@ -22,10 +23,10 @@ class AllCategories extends Component {
   }
 
   render() {
-    console.log(this.props)
+    const categories = this.props.data.categories
     return (
       <div>
-        Hello From AllCategories
+        {categories && categories.map(category => <SingleCategory category={category} key={category.id} />)}
       </div>
     )
   }
