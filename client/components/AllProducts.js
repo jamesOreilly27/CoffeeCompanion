@@ -29,8 +29,3 @@ class AllProducts extends Component {
 }
 
 export default graphql(getAllProducts)(AllProducts)
-
-/*********** 
- * You were about to go back and do the graphql for another part of the database 
- * Start tomorrow with Categories and work on the association between category and product graphql queries
-***********/
