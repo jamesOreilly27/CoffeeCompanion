@@ -1,5 +1,5 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLSchema, GraphQLList } = require('graphql')
-const Product = require('../../db/models/product')
+const Product = require('../../db/models')
 
 const ProductType = new GraphQLObjectType({
   name: 'product',
