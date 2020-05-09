@@ -1,6 +1,6 @@
 const db = require('./server/db')
 const chalk = require('chalk')
-const { Product, Category, Review, ProductCategory, Cart, Item } = require('./server/db/models')
+const { Product, Category, Review, ProductCategory, Cart, LineItem } = require('./server/db/models')
 
 async function seed () {
   await db.sync({force: true})
@@ -15,14 +15,14 @@ async function seed () {
     Cart.create({status: 'purchased', userId: 1})
   ])
   const items = await Promise.all([
-    Item.create({ price: 500, quantity: 12, cartId: 1 }),
-    Item.create({price: 600, quantity: 13, cartId: 1 }),
-    Item.create({price: 700, quantity: 14, cartId: 1 }),
-    Item.create({price: 800, quantity: 15, cartId: 2 }),
-    Item.create({price: 900, quantity: 1, cartId: 2 }),
-    Item.create({price: 10000, quantity: 44, cartId: 2}),
-    Item.create({price: 900, quantity: 1, cartId: 1}),
-    Item.create({price: 10000, quantity: 3, cartId: 1})
+    LineItem.create({ price: 500, quantity: 12, cartId: 1 }),
+    LineItem.create({price: 600, quantity: 13, cartId: 1 }),
+    LineItem.create({price: 700, quantity: 14, cartId: 1 }),
+    LineItem.create({price: 800, quantity: 15, cartId: 2 }),
+    LineItem.create({price: 900, quantity: 1, cartId: 2 }),
+    LineItem.create({price: 10000, quantity: 44, cartId: 2}),
+    LineItem.create({price: 900, quantity: 1, cartId: 1}),
+    LineItem.create({price: 10000, quantity: 3, cartId: 1})
   ])
 
   const products = await Promise.all([

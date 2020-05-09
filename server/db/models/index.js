@@ -3,7 +3,7 @@ const Category = require('./category')
 const ProductCategory = require('./productCategory')
 const Review = require('./review')
 const Cart = require('./cart')
-const Item = require('./item')
+const LineItem = require('./lineitem')
 
 /***** Associations ******/
 
@@ -16,14 +16,16 @@ Product.belongsToMany(Category, { through: ProductCategory })
 Product.hasMany(Review, { as: 'review' })
 
 //Cart and Item
-Cart.hasMany(Item, { as: 'item' })
-Item.belongsTo(Cart)
+Cart.hasMany(LineItem, { as: 'item' })
+LineItem.belongsTo(Cart)
 
+//Product and Item
+Product.hasMany(LineItem, { as: 'item' })
 module.exports = {
   Product,
   Category,
   ProductCategory,
   Review,
   Cart,
-  Item
+  LineItem
 }
