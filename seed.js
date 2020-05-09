@@ -26,7 +26,8 @@ async function seed () {
   // ])
 
   const products = await Promise.all([
-    Product.create({name: 'Columbian Light Roast', description: 'so fresh', price: 50, inventory: 562, image: ''})
+    Product.create({name: 'Columbian Light Roast', description: 'so fresh', price: 50, inventory: 562, image: ''}),
+    Product.create({name: 'Columbian Dark Roast', description: 'dark and toasty', price: 35, inventory: 250, image: ''})
   ])
 
   // const categories = await Promise.all([
