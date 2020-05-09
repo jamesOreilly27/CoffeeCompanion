@@ -6,6 +6,9 @@ const getProductDetail = gql`
 query($id: Int!) {
  productDetails(id: $id) {
    name
+   description
+   price
+   inventory
    reviews {
      content
      rating
