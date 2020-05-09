@@ -1,3 +1,4 @@
+const User = require('./user')
 const Product = require('./product')
 const Category = require('./category')
 const ProductCategory = require('./productCategory')
@@ -28,5 +29,6 @@ module.exports = {
   ProductCategory,
   Review,
   Cart,
-  LineItem
+  LineItem,
+  User
 }
