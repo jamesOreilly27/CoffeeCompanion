@@ -1,6 +1,6 @@
 const db = require('./server/db')
 const chalk = require('chalk')
-const { Product } = require('./server/db/models')
+const { Product, Category } = require('./server/db/models')
 
 async function seed () {
   await db.sync({force: true})
@@ -26,19 +26,13 @@ async function seed () {
   // ])
 
   const products = await Promise.all([
-    Product.create({name: 'Columbian Light Roast', description: 'so fresh', price: 50, inventory: 562, image: ''}),
-    Product.create({name: 'Columbian Dark Roast', description: 'dark and toasty', price: 35, inventory: 250, image: ''})
+    Product.create({name: 'Columbian Light Roast', description: 'so fresh', price: 50, inventory: 562, image: '' }),
+    Product.create({name: 'Columbian Dark Roast', description: 'dark and toasty', price: 35, inventory: 250, image: '' })
   ])
 
-  // const categories = await Promise.all([
-  //   Categories.create({ type: 'sneakers' }),
-  //   Categories.create({ type: 'boots' }),
-  //   Categories.create({ type: 'heels' }),
-  //   Categories.create({ type: 'flats' })
-  // ])
-
-  // products.forEach(product => product.addCategories(categories))
-  // categories.forEach(category => category.addProduct(products))
+  const categories = await Promise.all([
+    Category.create({ name: 'columbian', description: 'the finest coffee from columbia' })
+  ])
 
   // const reviews = await Promise.all([
   //   Review.create({content: "These Yeezy's are fire", rating: 4, productId: 1, userId: 1}),
