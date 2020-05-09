@@ -34,7 +34,7 @@ const ProductDetailType = new GraphQLObjectType({
       description: 'a list of reviews for this product',
       args: { id: { type: GraphQLInt }},
       resolve: product => {
-        return product.getReview()
+        return product.getReviews()
         .then(reviews => reviews)
         .catch(err => console.log(err))
       }
@@ -78,8 +78,9 @@ const LineItemType = new GraphQLObjectType({
     product: {
       type: ProductDetailType,
       description: 'line item product details',
-      resolve: lineItem => {
-        return lineItem.getProduct()
+      resolve: lineitem => {
+        console.log('TESTING', lineitem)
+        return lineitem.getProduct()
         .then(product => product)
         .catch(err => console.log(err))
       }
@@ -91,12 +92,12 @@ const CartType = new GraphQLObjectType({
   name: 'cart',
   description: 'a cart of items',
   fields: () => ({
-    status: { type: GraphQLNonNull(GraphQLString) },
+    status: { type: GraphQLString },
     lineitem: {
-      type: LineItemType,
+      type: new GraphQLList(LineItemType),
       description: 'line item on a cart',
       resolve: cart => {
-        return cart.getLineItem()
+        return cart.getItems()
         .then(lineitem => lineitem)
         .catch(err => console.log(err))
       }

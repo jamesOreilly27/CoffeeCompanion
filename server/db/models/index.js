@@ -13,15 +13,14 @@ Category.belongsToMany(Product, { through: ProductCategory })
 Product.belongsToMany(Category, { through: ProductCategory })
 
 //Product and Review
-Product.hasMany(Review, { as: 'review' })
+Product.hasMany(Review, { as: 'reviews' })
 
 //Cart and Item
-Cart.hasMany(LineItem, { as: 'item' })
+Cart.hasMany(LineItem, { as: 'items' })
 LineItem.belongsTo(Cart)
 
 //Product and Item
-Product.hasMany(LineItem, { constraints: false })
-// LineItem.belongsTo(Product)
+LineItem.belongsTo(Product, { constraints: false })
 
 module.exports = {
   Product,
