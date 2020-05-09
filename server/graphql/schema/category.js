@@ -11,7 +11,8 @@ const CategoryType = new GraphQLObjectType({
     products: {
       type: ProductType,
       resolve: category => {
-        return //Placeholder for the ProductCategory query we'll write in a minute
+        return ProductCategory.findAll({ where: { categoryId: category.id }})
+        .then(products => products)
       }
     }
   })
