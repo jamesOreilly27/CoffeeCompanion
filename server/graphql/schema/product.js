@@ -1,17 +1,6 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLSchema, GraphQLList } = require('graphql')
+const { CategoryType } = require('./category')
 const { Product } = require('../../db/models')
-
-const ProductType = new GraphQLObjectType({
-  name: 'product',
-  fields: () => ({
-    id: { type: GraphQLNonNull(GraphQLInt) },
-    name: { type: GraphQLString },
-    description: { type: GraphQLString },
-    price: { type: GraphQLNonNull(GraphQLInt) },
-    inventory: { type: GraphQLNonNull(GraphQLInt) },
-    image: { type: GraphQLString }
-  })
-})
 
 const productResolver = () => {
   return Product.findAll()
@@ -19,4 +8,4 @@ const productResolver = () => {
   .catch(err => console.log(err))
 }
 
-module.exports = { ProductType, productResolver }
+module.exports = { productResolver }

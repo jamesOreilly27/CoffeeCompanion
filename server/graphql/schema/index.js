@@ -1,6 +1,7 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLSchema, GraphQLList } = require('graphql')
-const { ProductType, productResolver } = require('./product')
-const { CategoryType, categoryResolver } = require('./category')
+const { productResolver } = require('./product')
+const { categoryResolver } = require('./category')
+const { CategoryType, ProductType } = require('./ObjectTypes')
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
