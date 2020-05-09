@@ -9,7 +9,9 @@ const getAllProducts = gql`
       id
       name
       description
-      categories
+      categories {
+        name
+      }
     }
   }
 `
