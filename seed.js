@@ -1,15 +1,16 @@
 const db = require('./server/db')
 const chalk = require('chalk')
-const { Product, Category, Review, ProductCategory, Cart, LineItem } = require('./server/db/models')
+const { Product, Category, Review, ProductCategory, Cart, LineItem, User } = require('./server/db/models')
 
 async function seed () {
   await db.sync({force: true})
   console.log(chalk.bgWhite.green.bold('db synced!'))
 
-  // const users = await Promise.all([
-  //   User.create({firstName: 'cody', lastName: 'greene', email: 'cody@email.com', password: '123', phone: '2123334343', isAdmin: true}),
-  //   User.create({firstName: 'eddie', lastName: 'murphy', email: 'murphy@email.com', password: '123', phone: '2125555555'})
-  // ])
+  const users = await Promise.all([
+    User.create({firstName: 'cody', lastName: 'greene', email: 'cody@email.com', password: '123', isAdmin: true}),
+    User.create({firstName: 'eddie', lastName: 'murphy', email: 'murphy@email.com', password: '123', phone: '2125555555'})
+  ])
+  
   const carts = await Promise.all([
     Cart.create({status: 'purchased' }),
     Cart.create({status: 'purchased' })
