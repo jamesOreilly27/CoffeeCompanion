@@ -1,5 +1,3 @@
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLSchema, GraphQLList } = require('graphql')
-const { CategoryType } = require('./category')
 const { Product } = require('../../db/models')
 
 const productResolver = () => {
@@ -8,4 +6,10 @@ const productResolver = () => {
   .catch(err => console.log(err))
 }
 
-module.exports = { productResolver }
+const productDetailResolver = (parent, args) => {
+  return Product.findByPk(args.id)
+  .then(product => product)
+  .catch(err => console.log(err))
+}
+
+module.exports = { productResolver, productDetailResolver }

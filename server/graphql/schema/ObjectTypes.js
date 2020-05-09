@@ -17,11 +17,24 @@ const ProductType = new GraphQLObjectType({
         .then(categories => categories)
         .catch(err => console.log(err))
       }
-    },
+    }
+  })
+})
+
+const ProductDetailType = new GraphQLObjectType({
+  name: 'ProductDetail',
+  fields: () => ({
+    name: { type: GraphQLString },
+    description: { type: GraphQLString },
+    price: { type: GraphQLNonNull(GraphQLInt) },
+    inventory: { type: GraphQLNonNull(GraphQLInt) },
+    image: { type: GraphQLString },
     reviews: {
       type: new GraphQLList(ReviewType),
       description: 'a list of reviews for this product',
+      args: { id: { type: GraphQLInt }},
       resolve: product => {
+        console.log('TESTING123', product)
         return product.getReview()
         .then(reviews => reviews)
         .catch(err => console.log(err))
@@ -60,5 +73,6 @@ const CategoryType = new GraphQLObjectType({
 module.exports = {
   CategoryType,
   ProductType,
+  ProductDetailType,
   ReviewType
 }
