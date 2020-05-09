@@ -1,7 +1,7 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLSchema, GraphQLList } = require('graphql')
-const { productResolver } = require('./product')
+const { productResolver, productDetailResolver } = require('./product')
 const { categoryResolver } = require('./category')
-const { CategoryType, ProductType } = require('./ObjectTypes')
+const { CategoryType, ProductType, ProductDetailType } = require('./ObjectTypes')
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
@@ -15,6 +15,14 @@ const RootQuery = new GraphQLObjectType({
       type: new GraphQLList(CategoryType),
       description: 'List of all categories',
       resolve: categoryResolver
+    },
+    productDetails: {
+      type: ProductDetailType,
+      description: 'details for a product',
+      args: {
+        id: { type: GraphQLInt }
+      },
+      resolve: productDetailResolver
     }
   }
 })

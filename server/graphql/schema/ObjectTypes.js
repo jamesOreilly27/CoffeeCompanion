@@ -1,23 +1,5 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLSchema, GraphQLList } = require('graphql')
 
-const CategoryType = new GraphQLObjectType({
-  name: 'category',
-  description: 'Different groupings of products',
-  fields: () => ({
-    name: { type: GraphQLNonNull(GraphQLString) },
-    description: { type: GraphQLNonNull(GraphQLString) },
-    products: {
-      type: new GraphQLList(ProductType),
-      description: 'category products',
-      resolve: category => {
-        return category.getProducts()
-        .then(products => products)
-        .catch(err => console.log(err))
-      }
-    }
-  })
-})
-
 const ProductType = new GraphQLObjectType({
   name: 'product',
   fields: () => ({
@@ -39,7 +21,58 @@ const ProductType = new GraphQLObjectType({
   })
 })
 
+const ProductDetailType = new GraphQLObjectType({
+  name: 'ProductDetail',
+  fields: () => ({
+    name: { type: GraphQLString },
+    description: { type: GraphQLString },
+    price: { type: GraphQLNonNull(GraphQLInt) },
+    inventory: { type: GraphQLNonNull(GraphQLInt) },
+    image: { type: GraphQLString },
+    reviews: {
+      type: new GraphQLList(ReviewType),
+      description: 'a list of reviews for this product',
+      args: { id: { type: GraphQLInt }},
+      resolve: product => {
+        console.log('TESTING123', product)
+        return product.getReview()
+        .then(reviews => reviews)
+        .catch(err => console.log(err))
+      }
+    }
+  })
+})
+
+const ReviewType = new GraphQLObjectType({
+  name: 'review',
+  description: 'a review of a specific product',
+  fields: () => ({
+    content: { type: GraphQLNonNull(GraphQLString) },
+    rating: { type: GraphQLNonNull(GraphQLInt) }
+  })
+})
+
+const CategoryType = new GraphQLObjectType({
+  name: 'category',
+  description: 'Different groupings of products',
+  fields: () => ({
+    name: { type: GraphQLNonNull(GraphQLString) },
+    description: { type: GraphQLNonNull(GraphQLString) },
+    products: {
+      type: new GraphQLList(ProductType),
+      description: 'category products',
+      resolve: category => {
+        return category.getProducts()
+        .then(products => products)
+        .catch(err => console.log(err))
+      }
+    }
+  })
+})
+
 module.exports = {
   CategoryType,
-  ProductType
+  ProductType,
+  ProductDetailType,
+  ReviewType
 }
