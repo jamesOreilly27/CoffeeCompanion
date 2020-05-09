@@ -34,7 +34,6 @@ const ProductDetailType = new GraphQLObjectType({
       description: 'a list of reviews for this product',
       args: { id: { type: GraphQLInt }},
       resolve: product => {
-        console.log('TESTING123', product)
         return product.getReview()
         .then(reviews => reviews)
         .catch(err => console.log(err))
