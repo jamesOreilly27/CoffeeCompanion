@@ -63,6 +63,13 @@ const Mutation = new GraphQLObjectType({
         })
         .catch(err => console.log(err))
       }
+    },
+    logout: {
+      type: GraphQLBoolean,
+      resolve: (parent, args, request) => {
+        request.logout()
+        return true
+      }
     }
   }
 })
