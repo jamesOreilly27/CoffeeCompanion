@@ -1,6 +1,6 @@
 const { Product } = require('../../db/models')
 
-const productResolver = () => {
+const productResolver = (parent, args, request) => {
   return Product.findAll()
   .then(products => products)
   .catch(err => console.log(err))

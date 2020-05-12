@@ -1,5 +1,14 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLSchema, GraphQLList } = require('graphql')
 
+const UserType = new GraphQLObjectType({
+  name: 'user',
+  description: 'logged in user',
+  fields: () => ({
+    id: { type: GraphQLNonNull(GraphQLInt) },
+    email: { type: GraphQLString }
+  })
+})
+
 const ProductType = new GraphQLObjectType({
   name: 'product',
   fields: () => ({
@@ -79,7 +88,6 @@ const LineItemType = new GraphQLObjectType({
       type: ProductDetailType,
       description: 'line item product details',
       resolve: lineitem => {
-        console.log('TESTING', lineitem)
         return lineitem.getProduct()
         .then(product => product)
         .catch(err => console.log(err))
@@ -106,6 +114,7 @@ const CartType = new GraphQLObjectType({
 })
 
 module.exports = {
+  UserType,
   CategoryType,
   ProductType,
   ProductDetailType,
