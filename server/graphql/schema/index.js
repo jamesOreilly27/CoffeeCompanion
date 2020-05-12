@@ -2,12 +2,18 @@ const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLBoolean, GraphQLNon
 const { productResolver, productDetailResolver } = require('./product')
 const { categoryResolver } = require('./category')
 const { cartResolver } = require('./cart')
-const { CategoryType, ProductType, ProductDetailType, CartType } = require('./ObjectTypes')
+const { userResolver } = require('./user')
+const { CategoryType, ProductType, ProductDetailType, CartType, UserType } = require('./ObjectTypes')
 const { User } = require('../../db/models')
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
   fields: {
+    currentUser: {
+      type: UserType,
+      description: 'The current logged in user',
+      resolve: userResolver
+    },
     products: {
       type: new GraphQLList(ProductType),
       description: 'list of all products',

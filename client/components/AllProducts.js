@@ -13,6 +13,11 @@ const getAllProducts = gql`
         name
       }
     }
+
+    currentUser {
+      id
+      email
+    }
   }
 `
 
