@@ -2,7 +2,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { gql } from 'apollo-boost'
-import { graphql, Mutation } from 'react-apollo'
+import { Mutation } from 'react-apollo'
 
 const loginMutation = gql`
 mutation($email: String!, $password: String!) {
@@ -58,7 +58,7 @@ class Login extends Component {
             <Form onSubmit={evt => {
               evt.preventDefault()
               sendCreds({ variables: { email: evt.target.email.value, password: evt.target.password.value }})
-              this.props.history.push('/allproducts')
+              data && data.loginUser ? this.props.history.push('/allproducts') : ''
             }}>
               <Label>
                 Email
@@ -80,7 +80,3 @@ class Login extends Component {
 }
 
 export default (Login)
-
-// options: props => ({
-//   variables: {email: 'cody@email.com', password: '123'}
-// })

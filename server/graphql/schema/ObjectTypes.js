@@ -79,7 +79,6 @@ const LineItemType = new GraphQLObjectType({
       type: ProductDetailType,
       description: 'line item product details',
       resolve: lineitem => {
-        console.log('TESTING', lineitem)
         return lineitem.getProduct()
         .then(product => product)
         .catch(err => console.log(err))
