@@ -29,15 +29,16 @@ passport.deserializeUser((id, done) => (
     .catch(done))
 )
 
-const createApp = () => {
-  const options = {
-    key: fs.readFileSync( `${dir}/ssl/localhost/localhost.key` ),
-    cert: fs.readFileSync( `${dir}/ssl/localhost/localhost.crt` ),
-    requestCert: false,
-    rejectUnauthorized: false
-  }
+const options = {
+  key: fs.readFileSync( `${dir}/ssl/localhost/localhost.key` ),
+  cert: fs.readFileSync( `${dir}/ssl/localhost/localhost.crt` ),
+  requestCert: false,
+  rejectUnauthorized: false
+}
 
-  const server = https.createServer(options, app)
+const server = https.createServer(options, app)
+
+const createApp = () => {
 
   app.use(`/graphql`, require('./graphql'))
 
@@ -48,7 +49,7 @@ const createApp = () => {
 
 const syncDb = () => db.sync()
 
-const run = () => {
+const startListen = () => {
   PORT === 8332 ?
     app.listen(PORT, () => {
       console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`))
@@ -65,7 +66,7 @@ if (require.main === module) {
   sessionStore.sync()
     .then(syncDb)
     .then(createApp)
-    .then(run)
+    .then(startListen)
 } else {
   createApp()
 }

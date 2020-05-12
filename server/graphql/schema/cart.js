@@ -1,4 +1,3 @@
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLSchema, GraphQLList } = require('graphql')
 const { Cart } = require('../../db/models')
 
 const cartResolver = () => {
