@@ -3,6 +3,7 @@ const { productResolver, productDetailResolver } = require('./product')
 const { categoryResolver } = require('./category')
 const { cartResolver } = require('./cart')
 const { userResolver } = require('./user')
+const { chooseAuthType } = require('./helpers')
 const { CategoryType, ProductType, ProductDetailType, CartType, UserType } = require('./ObjectTypes')
 const { User } = require('../../db/models')
 
@@ -47,21 +48,13 @@ const Mutation = new GraphQLObjectType({
       type: GraphQLBoolean,
       args: {
         email: { type: new GraphQLNonNull(GraphQLString), },
-        password: { type: new GraphQLNonNull(GraphQLString) }
+        password: { type: new GraphQLNonNull(GraphQLString) },
+        isSignup: { type: GraphQLBoolean },
+        firstName: { type: GraphQLString },
+        lastName: { type: GraphQLString }
       },
-      resolve: (parent, { email, password }, request) => {
-        return User.findOne({ where: { email: email}})
-        .then(user => {
-          if(!user) {
-            throw new Error('invalid credentials')
-          } else if(!user.correctPassword(password)) {
-            throw new Error('invalid credentials')
-          } else {
-            request.login(user, error => error ? error : user)
-            return true
-          }
-        })
-        .catch(err => console.log(err))
+      resolve: (parent, { email, password, isSignup, firstName, lastName }, request) => {
+        return chooseAuthType(email, password, isSignup, firstName, lastName, User, request)
       }
     },
     logout: {
