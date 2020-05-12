@@ -5,13 +5,13 @@ import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 
 const loginMutation = gql`
-mutation($email: String!, $password: String!) {
-  loginUser(email: $email, password: $password)
+mutation($email: String!, $password: String!, $isSignup: Boolean!, $firstName: String, $lastName: String) {
+  loginUser(email: $email, password: $password, isSignup: $isSignup, firstName: $firstName, lastName: $lastName)
 }
 `
 
 const sendCreds = () => {
-  const input = { email: '', password: '' }
+  const input = { email: '', password: '', isSignup: true, firstName: '', lastName: '' }
 }
 
 const Form = styled.form`
@@ -44,7 +44,7 @@ const Input = styled.input`
   font-size: .875em;
 `
 
-class Login extends Component {
+class Signup extends Component {
   constructor(props) {
     super(props)
   }
@@ -57,9 +57,31 @@ class Login extends Component {
           <div>
             <Form onSubmit={evt => {
               evt.preventDefault()
-              sendCreds({ variables: { email: evt.target.email.value, password: evt.target.password.value }})
+              sendCreds({ variables: {
+                email: evt.target.email.value,
+                password: evt.target.password.value,
+                isSignup: true,
+                firstName: evt.target.firstName.value,
+                lastName: evt.target.lastName.value
+              }})
               data && data.loginUser ? this.props.history.push('/allproducts') : ''
             }}>
+              <Label>
+                First Name
+                <Input
+                  type="text"
+                  name="firstName"
+                  required
+                />
+              </Label>
+              <Label>
+                Last Name
+                <Input
+                  type="text"
+                  name="lastName"
+                  required
+                />
+              </Label>
               <Label>
                 Email
                 <Input type="email" name="email" required />
@@ -69,7 +91,7 @@ class Login extends Component {
                 <Input type="text" name="password" required />
               </Label>
               <SubmitButton>
-                Login
+                Submit
               </SubmitButton>
             </Form>
           </div>
@@ -79,4 +101,4 @@ class Login extends Component {
   }
 }
 
-export default Login
+export default Signup
