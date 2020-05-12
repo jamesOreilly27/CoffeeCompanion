@@ -47,11 +47,15 @@ const Mutation = new GraphQLObjectType({
         User.findOne({ where: { email: email}})
         .then(user => {
           if(!user) {
-            console.log('FIRING EMAIL')
+            throw new Error('invalid credentials')
           } else if(!user.correctPassword(password)) {
-            console.log('FIRING PASSWORD')
+            throw new Error('invalid credentials')
           } else {
-            request.login(user, error => error ? error : user)
+            request.login(user, error => {
+              console.log(error)
+              return error ? error : user
+            })
+            console.log('TESTING', request.user)
             return true
           }
         })

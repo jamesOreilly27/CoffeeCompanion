@@ -1,6 +1,18 @@
 
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
+import { gql } from 'apollo-boost'
+import { graphql, Mutation } from 'react-apollo'
+
+const loginMutation = gql`
+mutation($email: String!, $password: String!) {
+  loginUser(email: $email, password: $password)
+}
+`
+
+const sendCreds = () => {
+  const input = { email: '', password: '' }
+}
 
 const Form = styled.form`
   display: flex;
@@ -32,28 +44,43 @@ const Input = styled.input`
   font-size: .875em;
 `
 
-const Login = ({ displayName, handleSubmit, error, isSignup }) => (
-  <Form>
-    <Label>
-      Email
-      <Input
-        type="email"
-        name="email"
-        required
-      />
-    </Label>
-    <Label>
-      Password
-      <Input
-        type="text"
-        name="password"
-        required
-      />
-    </Label>
-    <SubmitButton>
-      {displayName}
-    </SubmitButton>
-  </Form>
-)
+class Login extends Component {
+  constructor(props) {
+    super(props)
+  }
 
-export default Login
+  render() {
+    console.log(this.props)
+    return (
+      <Mutation mutation={loginMutation}>
+        {(sendCreds, { data }) => (
+          <div>
+            <Form onSubmit={evt => {
+              evt.preventDefault()
+              sendCreds({ variables: { email: evt.target.email.value, password: evt.target.password.value }})
+              this.props.history.push('/allproducts')
+            }}>
+              <Label>
+                Email
+                <Input type="email" name="email" required />
+              </Label>
+              <Label>
+                Password
+                <Input type="text" name="password" required />
+              </Label>
+              <SubmitButton>
+                Login
+              </SubmitButton>
+            </Form>
+          </div>
+        )}
+      </Mutation>
+    )
+  }
+}
+
+export default (Login)
+
+// options: props => ({
+//   variables: {email: 'cody@email.com', password: '123'}
+// })
