@@ -18,7 +18,6 @@ const Main = props => {
   return (
     <Router>
         <ContentContainer>
-        {console.log('TESTING', props.data.currentUser)}
           <Header />
           <Switch>
             <Route exact path='/login' component={Login} />
