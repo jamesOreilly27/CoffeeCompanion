@@ -1,3 +1,5 @@
+const { GraphQLList } = require('graphql')
+const { CartType } = require('./ObjectTypes')
 const { Cart } = require('../../db/models')
 
 const cartResolver = () => {
@@ -6,4 +8,10 @@ const cartResolver = () => {
   .catch(err => console.log(err))
 }
 
-module.exports = { cartResolver }
+const cart = {
+  type: new GraphQLList(CartType),
+  description: 'a customer cart',
+  resolve: cartResolver
+}
+
+module.exports = { cart }
