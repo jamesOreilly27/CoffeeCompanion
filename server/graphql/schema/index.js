@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLNonNull, GraphQLSchema } = require('graphql')
+const { GraphQLObjectType, GraphQLSchema } = require('graphql')
 const { products, productDetails } = require('./product')
 const { categories, singleCategory } = require('./category')
 const { cart } = require('./cart')
