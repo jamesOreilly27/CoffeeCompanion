@@ -28,7 +28,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
-  border: 2px solid red;
   width: 98vw;
 `
 
