@@ -25,8 +25,6 @@ const chooseAuthType = (email, password, isSignup, firstName, lastName, userMode
         return true
       }
     })
-    console.log('FIRING', request.user)
-
     return authType
 }
 

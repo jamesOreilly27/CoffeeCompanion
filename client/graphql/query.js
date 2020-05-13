@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost'
 
 
-//categories
+/***** categories *****/
 export const getAllCategories = gql`
 {
   categories {
@@ -30,7 +30,7 @@ export const getOneCategory = gql`
 `
 
 
-//products
+/**** products *****/
 export const getAllProducts = gql`
   {
     products {
@@ -50,3 +50,8 @@ export const getAllProducts = gql`
     }
   }
 `
+
+/***** carts *****/
+// export const getMyOrders = gql`
+//   myOrders
+// `
