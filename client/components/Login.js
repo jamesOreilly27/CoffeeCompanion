@@ -60,7 +60,7 @@ class Login extends Component {
             <Form onSubmit={evt => {
               evt.preventDefault()
               sendCreds({ variables: { email: evt.target.email.value, password: evt.target.password.value }})
-              data && data.loginUser ? this.props.history.push('/allproducts') : ''
+              data && data.loginUser ? this.props.history.push('/products') : ''
             }}>
               <Label>
                 <LabelName>Email</LabelName>

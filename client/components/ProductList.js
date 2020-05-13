@@ -1,28 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { gql } from 'apollo-boost'
-import { graphql } from 'react-apollo'
 import { ProductCard } from '../components/product-card'
-
-const getAllProducts = gql`
-  {
-    products {
-      id
-      name
-      description
-      image
-      price
-      categories {
-        name
-      }
-    }
-
-    currentUser {
-      id
-      email
-    }
-  }
-`
 
 const Wrapper = styled.div`
   display: flex;
@@ -44,17 +22,23 @@ const ProductContainer = styled.div`
   width: 98vw;
 `
 
-class AllProducts extends Component {
+class ProductList extends Component {
   constructor(props) {
     super(props)
   }
 
+  chooseTitle() {
+    let title 
+    this.props.category ? title = this.props.category.name : title = 'Products'
+    return title
+  }
+
   render() {
-    const products = this.props.data.products
+    const products = this.props.products
     return (
       <Wrapper>
         <Title>
-          Products
+          {this.chooseTitle()}
         </Title>
         <ProductContainer>
           {products && products.map(product => <ProductCard product={product} key={product.id} />)}
@@ -64,4 +48,4 @@ class AllProducts extends Component {
   }
 }
 
-export default graphql(getAllProducts)(AllProducts)
+export default ProductList

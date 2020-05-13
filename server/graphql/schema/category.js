@@ -6,4 +6,10 @@ const categoryResolver = () => {
   .catch(err => console.log(err))
 }
 
-module.exports = { categoryResolver }
+const singleCategoryResolver = (parents, args) => {
+  return Category.findByPk(args.id)
+  .then(category => category)
+  .catch(err => console.log(err))
+}
+
+module.exports = { categoryResolver, singleCategoryResolver }

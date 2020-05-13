@@ -64,7 +64,7 @@ class Signup extends Component {
                 firstName: evt.target.firstName.value,
                 lastName: evt.target.lastName.value
               }})
-              data && data.loginUser ? this.props.history.push('/allproducts') : ''
+              data && data.loginUser ? this.props.history.push('/products') : ''
             }}>
               <Label>
                 First Name
