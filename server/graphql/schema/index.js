@@ -2,9 +2,7 @@ const { GraphQLObjectType, GraphQLString, GraphQLBoolean, GraphQLNonNull, GraphQ
 const { products, productDetails } = require('./product')
 const { categories, singleCategory } = require('./category')
 const { cart } = require('./cart')
-const { currentUser } = require('./user')
-const { chooseAuthType } = require('./helpers')
-const { User } = require('../../db/models')
+const { currentUser, loginUser, logout } = require('./user')
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
@@ -13,28 +11,7 @@ const RootQuery = new GraphQLObjectType({
 
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
-  fields: {
-    loginUser: {
-      type: GraphQLBoolean,
-      args: {
-        email: { type: new GraphQLNonNull(GraphQLString), },
-        password: { type: new GraphQLNonNull(GraphQLString) },
-        isSignup: { type: GraphQLBoolean },
-        firstName: { type: GraphQLString },
-        lastName: { type: GraphQLString }
-      },
-      resolve: (parent, { email, password, isSignup, firstName, lastName }, request) => {
-        return chooseAuthType(email, password, isSignup, firstName, lastName, User, request)
-      }
-    },
-    logout: {
-      type: GraphQLBoolean,
-      resolve: (parent, args, request) => {
-        request.logout()
-        return true
-      }
-    }
-  }
+  fields: { loginUser, logout }
 })
 
 const schema = new GraphQLSchema({
