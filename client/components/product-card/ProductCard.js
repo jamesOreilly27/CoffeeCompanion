@@ -20,7 +20,6 @@ const Wrapper = styled(Link)`
   justify-content: flex-start;
   align-items: center;
   text-decoration: none;
-  font-family: 'Poppins', sans-serif;
   background-color: #FFF;
   border: 2px solid #EAEDED;
   height: 200px;

@@ -26,6 +26,19 @@ const getAllProducts = gql`
 
 const Wrapper = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+`
+
+const Title = styled.h1`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`
+
+const ProductContainer = styled.div`
+  display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   width: 98vw;
@@ -40,7 +53,12 @@ class AllProducts extends Component {
     const products = this.props.data.products
     return (
       <Wrapper>
-        {products && products.map(product => <ProductCard product={product} key={product.id} />)}
+        <Title>
+          Products
+        </Title>
+        <ProductContainer>
+          {products && products.map(product => <ProductCard product={product} key={product.id} />)}
+        </ProductContainer>
       </Wrapper>
     )
   }
