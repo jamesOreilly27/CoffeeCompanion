@@ -22,10 +22,10 @@ const StyledLink = styled(Link)`
   }
 `
 
-const Navlink = ({ name }) => (
+const Navlink = ({ item }) => (
   <Container>
-    <StyledLink to={name}>
-      {name}
+    <StyledLink to={item.linkTo}>
+      {item.name}
     </StyledLink>
   </Container>
 )

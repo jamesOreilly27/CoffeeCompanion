@@ -17,29 +17,31 @@ const sendCreds = () => {
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around;
-  height: 20vw;
-  margin: 6vw 12vw;
+  width: 98vw;
 `
 
 const Label = styled.label`
-  width: 10vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  margin-bottom: 2rem;
+  font-family: 'DM Mono', monospace;
+`
+
+const LabelName = styled.div`
+  margin-bottom: 3vh;
 `
 
 const SubmitButton = styled.button`
-  width: 10vw;
-  height: 3vw;
   border-radius: .5vw;
   font-size: .875em;
 `
 
 const Input = styled.input`
-  width: 10vw;
-  height: 2vw;
+  height: 5.5vh;
+  border: 1px solid #CCC;
   border-radius: .3em;
   font-size: .875em;
 `
@@ -61,11 +63,11 @@ class Login extends Component {
               data && data.loginUser ? this.props.history.push('/allproducts') : ''
             }}>
               <Label>
-                Email
+                <LabelName>Email</LabelName>
                 <Input type="email" name="email" required />
               </Label>
               <Label>
-                Password
+                <LabelName>Password</LabelName>
                 <Input type="text" name="password" required />
               </Label>
               <SubmitButton>

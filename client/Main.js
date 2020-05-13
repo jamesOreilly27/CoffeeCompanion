@@ -24,7 +24,7 @@ const Main = () => {
           <Switch>
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
-            <Route exact path='/allproducts' component={AllProducts} />
+            <Route exact path='/products' component={AllProducts} />
             <Route exact path='/product/:id' component={ProductDetail} />
             <Route exact path='/allcategories' component={AllCategories} />
           </Switch>

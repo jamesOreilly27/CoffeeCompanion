@@ -27,8 +27,8 @@ async function seed () {
   ])
 
   const products = await Promise.all([
-    Product.create({name: 'Columbian Light Roast', description: 'so fresh', price: 50, inventory: 562, image: '' }),
-    Product.create({name: 'Columbian Dark Roast', description: 'dark and toasty', price: 35, inventory: 250, image: '' })
+    Product.create({name: 'Columbian Light Roast', description: 'so fresh', price: 50, inventory: 562, image: 'https://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder.png' }),
+    Product.create({name: 'Columbian Dark Roast', description: 'dark and toasty', price: 35, inventory: 250, image: 'https://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder.png' })
   ])
 
   const categories = await Promise.all([

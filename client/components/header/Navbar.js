@@ -9,15 +9,15 @@ const Wrapper = styled.nav`
 `
 
 const navItems = [
-  { name: 'Shop' },
-  { name: 'Locations' },
-  { name: 'Rewards' },
-  { name: 'Careers' }
+  { name: 'Shop', linkTo: '/products' },
+  { name: 'Locations', linkTo: 'locations' },
+  { name: 'Rewards', linkTo: '/rewards' },
+  { name: 'Contact', linkTo: '/contact' }
 ]
 
 const Navbar = () => (
   <Wrapper>
-    {navItems.map(item => <Navlink name={item.name} /> )}
+    {navItems.map(item => <Navlink item={item} /> )}
   </Wrapper>
 )
 

@@ -6,13 +6,15 @@ import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 const Wrapper = styled.div`
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: space-around;
 `
 
 const Authlink = styled(Link)`
-  font-size: 10px;
-  margin-right: 5px;
+  margin-right: 8px;
+  text-decoration: none;
+  color: #0d0b0b;
+  font-family: 'Scope One', serif;
 `
 
 
@@ -25,7 +27,6 @@ class UserHeaderInfo extends Component {
     return (
       <Wrapper>
         <Authlink to="/login">Login</Authlink>
-        <Authlink to="/signup">Signup</Authlink>
         <FontAwesomeIcon icon={faShoppingCart} />
       </Wrapper>
     )
