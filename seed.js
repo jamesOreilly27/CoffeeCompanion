@@ -27,8 +27,14 @@ async function seed () {
   ])
 
   const products = await Promise.all([
-    Product.create({name: 'Columbian Light Roast', description: 'so fresh', price: 50, inventory: 562, image: 'https://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder.png' }),
-    Product.create({name: 'Columbian Dark Roast', description: 'dark and toasty', price: 35, inventory: 250, image: 'https://www.stleos.uq.edu.au/wp-content/uploads/2016/08/image-placeholder.png' })
+    Product.create({name: 'Light Roast', description: 'so fresh', price: 50, inventory: 562, image: '' }),
+    Product.create({name: 'Dark Roast', description: 'dark and toasty', price: 35, inventory: 250, image: '' }),
+    Product.create({name: 'Donut Shop', description: 'American Classic', price: 15, inventory: 562, image: '' }),
+    Product.create({name: 'Caramel', description: 'sweet goodness', price: 40, inventory: 562, image: '' }),
+    Product.create({name: 'Vanilla', description: 'this vanilla isnt boring', price: 70, inventory: 562, image: '' }),
+    Product.create({name: 'Iced Coffee', description: 'for the cold lovers', price: 95, inventory: 562, image: '' }),
+    Product.create({name: 'Master Blend', description: 'the blend will make you want more', price: 40, inventory: 562, image: '' }),
+    Product.create({name: 'House Blend', description: 'for around the hosue', price: 35, inventory: 562, image: '' })
   ])
 
   const categories = await Promise.all([

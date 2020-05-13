@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
+import styled from 'styled-components'
 import { gql } from 'apollo-boost'
 import { graphql } from 'react-apollo'
-import { SingleProduct } from '../components'
+import { ProductCard } from '../components/product-card'
 
 const getAllProducts = gql`
   {
@@ -9,6 +10,8 @@ const getAllProducts = gql`
       id
       name
       description
+      image
+      price
       categories {
         name
       }
@@ -21,6 +24,26 @@ const getAllProducts = gql`
   }
 `
 
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Poppins', sans-serif;
+`
+
+const Title = styled.h1`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+`
+
+const ProductContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width: 98vw;
+`
+
 class AllProducts extends Component {
   constructor(props) {
     super(props)
@@ -29,9 +52,14 @@ class AllProducts extends Component {
   render() {
     const products = this.props.data.products
     return (
-      <div>
-        {products && products.map(product => <SingleProduct product={product} key={product.id}/>)}
-      </div>
+      <Wrapper>
+        <Title>
+          Products
+        </Title>
+        <ProductContainer>
+          {products && products.map(product => <ProductCard product={product} key={product.id} />)}
+        </ProductContainer>
+      </Wrapper>
     )
   }
 }
