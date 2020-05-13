@@ -1,6 +1,6 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLBoolean, GraphQLNonNull, GraphQLSchema, GraphQLList } = require('graphql')
 const { productResolver, productDetailResolver } = require('./product')
-const { categoryResolver } = require('./category')
+const { categoryResolver, singleCategoryResolver } = require('./category')
 const { cartResolver } = require('./cart')
 const { userResolver } = require('./user')
 const { chooseAuthType } = require('./helpers')
@@ -28,10 +28,14 @@ const RootQuery = new GraphQLObjectType({
     productDetails: {
       type: ProductDetailType,
       description: 'details for a product',
-      args: {
-        id: { type: GraphQLInt }
-      },
+      args: { id: { type: GraphQLInt }},
       resolve: productDetailResolver
+    },
+    singleCategory: {
+      type: CategoryType,
+      description: 'a single category',
+      args: { id: { type: GraphQLInt } },
+      resolve: singleCategoryResolver
     },
     cart: {
       type: new GraphQLList(CartType),
