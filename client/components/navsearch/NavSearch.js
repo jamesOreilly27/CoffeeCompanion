@@ -7,7 +7,6 @@ import { Dropdown, FormFill, SubmitButton } from '../navsearch'
 const Wrapper = styled.form`
   display: flex;
   align-items: center;
-  height: 5vh;
 `
 
 class NavSearch extends Component {

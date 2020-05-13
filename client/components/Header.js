@@ -11,34 +11,23 @@ const Wrapper = styled.header`
 
 const Container = styled.div`
   display: flex;
-  flex-direction: column;
-  width: 90vw;
+  width: 100%;
+  height: 4vh;
+  justify-content: space-around;
+  align-items: center;
 `
 
 const UserInfoAndSearch = styled.div`
-  display: flex;
-  width: 100%;
-  height: 8vh;
-  justify-content: space-around;
-`
 
-const LowerHeader = styled.div`
-  display: flex;
-  width: 100%;
-  justify-content: space-around;
 `
 
 const Header = () => (
   <Wrapper>
     <Container>
-      <UserInfoAndSearch>
-        <Logo />
-        <NavSearch />
-        <UserHeaderInfo />
-      </UserInfoAndSearch>
-      <LowerHeader>
-        <Navbar />
-      </LowerHeader>
+      <Logo />
+      <Navbar />
+      <NavSearch />
+      <UserHeaderInfo />
     </Container>
   </Wrapper>
 )

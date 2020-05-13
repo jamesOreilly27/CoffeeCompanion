@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 const Wrapper = styled.input`
   border-radius: 6px;
-  height: 3vh;
+  height: 2.5vh;
 `
 
 const FormFill = () => {

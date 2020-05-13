@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSearch } from '@fortawesome/free-solid-svg-icons'
 
 const Wrapper = styled.button`
-  height: 3.5vh;
+  height: 3.3vh;
   border-radius: 50%
 `
 

@@ -4,8 +4,8 @@ import { Navlink } from '../components'
 
 const Wrapper = styled.nav`
   display: flex;
-  justify-content: flex-end;
-  align-content: flex-end;
+  justify-content: space-around;
+  width: 60%;
 `
 
 const navItems = [
