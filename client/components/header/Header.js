@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { NavSearch, Navbar, UserHeaderInfo, Logo } from '../header'
 
 const Wrapper = styled.header`
-  width: 90vw;
+  width: 98vw;
   display: flex;
   justify-content: space-between
 `
