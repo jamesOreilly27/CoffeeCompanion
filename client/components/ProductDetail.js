@@ -23,7 +23,6 @@ class ProductDetail extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <div>
         Hello From ProductDetail

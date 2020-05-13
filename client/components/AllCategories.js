@@ -2,20 +2,7 @@ import React, { Component } from 'react'
 import { gql } from 'apollo-boost'
 import { graphql } from 'react-apollo'
 import { SingleCategory } from '../components'
-
-const getAllCategories = gql`
-{
-  categories {
-    name
-    description
-    products {
-      name
-      description
-      price
-    }
-  }
-}
-`
+import { getAllCategories } from '../graphql'
 
 class AllCategories extends Component {
   constructor(props) {
