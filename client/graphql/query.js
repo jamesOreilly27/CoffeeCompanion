@@ -17,8 +17,8 @@ export const getAllCategories = gql`
 `
 
 export const getOneCategory = gql`
-  query($id: Int!){
-    singleCategory(id: $id) {
+  query($name: String!){
+    singleCategory(name: $name) {
       name
       description
       products {

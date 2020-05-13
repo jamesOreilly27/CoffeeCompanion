@@ -34,7 +34,7 @@ const RootQuery = new GraphQLObjectType({
     singleCategory: {
       type: CategoryType,
       description: 'a single category',
-      args: { id: { type: GraphQLInt } },
+      args: { name: { type: GraphQLString } },
       resolve: singleCategoryResolver
     },
     cart: {

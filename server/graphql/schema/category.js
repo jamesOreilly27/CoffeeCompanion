@@ -7,7 +7,7 @@ const categoryResolver = () => {
 }
 
 const singleCategoryResolver = (parents, args) => {
-  return Category.findByPk(args.id)
+  return Category.findOne({ where: { name: args.name } })
   .then(category => category)
   .catch(err => console.log(err))
 }

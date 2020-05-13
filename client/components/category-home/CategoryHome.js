@@ -31,6 +31,6 @@ class CategoryHome extends Component {
 
 export default graphql(getOneCategory, {
   options: props => ({
-    variables: { id: parseInt(props.match.params.id) }
+    variables: { name: props.match.params.category }
   })
 })(CategoryHome)

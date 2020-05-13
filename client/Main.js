@@ -27,10 +27,10 @@ const Main = props => {
           <Switch>
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
-            <Route exact path='/products' render={() => <ProductList products={props.data.products} />} />
+            <Route exact path='/products/all' render={() => <ProductList products={props.data.products} />} />
+            <Route exact path='/products/:category' component={CategoryHome} />
             <Route exact path='/product/:id' component={ProductDetail} />
             <Route exact path='/allcategories' component={AllCategories} />
-            <Route exact path='/category/:id' component={CategoryHome} />
           </Switch>
         </ContentContainer>
     </Router>
