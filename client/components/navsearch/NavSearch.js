@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getAllCategories } from '../../graphql'
+import { Dropdown } from '../navsearch'
 
 const Wrapper = styled.form`
 
@@ -15,8 +16,7 @@ class NavSearch extends Component {
   render() {
     return (
     <Wrapper>
-      {console.log('TESTING', this.props.data.categories)}
-      Hello Word
+      {this.props.data.categories && <Dropdown categories={this.props.data.categories} />}
     </Wrapper>
     )
   }
