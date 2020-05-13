@@ -1,5 +1,8 @@
+const { GraphQLList, GraphQLInt } = require('graphql')
 const { Product } = require('../../db/models')
+const { ProductType, ProductDetailType } = require('./ObjectTypes')
 
+//Resolvers
 const productResolver = (parent, args, request) => {
   return Product.findAll()
   .then(products => products)
@@ -12,4 +15,18 @@ const productDetailResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
-module.exports = { productResolver, productDetailResolver }
+//Fields
+const products = {
+  type: new GraphQLList(ProductType),
+  description: 'list of all products',
+  resolve: productResolver
+}
+
+const productDetails = {
+  type: ProductDetailType,
+  description: 'details for a product',
+  args: { id: { type: GraphQLInt }},
+  resolve: productDetailResolver
+}
+
+module.exports = { products, productDetails }
