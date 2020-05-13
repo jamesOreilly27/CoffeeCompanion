@@ -11,9 +11,10 @@ const Wrapper = styled.header`
 const Container = styled.div`
   display: flex;
   width: 100%;
-  height: 4vh;
+  height: 6vh;
   justify-content: space-around;
   align-items: center;
+  margin-bottom: 10px;
 `
 
 const UserInfoAndSearch = styled.div`
