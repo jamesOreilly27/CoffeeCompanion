@@ -4,13 +4,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons'
 
 const Wrapper = styled.div`
-
+  
 `
 
 const Image = url => {
   return (
     <Wrapper>
-      <FontAwesomeIcon icon={faImage} />
+      <FontAwesomeIcon icon={faImage} size="10x" />
     </Wrapper>
   )
 }

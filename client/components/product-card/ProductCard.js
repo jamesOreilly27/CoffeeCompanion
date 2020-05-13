@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Image } from '../product-card'
+import { Image, Info } from '../product-card'
 import { Link } from 'react-router-dom'
 
 const Wrapper = styled(Link)`
@@ -15,13 +15,18 @@ const Wrapper = styled(Link)`
     margin: 0 7.5%;
   }
   flex: 0 0 25%
-  border: 3px solid #EDEDF2;
+  border: 1px solid red;
   height: 300px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
 `
 
 const ProductCard = ({ product }) => (
   <Wrapper to={`/product/${product.id}`}>
     <Image url={product.image} />
+    <Info product={product} />
   </Wrapper>
 )
 
