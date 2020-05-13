@@ -5,13 +5,10 @@ const Wrapper = styled.div`
 
 `
 
-const UserAccount = ({ user }) => {
-  return (
-    <Wrapper>
-      {console.log('TESTING', user)}
-      Hello World
-    </Wrapper>
-  )
-}
+const UserAccount = ({ user }) => (
+  <Wrapper>
+    {console.log(user)}
+  </Wrapper>
+)
 
 export default UserAccount

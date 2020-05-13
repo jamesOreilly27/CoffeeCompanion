@@ -5,7 +5,19 @@ const UserType = new GraphQLObjectType({
   description: 'logged in user',
   fields: () => ({
     id: { type: GraphQLNonNull(GraphQLInt) },
-    email: { type: GraphQLString }
+    email: { type: GraphQLString },
+    carts: {
+      type: new GraphQLList(CartType),
+      description: 'My Orders',
+      resolve: user => {
+        return user.getCarts()
+        .then(carts => {
+          console.log('FIRING', carts)
+          return carts
+        })
+        .catch(err => console.log(err))
+      }
+    }
   })
 })
 
@@ -82,8 +94,6 @@ const LineItemType = new GraphQLObjectType({
   name: 'lineitem',
   description: 'a line item from a cart',
   fields: () => ({
-    price: { type: GraphQLNonNull(GraphQLInt) },
-    quantity: { type: GraphQLNonNull(GraphQLInt) },
     product: {
       type: ProductDetailType,
       description: 'line item product details',
@@ -100,8 +110,9 @@ const CartType = new GraphQLObjectType({
   name: 'cart',
   description: 'a cart of items',
   fields: () => ({
+    id: { type: GraphQLInt },
     status: { type: GraphQLString },
-    lineitem: {
+    lineitems: {
       type: new GraphQLList(LineItemType),
       description: 'line item on a cart',
       resolve: cart => {

@@ -1,17 +1,12 @@
 import React from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import ApolloClient from 'apollo-boost'
 import { getAllProducts } from './graphql'
 import { graphql } from 'react-apollo'
 import { ProductList, AllCategories, ProductDetail, Login, Signup } from './components'
 import { Header } from './components/header'
 import { CategoryHome } from './components/category-home'
 import { UserAccount } from './components/user-account'
-
-const client = new ApolloClient({
-  uri: 'http://localhost:8332/graphql'
-})
 
 const ContentContainer = styled.div`
   box-sizing: border-box;

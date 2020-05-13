@@ -45,13 +45,16 @@ export const getAllProducts = gql`
     }
 
     currentUser {
-      id
       email
+      carts {
+        id
+        status
+        lineitems {
+          product {
+            name
+          }    
+        }
+      }
     }
   }
 `
-
-/***** carts *****/
-// export const getMyOrders = gql`
-//   myOrders
-// `
