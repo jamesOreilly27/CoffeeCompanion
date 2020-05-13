@@ -40,6 +40,11 @@ class ProductList extends Component {
         <Title>
           {this.chooseTitle()}
         </Title>
+        {this.props.category &&
+          <div>
+            {this.props.category.description}
+          </div>
+        }
         <ProductContainer>
           {products && products.map(product => <ProductCard product={product} key={product.id} />)}
         </ProductContainer>
