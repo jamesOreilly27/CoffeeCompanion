@@ -4,6 +4,7 @@ import styled from 'styled-components'
 const Wrapper = styled.input`
   border-radius: 6px;
   height: 2.5vh;
+  border: 1px solid #CCC;
 `
 
 const FormFill = () => {

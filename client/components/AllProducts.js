@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { gql } from 'apollo-boost'
 import { graphql } from 'react-apollo'
-import { SingleProduct } from '../components'
+import { ProductCard } from '../components/product-card'
 
 const getAllProducts = gql`
   {
@@ -9,6 +9,8 @@ const getAllProducts = gql`
       id
       name
       description
+      image
+      price
       categories {
         name
       }
@@ -28,9 +30,10 @@ class AllProducts extends Component {
 
   render() {
     const products = this.props.data.products
+    console.log(products)
     return (
       <div>
-        {products && products.map(product => <SingleProduct product={product} key={product.id}/>)}
+        {products && products.map(product => <ProductCard product={product} key={product.id} />)}
       </div>
     )
   }
