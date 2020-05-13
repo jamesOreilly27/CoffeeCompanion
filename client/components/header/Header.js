@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Navbar, UserHeaderInfo, Logo } from '../components'
-import { NavSearch } from './navsearch'
+import { NavSearch, Navbar, UserHeaderInfo, Logo } from '../header'
 
 const Wrapper = styled.header`
   width: 90vw;

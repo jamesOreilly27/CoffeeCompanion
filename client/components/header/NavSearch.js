@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getAllCategories } from '../../graphql'
-import { Dropdown, FormFill, SubmitButton } from '../navsearch'
+import { Dropdown, FormFill, SubmitButton } from '../header'
 
 const Wrapper = styled.form`
   display: flex;

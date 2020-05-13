@@ -3,7 +3,8 @@ import styled from 'styled-components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import ApolloClient from 'apollo-boost'
 import { ApolloProvider } from 'react-apollo'
-import { AllProducts, AllCategories, ProductDetail, Login, Signup, Header } from './components'
+import { AllProducts, AllCategories, ProductDetail, Login, Signup } from './components'
+import { Header } from './components/header'
 
 const client = new ApolloClient({
   uri: 'http://localhost:8332/graphql'
