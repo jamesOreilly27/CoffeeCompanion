@@ -12,7 +12,6 @@ const UserType = new GraphQLObjectType({
       resolve: user => {
         return user.getCarts()
         .then(carts => {
-          console.log('FIRING', carts)
           return carts
         })
         .catch(err => console.log(err))

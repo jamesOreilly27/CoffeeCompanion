@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { getAllProducts } from './graphql'
+import { getAllProducts, getCurrentUser } from './graphql'
 import { graphql } from 'react-apollo'
-import { ProductList, AllCategories, ProductDetail, Login, Signup } from './components'
+import { flowRight as compose } from 'lodash'
+import { ProductList, AllCategories, ProductDetail, Login, Signup, Logout } from './components'
 import { Header } from './components/header'
 import { CategoryHome } from './components/category-home'
 import { UserAccount } from './components/user-account'
@@ -22,15 +23,19 @@ const Main = props => {
           <Switch>
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
-            <Route exact path='/your-account' render={() => <UserAccount user={props.data.currentUser} />} />
-            <Route exact path='/products/all' render={() => <ProductList products={props.data.products} />} />
+            <Route exact path='/your-account' render={() => <UserAccount user={props.userQuery.currentUser} />} />
+            <Route exact path='/products/all' render={() => <ProductList products={props.productQuery.products} />} />
             <Route exact path='/products/:category' component={CategoryHome} />
             <Route exact path='/product/:id' component={ProductDetail} />
             <Route exact path='/allcategories' component={AllCategories} />
           </Switch>
+          <Logout />
         </ContentContainer>
     </Router>
   )
 }
 
-export default graphql(getAllProducts)(Main)
+export default compose(
+  graphql(getCurrentUser, { name: 'userQuery' }),
+  graphql(getAllProducts, { name: 'productQuery' })
+  )(Main)

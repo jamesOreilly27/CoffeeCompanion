@@ -1,5 +1,23 @@
 import { gql } from 'apollo-boost'
 
+/***** User *****/
+export const getCurrentUser =  gql`
+  {
+    currentUser {
+      email
+      carts {
+        id
+        status
+        lineitems {
+          product {
+            name
+          }    
+        }
+      }
+    }
+  }
+`
+
 
 /***** categories *****/
 export const getAllCategories = gql`
@@ -41,19 +59,6 @@ export const getAllProducts = gql`
       price
       categories {
         name
-      }
-    }
-
-    currentUser {
-      email
-      carts {
-        id
-        status
-        lineitems {
-          product {
-            name
-          }    
-        }
       }
     }
   }

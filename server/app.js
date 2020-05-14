@@ -29,6 +29,11 @@ passport.deserializeUser((id, done) => (
     .catch(done))
 )
 
+app.use((req, res, next) => {
+  req.session.cart = req.session.cart || []
+  next()
+})
+
 const options = {
   key: fs.readFileSync( `${dir}/ssl/localhost/localhost.key` ),
   cert: fs.readFileSync( `${dir}/ssl/localhost/localhost.crt` ),

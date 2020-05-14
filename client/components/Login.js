@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 
@@ -52,7 +53,6 @@ class Login extends Component {
   }
 
   render() {
-    console.log(this.props)
     return (
       <Mutation mutation={loginMutation}>
         {(sendCreds, { data }) => (
