@@ -1,4 +1,5 @@
 export { default as ProductList } from './ProductList'
+export { default as OrderList } from './OrderList'
 export { default as AllCategories } from './AllCategories'
 export { default as SingleCategory } from './SingleCategory'
 export { default as ProductDetail } from './ProductDetail'
