@@ -2,7 +2,7 @@ const { GraphQLList, GraphQLBoolean, GraphQLInt } = require('graphql')
 const { CartType } = require('./ObjectTypes')
 const { Cart, LineItem } = require('../../db/models')
 
-const cartResolver = () => {
+const allCartsResolver = () => {
   return Cart.findAll()
   .then(carts => carts)
   .catch(err => console.log(err))
@@ -25,10 +25,10 @@ const removeResolver = ( parent, { id }, request ) => {
 }
 
 //Query Fields
-const cart = {
+const carts = {
   type: new GraphQLList(CartType),
-  description: 'a customer cart',
-  resolve: cartResolver
+  description: 'list of user carts',
+  resolve: allCartsResolver
 }
 
 //Mutation Fields
@@ -45,4 +45,4 @@ const removeFromCart = {
   resolve: removeResolver
 }
 
-module.exports = { cart, removeFromCart, addToCart }
+module.exports = { carts, removeFromCart, addToCart }
