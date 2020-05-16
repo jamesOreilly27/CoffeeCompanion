@@ -4,11 +4,10 @@ import { gql } from 'apollo-boost'
 export const getCurrentUser =  gql`
   {
     currentUser {
+      id
       email
-      carts {
+      activeCart {
         id
-        updatedAt
-        status
         lineitems {
           id
           price
@@ -17,6 +16,18 @@ export const getCurrentUser =  gql`
             name
             image
           }    
+        }
+      }
+      orders {
+        id
+        lineitems {
+          id
+          price
+          quantity
+          product {
+            name
+            image
+          }
         }
       }
     }

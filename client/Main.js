@@ -17,6 +17,7 @@ const ContentContainer = styled.div`
 `
 
 const Main = props => {
+  console.log('USER', props.userQuery.currentUser)
   return (
     <Router>
         <ContentContainer>
@@ -28,7 +29,7 @@ const Main = props => {
             <Route exact path='/your-account/orders' render={() => {
               let component
               {props.userQuery.currentUser ?
-                component = <OrderList orders={props.userQuery.currentUser.carts } />
+                component = <OrderList orders={props.userQuery.currentUser.orders} activeCart={props.userQuery.currentUser.activeCart} />
               :
                 component = <Login />
               }

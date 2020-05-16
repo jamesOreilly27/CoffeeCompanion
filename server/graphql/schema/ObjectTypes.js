@@ -6,14 +6,21 @@ const UserType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLNonNull(GraphQLInt) },
     email: { type: GraphQLString },
-    carts: {
-      type: new GraphQLList(CartType),
-      description: 'My Orders',
+    activeCart: {
+      type: CartType,
+      description: 'Users Active Cart',
       resolve: user => {
         return user.getCarts()
-        .then(carts => {
-          return carts
-        })
+        .then(carts => carts.filter(cart => cart.status === 'open')[0])
+        .catch(err => console.log(err))
+      }
+    },
+    orders: {
+      type: new GraphQLList(CartType),
+      description: 'list of a users placed orders',
+      resolve: user => {
+        return user.getCarts()
+        .then(carts => carts.filter(cart => cart.status !== 'open'))
         .catch(err => console.log(err))
       }
     }

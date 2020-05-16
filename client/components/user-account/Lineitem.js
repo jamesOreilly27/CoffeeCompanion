@@ -52,11 +52,11 @@ const Lineitem = ({ lineitem }) => {
       mutation={removeFromCart}
       update={(cache, { data: { removeFromCart } } ) => {
         const user = cache.readQuery({ query: getCurrentUser }).currentUser
-        const cart = user.carts.filter(cart => cart.status === 'open')[0]
-        cart.lineitems = cart.lineitems.filter(item => item.id !== lineitem.id)
+        const cart = user.activeCart
+        const newCart = Object.assign(cart, { lineitems: cart.lineitems.filter(item => item.id !== lineitem.id) })
         cache.writeQuery({
           query: getCurrentUser,
-          data: { currentUser: Object.assign(user, { lineitems: cart.lineitems.filter(item => item.id !== lineitem.id)}) }
+          data: { currentUser: Object.assign(user, { cart: newCart }) }
         })
       }} 
     >

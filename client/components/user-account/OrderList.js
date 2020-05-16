@@ -1,12 +1,10 @@
 import React from 'react'
 import { ActiveCart } from '../user-account'
 
-const OrderList = ({ orders }) => {
+const OrderList = ({ orders, activeCart }) => {
   return (
     <div>
-      {orders && orders.map(order => {
-        if(order.status === 'open') return <ActiveCart order={order} />
-      })}
+      {activeCart && <ActiveCart cart={activeCart} />}
     </div>
   )
 }

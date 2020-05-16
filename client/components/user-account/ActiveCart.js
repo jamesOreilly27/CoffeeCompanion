@@ -8,12 +8,11 @@ const Wrapper = styled.div`
   align-items: center;
 `
 
-const ActiveCart = ({ order }) => {
+const ActiveCart = ({ cart }) => {
   return (
     <Wrapper>
-      {console.log(order)}
       <ActiveCartHeader />
-      {order.lineitems.map(lineitem => <Lineitem lineitem={lineitem} />)}
+      {cart.lineitems.map(lineitem => <Lineitem lineitem={lineitem} />)}
     </Wrapper>
   )
 }
