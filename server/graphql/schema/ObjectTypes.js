@@ -93,6 +93,8 @@ const LineItemType = new GraphQLObjectType({
   name: 'lineitem',
   description: 'a line item from a cart',
   fields: () => ({
+    price: { type: GraphQLInt },
+    quantity: {type: GraphQLInt },
     product: {
       type: ProductDetailType,
       description: 'line item product details',
@@ -110,6 +112,7 @@ const CartType = new GraphQLObjectType({
   description: 'a cart of items',
   fields: () => ({
     id: { type: GraphQLInt },
+    updatedAt: { type: GraphQLString },
     status: { type: GraphQLString },
     lineitems: {
       type: new GraphQLList(LineItemType),

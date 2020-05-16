@@ -1,10 +1,20 @@
 import React from 'react'
+import styled from 'styled-components'
+import { Lineitem, ActiveCartHeader } from '../user-account'
 
-const ActiveCart = () => {
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const ActiveCart = ({ order }) => {
   return (
-    <div>
-      Hello World
-    </div>
+    <Wrapper>
+      {console.log(order)}
+      <ActiveCartHeader />
+      {order.lineitems.map(lineitem => <Lineitem lineitem={lineitem} />)}
+    </Wrapper>
   )
 }
 

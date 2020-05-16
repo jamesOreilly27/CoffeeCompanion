@@ -7,10 +7,14 @@ export const getCurrentUser =  gql`
       email
       carts {
         id
+        updatedAt
         status
         lineitems {
+          price
+          quantity
           product {
             name
+            image
           }    
         }
       }

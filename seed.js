@@ -12,7 +12,7 @@ async function seed () {
   ])
   
   const carts = await Promise.all([
-    Cart.create({status: 'purchased', userId: 2 }),
+    Cart.create({status: 'open', userId: 2 }),
     Cart.create({status: 'purchased', userId: 2 }),
     Cart.create({status: 'purchased', userId: 1 }),
     Cart.create({status: 'purchased', userId: 1 }),
