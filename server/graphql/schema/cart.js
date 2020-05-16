@@ -1,6 +1,6 @@
-const { GraphQLList, GraphQLBoolean } = require('graphql')
+const { GraphQLList, GraphQLBoolean, GraphQLInt } = require('graphql')
 const { CartType } = require('./ObjectTypes')
-const { Cart, User } = require('../../db/models')
+const { Cart, LineItem } = require('../../db/models')
 
 const cartResolver = () => {
   return Cart.findAll()
@@ -12,6 +12,16 @@ const addResolver = (parent, { lineitem }, request) => {
   if(!request.user) {
     request.session.cart.push(lineitem)
   }
+}
+
+const removeResolver = ( parent, { id }, request ) => {
+  return LineItem.findByPk(id)
+  .then(lineitem => {
+    request.session.cart = request.session.cart.filter(item => item.id !== lineitem.id)
+    lineitem.destroy()
+    return true
+  })
+  .catch(err => console.log(err))
 }
 
 //Query Fields
@@ -28,4 +38,11 @@ const addToCart = {
   resolve: addResolver
 }
 
-module.exports = { cart }
+const removeFromCart = {
+  type: GraphQLBoolean,
+  args: { id: { type: GraphQLInt } },
+  description: 'remove a line item from a cart',
+  resolve: removeResolver
+}
+
+module.exports = { cart, removeFromCart, addToCart }

@@ -1,7 +1,7 @@
 const { GraphQLObjectType, GraphQLSchema } = require('graphql')
 const { products, productDetails } = require('./product')
 const { categories, singleCategory } = require('./category')
-const { cart } = require('./cart')
+const { cart, removeFromCart } = require('./cart')
 const { currentUser, loginUser, logout } = require('./user')
 
 const RootQuery = new GraphQLObjectType({
@@ -11,7 +11,7 @@ const RootQuery = new GraphQLObjectType({
 
 const Mutation = new GraphQLObjectType({
   name: 'Mutation',
-  fields: { loginUser, logout }
+  fields: { loginUser, logout, removeFromCart }
 })
 
 const schema = new GraphQLSchema({

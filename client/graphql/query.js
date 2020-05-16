@@ -10,6 +10,7 @@ export const getCurrentUser =  gql`
         updatedAt
         status
         lineitems {
+          id
           price
           quantity
           product {

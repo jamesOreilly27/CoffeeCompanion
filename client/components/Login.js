@@ -1,7 +1,6 @@
 
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Redirect } from 'react-router-dom'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
 

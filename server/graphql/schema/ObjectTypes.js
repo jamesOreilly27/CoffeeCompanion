@@ -93,6 +93,7 @@ const LineItemType = new GraphQLObjectType({
   name: 'lineitem',
   description: 'a line item from a cart',
   fields: () => ({
+    id: { type: GraphQLInt },
     price: { type: GraphQLInt },
     quantity: {type: GraphQLInt },
     product: {

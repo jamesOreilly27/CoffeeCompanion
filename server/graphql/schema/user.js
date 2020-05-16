@@ -6,7 +6,6 @@ const { chooseAuthType } = require('./helpers')
 
 //Resolvers
 const userResolver = (parent, args, request) => {
-  console.log('USER', request.user)
   return User.findOne({ where: { email: request.user.email } })
   .then(user => user)
   .catch(err => console.log(err))
