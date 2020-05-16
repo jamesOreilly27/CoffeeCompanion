@@ -8,10 +8,16 @@ const allCartsResolver = () => {
   .catch(err => console.log(err))
 }
 
-const addResolver = (parent, { lineitem }, request) => {
+const addResolver = (parent, { productId, cartId, price, quantity }, request) => {
   if(!request.user) {
     request.session.cart.push(lineitem)
+    return true
   }
+  
+  LineItem.create({ productId, cartId, price, quantity })
+  .then(lineitem => lineitem)
+  .catch(err => console.log(err))
+  return true
 }
 
 const removeResolver = ( parent, { id }, request ) => {
@@ -34,6 +40,12 @@ const carts = {
 //Mutation Fields
 const addToCart = {
   type: GraphQLBoolean,
+  args: {
+    productId: { type: GraphQLInt },
+    cartId: { type: GraphQLInt },
+    price: { type: GraphQLInt },
+    quantity: { type: GraphQLInt }
+  },
   description: 'add a line item to the users cart',
   resolve: addResolver
 }
