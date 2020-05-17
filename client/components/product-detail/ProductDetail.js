@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { flowRight as compose } from 'lodash'
 import { graphql } from 'react-apollo'
 import { getProductDetail, getCurrentUser } from '../../graphql'
-import { AddToCart } from '../product-detail'
+import { AddToCart, ReviewDisplay } from '../product-detail'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons'
 
@@ -55,6 +55,7 @@ const ProductDetail = props => {
           </Image>
           <InfoContainer>
             <Title>{product.name}</Title>
+            <ReviewDisplay reviews={product.reviews} />
             <Price>{`$${product.price}`}</Price>
             <AddToCart cartId={user.activeCart.id} productId={parseInt(props.match.params.id)} price={product.price} />
           </InfoContainer>
