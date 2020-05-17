@@ -10,28 +10,36 @@ import { faImage } from '@fortawesome/free-solid-svg-icons'
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
+  height: 50vh;
 `
 
 const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
+  width: 100%;
+  justify-content: space-evenly;
 `
 
 const Image = styled(FontAwesomeIcon)`
-
+  flex: 0 0 35%;
 `
 
 const InfoContainer = styled.div`
   display: flex;
+  flex: 0 0 60%;
   flex-direction: column;
+  align-items: center;
+  height: 45vh;
 `
 
-const Title = styled.h2`
-  margin: 0;
+const Title = styled.h1`
+  
 `
 
-const Price = styled.h5`
-  margin: 0;
+const Price = styled.h1`
+  font-size: 42px;
+  margin-top: 0;
 `
 
 
@@ -47,7 +55,7 @@ const ProductDetail = props => {
           </Image>
           <InfoContainer>
             <Title>{product.name}</Title>
-            <Price>{product.price}</Price>
+            <Price>{`$${product.price}`}</Price>
             <AddToCart cartId={user.activeCart.id} productId={parseInt(props.match.params.id)} price={product.price} />
           </InfoContainer>
         </Container>
