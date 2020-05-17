@@ -11,9 +11,8 @@ const Wrapper = styled.div`
 const ActiveCart = ({ cart }) => {
   return (
     <Wrapper>
-      {console.log('ID', cart)}
       <ActiveCartHeader />
-      {cart.lineitems.map(lineitem => <Lineitem lineitem={lineitem} />)}
+      {cart.lineitems.map(lineitem => <Lineitem key={lineitem.id} lineitem={lineitem} />)}
     </Wrapper>
   )
 }
