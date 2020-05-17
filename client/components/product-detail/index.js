@@ -1,1 +1,2 @@
-export { default as ProductDetail } from 'Product-Detail'
+export { default as ProductDetail } from './ProductDetail'
+export { default as AddToCart } from './AddToCart'

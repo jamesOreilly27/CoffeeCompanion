@@ -18,7 +18,6 @@ const ContentContainer = styled.div`
 `
 
 const Main = props => {
-  console.log('USER', props.userQuery.currentUser)
   return (
     <Router>
         <ContentContainer>
