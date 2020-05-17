@@ -31,6 +31,7 @@ const AddToCart = (props) => (
     {(addToCart, { data }) => (
       <Wrapper onSubmit={evt => {
         evt.preventDefault()
+        props.flipAlertActive()
         addToCart({ variables: { productId: props.productId, cartId: props.cartId, price: props.price, quantity: parseInt(evt.target.quantity.value) } })
       }}>
         <Input type="text" name="quantity" required />

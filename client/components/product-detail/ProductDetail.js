@@ -1,9 +1,11 @@
-import React from 'react'
-import styled from 'styled-components'
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+import styled, { keyframes } from 'styled-components'
 import { flowRight as compose } from 'lodash'
 import { graphql } from 'react-apollo'
 import { getProductDetail, getCurrentUser } from '../../graphql'
 import { AddToCart, ReviewDisplay } from '../product-detail'
+import { Alert, AlertTitle } from '@material-ui/lab'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons'
 
@@ -54,29 +56,58 @@ const Price = styled.div`
   font-weight: bold;
 `
 
-const ProductDetail = props => {
-  const product = props.detailQuery.productDetails
-  const user = props.userQuery.currentUser
-  return (
-    <Wrapper>
-      {product && user &&
-        <Container>
-          <Image icon={faImage} size="10x">
+const easeInAlert = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`
 
-          </Image>
-          <InfoContainer>
-            <Title>{product.name}</Title>
-            <ReviewDisplay reviews={product.reviews} />
-            <PriceContainer>
-              <PriceHeader>Our Price</PriceHeader>
-              <Price>{`$${product.price}`}</Price>
-            </PriceContainer>
-            <AddToCart cartId={user.activeCart.id} productId={parseInt(props.match.params.id)} price={product.price} />
-          </InfoContainer>
-        </Container>
-      }
-    </Wrapper>
-  )
+const CartAlert = styled(Alert)`
+  animation: ${easeInAlert} .8s ease;
+`
+
+const CartLink = styled(Link)`
+  text-decoration: none;
+`
+
+class ProductDetail extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { alertActive: false }
+    this.flipAlertActive = this.flipAlertActive.bind(this)
+  }
+
+  flipAlertActive() {
+    this.setState({ alertActive: !this.state.alertActive })
+  }
+
+  render() {
+    const product = this.props.detailQuery.productDetails
+    const user = this.props.userQuery.currentUser
+    return (
+      <Wrapper>
+        {product && user &&
+          <Container>
+            <Image icon={faImage} size="10x"></Image>
+            <InfoContainer>
+              <Title>{product.name}</Title>
+              <ReviewDisplay reviews={product.reviews} />
+              <PriceContainer>
+                <PriceHeader>Our Price</PriceHeader>
+                <Price>{`$${product.price}`}</Price>
+              </PriceContainer>
+              <AddToCart cartId={user.activeCart.id} productId={parseInt(this.props.match.params.id)} price={product.price} flipAlertActive={this.flipAlertActive} />
+              {this.state.alertActive &&
+                <CartAlert severity="success" onClose={() => { this.flipAlertActive() } }>
+                  <AlertTitle>Added To Cart</AlertTitle>
+                  <CartLink to="/your-account/orders"> Checkout </CartLink>
+                </CartAlert>
+              }
+            </InfoContainer>
+          </Container>
+        }
+      </Wrapper>
+    )
+  }
 }
 
 
