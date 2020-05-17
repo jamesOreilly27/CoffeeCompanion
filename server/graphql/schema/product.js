@@ -3,7 +3,7 @@ const { Product } = require('../../db/models')
 const { ProductType, ProductDetailType } = require('./ObjectTypes')
 
 //Resolvers
-const productResolver = (parent, args, request) => {
+const productResolver = () => {
   return Product.findAll()
   .then(products => products)
   .catch(err => console.log(err))

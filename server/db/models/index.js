@@ -23,6 +23,10 @@ LineItem.belongsTo(Cart)
 //Product and Item
 LineItem.belongsTo(Product, { constraints: false })
 
+//Cart and User
+User.hasMany(Cart, { as: 'carts' })
+Cart.belongsTo(User)
+
 module.exports = {
   Product,
   Category,

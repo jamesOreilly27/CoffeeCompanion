@@ -1,17 +1,60 @@
-const { GraphQLList } = require('graphql')
+const { GraphQLList, GraphQLBoolean, GraphQLInt } = require('graphql')
 const { CartType } = require('./ObjectTypes')
-const { Cart } = require('../../db/models')
+const { Cart, LineItem } = require('../../db/models')
 
-const cartResolver = () => {
+const allCartsResolver = () => {
   return Cart.findAll()
   .then(carts => carts)
   .catch(err => console.log(err))
 }
 
-const cart = {
-  type: new GraphQLList(CartType),
-  description: 'a customer cart',
-  resolve: cartResolver
+const addResolver = (parent, { productId, cartId, price, quantity }, request) => {
+  if(!request.user) {
+    request.session.cart.push(lineitem)
+    return true
+  }
+  
+  LineItem.create({ productId, cartId, price, quantity })
+  .then(lineitem => lineitem)
+  .catch(err => console.log(err))
+  return true
 }
 
-module.exports = { cart }
+const removeResolver = ( parent, { id }, request ) => {
+  return LineItem.findByPk(id)
+  .then(lineitem => {
+    request.session.cart = request.session.cart.filter(item => item.id !== lineitem.id)
+    lineitem.destroy()
+    return true
+  })
+  .catch(err => console.log(err))
+}
+
+//Query Fields
+const carts = {
+  type: new GraphQLList(CartType),
+  description: 'list of user carts',
+  resolve: allCartsResolver
+}
+
+//Mutation Fields
+const addToCart = {
+  type: GraphQLBoolean,
+  args: {
+    productId: { type: GraphQLInt },
+    cartId: { type: GraphQLInt },
+    price: { type: GraphQLInt },
+    quantity: { type: GraphQLInt }
+  },
+  description: 'add a line item to the users cart',
+  resolve: addResolver
+}
+
+const removeFromCart = {
+  type: GraphQLBoolean,
+  args: { id: { type: GraphQLInt } },
+  description: 'remove a line item from a cart',
+  resolve: removeResolver
+}
+
+module.exports = { carts, removeFromCart, addToCart }

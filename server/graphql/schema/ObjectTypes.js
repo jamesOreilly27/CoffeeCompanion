@@ -5,7 +5,25 @@ const UserType = new GraphQLObjectType({
   description: 'logged in user',
   fields: () => ({
     id: { type: GraphQLNonNull(GraphQLInt) },
-    email: { type: GraphQLString }
+    email: { type: GraphQLString },
+    activeCart: {
+      type: CartType,
+      description: 'Users Active Cart',
+      resolve: user => {
+        return user.getCarts()
+        .then(carts => carts.filter(cart => cart.status === 'open')[0])
+        .catch(err => console.log(err))
+      }
+    },
+    orders: {
+      type: new GraphQLList(CartType),
+      description: 'list of a users placed orders',
+      resolve: user => {
+        return user.getCarts()
+        .then(carts => carts.filter(cart => cart.status !== 'open'))
+        .catch(err => console.log(err))
+      }
+    }
   })
 })
 
@@ -82,8 +100,9 @@ const LineItemType = new GraphQLObjectType({
   name: 'lineitem',
   description: 'a line item from a cart',
   fields: () => ({
-    price: { type: GraphQLNonNull(GraphQLInt) },
-    quantity: { type: GraphQLNonNull(GraphQLInt) },
+    id: { type: GraphQLInt },
+    price: { type: GraphQLInt },
+    quantity: {type: GraphQLInt },
     product: {
       type: ProductDetailType,
       description: 'line item product details',
@@ -100,8 +119,10 @@ const CartType = new GraphQLObjectType({
   name: 'cart',
   description: 'a cart of items',
   fields: () => ({
+    id: { type: GraphQLInt },
+    updatedAt: { type: GraphQLString },
     status: { type: GraphQLString },
-    lineitem: {
+    lineitems: {
       type: new GraphQLList(LineItemType),
       description: 'line item on a cart',
       resolve: cart => {

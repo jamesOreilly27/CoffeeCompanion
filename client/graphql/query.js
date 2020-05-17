@@ -1,7 +1,41 @@
 import { gql } from 'apollo-boost'
 
+/***** User *****/
+export const getCurrentUser =  gql`
+  {
+    currentUser {
+      id
+      email
+      activeCart {
+        id
+        lineitems {
+          id
+          price
+          quantity
+          product {
+            name
+            image
+          }    
+        }
+      }
+      orders {
+        id
+        lineitems {
+          id
+          price
+          quantity
+          product {
+            name
+            image
+          }
+        }
+      }
+    }
+  }
+`
 
-//categories
+
+/***** categories *****/
 export const getAllCategories = gql`
 {
   categories {
@@ -30,7 +64,7 @@ export const getOneCategory = gql`
 `
 
 
-//products
+/**** products *****/
 export const getAllProducts = gql`
   {
     products {
@@ -42,11 +76,6 @@ export const getAllProducts = gql`
       categories {
         name
       }
-    }
-
-    currentUser {
-      id
-      email
     }
   }
 `

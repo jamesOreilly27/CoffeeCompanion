@@ -1,17 +1,14 @@
 import React from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import ApolloClient from 'apollo-boost'
-import { ApolloProvider } from 'react-apollo'
-import { getAllProducts } from './graphql'
+import { getAllProducts, getCurrentUser } from './graphql'
 import { graphql } from 'react-apollo'
-import { ProductList, AllCategories, ProductDetail, Login, Signup } from './components'
+import { flowRight as compose } from 'lodash'
+import { ProductList, AllCategories, ProductDetail, Login, Signup, Logout } from './components'
+import { OrderList } from './components/user-account'
 import { Header } from './components/header'
 import { CategoryHome } from './components/category-home'
-
-const client = new ApolloClient({
-  uri: 'http://localhost:8332/graphql'
-})
+import { UserAccount } from './components/user-account'
 
 const ContentContainer = styled.div`
   box-sizing: border-box;
@@ -20,6 +17,7 @@ const ContentContainer = styled.div`
 `
 
 const Main = props => {
+  console.log('USER', props.userQuery.currentUser)
   return (
     <Router>
         <ContentContainer>
@@ -27,14 +25,28 @@ const Main = props => {
           <Switch>
             <Route exact path='/login' component={Login} />
             <Route exact path='/signup' component={Signup} />
-            <Route exact path='/products/all' render={() => <ProductList products={props.data.products} />} />
+            <Route exact path='/your-account' render={() => <UserAccount user={props.userQuery.currentUser} />} />
+            <Route exact path='/your-account/orders' render={() => {
+              let component
+              {props.userQuery.currentUser ?
+                component = <OrderList orders={props.userQuery.currentUser.orders} activeCart={props.userQuery.currentUser.activeCart} />
+              :
+                component = <Login />
+              }
+              return component
+            }} />
+            <Route exact path='/products/all' render={() => <ProductList products={props.productQuery.products} />} />
             <Route exact path='/products/:category' component={CategoryHome} />
             <Route exact path='/product/:id' component={ProductDetail} />
             <Route exact path='/allcategories' component={AllCategories} />
           </Switch>
+          <Logout />
         </ContentContainer>
     </Router>
   )
 }
 
-export default graphql(getAllProducts)(Main)
+export default compose(
+  graphql(getCurrentUser, { name: 'userQuery' }),
+  graphql(getAllProducts, { name: 'productQuery' })
+  )(Main)
