@@ -17,7 +17,6 @@ const addResolver = (parent, { productId, cartId, price, quantity }, request) =>
 const removeResolver = ( parent, { id }, request ) => {
   return LineItem.findByPk(id)
   .then(lineitem => {
-    request.session.cart = request.session.cart.filter(item => item.id !== lineitem.id)
     lineitem.destroy()
     return true
   })

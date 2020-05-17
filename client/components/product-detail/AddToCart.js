@@ -35,7 +35,7 @@ const AddToCart = (props) => (
       const newCart = Object.assign(cart, { lineitems: cart.lineitems.concat([addToCart]) })
       cache.writeQuery({
         query: getCurrentUser,
-        data: { user: Object.assign(user, { activeCart: newCart } ) }
+        data: { currentUser: Object.assign(user, { activeCart: newCart } ) }
       })
     }}
   >
