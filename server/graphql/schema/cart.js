@@ -1,5 +1,5 @@
 const { GraphQLList, GraphQLBoolean, GraphQLInt } = require('graphql')
-const { CartType } = require('./ObjectTypes')
+const { CartType, LineItemType } = require('./ObjectTypes')
 const { Cart, LineItem } = require('../../db/models')
 
 const allCartsResolver = () => {
@@ -9,17 +9,14 @@ const allCartsResolver = () => {
 }
 
 const addResolver = (parent, { productId, cartId, price, quantity }, request) => {
-  console.log('FIRING')
-  LineItem.create({ productId, cartId, price, quantity })
+  return LineItem.create({ productId, cartId, price, quantity })
   .then(lineitem => lineitem)
   .catch(err => console.log(err))
-  return true
 }
 
 const removeResolver = ( parent, { id }, request ) => {
   return LineItem.findByPk(id)
   .then(lineitem => {
-    request.session.cart = request.session.cart.filter(item => item.id !== lineitem.id)
     lineitem.destroy()
     return true
   })
@@ -35,7 +32,7 @@ const carts = {
 
 //Mutation Fields
 const addToCart = {
-  type: GraphQLBoolean,
+  type: LineItemType,
   args: {
     productId: { type: GraphQLInt },
     cartId: { type: GraphQLInt },

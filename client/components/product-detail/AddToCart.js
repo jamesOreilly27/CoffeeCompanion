@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Mutation } from 'react-apollo'
-import { addToCart } from '../../graphql'
+import { addToCart, getCurrentUser } from '../../graphql'
 
 const Wrapper = styled.form`
   display: flex;
@@ -27,7 +27,18 @@ const Button = styled.button`
 `
 
 const AddToCart = (props) => (
-  <Mutation mutation={addToCart}>
+  <Mutation
+    mutation={addToCart}
+    update={(cache, { data: { addToCart } }) => {
+      const user = cache.readQuery({ query: getCurrentUser }).currentUser
+      const cart = user.activeCart
+      const newCart = Object.assign(cart, { lineitems: cart.lineitems.concat([addToCart]) })
+      cache.writeQuery({
+        query: getCurrentUser,
+        data: { currentUser: Object.assign(user, { activeCart: newCart } ) }
+      })
+    }}
+  >
     {(addToCart, { data }) => (
       <Wrapper onSubmit={evt => {
         evt.preventDefault()

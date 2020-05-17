@@ -54,6 +54,7 @@ const Lineitem = ({ lineitem }) => {
         const user = cache.readQuery({ query: getCurrentUser }).currentUser
         const cart = user.activeCart
         const newCart = Object.assign(cart, { lineitems: cart.lineitems.filter(item => item.id !== lineitem.id) })
+
         cache.writeQuery({
           query: getCurrentUser,
           data: { currentUser: Object.assign(user, { cart: newCart }) }

@@ -51,6 +51,7 @@ const ProductType = new GraphQLObjectType({
 const ProductDetailType = new GraphQLObjectType({
   name: 'ProductDetail',
   fields: () => ({
+    id: { type: GraphQLInt },
     name: { type: GraphQLString },
     description: { type: GraphQLString },
     price: { type: GraphQLNonNull(GraphQLInt) },
