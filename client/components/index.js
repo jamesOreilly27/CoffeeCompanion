@@ -1,7 +1,6 @@
 export { default as ProductList } from './ProductList'
 export { default as AllCategories } from './AllCategories'
 export { default as SingleCategory } from './SingleCategory'
-export { default as ProductDetail } from './ProductDetail'
 export { default as Login } from './Login'
 export { default as Signup } from './Signup'
 export { default as Logout } from './Logout'

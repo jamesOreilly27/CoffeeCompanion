@@ -9,11 +9,7 @@ const allCartsResolver = () => {
 }
 
 const addResolver = (parent, { productId, cartId, price, quantity }, request) => {
-  if(!request.user) {
-    request.session.cart.push(lineitem)
-    return true
-  }
-  
+  console.log('FIRING')
   LineItem.create({ productId, cartId, price, quantity })
   .then(lineitem => lineitem)
   .catch(err => console.log(err))
