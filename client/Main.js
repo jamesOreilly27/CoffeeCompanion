@@ -4,11 +4,12 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { getAllProducts, getCurrentUser } from './graphql'
 import { graphql } from 'react-apollo'
 import { flowRight as compose } from 'lodash'
-import { ProductList, AllCategories, ProductDetail, Login, Signup, Logout } from './components'
+import { ProductList, AllCategories, Login, Signup, Logout } from './components'
 import { OrderList } from './components/user-account'
 import { Header } from './components/header'
 import { CategoryHome } from './components/category-home'
 import { UserAccount } from './components/user-account'
+import { ProductDetail } from './components/product-detail'
 
 const ContentContainer = styled.div`
   box-sizing: border-box;
