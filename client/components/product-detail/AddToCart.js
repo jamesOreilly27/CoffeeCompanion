@@ -30,8 +30,9 @@ const AddToCart = (props) => (
   <Mutation mutation={addToCart}>
     {(addToCart, { data }) => (
       <Wrapper onSubmit={evt => {
+        console.log('testing', typeof evt.target.quantity.value)
         evt.preventDefault()
-        addToCart({ variables: { productId: props.productId, cartId: props.cartId, price: props.price, quantity: evt.target.quantity.value } })
+        addToCart({ variables: { productId: props.productId, cartId: props.cartId, price: props.price, quantity: parseInt(evt.target.quantity.value) } })
       }}>
         <Input type="text" name="quantity" required />
         <Button type="submit">
