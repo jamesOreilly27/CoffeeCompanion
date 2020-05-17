@@ -5,21 +5,24 @@ import { addToCart } from '../../graphql'
 
 const Wrapper = styled.form`
   display: flex;
-  justify-content: center;
-  width: 100%;
+  justify-content: flex-start;
+  height: 40px;
 `
 
 const Input = styled.input`
-  height: 45px;
-  width: 45px;
-  margin-right: 20px;
+  width: 40px;
+  margin-right: 10px;
+  text-align: center;
+  border-radius: 4px;
+  border: 1px solid #AAA;
+  outline: none;
 `
 
 const Button = styled.button`
-  height: 45px;
   width: 150px;
   background-color: #202020;
   color: #F8F8FF;
+  border-radius: 4px;
   border: 1px solid #F8F8FF;
 `
 

@@ -22,26 +22,37 @@ const Container = styled.div`
 `
 
 const Image = styled(FontAwesomeIcon)`
-  flex: 0 0 35%;
+  flex: 0 0 50%;
 `
 
 const InfoContainer = styled.div`
   display: flex;
-  flex: 0 0 60%;
+  flex: 0 0 50%;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   height: 45vh;
 `
 
 const Title = styled.h1`
-  
+  margin-bottom: 0;
 `
 
-const Price = styled.h1`
+const PriceContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 30px 0;
+`
+
+const PriceHeader = styled.div`
+  font-size: 12px;
+`
+
+const Price = styled.div`
   font-size: 42px;
-  margin-top: 0;
+  font-weight: bold;
 `
-
 
 const ProductDetail = props => {
   const product = props.detailQuery.productDetails
@@ -56,7 +67,10 @@ const ProductDetail = props => {
           <InfoContainer>
             <Title>{product.name}</Title>
             <ReviewDisplay reviews={product.reviews} />
-            <Price>{`$${product.price}`}</Price>
+            <PriceContainer>
+              <PriceHeader>Our Price</PriceHeader>
+              <Price>{`$${product.price}`}</Price>
+            </PriceContainer>
             <AddToCart cartId={user.activeCart.id} productId={parseInt(props.match.params.id)} price={product.price} />
           </InfoContainer>
         </Container>
