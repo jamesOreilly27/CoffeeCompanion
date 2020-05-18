@@ -27,7 +27,9 @@ class UserHeaderInfo extends Component {
     return (
       <Wrapper>
         <Authlink to="/login">Login</Authlink>
-        <FontAwesomeIcon icon={faShoppingCart} />
+        <Link to="/your-account/orders">
+          <FontAwesomeIcon icon={faShoppingCart} />
+        </Link>
       </Wrapper>
     )
   }
