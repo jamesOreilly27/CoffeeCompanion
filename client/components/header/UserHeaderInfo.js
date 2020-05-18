@@ -17,6 +17,10 @@ const Authlink = styled(Link)`
   font-family: 'Scope One', serif;
 `
 
+const Cart = styled(FontAwesomeIcon)`
+  color: #0d0d0b;
+`
+
 
 class UserHeaderInfo extends Component {
   constructor(props) {
@@ -28,7 +32,7 @@ class UserHeaderInfo extends Component {
       <Wrapper>
         <Authlink to="/login">Login</Authlink>
         <Link to="/your-account/orders">
-          <FontAwesomeIcon icon={faShoppingCart} />
+          <Cart icon={faShoppingCart} />
         </Link>
       </Wrapper>
     )
