@@ -8,4 +8,5 @@ export const Button = styled.button`
   border: ${({ color }) => `1px solid ${color}`}
   outline: none;
   height: 40px;
+  cursor: pointer;
 `

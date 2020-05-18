@@ -48,6 +48,7 @@ const Price = styled.div`
 
 const Remove = styled.div`
   font-size: 12px;
+  cursor: pointer;
 `
 
 const removeItem = () => {
