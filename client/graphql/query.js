@@ -14,6 +14,7 @@ export const getCurrentUser =  gql`
           quantity
           product {
             name
+            description
             image
           }    
         }
@@ -26,6 +27,7 @@ export const getCurrentUser =  gql`
           quantity
           product {
             name
+            description
             image
           }
         }
