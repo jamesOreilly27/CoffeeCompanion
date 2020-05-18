@@ -13,7 +13,9 @@ const Wrapper = styled.div`
   justify-content: flex-start;
   width: 25vw;
   height: 180px;
-  border: 1px solid black;
+  background-color: #FFF;
+  border-radius: 4px;
+  padding: 10px;
 `
 
 const SubtotalItemContainer = styled.div`

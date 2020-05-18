@@ -11,13 +11,16 @@ const findSubtotal = lineitems => {
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
 `
 
 const CartContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background-color: #FFF;
+  border-radius: 4px;
+  padding: 0 20px 20px 20px;
 `
 
 const ActiveCart = ({ activeCart }) => {
