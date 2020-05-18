@@ -31,6 +31,7 @@ const ItemDetails = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
+  width: 10vw;
 `
 
 const Title = styled.h4`

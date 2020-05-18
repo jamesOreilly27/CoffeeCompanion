@@ -20,19 +20,17 @@ const CartContainer = styled.div`
   align-items: flex-start;
   background-color: #FFF;
   border-radius: 4px;
-  padding: 0 20px 20px 20px;
+  padding: 10px 20px 20px 20px;
 `
 
-const ActiveCart = ({ activeCart }) => {
-  return (
-    <Wrapper>
-      <CartContainer>
-        <ActiveCartHeader />
-        {activeCart.lineitems.map(lineitem => <Lineitem key={lineitem.id} lineitem={lineitem} />)}
-      </CartContainer>
-      <CartSubtotal subtotal={findSubtotal(activeCart.lineitems)}/>
-    </Wrapper>
-  )
-}
+const ActiveCart = ({ activeCart }) => (
+  <Wrapper>
+    <CartContainer>
+      <ActiveCartHeader />
+      {activeCart.lineitems.map(lineitem => <Lineitem key={lineitem.id} lineitem={lineitem} />)}
+    </CartContainer>
+    <CartSubtotal subtotal={findSubtotal(activeCart.lineitems)}/>
+  </Wrapper>
+)
 
 export default ActiveCart

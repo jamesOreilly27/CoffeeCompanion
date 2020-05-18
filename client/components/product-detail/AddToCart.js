@@ -19,14 +19,6 @@ const Input = styled.input`
   outline: none;
 `
 
-// const Button = styled.button`
-//   width: 150px;
-//   background-color: #202020;
-//   color: #F8F8FF;
-//   border-radius: 4px;
-//   border: 1px solid #F8F8FF;
-// `
-
 const AddToCart = (props) => (
   <Mutation
     mutation={addToCart}
@@ -47,7 +39,7 @@ const AddToCart = (props) => (
         addToCart({ variables: { productId: props.productId, cartId: props.cartId, price: props.price, quantity: parseInt(evt.target.quantity.value) } })
       }}>
         <Input type="text" name="quantity" required />
-        <Button type="submit" background-color="#202020" color="#F8F8FF">
+        <Button type="submit" backgroundColor="#202020" color="#F8F8FF">
           Add To Cart
         </Button>
       </Wrapper>

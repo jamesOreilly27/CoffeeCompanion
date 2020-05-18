@@ -9,6 +9,7 @@ export const addToCart = gql`
       quantity
       product {
         name
+        description
         image
       }
     }
