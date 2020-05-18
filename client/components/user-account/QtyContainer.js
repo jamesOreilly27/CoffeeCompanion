@@ -25,7 +25,7 @@ const Minus = styled(Element)`
   border-right: 1px solid #000;
 `
 
-const Plus = styled.div`
+const Plus = styled(Element)`
   font-size: 12px;
   border-left: 1px solid #000;
 `
