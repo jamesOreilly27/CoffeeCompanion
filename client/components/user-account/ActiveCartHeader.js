@@ -10,7 +10,7 @@ const Wrapper = styled.div`
 `
 
 const Title = styled.h3`
-  margin: 0;
+  margin: 5px 0 15px 0;
 `
 
 const ActiveCartHeader = () => {
