@@ -9,8 +9,8 @@ const Wrapper = styled.nav`
 `
 
 const navItems = [
-  { name: 'Shop', linkTo: '/products' },
-  { name: 'Locations', linkTo: 'locations' },
+  { name: 'Shop', linkTo: '/products/all' },
+  { name: 'Locations', linkTo: '/locations' },
   { name: 'Rewards', linkTo: '/rewards' },
   { name: 'Contact', linkTo: '/contact' }
 ]
