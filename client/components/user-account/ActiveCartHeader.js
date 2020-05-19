@@ -13,12 +13,14 @@ const Title = styled.h3`
   margin: 5px 0 15px 0;
 `
 
-const ActiveCartHeader = () => {
-  return (
-    <Wrapper>
+const ActiveCartHeader = ({ isEmpty }) => (
+  <Wrapper>
+    {isEmpty ?
+      <Title> Your Cart is Empty</Title>
+    :
       <Title> Your Cart </Title>
-    </Wrapper>
-  )
-}
+    }
+  </Wrapper>
+)
 
 export default ActiveCartHeader

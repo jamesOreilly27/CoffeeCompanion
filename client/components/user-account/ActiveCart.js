@@ -8,6 +8,8 @@ const findSubtotal = lineitems => {
   return sum
 }
 
+const isEmpty = lineitems => !lineitems.length
+
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-between;
@@ -26,7 +28,7 @@ const CartContainer = styled.div`
 const ActiveCart = ({ activeCart }) => (
   <Wrapper>
     <CartContainer>
-      <ActiveCartHeader />
+      <ActiveCartHeader isEmpty={isEmpty(activeCart.lineitems)} />
       {activeCart.lineitems.map(lineitem => <Lineitem key={lineitem.id} lineitem={lineitem} />)}
     </CartContainer>
     <CartSubtotal subtotal={findSubtotal(activeCart.lineitems)}/>
