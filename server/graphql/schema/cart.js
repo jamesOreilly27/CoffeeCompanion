@@ -9,9 +9,13 @@ const allCartsResolver = () => {
 }
 
 const addResolver = (parent, { productId, cartId, price, quantity }, request) => {
-  return LineItem.create({ productId, cartId, price, quantity })
-  .then(lineitem => lineitem)
-  .catch(err => console.log(err))
+  return LineItem.findOne({ where: { cartId, productId } })
+  .then(lineitem => {
+    if(lineitem) return lineitem.update({ productId, cartId, price, quantity: quantity + lineitem.quantity })
+    else return LineItem.create({ productId, cartId, price, quantity })
+    .then(lineitem => lineitem)
+    .catch(err => console.log(err))
+  })
 }
 
 const removeResolver = ( parent, { id }, request ) => {
@@ -19,6 +23,24 @@ const removeResolver = ( parent, { id }, request ) => {
   .then(lineitem => {
     lineitem.destroy()
     return true
+  })
+  .catch(err => console.log(err))
+}
+
+const incrementQtyResolver = ( parent, { id }, request) => {
+  return LineItem.findByPk(id)
+  .then(lineitem => lineitem.update({ quantity: lineitem.quantity + 1 }) )
+  .catch(err => console.log(err))
+  return true
+}
+
+const decrementQtyResolver = ( parent, { id }, request) => {
+  return LineItem.findByPk(id)
+  .then(lineitem => {
+    if(lineitem.quantity - 1 <= 0) {
+      return lineitem.destroy()
+    }
+    else return lineitem.update({ quantity: lineitem.quantity - 1 })
   })
   .catch(err => console.log(err))
 }
@@ -50,4 +72,18 @@ const removeFromCart = {
   resolve: removeResolver
 }
 
-module.exports = { carts, removeFromCart, addToCart }
+const incrementQty = {
+  type: LineItemType,
+  args: { id: { type: GraphQLInt } },
+  description: 'update a lineitem quantity',
+  resolve: incrementQtyResolver
+}
+
+const decrementQty = {
+  type: LineItemType,
+  args: { id: { type: GraphQLInt } },
+  description: 'update a lineitem quantity',
+  resolve: decrementQtyResolver
+}
+
+module.exports = { carts, removeFromCart, addToCart, incrementQty, decrementQty }
