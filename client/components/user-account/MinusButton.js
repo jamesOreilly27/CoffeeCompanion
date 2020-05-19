@@ -20,17 +20,24 @@ const MinusButton = ({ qty, id }) => (
     update={(cache, { data: { decrementQty } } ) => {
       const user = cache.readQuery({ query: getCurrentUser }).currentUser
       const cart = user.activeCart
-      const itemsArr = cart.lineitems
-      const itemToReplace = itemsArr.find(item => item.id === id)
-      const updatedItem = Object.assign(itemToReplace, { quantity: decrementQty.quantity })
-      itemsArr.splice(itemsArr.indexOf(itemToReplace), 1, updatedItem )
-      const newCart = Object.assign(cart, { lineitems: itemsArr } )
-      cache.writeQuery({
-        query: getCurrentUser,
-        data: { currentUser : Object.assign(user, { cart: newCart } ) }
-      })
+      if(decrementQty.quantity) {
+        const itemsArr = cart.lineitems
+        const itemToReplace = itemsArr.find(item => item.id === id)
+        const updatedItem = Object.assign(itemToReplace, { quantity: decrementQty.quantity })
+        itemsArr.splice(itemsArr.indexOf(itemToReplace), 1, updatedItem )
+        const newCart = Object.assign(cart, { lineitems: itemsArr } )
+        cache.writeQuery({
+          query: getCurrentUser,
+          data: { currentUser : Object.assign(user, { cart: newCart } ) }
+        })
+      } else {
+        const newCart = Object.assign(cart, { lineitems: cart.lineitems.filter(item => item.id !== id) })
+        cache.writeQuery({
+          query: getCurrentUser,
+          data: { currentUser: Object.assign(user, { cart: newCart }) }
+        }) 
     }}
-  >
+  }>
     {( decrementQty, { data }) => (
       <Wrapper onClick={() => {
         decrementQty({ variables: { id: id } })
