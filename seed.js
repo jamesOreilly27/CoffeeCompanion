@@ -21,13 +21,13 @@ async function seed () {
   ])
   const items = await Promise.all([
     LineItem.create({ price: 500, quantity: 1, cartId: 1, productId: 1 }),
-    LineItem.create({price: 600, quantity: 1, cartId: 1, productId: 1  }),
-    LineItem.create({price: 700, quantity: 1, cartId: 1, productId: 1  }),
+    LineItem.create({price: 600, quantity: 1, cartId: 1, productId: 2  }),
+    LineItem.create({price: 700, quantity: 1, cartId: 1, productId: 3  }),
     LineItem.create({price: 800, quantity: 1, cartId: 2, productId: 1  }),
-    LineItem.create({price: 900, quantity: 1, cartId: 2, productId: 1  }),
-    LineItem.create({price: 10000, quantity: 1, cartId: 2, productId: 1 }),
-    LineItem.create({price: 900, quantity: 1, cartId: 1, productId: 1 }),
-    LineItem.create({price: 10000, quantity: 1, cartId: 1, productId: 1 })
+    LineItem.create({price: 900, quantity: 1, cartId: 2, productId: 2  }),
+    LineItem.create({price: 100, quantity: 1, cartId: 2, productId: 3 }),
+    LineItem.create({price: 900, quantity: 1, cartId: 1, productId: 4 }),
+    LineItem.create({price: 100, quantity: 1, cartId: 1, productId: 5 })
   ])
 
   const products = await Promise.all([
@@ -55,8 +55,8 @@ async function seed () {
     Review.create({ content: "It's Great!", rating: 1, productId: 1 }),
     Review.create({ content: "I'm not a fan", rating: 2, productId: 2 }),
   ])
-//   console.log(`seeded ${users.length} users, ${items.length} items, ${reviews.length} reviews, ${products.length} products, and ${categories.length} categories`)
-//   console.log(`seeded successfully`)
+  console.log(`seeded ${users.length} users, ${items.length} items, ${reviews.length} reviews, ${products.length} products, and ${categories.length} categories`)
+  console.log(`seeded successfully`)
 }
 
 seed()

@@ -9,9 +9,13 @@ const allCartsResolver = () => {
 }
 
 const addResolver = (parent, { productId, cartId, price, quantity }, request) => {
-  return LineItem.create({ productId, cartId, price, quantity })
-  .then(lineitem => lineitem)
-  .catch(err => console.log(err))
+  return LineItem.findOne({ where: { cartId, productId } })
+  .then(lineitem => {
+    if(lineitem) return lineitem.update({ productId, cartId, price, quantity: quantity + lineitem.quantity })
+    else return LineItem.create({ productId, cartId, price, quantity })
+    .then(lineitem => lineitem)
+    .catch(err => console.log(err))
+  })
 }
 
 const removeResolver = ( parent, { id }, request ) => {
