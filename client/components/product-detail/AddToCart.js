@@ -19,18 +19,28 @@ const Input = styled.input`
   outline: none;
 `
 
-const AddToCart = (props) => (
+const isUpdate = (cart, data) => {
+  console.log('LINEITEMS', cart.lineitems)
+  console.log('DATA', data)
+  // console.log('TESTING', cart.lineitems.indexOf(data))
+  return cart.lineitems.find(item => item.id === data.id)
+}
+
+const AddToCart = props => (
   <Mutation
     mutation={addToCart}
     update={(cache, { data: { addToCart } }) => {
       const user = cache.readQuery({ query: getCurrentUser }).currentUser
       const cart = user.activeCart
-      const newCart = Object.assign(cart, { lineitems: cart.lineitems.concat([addToCart]) })
-      cache.writeQuery({
-        query: getCurrentUser,
-        data: { currentUser: Object.assign(user, { activeCart: newCart } ) }
-      })
-    }}>
+      if(!isUpdate(cart, addToCart)) {
+        const newCart = Object.assign(cart, { lineitems: cart.lineitems.concat([addToCart]) })
+        cache.writeQuery({
+          query: getCurrentUser,
+          data: { currentUser: Object.assign(user, { activeCart: newCart } ) }
+        })
+      }
+    }}
+    >
     {(addToCart, { data }) => (
       <Wrapper onSubmit={evt => {
         evt.preventDefault()
