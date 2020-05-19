@@ -33,7 +33,6 @@ const incrementQtyResolver = ( parent, { id }, request) => {
 const decrementQtyResolver = ( parent, { id }, request) => {
   return LineItem.findByPk(id)
   .then(lineitem => {
-    console.log('QUANTITY', lineitem.quantity - 1)
     if(lineitem.quantity - 1 <= 0) {
       return lineitem.destroy()
     }

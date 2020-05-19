@@ -36,7 +36,10 @@ const Total = styled.div`
   
 `
 
-const install = 109
+const findInstallionCost = subtotal => {
+  if(subtotal) return 109
+  return 0
+}
 
 const CartSubtotal = ({ subtotal }) => (
   <Wrapper>
@@ -46,15 +49,15 @@ const CartSubtotal = ({ subtotal }) => (
     </SubtotalItemContainer>
     <SubtotalItemContainer>
       <div>Installation</div>
-      <div>{`$${install}`}</div>
+      <div>{`$${findInstallionCost(subtotal)}`}</div>
     </SubtotalItemContainer>
     <SubtotalItemContainer>
       <div>Installation</div>
-      <div>{`$${install}`}</div>
+      <div>{`$${findInstallionCost(subtotal)}`}</div>
     </SubtotalItemContainer>
     <GrandTotal>
       <div>Grand Total</div>
-      <Total>{`$${findGrandTotal(subtotal, install, install)}`}</Total>
+      <Total>{`$${findGrandTotal(subtotal, findInstallionCost(subtotal), findInstallionCost(subtotal))}`}</Total>
     </GrandTotal>
     <Button backgroundColor="#202020" color="#F8F8FF">
       Checkout
