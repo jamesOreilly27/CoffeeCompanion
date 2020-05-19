@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { PlusButton, MinusButton } from '../user-account'
 
 const Wrapper = styled.div`
   display: flex;
@@ -20,26 +21,12 @@ const Quantity = styled(Element)`
   font-size: 11px;
 `
 
-const Minus = styled(Element)`
-  font-size: 16px;
-  border-right: 1px solid #000;
-  cursor: pointer;
-`
-
-const Plus = styled(Element)`
-  font-size: 12px;
-  border-left: 1px solid #000;
-  cursor: pointer;
-`
-
-const QtyContainer = ({ quantity }) => {
-  return (
-    <Wrapper>
-      <Minus> - </Minus>
-      <Quantity>{quantity}</Quantity>
-      <Plus> + </Plus>
-    </Wrapper>
-  )
-}
+const QtyContainer = ({ quantity, id }) => (
+  <Wrapper>
+    <MinusButton qty={quantity} id={id} />
+    <Quantity> {quantity} </Quantity>
+    <PlusButton qty={quantity} id={id} />
+  </Wrapper>
+)
 
 export default QtyContainer

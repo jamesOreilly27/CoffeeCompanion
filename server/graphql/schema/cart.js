@@ -23,6 +23,19 @@ const removeResolver = ( parent, { id }, request ) => {
   .catch(err => console.log(err))
 }
 
+const incrementQtyResolver = ( parent, { id }, request) => {
+  return LineItem.findByPk(id)
+  .then(lineitem => lineitem.update({ quantity: lineitem.quantity + 1 }) )
+  .catch(err => console.log(err))
+  return true
+}
+
+const decrementQtyResolver = ( parent, { id }, request) => {
+  return LineItem.findByPk(id)
+  .then(lineitem => lineitem.update({ quantity: lineitem.quantity - 1 }) )
+  .catch(err => console.log(err))
+}
+
 //Query Fields
 const carts = {
   type: new GraphQLList(CartType),
@@ -50,4 +63,18 @@ const removeFromCart = {
   resolve: removeResolver
 }
 
-module.exports = { carts, removeFromCart, addToCart }
+const incrementQty = {
+  type: LineItemType,
+  args: { id: { type: GraphQLInt } },
+  description: 'update a lineitem quantity',
+  resolve: incrementQtyResolver
+}
+
+const decrementQty = {
+  type: LineItemType,
+  args: { id: { type: GraphQLInt } },
+  description: 'update a lineitem quantity',
+  resolve: decrementQtyResolver
+}
+
+module.exports = { carts, removeFromCart, addToCart, incrementQty, decrementQty }

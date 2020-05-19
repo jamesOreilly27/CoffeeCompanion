@@ -23,6 +23,7 @@ const AddToCart = (props) => (
   <Mutation
     mutation={addToCart}
     update={(cache, { data: { addToCart } }) => {
+      console.log('TESTING', addToCart)
       const user = cache.readQuery({ query: getCurrentUser }).currentUser
       const cart = user.activeCart
       const newCart = Object.assign(cart, { lineitems: cart.lineitems.concat([addToCart]) })

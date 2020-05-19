@@ -82,7 +82,7 @@ const Lineitem = ({ lineitem }) => {
               </Desc>
             </ItemDetails>
           </LeftContainer>
-          <QtyContainer quantity={lineitem.quantity} />
+          <QtyContainer quantity={lineitem.quantity} id={lineitem.id} />
           <Price>
             {`$${lineitem.price * lineitem.quantity}`}
           </Price>
