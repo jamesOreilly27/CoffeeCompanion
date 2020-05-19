@@ -19,12 +19,7 @@ const Input = styled.input`
   outline: none;
 `
 
-const isUpdate = (cart, data) => {
-  console.log('LINEITEMS', cart.lineitems)
-  console.log('DATA', data)
-  // console.log('TESTING', cart.lineitems.indexOf(data))
-  return cart.lineitems.find(item => item.id === data.id)
-}
+const isUpdate = (cart, data) => cart.lineitems.find(item => item.id === data.id)
 
 const AddToCart = props => (
   <Mutation
