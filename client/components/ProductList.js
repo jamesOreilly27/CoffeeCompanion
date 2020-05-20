@@ -52,42 +52,45 @@ const chooseTitle = category => {
   return title
 }
 
-const ProductList = props => {
+const ProductList = ({ products, category, categories }) => {
   const [getProduct, { loading, data }] = useLazyQuery(getProductByName)
   data && data.getProductByName && history.push(`/product/${data.getProductByName.id}`)
   return (
     <Wrapper>
       {data && data.getProductByName && <Redirect to={`/product/${data.getProductByName.id}`} /> }
       <Title>
-        {chooseTitle(props.category)}
+        {chooseTitle(category)}
       </Title>
-      {props.category &&
+      {category &&
         <div>
-          {props.category.description}
+          {category.description}
         </div>
       }
       <Container>
-        <SearchForm onSubmit={evt => {
-          evt.preventDefault()
-          const element = document.querySelector('.MuiInputBase-input')
-          getProduct({ variables: { name: element.value } })
-        }}>
-          <SearchBar
-            id="demo"
-            options={props.products}
-            getOptionLabel={option => option.name}
-            autoSelect={true}
-            style={{ width: 300 }}
-            renderInput={params => <TextField {...params} label="Search..." variant="outlined" />}
-            onInputChange={(evt, value, reason) => {
-              if(reason !== 'input') {
-                getProduct({ variables: { name: value } })
-              }
-            }}
-          />
-        </SearchForm>
+        {products &&
+          <SearchForm onSubmit={evt => {
+            evt.preventDefault()
+            const element = document.querySelector('.MuiInputBase-input')
+            getProduct({ variables: { name: element.value } })
+          }}>
+            <SearchBar
+              id="demo"
+              options={products.sort((a, b) => a.categories[0].name.localeCompare(b.categories[0].name))}
+              size={"small"}
+              getOptionLabel={option => option.name}
+              style={{ width: 300 }}
+              renderInput={params => <TextField {...params} label="Search..." variant="outlined" />}
+              onInputChange={(evt, value, reason) => {
+                if(reason !== 'input') {
+                  getProduct({ variables: { name: value } })
+                }
+              }}
+              groupBy={(option) => option.categories[0].name}
+            />
+          </SearchForm>
+        }
         <ProductContainer>
-          {props.products && props.products.map(product => <ProductCard product={product} key={product.id} />)}
+          {products && products.map(product => <ProductCard product={product} key={product.id} />)}
         </ProductContainer>
       </Container>
     </Wrapper>
