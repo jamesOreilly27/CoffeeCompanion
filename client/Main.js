@@ -38,7 +38,7 @@ const Main = props => {
             <Route exact path='/products/all' render={() => <ProductList products={props.productsQuery.products} categories={props.categoriesQuery.categories} />} />
             <Route exact path='/products/:category' component={CategoryHome} />
             <Route exact path='/product/:id' component={ProductDetail} />
-            <Route exact path='/allcategories' component={AllCategories} />
+            <Route exact path='/categories/all' component={AllCategories} />
           </Switch>
           <Logout />
         </ContentContainer>

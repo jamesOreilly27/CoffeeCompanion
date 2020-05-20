@@ -67,7 +67,7 @@ const ProductList = ({ products, category, categories }) => {
         </div>
       }
       <Container>
-        {products &&
+        {products && categories &&
           <SearchForm onSubmit={evt => {
             evt.preventDefault()
             const element = document.querySelector('.MuiInputBase-input')
