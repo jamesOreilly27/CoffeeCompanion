@@ -1,12 +1,12 @@
-import React, { Component } from 'react'
+import React from 'react'
 import { Redirect } from "react-router-dom"
 import styled from 'styled-components'
-import { graphql } from 'react-apollo'
 import { useLazyQuery } from '@apollo/react-hooks'
 import { Autocomplete } from '@material-ui/lab'
 import { TextField } from '@material-ui/core'
 import { ProductCard } from '../components/product-card'
 import { getProductByName } from '../graphql'
+import history from './history'
 
 const Wrapper = styled.div`
   display: flex;
@@ -52,19 +52,18 @@ const chooseTitle = category => {
   return title
 }
 
-const ProductList = ({ category, products, history }) => {
+const ProductList = props => {
   const [getProduct, { loading, data }] = useLazyQuery(getProductByName)
-
+  data && data.getProductByName && history.push(`/product/${data.getProductByName.id}`)
   return (
     <Wrapper>
       {data && data.getProductByName && <Redirect to={`/product/${data.getProductByName.id}`} /> }
       <Title>
-        {console.log('DATA', data)}
-        {chooseTitle(category)}
+        {chooseTitle(props.category)}
       </Title>
-      {category &&
+      {props.category &&
         <div>
-          {category.description}
+          {props.category.description}
         </div>
       }
       <Container>
@@ -75,7 +74,7 @@ const ProductList = ({ category, products, history }) => {
         }}>
           <SearchBar
             id="demo"
-            options={products}
+            options={props.products}
             getOptionLabel={option => option.name}
             autoSelect={true}
             style={{ width: 300 }}
@@ -88,7 +87,7 @@ const ProductList = ({ category, products, history }) => {
           />
         </SearchForm>
         <ProductContainer>
-          {products && products.map(product => <ProductCard product={product} key={product.id} />)}
+          {props.products && props.products.map(product => <ProductCard product={product} key={product.id} />)}
         </ProductContainer>
       </Container>
     </Wrapper>
