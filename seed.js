@@ -38,16 +38,57 @@ async function seed () {
     Product.create({name: 'Vanilla', description: 'this vanilla isnt boring', price: 70, inventory: 562, image: '' }),
     Product.create({name: 'Iced Coffee', description: 'for the cold lovers', price: 95, inventory: 562, image: '' }),
     Product.create({name: 'Master Blend', description: 'the blend will make you want more', price: 40, inventory: 562, image: '' }),
-    Product.create({name: 'House Blend', description: 'for around the hosue', price: 35, inventory: 562, image: '' })
+    Product.create({name: 'House Blend', description: 'for around the hosue', price: 35, inventory: 562, image: '' }),
+    Product.create({name: 'Test One', description: 'Test', price: 25, inventory: 562, image: '' }),
+    Product.create({name: 'Test Two', description: 'Test', price: 55, inventory: 562, image: '' }),
+    Product.create({name: 'Test Three', description: 'Test', price: 10, inventory: 562, image: '' }),
+    Product.create({name: 'Test Four', description: 'Test', price: 8, inventory: 562, image: '' }),
+    Product.create({name: 'Test Five', description: 'Test', price: 13, inventory: 562, image: '' }),
+    Product.create({name: 'Test Six', description: 'Test', price: 25, inventory: 562, image: '' }),
+    Product.create({name: 'Test Seven', description: 'Test', price: 50, inventory: 562, image: '' }),
+    Product.create({name: 'Test Eight', description: 'Test', price: 34, inventory: 562, image: '' }),
+    Product.create({name: 'Test Nine', description: 'Test', price: 12, inventory: 562, image: '' }),
+    Product.create({name: 'Test Ten', description: 'Test', price: 65, inventory: 562, image: '' }),
+    Product.create({name: 'Test Eleven', description: 'Test', price: 89, inventory: 562, image: '' }),
+    Product.create({name: 'Test Twelve', description: 'Test', price: 99, inventory: 562, image: '' }),
+    Product.create({name: 'Test Thirteen', description: 'Test', price: 109, inventory: 562, image: '' })
   ])
 
   const categories = await Promise.all([
-    Category.create({ name: 'columbian', description: 'the finest coffee from columbia' })
+    Category.create({ name: 'columbian', description: 'the finest coffee from columbia' }),
+    Category.create({ name: 'Test One', description: 'the first test' }),
+    Category.create({ name: 'Test Two', description: 'the second test' }),
+    Category.create({ name: 'Test Three', description: 'the third test' }),
+    Category.create({ name: 'Test Four', description: 'the fourth test' }),
+    Category.create({ name: 'Test Five', description: 'the fifth test' }),
+    Category.create({ name: 'Test Six', description: 'the sixth test' }),
+    Category.create({ name: 'Test Seven', description: 'the seventh test' }),
+    Category.create({ name: 'Test Eight', description: 'the eighth test' }),
+    Category.create({ name: 'Test Nine', description: 'the nineth test' })
   ])
 
   const ProductCategories = await Promise.all([
     ProductCategory.create({ categoryId: 1, productId: 1 }),
-    ProductCategory.create({ categoryId: 1, productId: 2 })
+    ProductCategory.create({ categoryId: 2, productId: 2 }),
+    ProductCategory.create({ categoryId: 3, productId: 3 }),
+    ProductCategory.create({ categoryId: 4, productId: 4 }),
+    ProductCategory.create({ categoryId: 5, productId: 5 }),
+    ProductCategory.create({ categoryId: 6, productId: 6 }),
+    ProductCategory.create({ categoryId: 7, productId: 7 }),
+    ProductCategory.create({ categoryId: 8, productId: 8 }),
+    ProductCategory.create({ categoryId: 9, productId: 9 }),
+    ProductCategory.create({ categoryId: 1, productId: 10 }),
+    ProductCategory.create({ categoryId: 2, productId: 11 }),
+    ProductCategory.create({ categoryId: 3, productId: 12 }),
+    ProductCategory.create({ categoryId: 4, productId: 13 }),
+    ProductCategory.create({ categoryId: 5, productId: 14 }),
+    ProductCategory.create({ categoryId: 6, productId: 15 }),
+    ProductCategory.create({ categoryId: 7, productId: 16 }),
+    ProductCategory.create({ categoryId: 8, productId: 17 }),
+    ProductCategory.create({ categoryId: 9, productId: 18 }),
+    ProductCategory.create({ categoryId: 1, productId: 19 }),
+    ProductCategory.create({ categoryId: 2, productId: 20 }),
+    ProductCategory.create({ categoryId: 3, productId: 21 })
   ])
 
   const reviews = await Promise.all([

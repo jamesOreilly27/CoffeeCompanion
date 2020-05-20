@@ -1,4 +1,4 @@
-const { GraphQLList, GraphQLInt } = require('graphql')
+const { GraphQLList, GraphQLInt, GraphQLString } = require('graphql')
 const { Product } = require('../../db/models')
 const { ProductType, ProductDetailType } = require('./ObjectTypes')
 
@@ -11,6 +11,12 @@ const productResolver = () => {
 
 const productDetailResolver = (parent, args) => {
   return Product.findByPk(args.id)
+  .then(product => product)
+  .catch(err => console.log(err))
+}
+
+const getByNameResolver = (parent, args) => {
+  return Product.findOne({ where: { name: args.name } })
   .then(product => product)
   .catch(err => console.log(err))
 }
@@ -29,4 +35,11 @@ const productDetails = {
   resolve: productDetailResolver
 }
 
-module.exports = { products, productDetails }
+const getProductByName = {
+  type: ProductDetailType,
+  description: 'find a product by name',
+  args: { name: { type: GraphQLString } },
+  resolve: getByNameResolver
+}
+
+module.exports = { products, productDetails, getProductByName }

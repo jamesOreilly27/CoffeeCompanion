@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { getAllProducts, getCurrentUser } from './graphql'
+import { getAllProducts, getCurrentUser, getAllCategories } from './graphql'
 import { graphql } from 'react-apollo'
 import { flowRight as compose } from 'lodash'
 import { ProductList, AllCategories, Login, Signup, Logout } from './components'
@@ -35,7 +35,7 @@ const Main = props => {
               }
               return component
             }} />
-            <Route exact path='/products/all' render={() => <ProductList products={props.productQuery.products} />} />
+            <Route exact path='/products/all' render={() => <ProductList products={props.productsQuery.products} categories={props.categoriesQuery.categories} />} />
             <Route exact path='/products/:category' component={CategoryHome} />
             <Route exact path='/product/:id' component={ProductDetail} />
             <Route exact path='/allcategories' component={AllCategories} />
@@ -48,5 +48,6 @@ const Main = props => {
 
 export default compose(
   graphql(getCurrentUser, { name: 'userQuery' }),
-  graphql(getAllProducts, { name: 'productQuery' })
+  graphql(getAllProducts, { name: 'productsQuery' }),
+  graphql(getAllCategories, { name: 'categoriesQuery' })
   )(Main)
