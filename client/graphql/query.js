@@ -44,6 +44,7 @@ export const getAllCategories = gql`
     name
     description
     products {
+      id
       name
       description
       price
@@ -58,6 +59,7 @@ export const getOneCategory = gql`
       name
       description
       products {
+        id
         name
         price
       }
