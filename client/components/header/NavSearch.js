@@ -7,14 +7,11 @@ import { TextField } from '@material-ui/core'
 import { FormFill, SubmitButton } from '../header'
 
 const Wrapper = styled(Autocomplete)`
-  display: flex;
-  align-items: center;
   width: 150px;
-  padding: 0;
-  * {
-    padding: 0;
-  }
 `
+
+// display: flex;
+//   align-items: center;
 
 class NavSearch extends Component {
   constructor(props) {
@@ -24,10 +21,18 @@ class NavSearch extends Component {
   render() {
     return (
     <Wrapper
-      renderInput={() => <FormFill />}
+      renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined"/>}
+      size="small"
+      options={[
+        {name: "Watch"},
+        {name: "If"},
+        {name: "This"},
+        {name: "Works"}
+      ]}
+      getOptionLabel={option => option.name}
     >
-      <FormFill />
-      <SubmitButton />
+      {/* <FormFill /> */}
+      {/* <SubmitButton /> */}
     </Wrapper>
     )
   }
