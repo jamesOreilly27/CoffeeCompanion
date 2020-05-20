@@ -23,7 +23,6 @@ const Wrapper = styled(Link)`
   background-color: #FFF;
   border: 2px solid #EAEDED;
   height: 200px;
-  border-radius: 12px;
 `
 
 const ProductCard = ({ product }) => (

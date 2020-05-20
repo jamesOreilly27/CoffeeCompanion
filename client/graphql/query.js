@@ -96,3 +96,12 @@ query($id: Int!) {
  }
 }
 `
+
+export const getProductByName = gql`
+  query($name: String!) {
+    getProductByName(name: $name) {
+      name
+      id
+    }
+  }
+`

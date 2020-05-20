@@ -1,5 +1,6 @@
 
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
@@ -59,8 +60,8 @@ class Login extends Component {
             <Form onSubmit={evt => {
               evt.preventDefault()
               sendCreds({ variables: { email: evt.target.email.value, password: evt.target.password.value }})
-              data && data.loginUser ? this.props.history.push('/products') : ''
             }}>
+              { data && data.loginUser && <Redirect to='/products/all' /> }
               <Label>
                 <LabelName>Email</LabelName>
                 <Input type="email" name="email" required />
