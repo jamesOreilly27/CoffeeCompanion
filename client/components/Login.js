@@ -4,6 +4,7 @@ import { Redirect } from 'react-router-dom'
 import styled from 'styled-components'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
+import history from './history'
 
 const loginMutation = gql`
 mutation($email: String!, $password: String!) {
@@ -62,6 +63,7 @@ class Login extends Component {
               sendCreds({ variables: { email: evt.target.email.value, password: evt.target.password.value }})
             }}>
               { data && data.loginUser && <Redirect to='/products/all' /> }
+              { data && data.loginUser && history.push('/products/all') }
               <Label>
                 <LabelName>Email</LabelName>
                 <Input type="email" name="email" required />
