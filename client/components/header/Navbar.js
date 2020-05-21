@@ -5,7 +5,7 @@ import { Navlink } from '../header'
 const Wrapper = styled.nav`
   display: flex;
   justify-content: space-around;
-  width: 50%;
+  width: 45%;
 `
 
 const navItems = [

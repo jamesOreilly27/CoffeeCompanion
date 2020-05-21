@@ -6,16 +6,38 @@ import { TextField, Select, MenuItem } from '@material-ui/core'
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  width: 28vw;
+  width: 30vw;
+  height: 5vh;
 `
 
 const FormFill = styled(Autocomplete)`
-  width: 150px;
+  && .MuiOutlinedInput-root {
+    height: 4vh;
+  }
+
+  && .MuiInputLabel-outlined {
+    margin-top: -3px;
+  }
+
+  && .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
+    margin-top: 2px;
+  }
+
+  && .MuiAutocomplete-input:first-child {
+    margin-top: -6px;
+  }
 `
 
 const StyledSelect = styled(Select)`
-  width: 7vw;
-  font-size: 12px;
+  && {
+    width: 12vw;
+    font-size: 12px;
+    border: 1px solid #B5B7B7;
+    height: 3.9vh;
+    border-radius: 4px;
+    border-bottom: none;
+    padding: 3px;
+  }
 `
 
 class NavSearch extends Component {
@@ -42,8 +64,9 @@ class NavSearch extends Component {
           <MenuItem value="products">products</MenuItem>
         </StyledSelect>
         <FormFill
-          renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+          renderInput={(params) => <TextField {...params} label="Search..." variant="outlined" />}
           size="small"
+          style={{ width: 300 }}
           options={this.selectOptions()}
           getOptionLabel={option => option.name}
         />
