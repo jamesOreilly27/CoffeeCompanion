@@ -1,42 +1,56 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { graphql } from 'react-apollo'
-import { getAllCategories } from '../../graphql'
 import { Autocomplete } from '@material-ui/lab'
-import { TextField } from '@material-ui/core'
-import { FormFill, SubmitButton } from '../header'
+import { TextField, Select, MenuItem } from '@material-ui/core'
 
-const Wrapper = styled(Autocomplete)`
+const Wrapper = styled.div`
+  display: flex;
+  align-items: center;
+  width: 28vw;
+`
+
+const FormFill = styled(Autocomplete)`
   width: 150px;
 `
 
-// display: flex;
-//   align-items: center;
+const StyledSelect = styled(Select)`
+  width: 7vw;
+  font-size: 12px;
+`
 
 class NavSearch extends Component {
   constructor(props) {
     super(props)
+    this.state = { displayValue: 'categories' }
+  }
+
+  selectOptions() {
+    if(this.state.displayValue === 'products') return this.props.products
+    if(this.state.displayValue === 'categories') return this.props.categories
   }
 
   render() {
     return (
-    <Wrapper
-      renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined"/>}
-      size="small"
-      options={[
-        {name: "Watch"},
-        {name: "If"},
-        {name: "This"},
-        {name: "Works"}
-      ]}
-      getOptionLabel={option => option.name}
-    >
-      {/* <FormFill /> */}
-      {/* <SubmitButton /> */}
-    </Wrapper>
+      <Wrapper>
+        <StyledSelect
+          value={this.state.displayValue}
+          onChange={evt => {
+            this.setState({ displayValue: evt.target.value })
+          }}
+        >
+          <MenuItem value="categories">categories</MenuItem>
+          <MenuItem value="products">products</MenuItem>
+        </StyledSelect>
+        <FormFill
+          renderInput={(params) => <TextField {...params} label="Combo box" variant="outlined" />}
+          size="small"
+          options={this.selectOptions()}
+          getOptionLabel={option => option.name}
+        />
+      </Wrapper>
     )
   }
 }
 
 
-export default graphql(getAllCategories)(NavSearch)
+export default NavSearch

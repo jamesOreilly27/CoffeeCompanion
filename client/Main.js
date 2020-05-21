@@ -17,37 +17,36 @@ const ContentContainer = styled.div`
   flex-direction: column;
 `
 
-const Main = props => {
-  return (
-    <Router>
-        <ContentContainer>
-          <Header />
-          <Switch>
-            <Route exact path='/login' component={Login} />
-            <Route exact path='/signup' component={Signup} />
-            <Route exact path='/your-account' render={() => <UserAccount user={props.userQuery.currentUser} />} />
-            <Route exact path='/your-account/orders' render={() => {
-              let component
-              {props.userQuery.currentUser ?
-                component = <OrderList orders={props.userQuery.currentUser.orders} activeCart={props.userQuery.currentUser.activeCart} />
-              :
-                component = <Login />
-              }
-              return component
-            }} />
-            <Route exact path='/products/all' render={() => <ProductList products={props.productsQuery.products} categories={props.categoriesQuery.categories} />} />
-            <Route exact path='/products/:category' component={CategoryHome} />
-            <Route exact path='/product/:id' component={ProductDetail} />
-            <Route exact path='/categories/all' component={AllCategories} />
-          </Switch>
-          <Logout />
-        </ContentContainer>
-    </Router>
-  )
-}
+const Main = ({ userQuery, productsQuery, categoriesQuery }) => (
+  <Router>
+    <ContentContainer>
+      <Header products={productsQuery.products} categories={categoriesQuery.categories} />
+      <Switch>
+        <Route exact path='/login' component={Login} />
+        <Route exact path='/signup' component={Signup} />
+        <Route exact path='/your-account' render={() => <UserAccount user={userQuery.currentUser} />} />
+        <Route exact path='/your-account/orders' render={() => {
+          let component
+          {
+            userQuery.currentUser ?
+            component = <OrderList orders={userQuery.currentUser.orders} activeCart={userQuery.currentUser.activeCart} />
+            :
+            component = <Login />
+          }
+          return component
+        }} />
+        <Route exact path='/products/all' render={() => <ProductList products={productsQuery.products} /> } />
+        <Route exact path='/products/:category' component={CategoryHome} />
+        <Route exact path='/product/:id' component={ProductDetail} />
+        <Route exact path='/categories/all' component={AllCategories} />
+      </Switch>
+      <Logout />
+    </ContentContainer>
+  </Router>
+)
 
 export default compose(
   graphql(getCurrentUser, { name: 'userQuery' }),
   graphql(getAllProducts, { name: 'productsQuery' }),
   graphql(getAllCategories, { name: 'categoriesQuery' })
-  )(Main)
+)(Main)

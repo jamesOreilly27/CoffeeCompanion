@@ -52,7 +52,7 @@ const chooseTitle = category => {
   return title
 }
 
-const ProductList = ({ products, category, categories }) => {
+const ProductList = ({ products, category }) => {
   const [getProduct, { loading, data }] = useLazyQuery(getProductByName)
   data && data.getProductByName && history.push(`/product/${data.getProductByName.id}`)
   return (
@@ -67,7 +67,7 @@ const ProductList = ({ products, category, categories }) => {
         </div>
       }
       <Container>
-        {products && categories &&
+        {products &&
           <SearchForm onSubmit={evt => {
             evt.preventDefault()
             const element = document.querySelector('.MuiInputBase-input')

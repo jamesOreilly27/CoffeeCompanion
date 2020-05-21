@@ -17,16 +17,12 @@ const Container = styled.div`
   margin-bottom: 10px;
 `
 
-const UserInfoAndSearch = styled.div`
-
-`
-
-const Header = () => (
+const Header = ({ products, categories }) => (
   <Wrapper>
     <Container>
       <Logo />
       <Navbar />
-      <NavSearch />
+      <NavSearch products={products} categories={categories} />
       <UserHeaderInfo />
     </Container>
   </Wrapper>
