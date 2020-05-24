@@ -77,6 +77,7 @@ export const getAllProducts = gql`
       description
       image
       price
+      featured
       categories {
         name
       }

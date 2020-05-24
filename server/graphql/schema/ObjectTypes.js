@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList } = require('graphql')
+const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, GraphQLBoolean } = require('graphql')
 
 const UserType = new GraphQLObjectType({
   name: 'user',
@@ -36,6 +36,7 @@ const ProductType = new GraphQLObjectType({
     price: { type: GraphQLNonNull(GraphQLInt) },
     inventory: { type: GraphQLNonNull(GraphQLInt) },
     image: { type: GraphQLString },
+    featured: { type: GraphQLBoolean},
     categories: {
       type: new GraphQLList(CategoryType),
       description: 'category products',

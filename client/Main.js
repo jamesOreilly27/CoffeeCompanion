@@ -23,7 +23,7 @@ const Main = ({ userQuery, productsQuery, categoriesQuery }) => (
     <ContentContainer>
       <Header products={productsQuery.products} categories={categoriesQuery.categories} />
       <Switch>
-        <Route exact path='/' component={Homepage} />
+        <Route exact path='/' render={() => <Homepage products={productsQuery.products} /> } />
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/your-account' render={() => <UserAccount user={userQuery.currentUser} />} />

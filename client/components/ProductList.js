@@ -47,20 +47,20 @@ const ProductContainer = styled.div`
   width: 100%;
 `
 
-const chooseTitle = category => {
-  let title
-  category ? title = category.name : title = 'Products'
-  return title
+const chooseTitle = (category, featured) => {
+  if(category) return `${category.name}`
+  else if(featured) return `Featured Products`
+  else return 'Products'
 }
 
-const ProductList = ({ products, category }) => {
+const ProductList = ({ products, category, featured }) => {
   const [getProduct, { loading, data }] = useLazyQuery(getProductByName)
   data && data.getProductByName && history.push(`/products/${nameToUrl(data.getProductByName.name)}`)
   return (
     <Wrapper>
       {data && data.getProductByName && <Redirect to={`/products/${nameToUrl(data.getProductByName.name)}`} /> }
       <Title>
-        {chooseTitle(category)}
+        {chooseTitle(category, featured)}
       </Title>
       {category &&
         <div>
@@ -68,7 +68,7 @@ const ProductList = ({ products, category }) => {
         </div>
       }
       <Container>
-        {products && !category &&
+        {products && !category && !featured &&
           <SearchForm onSubmit={evt => {
             evt.preventDefault()
             const element = document.getElementById('product-search')
