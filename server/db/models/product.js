@@ -11,22 +11,26 @@ const Product = db.define('product', {
   name: {
     type: Sequelize.STRING,
     allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    validate: { notEmpty: true }
   },
   description: {
     type: Sequelize.TEXT,
     allowNull: false,
-    validate: {
-      notEmpty: true
-    }
+    validate: { notEmpty: true }
   },
   price: {
     type: Sequelize.INTEGER
   },
-  inventory: Sequelize.INTEGER,
-  image: Sequelize.STRING
+  inventory: {
+    type: Sequelize.INTEGER
+  },
+  image: {
+    type: Sequelize.STRING
+  },
+  featured: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  }
 })
 
 module.exports = Product
