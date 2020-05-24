@@ -27,7 +27,7 @@ const Wrapper = styled(Link)`
 `
 
 const ProductCard = ({ product }) => (
-  <Wrapper to={`/product/${nameToUrl(product.name)}`}>
+  <Wrapper to={`/products/${nameToUrl(product.name)}`}>
     <Image url={product.image} />
     <Info product={product} />
   </Wrapper>

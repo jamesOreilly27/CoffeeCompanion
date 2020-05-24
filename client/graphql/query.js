@@ -87,6 +87,7 @@ export const getAllProducts = gql`
 export const getProductDetail = gql`
 query($name: String!) {
  productDetails(name: $name) {
+   id
    name
    description
    price

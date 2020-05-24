@@ -83,6 +83,7 @@ class ProductDetail extends Component {
 
   render() {
     const product = this.props.detailQuery.productDetails
+    console.log('PRODUCT', product)
     const user = this.props.userQuery.currentUser
     return (
       <Wrapper>
@@ -96,7 +97,7 @@ class ProductDetail extends Component {
                 <PriceHeader>Our Price</PriceHeader>
                 <Price>{`$${product.price}`}</Price>
               </PriceContainer>
-              <AddToCart cartId={user.activeCart.id} productId={parseInt(this.props.match.params.id)} price={product.price} flipAlertActive={this.flipAlertActive} />
+              <AddToCart cartId={user.activeCart.id} productId={product.id} price={product.price} flipAlertActive={this.flipAlertActive} />
               {this.state.alertActive &&
                 <CartAlert severity="success" onClose={() => { this.flipAlertActive() } }>
                   <AlertTitle>Added To Cart</AlertTitle>

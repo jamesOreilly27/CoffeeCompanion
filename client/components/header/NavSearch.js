@@ -43,7 +43,6 @@ class NavSearch extends Component {
         onSubmit={evt => {
           evt.preventDefault()
           const search = document.getElementById('nav-search')
-          console.log('FIRING')
           history.push(`/${this.state.displayValue}/${nameToUrl(search.value)}`)
           return <Redirect to={`/${this.state.displayValue}/${nameToUrl(search.value)}`} />
       }}>
