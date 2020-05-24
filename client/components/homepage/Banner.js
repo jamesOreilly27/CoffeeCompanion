@@ -5,7 +5,7 @@ import Background from '../../images/command-900.jpg'
 const Wrapper = styled.div`
   height: 75vh;
   width: 100vw;
-  margin-bottom: 10vh;
+  margin-bottom: 8vh;
   display: flex;
   font-size: 30px;
   color: #FFF;

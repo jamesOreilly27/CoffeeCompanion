@@ -11,7 +11,7 @@ const Wrapper = styled.header`
 const Container = styled.div`
   display: flex;
   width: 100%;
-  height: 13vh;
+  height: 10vh;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 2vh;
