@@ -10,6 +10,7 @@ import { Header } from './components/header'
 import { CategoryHome } from './components/category-home'
 import { UserAccount } from './components/user-account'
 import { ProductDetail } from './components/product-detail'
+import { Homepage } from './components/homepage'
 
 const ContentContainer = styled.div`
   box-sizing: border-box;
@@ -22,6 +23,7 @@ const Main = ({ userQuery, productsQuery, categoriesQuery }) => (
     <ContentContainer>
       <Header products={productsQuery.products} categories={categoriesQuery.categories} />
       <Switch>
+        <Route exact path='/' component={Homepage} />
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/your-account' render={() => <UserAccount user={userQuery.currentUser} />} />
