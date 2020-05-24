@@ -36,8 +36,8 @@ const Main = ({ userQuery, productsQuery, categoriesQuery }) => (
           return component
         }} />
         <Route exact path='/products/all' render={() => <ProductList products={productsQuery.products} /> } />
-        <Route exact path='/products/:category' component={CategoryHome} />
-        <Route exact path='/product/:id' component={ProductDetail} />
+        <Route exact path='/categories/:name' component={CategoryHome} />
+        <Route exact path='/products/:name' component={ProductDetail} />
         <Route exact path='/categories/all' component={AllCategories} />
       </Switch>
       <Logout />

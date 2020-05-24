@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { ProductList } from '../../components'
 import { graphql } from 'react-apollo'
 import { getOneCategory } from '../../graphql'
+import { urlToName } from '../helpers'
 
 const Wrapper = styled.div`
 
@@ -31,6 +32,6 @@ class CategoryHome extends Component {
 
 export default graphql(getOneCategory, {
   options: props => ({
-    variables: { name: props.match.params.category }
+    variables: { name: urlToName(props.match.params.name) }
   })
 })(CategoryHome)

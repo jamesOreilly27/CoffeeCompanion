@@ -6,6 +6,7 @@ import { Autocomplete } from '@material-ui/lab'
 import { TextField } from '@material-ui/core'
 import { ProductCard } from '../components/product-card'
 import { getProductByName } from '../graphql'
+import { nameToUrl } from './helpers'
 import history from './history'
 
 const Wrapper = styled.div`
@@ -54,10 +55,10 @@ const chooseTitle = category => {
 
 const ProductList = ({ products, category }) => {
   const [getProduct, { loading, data }] = useLazyQuery(getProductByName)
-  data && data.getProductByName && history.push(`/product/${data.getProductByName.id}`)
+  data && data.getProductByName && history.push(`/products/${nameToUrl(data.getProductByName.name)}`)
   return (
     <Wrapper>
-      {data && data.getProductByName && <Redirect to={`/product/${data.getProductByName.id}`} /> }
+      {data && data.getProductByName && <Redirect to={`/products/${nameToUrl(data.getProductByName.name)}`} /> }
       <Title>
         {chooseTitle(category)}
       </Title>
@@ -67,14 +68,14 @@ const ProductList = ({ products, category }) => {
         </div>
       }
       <Container>
-        {products &&
+        {products && !category &&
           <SearchForm onSubmit={evt => {
             evt.preventDefault()
-            const element = document.querySelector('.MuiInputBase-input')
+            const element = document.getElementById('product-search')
             getProduct({ variables: { name: element.value } })
           }}>
             <SearchBar
-              id="demo"
+              id="product-search"
               options={products.sort((a, b) => a.categories[0].name.localeCompare(b.categories[0].name))}
               size={"small"}
               getOptionLabel={option => option.name}

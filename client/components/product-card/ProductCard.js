@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Image, Info } from '../product-card'
 import { Link } from 'react-router-dom'
+import { nameToUrl } from '../helpers'
 
 const Wrapper = styled(Link)`
   @media(max-width: 960px) {
@@ -26,7 +27,7 @@ const Wrapper = styled(Link)`
 `
 
 const ProductCard = ({ product }) => (
-  <Wrapper to={`/product/${product.id}`}>
+  <Wrapper to={`/product/${nameToUrl(product.name)}`}>
     <Image url={product.image} />
     <Info product={product} />
   </Wrapper>

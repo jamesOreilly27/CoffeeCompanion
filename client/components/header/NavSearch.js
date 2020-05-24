@@ -1,31 +1,15 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Autocomplete } from '@material-ui/lab'
-import { TextField, Select, MenuItem } from '@material-ui/core'
+import { Select, MenuItem } from '@material-ui/core'
+import { FormFill } from '../header'
+import history from '../history'
+import { nameToUrl } from '../helpers'
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   display: flex;
   align-items: center;
   width: 30vw;
   height: 5vh;
-`
-
-const FormFill = styled(Autocomplete)`
-  && .MuiOutlinedInput-root {
-    height: 4vh;
-  }
-
-  && .MuiInputLabel-outlined {
-    margin-top: -3px;
-  }
-
-  && .MuiAutocomplete-inputRoot[class*="MuiOutlinedInput-root"] {
-    margin-top: 2px;
-  }
-
-  && .MuiAutocomplete-input:first-child {
-    margin-top: -6px;
-  }
 `
 
 const StyledSelect = styled(Select)`
@@ -44,6 +28,7 @@ class NavSearch extends Component {
   constructor(props) {
     super(props)
     this.state = { displayValue: 'categories' }
+    this.selectOptions = this.selectOptions.bind(this)
   }
 
   selectOptions() {
@@ -53,8 +38,17 @@ class NavSearch extends Component {
 
   render() {
     return (
-      <Wrapper>
+      <Wrapper
+        id="nav-form"
+        onSubmit={evt => {
+          evt.preventDefault()
+          const search = document.getElementById('nav-search')
+          console.log('FIRING')
+          history.push(`/${this.state.displayValue}/${nameToUrl(search.value)}`)
+          return <Redirect to={`/${this.state.displayValue}/${nameToUrl(search.value)}`} />
+      }}>
         <StyledSelect
+          id="nav-select"
           value={this.state.displayValue}
           onChange={evt => {
             this.setState({ displayValue: evt.target.value })
@@ -63,13 +57,7 @@ class NavSearch extends Component {
           <MenuItem value="categories">categories</MenuItem>
           <MenuItem value="products">products</MenuItem>
         </StyledSelect>
-        <FormFill
-          renderInput={(params) => <TextField {...params} label="Search..." variant="outlined" />}
-          size="small"
-          style={{ width: 300 }}
-          options={this.selectOptions()}
-          getOptionLabel={option => option.name}
-        />
+        <FormFill selectOptions={this.selectOptions} displayValue={this.state.displayValue} />
       </Wrapper>
     )
   }

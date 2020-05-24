@@ -60,7 +60,7 @@ const ProductDetailType = new GraphQLObjectType({
     reviews: {
       type: new GraphQLList(ReviewType),
       description: 'a list of reviews for this product',
-      args: { id: { type: GraphQLInt }},
+      args: { name: { type: GraphQLString }},
       resolve: product => {
         return product.getReviews()
         .then(reviews => reviews)

@@ -10,7 +10,7 @@ const productResolver = () => {
 }
 
 const productDetailResolver = (parent, args) => {
-  return Product.findByPk(args.id)
+  return Product.findOne({ where: { name: args.name } })
   .then(product => product)
   .catch(err => console.log(err))
 }
@@ -31,7 +31,7 @@ const products = {
 const productDetails = {
   type: ProductDetailType,
   description: 'details for a product',
-  args: { id: { type: GraphQLInt }},
+  args: { name: { type: GraphQLString }},
   resolve: productDetailResolver
 }
 
