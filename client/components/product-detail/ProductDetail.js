@@ -8,6 +8,7 @@ import { AddToCart, ReviewDisplay } from '../product-detail'
 import { Alert, AlertTitle } from '@material-ui/lab'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faImage } from '@fortawesome/free-solid-svg-icons'
+import { urlToName } from '../helpers'
 
 const Wrapper = styled.div`
   display: flex;
@@ -116,6 +117,6 @@ export default compose(
   graphql(getProductDetail, {
   name: 'detailQuery',
   options: props => ({
-    variables: { id: parseInt(props.match.params.id) }
+    variables: { name: urlToName(props.match.params.name) }
   })
 }))(ProductDetail)
