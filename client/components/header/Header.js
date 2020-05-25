@@ -23,7 +23,7 @@ const Header = ({ products, categories, user }) => (
       <Logo />
       <Navbar />
       <NavSearch products={products} categories={categories} />
-      <UserHeaderInfo user={user}/>
+      <UserHeaderInfo user={user} />
     </Container>
   </Wrapper>
 )

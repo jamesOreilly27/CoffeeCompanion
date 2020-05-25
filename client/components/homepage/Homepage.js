@@ -2,9 +2,7 @@ import React from 'react'
 import { Banner } from '../homepage'
 import { ProductList, CategoriesList } from '../../components'
 
-const filterFeatured = array => {
-  return array.filter(index => index.featured)
-}
+const filterFeatured = array => array.filter(index => index.featured)
 
 const Hompage = ({ products, categories }) => (
   <div>

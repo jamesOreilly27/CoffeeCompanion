@@ -9,8 +9,8 @@ const Wrapper = styled.div`
   display: flex;
   font-size: 30px;
   color: #FFF;
-  background-color: #CCC;
   background-image: url(${Background});
+  background-color: #CCC;
   justify-content: flex-start;
   align-items: flex-start;
   `
