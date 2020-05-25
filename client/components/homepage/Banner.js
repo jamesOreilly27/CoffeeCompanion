@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Background from '../../images/command-900.jpg'
+import Background from '../../images/banner-background.jpg'
 
 const Wrapper = styled.div`
   height: 75vh;
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 const Message = styled.div`
   display: flex;
   flex-direction: column;
-  margin-top: 20vh;
+  margin-top: 26vh;
 `
 
 const Title = styled.h1`
@@ -28,7 +28,7 @@ const Title = styled.h1`
 const Subtitle = styled.div`
   font-size: 20px;
   margin: 3px 0;
-  margin-left: 2vw;
+  margin-left: 1vw;
 `
 
 const Banner = () => {

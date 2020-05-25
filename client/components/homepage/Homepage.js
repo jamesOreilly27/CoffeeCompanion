@@ -1,22 +1,21 @@
 import React from 'react'
 import { Banner } from '../homepage'
-import { ProductList } from '../../components'
+import { ProductList, CategoriesList } from '../../components'
 
-const filterFeaturedProd = products => {
-  return products.filter(product => product.featured)
+const filterFeatured = array => {
+  return array.filter(index => index.featured)
 }
 
-const Hompage = ({ products }) => {
-  return (
-    <div>
-      {products &&
-        <div>
-          <Banner />
-          <ProductList products={filterFeaturedProd(products)}  featured />
+const Hompage = ({ products, categories }) => (
+  <div>
+    {products && categories &&
+      <div>
+        <Banner />
+        <ProductList products={filterFeatured(products)} featured />
+        <CategoriesList categories={filterFeatured(categories)} /> }
         </div>
-      }
-    </div>
-  )
-}
+    }
+  </div>
+)
 
 export default Hompage

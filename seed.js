@@ -55,10 +55,10 @@ async function seed () {
   ])
 
   const categories = await Promise.all([
-    Category.create({ name: 'COLUMBIAN', description: 'the finest coffee from columbia' }),
+    Category.create({ name: 'COLUMBIAN', description: 'the finest coffee from columbia', featured: true }),
     Category.create({ name: 'TEST ONE', description: 'the first test' }),
     Category.create({ name: 'TEST TWO', description: 'the second test' }),
-    Category.create({ name: 'TEST THREE', description: 'the third test' }),
+    Category.create({ name: 'TEST THREE', description: 'the third test', featured: true }),
     Category.create({ name: 'TEST FOUR', description: 'the fourth test' }),
     Category.create({ name: 'TEST FIVE', description: 'the fifth test' }),
     Category.create({ name: 'TEST SIX', description: 'the sixth test' }),

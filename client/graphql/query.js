@@ -43,6 +43,7 @@ export const getAllCategories = gql`
   categories {
     name
     description
+    featured
     products {
       id
       name

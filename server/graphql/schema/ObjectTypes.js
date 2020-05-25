@@ -86,6 +86,7 @@ const CategoryType = new GraphQLObjectType({
   fields: () => ({
     name: { type: GraphQLNonNull(GraphQLString) },
     description: { type: GraphQLNonNull(GraphQLString) },
+    featured: { type: GraphQLBoolean },
     products: {
       type: new GraphQLList(ProductType),
       description: 'category products',
