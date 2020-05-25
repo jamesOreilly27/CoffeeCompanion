@@ -4,10 +4,10 @@ import { Menu, SocialMediaIcon } from '../footer'
 import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 const menus = [
-  { title: 'E-Commerce', subMenus: ['Products', 'Categories', 'Deals', ] },
-  { title: 'Our Partners', subMenus: ['Avigilon', 'Ironyun'] },
-  { title: 'Company', subMenus: ['About Us', 'Contact', 'Quotes'] },
-  { title: 'Your Account', subMenus: ['Login', 'Information', 'Orders'] }
+  { title: 'E-Commerce', subMenus: [ 'Products', 'Categories', 'Deals', ]},
+  { title: 'Our Partners', subMenus: [ 'Avigilon', 'Ironyun' ]},
+  { title: 'Company', subMenus: [ 'About Us', 'Contact', 'Quotes' ]},
+  { title: 'Your Account', subMenus: [ 'Login', 'Information', 'Orders' ]}
 ]
 
 const icons = [
