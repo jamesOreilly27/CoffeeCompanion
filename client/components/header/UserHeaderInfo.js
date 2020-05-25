@@ -17,27 +17,33 @@ const Authlink = styled(Link)`
   font-family: 'Scope One', serif;
 `
 
+const UserMessage = styled.div`
+  margin-right: 8px;
+  margin-left: 6px;
+  font-size: 12px;
+  font-family: 'Scope One', serif;
+`
+
 const Cart = styled(FontAwesomeIcon)`
   color: #0d0d0b;
 `
 
 
-class UserHeaderInfo extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        {console.log('PROPS', this.props)}
-        <Authlink to="/login">Login</Authlink>
-        <Link to="/your-account/orders">
-          <Cart icon={faShoppingCart} />
-        </Link>
-      </Wrapper>
-    )
-  }
-}
+const UserHeaderInfo = ({ user }) => (
+  <Wrapper>
+      {user ?
+        <UserMessage>
+          {`hello ${user.firstName} \u25BE`}
+        </UserMessage>
+        :
+        <Authlink to="/login">
+          Login
+        </Authlink>
+      }
+    <Link to="/your-account/orders">
+      <Cart icon={faShoppingCart} />
+    </Link>
+  </Wrapper>
+)
 
 export default UserHeaderInfo

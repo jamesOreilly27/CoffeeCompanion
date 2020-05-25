@@ -22,7 +22,7 @@ const ContentContainer = styled.div`
 const Main = ({ userQuery, productsQuery, categoriesQuery }) => (
   <Router>
     <ContentContainer>
-      <Header products={productsQuery.products} categories={categoriesQuery.categories} />
+      <Header products={productsQuery.products} categories={categoriesQuery.categories} user={userQuery.currentUser} />
       <Switch>
         <Route exact path='/' render={() => <Homepage products={productsQuery.products} categories={categoriesQuery.categories} /> } />
         <Route exact path='/login' component={Login} />
@@ -43,7 +43,7 @@ const Main = ({ userQuery, productsQuery, categoriesQuery }) => (
         <Route exact path='/categories/:name' component={CategoryHome} />
         <Route exact path='/products/:name' component={ProductDetail} />
       </Switch>
-      {/* <Logout /> */}
+      <Logout />
       <Footer />
     </ContentContainer>
   </Router>

@@ -5,6 +5,7 @@ export const getCurrentUser =  gql`
   {
     currentUser {
       id
+      firstName
       email
       activeCart {
         id

@@ -6,6 +6,7 @@ const UserType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLNonNull(GraphQLInt) },
     email: { type: GraphQLString },
+    firstName: { type: GraphQLString },
     activeCart: {
       type: CartType,
       description: 'Users Active Cart',
