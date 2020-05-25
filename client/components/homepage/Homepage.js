@@ -12,8 +12,8 @@ const Hompage = ({ products, categories }) => (
       <div>
         <Banner />
         <ProductList products={filterFeatured(products)} featured />
-        <CategoriesList categories={filterFeatured(categories)} /> }
-        </div>
+        <CategoriesList categories={filterFeatured(categories)} />
+      </div>
     }
   </div>
 )
