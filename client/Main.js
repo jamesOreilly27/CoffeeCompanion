@@ -11,6 +11,7 @@ import { CategoryHome } from './components/category-home'
 import { UserAccount } from './components/user-account'
 import { ProductDetail } from './components/product-detail'
 import { Homepage } from './components/homepage'
+import { Footer } from './components/footer'
 
 const ContentContainer = styled.div`
   box-sizing: border-box;
@@ -42,7 +43,8 @@ const Main = ({ userQuery, productsQuery, categoriesQuery }) => (
         <Route exact path='/categories/:name' component={CategoryHome} />
         <Route exact path='/products/:name' component={ProductDetail} />
       </Switch>
-      <Logout />
+      {/* <Logout /> */}
+      <Footer />
     </ContentContainer>
   </Router>
 )
