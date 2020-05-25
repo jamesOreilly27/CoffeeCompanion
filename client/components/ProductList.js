@@ -20,6 +20,7 @@ const Title = styled.h1`
   display: flex;
   justify-content: center;
   width: 100%;
+  margin-bottom: 0;
 `
 
 const Container = styled.div`
