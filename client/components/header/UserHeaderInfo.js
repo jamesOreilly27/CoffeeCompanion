@@ -30,6 +30,7 @@ class UserHeaderInfo extends Component {
   render() {
     return (
       <Wrapper>
+        {console.log('PROPS', this.props)}
         <Authlink to="/login">Login</Authlink>
         <Link to="/your-account/orders">
           <Cart icon={faShoppingCart} />
