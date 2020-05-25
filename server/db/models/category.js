@@ -9,6 +9,10 @@ const Category = db.define('category', {
   description: {
     type: Sequelize.STRING,
     allowNull: false
+  },
+  featured: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 

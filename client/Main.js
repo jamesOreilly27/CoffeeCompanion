@@ -4,12 +4,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { getAllProducts, getCurrentUser, getAllCategories } from './graphql'
 import { graphql } from 'react-apollo'
 import { flowRight as compose } from 'lodash'
-import { ProductList, AllCategories, Login, Signup, Logout } from './components'
+import { ProductList, CategoriesList, Login, Signup, Logout } from './components'
 import { OrderList } from './components/user-account'
 import { Header } from './components/header'
 import { CategoryHome } from './components/category-home'
 import { UserAccount } from './components/user-account'
 import { ProductDetail } from './components/product-detail'
+import { Homepage } from './components/homepage'
 
 const ContentContainer = styled.div`
   box-sizing: border-box;
@@ -22,6 +23,7 @@ const Main = ({ userQuery, productsQuery, categoriesQuery }) => (
     <ContentContainer>
       <Header products={productsQuery.products} categories={categoriesQuery.categories} />
       <Switch>
+        <Route exact path='/' render={() => <Homepage products={productsQuery.products} categories={categoriesQuery.categories} /> } />
         <Route exact path='/login' component={Login} />
         <Route exact path='/signup' component={Signup} />
         <Route exact path='/your-account' render={() => <UserAccount user={userQuery.currentUser} />} />
@@ -36,9 +38,9 @@ const Main = ({ userQuery, productsQuery, categoriesQuery }) => (
           return component
         }} />
         <Route exact path='/products/all' render={() => <ProductList products={productsQuery.products} /> } />
+        <Route exact path='/categories/all' render={() => <CategoriesList categories={categoriesQuery.categories} /> } />
         <Route exact path='/categories/:name' component={CategoryHome} />
         <Route exact path='/products/:name' component={ProductDetail} />
-        <Route exact path='/categories/all' component={AllCategories} />
       </Switch>
       <Logout />
     </ContentContainer>

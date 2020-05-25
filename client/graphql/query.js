@@ -43,6 +43,7 @@ export const getAllCategories = gql`
   categories {
     name
     description
+    featured
     products {
       id
       name
@@ -77,6 +78,7 @@ export const getAllProducts = gql`
       description
       image
       price
+      featured
       categories {
         name
       }

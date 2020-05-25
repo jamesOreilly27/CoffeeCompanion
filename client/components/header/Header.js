@@ -11,10 +11,10 @@ const Wrapper = styled.header`
 const Container = styled.div`
   display: flex;
   width: 100%;
-  height: 6vh;
+  height: 10vh;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 2vh;
 `
 
 const Header = ({ products, categories }) => (
