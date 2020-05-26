@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Autocomplete } from '@material-ui/lab'
 import { TextField } from '@material-ui/core'
-import { getProductByName, getOneCategory } from '../../graphql'
-import { Redirect } from 'react-router-dom'
 import { nameToUrl } from '../helpers'
 import history from '../history'
 
