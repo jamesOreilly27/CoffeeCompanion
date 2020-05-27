@@ -11,7 +11,7 @@ const Wrapper = styled.div`
 
 const AdminList = ({ products }) => (
   <Wrapper>
-    {products.map(product => <AdminCard product={product} />)}
+    {products.map(product => <AdminCard key={product.id} product={product} />)}
   </Wrapper>
 )
 

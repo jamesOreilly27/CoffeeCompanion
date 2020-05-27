@@ -39,9 +39,9 @@ const SocialMediaContainer = styled.div`
 const Footer = () => {
   return (
     <Wrapper>
-      { menus.map(menu => <Menu key={menu.title} title={menu.title} subMenus={menu.subMenus}/> )}
+      { menus.map(menu => <Menu key={menu.title} title={menu.title} subMenus={menu.subMenus} /> )}
       <SocialMediaContainer>
-        { icons.map(icon => <SocialMediaIcon icon={icon.type} link={icon.link} /> )}
+        { icons.map(icon => <SocialMediaIcon key={icon.link} icon={icon.type} link={icon.link} /> )}
       </SocialMediaContainer>
     </Wrapper>
   )
