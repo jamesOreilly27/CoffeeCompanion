@@ -11,7 +11,7 @@ const Wrapper = styled(Link)`
   color: #0D0D0B;
 `
 
-const AdminLink = ({ linkTo, handleClick }) => (
+const AdminLink = ({ linkTo }) => (
   <Wrapper to={`/admin/${linkTo.toLowerCase()}`}>
     {linkTo}
   </Wrapper>
