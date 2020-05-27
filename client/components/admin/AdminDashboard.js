@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Route, Switch } from 'react-router-dom'
-import { AdminLink, Products, Customers, Orders, Materials, Bids } from '../admin'
+import { AdminLink, Customers, Orders, Materials, Bids } from '../admin'
+import { Products } from './products'
 
 const Wrapper = styled.div`
 
@@ -53,7 +54,7 @@ class AdminDashboard extends Component {
             </Navbar>
             <Switch>
               <Route exact path="/admin/customers" component={Customers} />
-              <Route exact path="/admin/products" component={Products} />
+              <Route exact path="/admin/products" render={() => <Products products={this.props.products} /> } />
               <Route exact path="/admin/orders" component={Orders} />
               <Route exact path="/admin/materials" component={Materials} />
               <Route exact path="/admin/bids" component={Bids} />

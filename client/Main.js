@@ -56,7 +56,7 @@ class Main extends Component {
             <Route exact path='/categories/all' render={() => <CategoriesList categories={this.props.categoriesQuery.categories} />} />
             <Route exact path='/categories/:name' component={CategoryHome} />
             <Route exact path='/products/:name' component={ProductDetail} />
-            <Route path="/admin" render={() => <AdminDashboard user={this.props.userQuery.currentUser} /> } />
+            <Route path="/admin" render={() => <AdminDashboard user={this.props.userQuery.currentUser} products={this.props.productsQuery.products} /> } />
           </Switch>
           <Logout handleClick={this.controlLoginState} />
           <Footer />

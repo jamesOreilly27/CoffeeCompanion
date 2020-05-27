@@ -55,8 +55,7 @@ const createProduct = {
     description: { type: GraphQLString },
     price: { type: GraphQLInt },
     inventory: { type: GraphQLInt },
-    image: { type: GraphQLString },
-    featured: { type: GraphQLBoolean }
+    image: { type: GraphQLString }
   },
   resolve: create
 }

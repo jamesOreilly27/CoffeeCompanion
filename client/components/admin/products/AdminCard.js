@@ -5,10 +5,10 @@ const Wrapper = styled.div`
 
 `
 
-const Products = () => (
+const AdminCard = () => (
   <Wrapper>
-    Hello From Products
+    AdminCard
   </Wrapper>
 )
 
-export default Products
+export default AdminCard
