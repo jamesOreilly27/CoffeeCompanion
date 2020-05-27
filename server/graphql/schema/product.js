@@ -1,4 +1,4 @@
-const { GraphQLList, GraphQLInt, GraphQLString } = require('graphql')
+const { GraphQLList, GraphQLInt, GraphQLString, GraphQLBoolean } = require('graphql')
 const { Product } = require('../../db/models')
 const { ProductType, ProductDetailType } = require('./ObjectTypes')
 
@@ -19,6 +19,11 @@ const getByNameResolver = (parent, args) => {
   return Product.findOne({ where: { name: args.name } })
   .then(product => product)
   .catch(err => console.log(err))
+}
+
+const create = (parent, args) => {
+  console.log('TESTING', args)
+  return true
 }
 
 //Fields
@@ -42,4 +47,18 @@ const getProductByName = {
   resolve: getByNameResolver
 }
 
-module.exports = { products, productDetails, getProductByName }
+const createProduct = {
+  type: ProductDetailType,
+  description: 'Add a product to the database',
+  args: {
+    name: { type: GraphQLString },
+    description: { type: GraphQLString },
+    price: { type: GraphQLInt },
+    inventory: { type: GraphQLInt },
+    image: { type: GraphQLString },
+    featured: { type: GraphQLBoolean }
+  },
+  resolve: create
+}
+
+module.exports = { products, productDetails, getProductByName, createProduct }
