@@ -10,11 +10,12 @@ const logoutMutation = gql`
   }
 `
 
-const Logout = () => {
+const Logout = ({ handleClick }) => {
   const [logout, { data }] = useMutation(logoutMutation)
   return (
     <button onClick={() => {
       logout()
+      handleClick()
       history.push('/login')
     }}>
       { data && data.logout && <Redirect to="/" /> }

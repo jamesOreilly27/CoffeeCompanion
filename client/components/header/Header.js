@@ -17,13 +17,13 @@ const Container = styled.div`
   margin-bottom: 2vh;
 `
 
-const Header = ({ products, categories, user }) => (
+const Header = ({ products, categories, loggedIn }) => (
   <Wrapper>
     <Container>
       <Logo />
       <Navbar />
       <NavSearch products={products} categories={categories} />
-      <UserHeaderInfo user={user} />
+      <UserHeaderInfo loggedIn={loggedIn} />
     </Container>
   </Wrapper>
 )

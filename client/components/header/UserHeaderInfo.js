@@ -11,17 +11,11 @@ const Wrapper = styled.div`
 `
 
 const Authlink = styled(Link)`
-  margin-right: 8px;
+  margin: 0 12px;
   text-decoration: none;
   color: #0d0b0b;
   font-family: 'Scope One', serif;
-`
-
-const UserMessage = styled.div`
-  margin-right: 8px;
-  margin-left: 6px;
-  font-size: 12px;
-  font-family: 'Scope One', serif;
+  font-size: 13px;
 `
 
 const Cart = styled(FontAwesomeIcon)`
@@ -29,17 +23,17 @@ const Cart = styled(FontAwesomeIcon)`
 `
 
 
-const UserHeaderInfo = ({ user }) => (
+const UserHeaderInfo = ({ loggedIn }) => (
   <Wrapper>
-      {user ?
-        <UserMessage>
-          {`hello ${user.firstName} \u25BE`}
-        </UserMessage>
-        :
-        <Authlink to="/login">
-          Login
-        </Authlink>
-      }
+    {loggedIn ?
+      <Authlink to="/your-account">
+        {`Account \u25BE`}
+      </Authlink>
+    :
+      <Authlink to="/login">
+        {`Account \u25BE`}
+      </Authlink>
+    }
     <Link to="/your-account/orders">
       <Cart icon={faShoppingCart} />
     </Link>

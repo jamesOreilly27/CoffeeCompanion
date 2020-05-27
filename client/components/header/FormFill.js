@@ -30,7 +30,7 @@ const FormFill = ({ selectOptions, displayValue }) => (
         id="nav-search"
         renderInput={(params) => <TextField {...params} label="Search..." variant="outlined" />}
         size="small"
-        style={{ width: 160 }}
+        style={{ width: 140 }}
         options={selectOptions()}
         getOptionLabel={option => option.name}
         onInputChange={(evt, value, reason) => {
