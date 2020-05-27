@@ -60,6 +60,7 @@ class Login extends Component {
           <div>
             <Form onSubmit={evt => {
               evt.preventDefault()
+              this.props.handleSubmit()
               sendCreds({ variables: { email: evt.target.email.value, password: evt.target.password.value }})
             }}>
               { data && data.loginUser && <Redirect to='/products/all' /> }

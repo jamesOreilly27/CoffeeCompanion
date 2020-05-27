@@ -1,9 +1,7 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Autocomplete } from '@material-ui/lab'
 import { TextField } from '@material-ui/core'
-import { getProductByName, getOneCategory } from '../../graphql'
-import { Redirect } from 'react-router-dom'
 import { nameToUrl } from '../helpers'
 import history from '../history'
 
@@ -32,7 +30,7 @@ const FormFill = ({ selectOptions, displayValue }) => (
         id="nav-search"
         renderInput={(params) => <TextField {...params} label="Search..." variant="outlined" />}
         size="small"
-        style={{ width: 160 }}
+        style={{ width: 140 }}
         options={selectOptions()}
         getOptionLabel={option => option.name}
         onInputChange={(evt, value, reason) => {

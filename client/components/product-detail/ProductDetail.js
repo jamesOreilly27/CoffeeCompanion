@@ -83,7 +83,6 @@ class ProductDetail extends Component {
 
   render() {
     const product = this.props.detailQuery.productDetails
-    console.log('PRODUCT', product)
     const user = this.props.userQuery.currentUser
     return (
       <Wrapper>

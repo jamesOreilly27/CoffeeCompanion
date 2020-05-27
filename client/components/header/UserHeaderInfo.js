@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -11,10 +11,11 @@ const Wrapper = styled.div`
 `
 
 const Authlink = styled(Link)`
-  margin-right: 8px;
+  margin: 0 12px;
   text-decoration: none;
   color: #0d0b0b;
   font-family: 'Scope One', serif;
+  font-size: 13px;
 `
 
 const Cart = styled(FontAwesomeIcon)`
@@ -22,21 +23,21 @@ const Cart = styled(FontAwesomeIcon)`
 `
 
 
-class UserHeaderInfo extends Component {
-  constructor(props) {
-    super(props)
-  }
-
-  render() {
-    return (
-      <Wrapper>
-        <Authlink to="/login">Login</Authlink>
-        <Link to="/your-account/orders">
-          <Cart icon={faShoppingCart} />
-        </Link>
-      </Wrapper>
-    )
-  }
-}
+const UserHeaderInfo = ({ loggedIn }) => (
+  <Wrapper>
+    {loggedIn ?
+      <Authlink to="/your-account">
+        {`Account \u25BE`}
+      </Authlink>
+    :
+      <Authlink to="/login">
+        {`Account \u25BE`}
+      </Authlink>
+    }
+    <Link to="/your-account/orders">
+      <Cart icon={faShoppingCart} />
+    </Link>
+  </Wrapper>
+)
 
 export default UserHeaderInfo

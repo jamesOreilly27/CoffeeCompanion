@@ -10,7 +10,7 @@ const Icon = styled(FontAwesomeIcon)`
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #FFF;
+  color: #EDEDED;
 `
 
 const SocialMediaIcon = ({ icon, link }) => (
