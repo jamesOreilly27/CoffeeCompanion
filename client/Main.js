@@ -44,7 +44,7 @@ class Main extends Component {
             <Route exact path='/your-account/orders' render={() => {
               let component
               {
-                userQuery.currentUser ?
+                this.props.userQuery.currentUser ?
                   component = <OrderList orders={this.props.userQuery.currentUser.orders} activeCart={this.props.userQuery.currentUser.activeCart} />
                   :
                   component = <Login />
