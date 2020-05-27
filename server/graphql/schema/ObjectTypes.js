@@ -7,6 +7,7 @@ const UserType = new GraphQLObjectType({
     id: { type: GraphQLNonNull(GraphQLInt) },
     email: { type: GraphQLString },
     firstName: { type: GraphQLString },
+    isAdmin: { type: GraphQLBoolean },
     activeCart: {
       type: CartType,
       description: 'Users Active Cart',

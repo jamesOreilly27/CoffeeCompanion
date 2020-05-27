@@ -11,6 +11,7 @@ import { CategoryHome } from './components/category-home'
 import { UserAccount } from './components/user-account'
 import { ProductDetail } from './components/product-detail'
 import { Homepage } from './components/homepage'
+import { AdminDashboard } from './components/admin'
 import { Footer } from './components/footer'
 
 const ContentContainer = styled.div`
@@ -55,6 +56,7 @@ class Main extends Component {
             <Route exact path='/categories/all' render={() => <CategoriesList categories={this.props.categoriesQuery.categories} />} />
             <Route exact path='/categories/:name' component={CategoryHome} />
             <Route exact path='/products/:name' component={ProductDetail} />
+            <Route exact path="/admin" render={() => <AdminDashboard user={this.props.userQuery.currentUser} /> } />
           </Switch>
           <Logout handleClick={this.controlLoginState} />
           <Footer />
