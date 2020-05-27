@@ -1,6 +1,7 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
-import { AdminLink } from '../admin'
+import { Route, Switch } from 'react-router-dom'
+import { AdminLink, Products, Customers, Orders, Materials, Bids } from '../admin'
 
 const Wrapper = styled.div`
 
@@ -18,7 +19,7 @@ const Title = styled.h1`
 
 const Navbar = styled.div`
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   width: 98vw;
   height: 5vh;
@@ -36,17 +37,32 @@ const adminTools = [
   { name: "Bids" }
 ]
 
-const AdminDashboard = ({ user }) => (
-  <Wrapper>
-    { user && user.isAdmin &&
-      <Container>
-        <Title> Dashboard </Title>
-        <Navbar>
-          {adminTools.map(tool => <AdminLink linkTo={tool.name} /> )}
-        </Navbar>
-      </Container>
-    }
-  </Wrapper>
-)
+class AdminDashboard extends Component {
+  constructor(props) {
+    super(props)
+  }
+
+  render() {
+    return (
+      <Wrapper>
+        {this.props.user && this.props.user.isAdmin &&
+          <Container>
+            <Title> Admin Dashboard </Title>
+            <Navbar>
+              {adminTools.map(tool => <AdminLink key={tool.name} linkTo={tool.name} />)}
+            </Navbar>
+            <Switch>
+              <Route exact path="/admin/customers" component={Customers} />
+              <Route exact path="/admin/products" component={Products} />
+              <Route exact path="/admin/orders" component={Orders} />
+              <Route exact path="/admin/materials" component={Materials} />
+              <Route exact path="/admin/bids" component={Bids} />
+            </Switch>
+          </Container>
+        }
+      </Wrapper>
+    )
+  }
+}
 
 export default AdminDashboard

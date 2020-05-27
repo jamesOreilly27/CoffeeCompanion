@@ -4,15 +4,15 @@ import { Link } from 'react-router-dom'
 
 const Wrapper = styled(Link)`
   text-decoration: none;
-  width: 70px;
-  margin: 0 3vw;
+  margin-right: 10vw;
   display: flex;
   justify-content: center;
   font-size: 20px;
+  color: #0D0D0B;
 `
 
-const AdminLink = ({ linkTo }) => (
-  <Wrapper to={`/admin/${linkTo}`}>
+const AdminLink = ({ linkTo, handleClick }) => (
+  <Wrapper to={`/admin/${linkTo.toLowerCase()}`}>
     {linkTo}
   </Wrapper>
 )
