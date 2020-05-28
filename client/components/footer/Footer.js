@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Menu, SocialMediaIcon } from '../footer'
-import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'
 
 const menus = [
   { title: 'E-Commerce', subMenus: [ 'Products', 'Categories', 'Deals', ]},
@@ -11,10 +10,10 @@ const menus = [
 ]
 
 const icons = [
-  {type: faFacebook, link: '//www.facebook.com/fssvirtualguard/'},
-  {type: faTwitter, link: '/'},
-  {type: faInstagram, link: '//www.instagram.com/fastrack_security_solutions/'},
-  {type: faLinkedin, link: '//www.linkedin.com/company/fastrack-virtual-guard'}
+  {type: 'facebook', link: '//www.facebook.com/fssvirtualguard/'},
+  {type: 'twitter', link: '/'},
+  {type: 'instagram', link: '//www.instagram.com/fastrack_security_solutions/'},
+  {type: 'linkedin', link: '//www.linkedin.com/company/fastrack-virtual-guard'}
 ]
 
 const Wrapper = styled.div`
@@ -39,9 +38,9 @@ const SocialMediaContainer = styled.div`
 const Footer = () => {
   return (
     <Wrapper>
-      { menus.map(menu => <Menu key={menu.title} title={menu.title} subMenus={menu.subMenus}/> )}
+      { menus.map(menu => <Menu key={menu.title} title={menu.title} subMenus={menu.subMenus} /> )}
       <SocialMediaContainer>
-        { icons.map(icon => <SocialMediaIcon icon={icon.type} link={icon.link} /> )}
+        { icons.map(icon => <SocialMediaIcon key={icon.link} icon={["fab", icon.type]} link={icon.link} /> )}
       </SocialMediaContainer>
     </Wrapper>
   )

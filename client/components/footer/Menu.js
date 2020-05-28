@@ -19,7 +19,7 @@ const Menu = ({ title, subMenus }) => {
   return (
     <Wrapper>
       <Title>{ title }</Title>
-      { subMenus && subMenus.map(item => <MenuItem item={item} />) } 
+      { subMenus && subMenus.map(item => <MenuItem key={item.title} item={item} />) } 
     </Wrapper>
   )
 }

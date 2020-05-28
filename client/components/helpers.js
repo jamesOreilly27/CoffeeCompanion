@@ -28,3 +28,5 @@ export const urlToName = urlEnding => {
   }
   return name.toUpperCase()
 }
+
+export const filterFeatured = array => array.filter(index => index.featured)

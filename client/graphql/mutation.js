@@ -1,5 +1,7 @@
 import { gql } from 'apollo-boost'
 
+/********** Cart Functions **********/
+
 //Add and Remove from Cart
 export const addToCart = gql`
   mutation($productId: Int!, $cartId: Int!, $price: Int!, $quantity: Int!) {
@@ -36,5 +38,14 @@ export const decrementQty = gql`
     decrementQty(id: $id) {
       quantity
     }
+  }
+`
+
+/********** Admin Tools **********/
+
+//Products
+export const createProduct = gql`
+  mutation($name: String!, $description: String!, $price: Int!, $inventory: Int!, $image: String!) {
+    createProduct(name: $name, description: $description, price: $price, inventory: $inventory, image: $image)
   }
 `

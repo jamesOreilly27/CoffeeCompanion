@@ -1,8 +1,7 @@
 import React from 'react'
 import { Banner } from '../homepage'
 import { ProductList, CategoriesList } from '../../components'
-
-const filterFeatured = array => array.filter(index => index.featured)
+import { filterFeatured } from '../helpers'
 
 const Hompage = ({ products, categories }) => (
   <div>

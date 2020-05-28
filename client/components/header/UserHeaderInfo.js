@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShoppingCart } from '@fortawesome/free-solid-svg-icons'
 
 const Wrapper = styled.div`
   display: flex;
@@ -35,7 +34,7 @@ const UserHeaderInfo = ({ loggedIn }) => (
       </Authlink>
     }
     <Link to="/your-account/orders">
-      <Cart icon={faShoppingCart} />
+      <Cart icon={['fa', 'shopping-cart']} />
     </Link>
   </Wrapper>
 )

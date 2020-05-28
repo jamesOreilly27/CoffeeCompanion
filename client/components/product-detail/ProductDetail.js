@@ -7,7 +7,6 @@ import { getProductDetail, getCurrentUser } from '../../graphql'
 import { AddToCart, ReviewDisplay } from '../product-detail'
 import { Alert, AlertTitle } from '@material-ui/lab'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImage } from '@fortawesome/free-solid-svg-icons'
 import { urlToName } from '../helpers'
 
 const Wrapper = styled.div`
@@ -88,7 +87,7 @@ class ProductDetail extends Component {
       <Wrapper>
         {product && user &&
           <Container>
-            <Image icon={faImage} size="10x"></Image>
+            <Image icon={['fa', 'image']} size="10x"></Image>
             <InfoContainer>
               <Title>{product.name}</Title>
               <ReviewDisplay reviews={product.reviews} />
