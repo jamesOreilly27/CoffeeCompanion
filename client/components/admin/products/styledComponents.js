@@ -10,6 +10,11 @@ export const AdminContainer = styled.div`
 `
 
 export const Label = styled.h4`
+  display: flex;
+  align-items: center;
   margin: 0;
-  margin-top: 7px;
+  padding-left: 8px;
+  width: 100%;
+  height: 3.5vh;
+  border-bottom: 3px solid #EAEDED;
 `
