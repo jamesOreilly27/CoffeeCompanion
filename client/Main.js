@@ -66,8 +66,9 @@ class Main extends Component {
   }
 }
 
-export default compose(
-  graphql(getCurrentUser, { name: 'userQuery' }),
-  graphql(getAllProducts, { name: 'productsQuery' }),
-  graphql(getAllCategories, { name: 'categoriesQuery' })
-)(Main)
+export default (Main)
+
+// compose(
+//   graphql(getCurrentUser, { name: 'userQuery' }),
+//   graphql(getAllProducts, { name: 'productsQuery' }),
+//   graphql(getAllCategories, { name: 'categoriesQuery' })
