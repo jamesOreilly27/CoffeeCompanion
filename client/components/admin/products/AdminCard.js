@@ -7,8 +7,8 @@ import Products from './Products'
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 13vw;
+  align-items: center;
+  padding: 5px 0;
 `
 
 const Title = styled.div`

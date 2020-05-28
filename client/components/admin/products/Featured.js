@@ -6,13 +6,7 @@ import { AdminContainer, Label } from './styledComponents'
 const Wrapper = styled(AdminContainer)`
   display: flex;
   flex-direction: column;
-`
-
-const Edit = styled.div`
-  margin: 10px;
-  font-size: 10px;
-  text-decoration: underline;
-  cursor: pointer;
+  padding-bottom: 15px;
 `
 
 class Featured extends Component {
@@ -32,7 +26,6 @@ class Featured extends Component {
       <Wrapper width={65}>
         <Label> Featured </Label>
         <AdminList products={this.props.products} />
-        <Edit onClick={this.flipEditMode}> Edit </Edit>
       </Wrapper>
     )
   }

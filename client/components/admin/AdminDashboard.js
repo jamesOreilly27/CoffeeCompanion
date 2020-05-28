@@ -22,11 +22,11 @@ const Navbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 98vw;
+  width: 95vw;
   height: 5vh;
   background-color: #FFF;
   border-radius: 4px;
-  margin-bottom: 5vh;
+  margin-bottom: 1vh;
   padding: 10px;
 `
 

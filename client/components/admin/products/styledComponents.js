@@ -10,5 +10,6 @@ export const AdminContainer = styled.div`
 `
 
 export const Label = styled.h4`
-  margin: 5px 0 0 5px;
+  margin: 0;
+  margin-top: 7px;
 `
