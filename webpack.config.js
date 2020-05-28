@@ -1,6 +1,5 @@
 const path = require('path')
 const webpack = require('webpack')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
 const CompressionPlugin = require('compression-webpack-plugin')
 const LodashModuleReplacementPlugin = require('lodash-webpack-plugin')
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin
@@ -33,7 +32,6 @@ module.exports = {
     new CompressionPlugin()
   ],
   optimization: {
-    minimizer: [new UglifyJsPlugin()],
     runtimeChunk: 'single',
     splitChunks: {
       cacheGroups: {
