@@ -6,7 +6,7 @@ const expressStaticGzip = require("express-static-gzip")
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const passport = require('passport')
 const sessionStore = new SequelizeStore({ db })
-// const chalk = require('chalk')
+const chalk = require('chalk')
 const path = require('path'); 
 const PORT = process.env.PORT || 8332
 const https = require('https')
@@ -63,13 +63,13 @@ const syncDb = () => db.sync()
 const startListen = () => {
   PORT === 8332 ?
     app.listen(PORT, () => {
-      // console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`))
-      // console.log(chalk.red.bgWhite.bold('Now browse to localhost:8332/graphql'))
+      console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`))
+      console.log(chalk.red.bgWhite.bold('Now browse to localhost:8332/graphql'))
     })
     :
     server.listen(PORT, () => {
-      // console.log(chalk.blue.bgWhite.bold(`We are live on port ${server.address().port}`))
-      // console.log(chalk.red(PORT))
+      console.log(chalk.blue.bgWhite.bold(`We are live on port ${server.address().port}`))
+      console.log(chalk.red(PORT))
     })
 }
 
