@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 const db = require('./db')
 const session = require('express-session')
+const expressStaticGzip = require("express-static-gzip")
 const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const passport = require('passport')
 const sessionStore = new SequelizeStore({ db })
@@ -47,8 +48,8 @@ const createApp = () => {
 
   app.use(`/graphql`, require('./graphql'))
 
-  app.use(express.static(path.join(__dirname, '..', 'public')))
-  app.use('/static', express.static(path.join(__dirname, 'public')))
+  app.use(expressStaticGzip(path.join(__dirname, '..', 'public')))
+  app.use('/static', expressStaticGzip(path.join(__dirname, 'public')))
   app.use('*', (req, res, next) => res.sendFile(path.join(__dirname, '..', 'public', 'index.html')))
 }
 
