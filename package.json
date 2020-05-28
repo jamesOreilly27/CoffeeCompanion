@@ -64,6 +64,7 @@
     "webpack-bundle-analyzer": "^3.8.0"
   },
   "engines": {
-    "node": "10.15.3"
+    "node": "10.15.3",
+    "npm": "6.4.1"
   }
 }
