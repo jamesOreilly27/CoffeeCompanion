@@ -35,7 +35,7 @@ app.use((req, res, next) => {
   next()
 })
 
-const options = {}
+let options = {}
 
 !process.env.PORT ?
     options = {
