@@ -4,9 +4,7 @@ import { AdminList } from '../products'
 import { AdminContainer, Label } from './styledComponents'
 
 const Wrapper = styled(AdminContainer)`
-  display: flex;
-  flex-direction: column;
-  padding-bottom: 15px;
+  
 `
 
 class Featured extends Component {
