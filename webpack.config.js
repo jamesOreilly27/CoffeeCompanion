@@ -18,6 +18,7 @@ module.exports = {
       exclude: /(node_modules|bower_components)/,
       loader: 'babel-loader',
       query: {
+        plugins: ['lodash'],
         presets: ['react', 'es2015', 'env']
       }
     }, {
@@ -27,7 +28,7 @@ module.exports = {
     }]
   },
   plugins: [
-    new LodashModuleReplacementPlugin,
+    new LodashModuleReplacementPlugin({ "currying": true, "flattening": true }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new CompressionPlugin(),
     new BundleAnalyzerPlugin()

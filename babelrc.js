@@ -1,4 +1,4 @@
-// const presets = [ "env", "es2015", "react"]
+const presets = [ "env", "es2015", "react"]
 
 const plugins = [
   [
@@ -17,7 +17,8 @@ const plugins = [
       'camel2DashComponentName': false
     },
     'icons'
-  ]
+  ],
+  "lodash"
 ]
 
-module.exports = { plugins }
+module.exports = { plugins, presets }
