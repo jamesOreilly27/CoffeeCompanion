@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImage } from '@fortawesome/free-solid-svg-icons'
-import Products from './Products'
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,7 +19,7 @@ const Price = styled.div`
 
 const AdminCard = ({ product }) => (
   <Wrapper>
-    <FontAwesomeIcon icon={faImage} size="5x" />
+    <FontAwesomeIcon icon={["fa", "image"]} size="5x" />
     <Title>{product.name}</Title>
     <Price>{`$${product.price}`}</Price>
   </Wrapper>

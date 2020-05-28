@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faImage } from '@fortawesome/free-solid-svg-icons'
 import { QtyContainer } from '../user-account'
 import { Mutation } from 'react-apollo'
 import { removeFromCart } from '../../graphql'
@@ -72,7 +71,7 @@ const Lineitem = ({ lineitem }) => {
       {(removeItem, { data }) => (
         <Wrapper>
           <LeftContainer>
-            <Image icon={faImage} size="6x" />
+            <Image icon={['fa', 'image']} size="6x" />
             <ItemDetails>
               <Title>
                 {lineitem.product.name}
