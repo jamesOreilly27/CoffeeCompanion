@@ -13,6 +13,10 @@ public/vendors.bundle.js.map
 public/vendors.bundle.js.map.gz
 public/0.bundle.js
 public/0.bundle.js.gz
+public/0.bundle.js.map
+public/0.bundle.js.map.gz
+public/2.bundle.js.map
+public/2.bundle.js.map.gz
 public/2.bundle.js
 public/2.bundle.js.gz
 public/assets

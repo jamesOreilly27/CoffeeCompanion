@@ -7,7 +7,7 @@
     "build": "webpack --mode production",
     "build-clent-watch": "webpack -w",
     "start": "node server/app.js",
-    "start-dev": "webpack --mode development -w & nodemon server/app.js --ignore /client --ignore /public",
+    "start-dev": "webpack --mode production -w & nodemon server/app.js --ignore /client --ignore /public",
     "seed": "node seed.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
