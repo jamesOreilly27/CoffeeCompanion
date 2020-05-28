@@ -35,12 +35,17 @@ app.use((req, res, next) => {
   next()
 })
 
-const options = {
-  key: fs.readFileSync( `${dir}/ssl/localhost/localhost.key` ),
-  cert: fs.readFileSync( `${dir}/ssl/localhost/localhost.crt` ),
-  requestCert: false,
-  rejectUnauthorized: false
-}
+const options = {}
+
+!process.env.PORT ?
+    options = {
+      key: fs.readFileSync( `${dir}/ssl/localhost/localhost.key` ),
+      cert: fs.readFileSync( `${dir}/ssl/localhost/localhost.crt` ),
+      requestCert: false,
+      rejectUnauthorized: false
+    }
+  :
+    options = {}
 
 const server = https.createServer(options, app)
 
