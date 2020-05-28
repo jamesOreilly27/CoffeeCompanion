@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const AdminContainer = styled.div`
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   background-color: #FFF;
   width: ${({ width }) => `${width}vw`};
   border-radius: 4px;
