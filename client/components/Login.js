@@ -17,37 +17,10 @@ const sendCreds = () => {
   const input = { email: '', password: '' }
 }
 
-// const Form = styled.form`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   justify-content: space-around;
-//   width: 98vw;
-// `
-
-// const Label = styled.label`
-//   display: flex;
-//   flex-direction: column;
-//   align-items: flex-start;
-//   margin-bottom: 2rem;
-//   font-family: 'DM Mono', monospace;
-// `
-
-// const LabelName = styled.div`
-//   margin-bottom: 3vh;
-// `
-
 const SubmitButton = styled.button`
   border-radius: .5vw;
   font-size: .875em;
 `
-
-// const Input = styled.input`
-//   height: 5.5vh;
-//   border: 1px solid #CCC;
-//   border-radius: .3em;
-//   font-size: .875em;
-// `
 
 class Login extends Component {
   constructor(props) {
