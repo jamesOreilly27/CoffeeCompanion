@@ -5,8 +5,8 @@ import { AdminCard } from '../products'
 const Wrapper = styled.div`
   display: flex;
   width: 100%;
-  justify-content: space-evenly;
-
+  justify-content: flex-start;
+  flex-wrap: wrap;
 `
 
 const AdminList = ({ products }) => (
