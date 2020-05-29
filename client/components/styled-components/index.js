@@ -39,6 +39,16 @@ export const LabelName = styled.div`
   margin-bottom: ${({ margin }) => `${margin}vh`};
 `
 
+export const Select = styled.select`
+  width: 100%;
+  height: ${({ height }) => `${height}vh`};
+  border: 1px solid #CCC;
+`
+
+export const Option = styled.option`
+
+`
+
 export const TextInput = styled.input`
   height: 3.5vh;
   width: 100%;

@@ -31,27 +31,27 @@ async function seed () {
   ])
 
   const products = await Promise.all([
-    Product.create({name: 'LIGHT ROAST', description: 'so fresh', price: 50, inventory: 562, image: '', featured: true }),
-    Product.create({name: 'DARK ROAST', description: 'dark and toasty', price: 35, inventory: 250, image: '', featured: true }),
-    Product.create({name: 'DONUT SHOP', description: 'American Classic', price: 15, inventory: 562, image: '' }),
-    Product.create({name: 'CARAMEL', description: 'sweet goodness', price: 40, inventory: 562, image: '', featured: true }),
-    Product.create({name: 'VANILLA', description: 'this vanilla isnt boring', price: 70, inventory: 562, image: '' }),
-    Product.create({name: 'ICED COFFEE', description: 'for the cold lovers', price: 95, inventory: 562, image: '' }),
-    Product.create({name: 'MASTER BLEND', description: 'the blend will make you want more', price: 40, inventory: 562, image: '' }),
-    Product.create({name: 'HOUSE BLEND', description: 'for around the hosue', price: 35, inventory: 562, image: '' }),
-    Product.create({name: 'TEST ONE', description: 'Test', price: 25, inventory: 562, image: '' }),
-    Product.create({name: 'TEST TWO', description: 'Test', price: 55, inventory: 562, image: '' }),
-    Product.create({name: 'TEST THREE', description: 'Test', price: 10, inventory: 562, image: '' }),
-    Product.create({name: 'TEST FOUR', description: 'Test', price: 8, inventory: 562, image: '' }),
-    Product.create({name: 'TEST FIVE', description: 'Test', price: 13, inventory: 562, image: '' }),
-    Product.create({name: 'TEST SIX', description: 'Test', price: 25, inventory: 562, image: '' }),
-    Product.create({name: 'TEST SEVEN', description: 'Test', price: 50, inventory: 562, image: '' }),
-    Product.create({name: 'TEST EIGHT', description: 'Test', price: 34, inventory: 562, image: '' }),
-    Product.create({name: 'TEST NINE', description: 'Test', price: 12, inventory: 562, image: '' }),
-    Product.create({name: 'TEST TEN', description: 'Test', price: 65, inventory: 562, image: '' }),
-    Product.create({name: 'TEST ELEVEN', description: 'Test', price: 89, inventory: 562, image: '' }),
-    Product.create({name: 'TEST TWELVE', description: 'Test', price: 99, inventory: 562, image: '' }),
-    Product.create({name: 'TEST THIRTEEN', description: 'Test', price: 109, inventory: 562, image: '' })
+    Product.create({name: 'LIGHT ROAST', description: 'so fresh', price: 50, image: '', featured: true }),
+    Product.create({name: 'DARK ROAST', description: 'dark and toasty', price: 35, image: '', featured: true }),
+    Product.create({name: 'DONUT SHOP', description: 'American Classic', price: 15, image: '' }),
+    Product.create({name: 'CARAMEL', description: 'sweet goodness', price: 40, image: '', featured: true }),
+    Product.create({name: 'VANILLA', description: 'this vanilla isnt boring', price: 70, image: '' }),
+    Product.create({name: 'ICED COFFEE', description: 'for the cold lovers', price: 95, image: '' }),
+    Product.create({name: 'MASTER BLEND', description: 'the blend will make you want more', price: 40, image: '' }),
+    Product.create({name: 'HOUSE BLEND', description: 'for around the hosue', price: 35, image: '' }),
+    Product.create({name: 'TEST ONE', description: 'Test', price: 25, image: '' }),
+    Product.create({name: 'TEST TWO', description: 'Test', price: 55, image: '' }),
+    Product.create({name: 'TEST THREE', description: 'Test', price: 10, image: '' }),
+    Product.create({name: 'TEST FOUR', description: 'Test', price: 8, image: '' }),
+    Product.create({name: 'TEST FIVE', description: 'Test', price: 13, image: '' }),
+    Product.create({name: 'TEST SIX', description: 'Test', price: 25, image: '' }),
+    Product.create({name: 'TEST SEVEN', description: 'Test', price: 50, image: '' }),
+    Product.create({name: 'TEST EIGHT', description: 'Test', price: 34, image: '' }),
+    Product.create({name: 'TEST NINE', description: 'Test', price: 12, image: '' }),
+    Product.create({name: 'TEST TEN', description: 'Test', price: 65, image: '' }),
+    Product.create({name: 'TEST ELEVEN', description: 'Test', price: 89, image: '' }),
+    Product.create({name: 'TEST TWELVE', description: 'Test', price: 99, image: '' }),
+    Product.create({name: 'TEST THIRTEEN', description: 'Test', price: 109, image: '' })
   ])
 
   const categories = await Promise.all([

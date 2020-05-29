@@ -95,7 +95,6 @@ query($name: String!) {
    name
    description
    price
-   inventory
    reviews {
      content
      rating
