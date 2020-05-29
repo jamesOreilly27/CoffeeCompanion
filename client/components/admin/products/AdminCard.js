@@ -16,6 +16,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin: 3px;
+  padding: 2vh 0;
   background-color: #FFF;
 `
 
