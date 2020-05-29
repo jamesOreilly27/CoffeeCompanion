@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
-import { Form, Label, LabelName, TextInput } from './styled-components'
+import { Form, Label, LabelName, TextInput, Button } from './styled-components'
 import styled from 'styled-components'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
@@ -13,14 +13,15 @@ mutation($email: String!, $password: String!) {
 }
 `
 
+const Wrapper = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+`
+
 const sendCreds = () => {
   const input = { email: '', password: '' }
 }
-
-const SubmitButton = styled.button`
-  border-radius: .5vw;
-  font-size: .875em;
-`
 
 class Login extends Component {
   constructor(props) {
@@ -31,27 +32,27 @@ class Login extends Component {
     return (
       <Mutation mutation={loginMutation}>
         {(sendCreds, { data }) => (
-          <div>
-            <Form width={98} onSubmit={evt => {
+          <Wrapper>
+            <Form width={25} onSubmit={evt => {
               evt.preventDefault()
               this.props.handleSubmit()
               sendCreds({ variables: { email: evt.target.email.value, password: evt.target.password.value }})
             }}>
               { data && data.loginUser && <Redirect to='/products/all' /> }
               { data && data.loginUser && history.push('/products/all') }
-              <Label>
-                <LabelName>Email</LabelName>
+              <Label margin={1}>
+                <LabelName margin={1}>Email</LabelName>
                 <TextInput type="email" name="email" required />
               </Label>
-              <Label>
-                <LabelName>Password</LabelName>
+              <Label margin={1}>
+                <LabelName margin={1}>Password</LabelName>
                 <TextInput type="text" name="password" required />
               </Label>
-              <SubmitButton>
+              <Button type="submit" backgroundColor="#2091E8" color="#F8F8FF" margin={1}>
                 Login
-              </SubmitButton>
+              </Button>
             </Form>
-          </div>
+          </Wrapper>
         )}
       </Mutation>
     )

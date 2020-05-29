@@ -6,36 +6,51 @@ export const Button = styled.button`
   color: ${({ color }) => color };
   width: 150px;
   border-radius: 4px;
-  border: ${({ color }) => `1px solid ${color}`}
+  border: ${({ color }) => `1px solid ${color}`};
   outline: none;
   height: 40px;
   cursor: pointer;
+  margin: ${({ margin }) => `${margin}vh 0`}
 `
 
 //Form Control
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-around;
   width: ${({ width }) => `${width}vw`};
 `
 
 export const Label = styled.label`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin-bottom: 2rem;
+  margin-bottom: ${({ margin }) => `${margin}vh`};
   font-family: 'DM Mono', monospace;
 `
 
+export const HalfLabel = styled(Label)`
+  width: 45%;
+`
+
 export const LabelName = styled.div`
-  margin-bottom: 3vh;
+  margin-bottom: ${({ margin }) => `${margin}vh`};
 `
 
 export const TextInput = styled.input`
-  height: 5.5vh;
+  height: 3.5vh;
+  width: 100%;
   border: 1px solid #CCC;
   border-radius: .3em;
   font-size: .875em;
+`
+
+export const TextArea = styled.textarea`
+  resize: none;
+  width: 100%;
+  height: 5vh;
+  border: 1px solid #CCC;
+  border-radius: .3em;
 `
