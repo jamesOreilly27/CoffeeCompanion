@@ -45,7 +45,7 @@ export const decrementQty = gql`
 
 //Products
 export const createProduct = gql`
-  mutation($name: String!, $description: String!, $price: Int!, $inventory: Int!, $image: String!) {
-    createProduct(name: $name, description: $description, price: $price, inventory: $inventory, image: $image)
+  mutation($name: String!, $description: String!, $price: Int!, $image: String!, $featured: Boolean!) {
+    createProduct(name: $name, description: $description, price: $price, image: $image, featured: $featured)
   }
 `

@@ -7,7 +7,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const passport = require('passport')
 const sessionStore = new SequelizeStore({ db })
 const chalk = require('chalk')
-const path = require('path'); 
+const path = require('path');
 const PORT = process.env.PORT || 8332
 const https = require('https')
 const fs = require('fs')
@@ -39,14 +39,14 @@ app.use((req, res, next) => {
 // let server
 
 !process.env.PORT ?
-    options = {
-      key: fs.readFileSync( `${dir}/ssl/localhost/localhost.key` ),
-      cert: fs.readFileSync( `${dir}/ssl/localhost/localhost.crt` ),
-      requestCert: false,
-      rejectUnauthorized: false
-    }
+  options = {
+    key: fs.readFileSync(`${dir}/ssl/localhost/localhost.key`),
+    cert: fs.readFileSync(`${dir}/ssl/localhost/localhost.crt`),
+    requestCert: false,
+    rejectUnauthorized: false
+  }
   :
-    options = {}
+  options = {}
 
 const createApp = () => {
 
@@ -62,17 +62,10 @@ const createApp = () => {
 const syncDb = () => db.sync()
 
 const startListen = () => {
-  PORT === 8332 ?
-    app.listen(PORT, () => {
-      console.log('FIRING')
-      console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`))
-      console.log(chalk.red.bgWhite.bold('Now browse to localhost:8332/graphql'))
-    })
-    :
-    app.listen(PORT, () => {
-      console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`))
-      console.log(chalk.red(PORT))
-    })
+  app.listen(PORT, () => {
+    console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`))
+    console.log(chalk.red.bgWhite.bold('Now browse to /graphql'))
+  })
 }
 
 if (require.main === module) {

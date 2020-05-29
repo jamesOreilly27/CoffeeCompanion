@@ -36,7 +36,6 @@ const ProductType = new GraphQLObjectType({
     name: { type: GraphQLString },
     description: { type: GraphQLString },
     price: { type: GraphQLNonNull(GraphQLInt) },
-    inventory: { type: GraphQLNonNull(GraphQLInt) },
     image: { type: GraphQLString },
     featured: { type: GraphQLBoolean},
     categories: {
@@ -58,7 +57,6 @@ const ProductDetailType = new GraphQLObjectType({
     name: { type: GraphQLString },
     description: { type: GraphQLString },
     price: { type: GraphQLNonNull(GraphQLInt) },
-    inventory: { type: GraphQLNonNull(GraphQLInt) },
     image: { type: GraphQLString },
     reviews: {
       type: new GraphQLList(ReviewType),

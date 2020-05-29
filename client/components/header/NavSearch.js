@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Select, MenuItem } from '@material-ui/core'
+import Select from '@material-ui/core/Select'
+import MenuItem from '@material-ui/core/MenuItem'
 import { FormFill } from '../header'
 import history from '../history'
 import { nameToUrl } from '../helpers'

@@ -1,6 +1,7 @@
 
 import React, { Component } from 'react'
 import { Redirect } from 'react-router-dom'
+import { Form, Label, LabelName, TextInput, Button } from './styled-components'
 import styled from 'styled-components'
 import { gql } from 'apollo-boost'
 import { Mutation } from 'react-apollo'
@@ -12,41 +13,15 @@ mutation($email: String!, $password: String!) {
 }
 `
 
+const Wrapper = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+`
+
 const sendCreds = () => {
   const input = { email: '', password: '' }
 }
-
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: space-around;
-  width: 98vw;
-`
-
-const Label = styled.label`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  margin-bottom: 2rem;
-  font-family: 'DM Mono', monospace;
-`
-
-const LabelName = styled.div`
-  margin-bottom: 3vh;
-`
-
-const SubmitButton = styled.button`
-  border-radius: .5vw;
-  font-size: .875em;
-`
-
-const Input = styled.input`
-  height: 5.5vh;
-  border: 1px solid #CCC;
-  border-radius: .3em;
-  font-size: .875em;
-`
 
 class Login extends Component {
   constructor(props) {
@@ -57,27 +32,27 @@ class Login extends Component {
     return (
       <Mutation mutation={loginMutation}>
         {(sendCreds, { data }) => (
-          <div>
-            <Form onSubmit={evt => {
+          <Wrapper>
+            <Form width={25} padding={0} onSubmit={evt => {
               evt.preventDefault()
               this.props.handleSubmit()
               sendCreds({ variables: { email: evt.target.email.value, password: evt.target.password.value }})
             }}>
               { data && data.loginUser && <Redirect to='/products/all' /> }
               { data && data.loginUser && history.push('/products/all') }
-              <Label>
-                <LabelName>Email</LabelName>
-                <Input type="email" name="email" required />
+              <Label margin={1}>
+                <LabelName margin={1}> Email </LabelName>
+                <TextInput type="email" name="email" required />
               </Label>
-              <Label>
-                <LabelName>Password</LabelName>
-                <Input type="text" name="password" required />
+              <Label margin={1}>
+                <LabelName margin={1}> Password </LabelName>
+                <TextInput type="text" name="password" required />
               </Label>
-              <SubmitButton>
+              <Button type="submit" backgroundColor="#2091E8" color="#F8F8FF" margin={1}>
                 Login
-              </SubmitButton>
+              </Button>
             </Form>
-          </div>
+          </Wrapper>
         )}
       </Mutation>
     )

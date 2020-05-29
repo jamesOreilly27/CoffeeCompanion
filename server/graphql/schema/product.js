@@ -22,7 +22,9 @@ const getByNameResolver = (parent, args) => {
 }
 
 const create = (parent, args) => {
-  console.log('TESTING', args)
+  Product.create(args)
+  .then(product => console.log(product))
+  .catch(err => console.log(err))
   return true
 }
 
@@ -48,14 +50,14 @@ const getProductByName = {
 }
 
 const createProduct = {
-  type: ProductDetailType,
+  type: GraphQLBoolean,
   description: 'Add a product to the database',
   args: {
     name: { type: GraphQLString },
     description: { type: GraphQLString },
     price: { type: GraphQLInt },
-    inventory: { type: GraphQLInt },
-    image: { type: GraphQLString }
+    image: { type: GraphQLString },
+    featured: { type: GraphQLBoolean }
   },
   resolve: create
 }
