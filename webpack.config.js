@@ -29,8 +29,7 @@ module.exports = {
   plugins: [
     new LodashModuleReplacementPlugin({ "currying": true, "flattening": true }),
     new webpack.optimize.ModuleConcatenationPlugin(),
-    new CompressionPlugin(),
-    new BundleAnalyzerPlugin()
+    new CompressionPlugin()
   ],
   optimization: {
     runtimeChunk: 'single',
