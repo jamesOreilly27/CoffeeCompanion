@@ -20,6 +20,7 @@ export const Form = styled.form`
   align-items: center;
   justify-content: space-around;
   width: ${({ width }) => `${width}vw`};
+  padding-top: ${({ padding }) => `${padding}vh`}
 `
 
 export const Label = styled.label`

@@ -33,7 +33,7 @@ class Login extends Component {
       <Mutation mutation={loginMutation}>
         {(sendCreds, { data }) => (
           <Wrapper>
-            <Form width={25} onSubmit={evt => {
+            <Form width={25} padding={0} onSubmit={evt => {
               evt.preventDefault()
               this.props.handleSubmit()
               sendCreds({ variables: { email: evt.target.email.value, password: evt.target.password.value }})
@@ -41,11 +41,11 @@ class Login extends Component {
               { data && data.loginUser && <Redirect to='/products/all' /> }
               { data && data.loginUser && history.push('/products/all') }
               <Label margin={1}>
-                <LabelName margin={1}>Email</LabelName>
+                <LabelName margin={1}> Email </LabelName>
                 <TextInput type="email" name="email" required />
               </Label>
               <Label margin={1}>
-                <LabelName margin={1}>Password</LabelName>
+                <LabelName margin={1}> Password </LabelName>
                 <TextInput type="text" name="password" required />
               </Label>
               <Button type="submit" backgroundColor="#2091E8" color="#F8F8FF" margin={1}>

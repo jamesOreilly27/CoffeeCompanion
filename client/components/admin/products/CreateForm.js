@@ -40,7 +40,7 @@ class CreateForm extends Component {
       <Mutation mutation={createProduct}>
         {(sendData, { data }) => (
           <Wrapper>
-            <Form width={25} onSubmit={evt => {
+            <Form width={25} padding={3} onSubmit={evt => {
               evt.preventDefault()
               sendData({
                 variables: {
