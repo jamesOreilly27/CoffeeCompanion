@@ -9,9 +9,9 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 `
 
-const AdminList = ({ products }) => (
+const AdminList = ({ products, all, featured }) => (
   <Wrapper>
-    {products.map(product => <AdminCard key={product.id} product={product} />)}
+    {products.map(product => <AdminCard key={product.id} product={product} all={all} featured={featured} />)}
   </Wrapper>
 )
 

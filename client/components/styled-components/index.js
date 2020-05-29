@@ -2,15 +2,15 @@ import styled from 'styled-components'
 
 //Buttons
 export const Button = styled.button`
+  width: ${({ width }) => `${width}%`};
+  height: ${({ height }) => `${height}px`};
   background-color: ${({ backgroundColor }) => backgroundColor };
-  color: ${({ color }) => color };
-  width: 150px;
+  color: #F8F8FF;
   border-radius: 4px;
-  border: ${({ color }) => `1px solid ${color}`};
+  border: 1px solid #F8F8FF;
   outline: none;
-  height: 40px;
   cursor: pointer;
-  margin: ${({ margin }) => `${margin}vh 0`}
+  margin: 1vh 0;
 `
 
 //Form Control

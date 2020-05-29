@@ -59,7 +59,7 @@ class Products extends Component {
               {`${this.showOrHide()} Products`}
             </Show>
             {this.state.showAll &&
-              <AdminList products={this.props.products} />
+              <AdminList products={this.props.products} all />
             }
           </Container>
         }

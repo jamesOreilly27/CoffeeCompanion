@@ -48,7 +48,7 @@ class Login extends Component {
                 <LabelName margin={1}> Password </LabelName>
                 <TextInput type="text" name="password" required />
               </Label>
-              <Button type="submit" backgroundColor="#2091E8" color="#F8F8FF" margin={1}>
+              <Button type="submit" backgroundColor="#2091E8" width={70} height={40}>
                 Login
               </Button>
             </Form>

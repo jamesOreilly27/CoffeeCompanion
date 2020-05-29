@@ -23,7 +23,7 @@ class Featured extends Component {
     return (
       <Wrapper width={65}>
         <Label> Featured </Label>
-        <AdminList products={this.props.products} />
+        <AdminList products={this.props.products} featured/>
       </Wrapper>
     )
   }

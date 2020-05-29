@@ -81,7 +81,7 @@ class CreateForm extends Component {
                   </Select>
                 </HalfLabel>
               </FlexContainer>
-              <Button type="submit" backgroundColor="#2091E8" color="#F8F8FF" margin={3}>
+              <Button type="submit" backgroundColor="#2091E8" width={70} height={40}>
                 Create
               </Button>
             </Form>
