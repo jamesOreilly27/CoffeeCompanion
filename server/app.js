@@ -35,7 +35,8 @@ app.use((req, res, next) => {
   next()
 })
 
-let options = {}
+// let options = {}
+// let server
 
 !process.env.PORT ?
     options = {
@@ -47,8 +48,6 @@ let options = {}
   :
     options = {}
 
-const server = https.createServer(options, app)
-
 const createApp = () => {
 
   app.use(`/graphql`, require('./graphql'))
@@ -56,6 +55,8 @@ const createApp = () => {
   app.use(expressStaticGzip(path.join(__dirname, '..', 'public')))
   app.use('/static', expressStaticGzip(path.join(__dirname, 'public')))
   app.use('*', (req, res, next) => res.sendFile(path.join(__dirname, '..', 'public', 'index.html')))
+
+  // server = https.createServer(options, app)
 }
 
 const syncDb = () => db.sync()
@@ -63,12 +64,13 @@ const syncDb = () => db.sync()
 const startListen = () => {
   PORT === 8332 ?
     app.listen(PORT, () => {
+      console.log('FIRING')
       console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`))
       console.log(chalk.red.bgWhite.bold('Now browse to localhost:8332/graphql'))
     })
     :
-    server.listen(PORT, () => {
-      console.log(chalk.blue.bgWhite.bold(`We are live on port ${server.address().port}`))
+    app.listen(PORT, () => {
+      console.log(chalk.blue.bgWhite.bold(`We are live on port ${PORT}`))
       console.log(chalk.red(PORT))
     })
 }
