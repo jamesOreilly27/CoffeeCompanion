@@ -1,5 +1,6 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, GraphQLBoolean } = require('graphql')
 
+/********** User Related ObjectTypes **********/
 const UserType = new GraphQLObjectType({
   name: 'user',
   description: 'logged in user',
@@ -29,6 +30,7 @@ const UserType = new GraphQLObjectType({
   })
 })
 
+/********** Product Related ObjectTypes **********/
 const ProductType = new GraphQLObjectType({
   name: 'product',
   fields: () => ({
@@ -54,10 +56,11 @@ const ProductDetailType = new GraphQLObjectType({
   name: 'ProductDetail',
   fields: () => ({
     id: { type: GraphQLInt },
-    name: { type: GraphQLString },
-    description: { type: GraphQLString },
+    name: { type: GraphQLNonNull(GraphQLString) },
+    description: { type: GraphQLNonNull(GraphQLString) },
     price: { type: GraphQLNonNull(GraphQLInt) },
-    image: { type: GraphQLString },
+    image: { type: GraphQLNonNull(GraphQLString) },
+    featured: { type: GraphQLBoolean },
     reviews: {
       type: new GraphQLList(ReviewType),
       description: 'a list of reviews for this product',
@@ -80,6 +83,7 @@ const ReviewType = new GraphQLObjectType({
   })
 })
 
+/********** Category Related ObjectTypes ***********/
 const CategoryType = new GraphQLObjectType({
   name: 'category',
   description: 'Different groupings of products',
@@ -99,6 +103,7 @@ const CategoryType = new GraphQLObjectType({
   })
 })
 
+/********** Cart Related ObjectTypes ***********/
 const LineItemType = new GraphQLObjectType({
   name: 'lineitem',
   description: 'a line item from a cart',

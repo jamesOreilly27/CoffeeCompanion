@@ -21,16 +21,25 @@ const getByNameResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
-const create = (parent, args) => {
-  Product.create(args)
-  .then(product => console.log(product))
-  .catch(err => console.log(err))
-  return true
+const upsert = (parent, args) => {
+  console.log('ARGS', args)
+  return Product.findOne({ where: { name: args.name } })
+  .then(product => {
+    if(product) {
+      return product.update(args)
+    }
+    else {
+      return Product.create(args)
+    .then(product => product)
+    .catch(err => console.log(err))
+    }
+  })
 }
 
 const destroy = (parent, args) => {
   return Product.destroy({ where: { name: args.name } })
-  .then(() => true)
+  .then(() => args.name)
+  .catch(err => console.log(err))
 }
 
 //Fields
@@ -54,8 +63,8 @@ const getProductByName = {
   resolve: getByNameResolver
 }
 
-const createProduct = {
-  type: GraphQLBoolean,
+const upsertProduct = {
+  type: ProductDetailType,
   description: 'Add a product to the database',
   args: {
     name: { type: GraphQLString },
@@ -64,14 +73,14 @@ const createProduct = {
     image: { type: GraphQLString },
     featured: { type: GraphQLBoolean }
   },
-  resolve: create
+  resolve: upsert
 }
 
 const destroyProduct = {
-  type: GraphQLBoolean,
+  type: GraphQLString,
   description: 'Remove a Product from the database',
   args: { name: { type: GraphQLString } },
   resolve: destroy
 }
 
-module.exports = { products, productDetails, getProductByName, createProduct, destroyProduct }
+module.exports = { products, productDetails, getProductByName, upsertProduct, destroyProduct }

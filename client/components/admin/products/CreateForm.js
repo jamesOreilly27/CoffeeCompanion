@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Mutation } from 'react-apollo'
-import { createProduct } from '../../../graphql'
+import { upsertProduct } from '../../../graphql'
 import { Form, Label, LabelName, Select, Option, TextInput, HalfLabel, TextArea, Button } from '../../styled-components'
 
 const Wrapper = styled.div`
@@ -37,7 +37,7 @@ class CreateForm extends Component {
 
   render() {
     return (
-      <Mutation mutation={createProduct}>
+      <Mutation mutation={upsertProduct}>
         {(sendData, { data }) => (
           <Wrapper>
             <Form width={25} padding={3} onSubmit={evt => {
