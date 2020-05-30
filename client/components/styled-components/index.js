@@ -14,7 +14,6 @@ export const Title = styled.h1`
     if(margin) return `${margin}vh 0`
     else return `0`
   }};
-
   font-size: ${({ size }) => {
     if(size === 'sm') return `14px`
     if(size === 'med') return `18px`
@@ -92,7 +91,33 @@ export const EaseAlert = styled(Alert)`
   animation: ${easeInAlert} .8s ease;
 `
 
-//Product Details
+/********** Product Details **********/
 export const Image = styled(FontAwesomeIcon)`
   flex: 0 0 50%;
+`
+
+export const InfoContainer = styled.div`
+  display: flex;
+  flex: 0 0 50%;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 45vh;
+`
+
+//Price Details
+export const PriceContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 30px 0;
+`
+
+export const PriceHeader = styled.div`
+  font-size: 12px;
+`
+
+export const Price = styled.div`
+  font-size: 42px;
+  font-weight: bold;
 `
