@@ -1,6 +1,7 @@
 import React from 'react'
 import { Redirect } from "react-router-dom"
 import styled from 'styled-components'
+import { Title } from './styled-components'
 import { useLazyQuery } from '@apollo/react-hooks'
 import Autocomplete from '@material-ui/lab/Autocomplete'
 import TextField from '@material-ui/core/TextField'
@@ -14,13 +15,6 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   font-family: 'Poppins', sans-serif;
-`
-
-const Title = styled.h1`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  margin-bottom: 0;
 `
 
 const Container = styled.div`

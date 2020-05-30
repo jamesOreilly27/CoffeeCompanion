@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Button } from '../../styled-components'
+import { Title } from '../../styled-components'
 import { RemoveButton, UpdateButton } from '../products'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
@@ -27,10 +27,6 @@ const CardWrapper = styled.div`
   align-items: center;
 `
 
-const Title = styled.div`
-  font-size: 14px;
-`
-
 const Price = styled.div`
   font-size: 14px;
 `
@@ -46,7 +42,7 @@ const AdminCard = ({ product, all, featured }) => (
   <Wrapper>
     <CardWrapper>
       <FontAwesomeIcon icon={["fa", "image"]} size="5x" />
-      <Title>{product.name}</Title>
+      <Title size="sm">{product.name}</Title>
       <Price>{`$${product.price}`}</Price>
     </CardWrapper>
     {all &&

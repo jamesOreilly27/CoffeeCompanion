@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { EaseAlert } from '../styled-components'
+import { EaseAlert, Title } from '../styled-components'
 import AlertTitle from '@material-ui/lab/AlertTitle'
 import { flowRight as compose } from 'lodash'
 import { graphql } from 'react-apollo'
@@ -34,10 +34,6 @@ const InfoContainer = styled.div`
   flex-direction: column;
   align-items: flex-start;
   height: 45vh;
-`
-
-const Title = styled.h1`
-  margin-bottom: 0;
 `
 
 const PriceContainer = styled.div`

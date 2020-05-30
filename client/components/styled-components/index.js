@@ -1,10 +1,25 @@
 import styled, { keyframes } from 'styled-components'
 import Alert from '@material-ui/lab/Alert'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 //keyframes
 const easeInAlert = keyframes`
   from { opacity: 0; }
   to { opacity: 1; }
+`
+
+//Headers
+export const Title = styled.h1`
+  margin: ${({ margin }) => {
+    if(margin) return `${margin}vh 0`
+    else return `0`
+  }};
+
+  font-size: ${({ size }) => {
+    if(size === 'sm') return `14px`
+    if(size === 'med') return `18px`
+    else return ''
+  }};
 `
 
 //Buttons
@@ -75,4 +90,9 @@ export const TextArea = styled.textarea`
 
 export const EaseAlert = styled(Alert)`
   animation: ${easeInAlert} .8s ease;
+`
+
+//Product Details
+export const Image = styled(FontAwesomeIcon)`
+  flex: 0 0 50%;
 `

@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Title } from '../styled-components'
 import Background from '../../images/banner-background.jpg'
 
 const Wrapper = styled.div`
@@ -19,10 +20,6 @@ const Message = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 26vh;
-`
-
-const Title = styled.h1`
-  margin: 0;
 `
 
 const Subtitle = styled.div`
