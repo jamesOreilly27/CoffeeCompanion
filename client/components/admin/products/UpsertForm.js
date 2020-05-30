@@ -14,7 +14,7 @@ const FlexContainer = styled.div`
   width: 100%;
 `
 
-class CreateForm extends Component {
+class UpsertForm extends Component {
   constructor(props) {
     super(props)
 
@@ -41,7 +41,6 @@ class CreateForm extends Component {
         {(sendData, { data }) => (
           <Wrapper>
             <Form width={25} padding={3} onSubmit={evt => {
-              evt.preventDefault()
               sendData({
                 variables: {
                   name: evt.target.name.value.toUpperCase(),
@@ -82,7 +81,7 @@ class CreateForm extends Component {
                 </HalfLabel>
               </FlexContainer>
               <Button type="submit" backgroundColor="#2091E8" width={70} height={40}>
-                Create
+                {this.props.type}
               </Button>
             </Form>
           </Wrapper>
@@ -92,4 +91,4 @@ class CreateForm extends Component {
   }
 }
 
-export default CreateForm
+export default UpsertForm

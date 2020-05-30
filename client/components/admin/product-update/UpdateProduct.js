@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Title, Image, InfoContainer, PriceContainer, PriceHeader, Price } from '../../styled-components'
+import { UpsertForm } from '../products'
 import { ReviewDisplay } from '../../product-detail'
 import { getProductDetail } from '../../../graphql'
 import { graphql } from 'react-apollo'
@@ -16,6 +17,8 @@ const Wrapper = styled.div`
 const Container = styled.div`
   display: flex;
   justify-content: center;
+  width: 98vw;
+  justify-content: space-around;
 `
 
 const DetailContainer = styled.div`
@@ -46,6 +49,7 @@ class UpdateProduct extends Component {
                 </PriceContainer>
               </InfoContainer>
             </DetailContainer>
+            <UpsertForm type="Update" />
           </Container>
         }
       </Wrapper>
