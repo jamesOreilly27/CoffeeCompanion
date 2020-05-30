@@ -1,5 +1,5 @@
 const { GraphQLObjectType, GraphQLSchema } = require('graphql')
-const { products, productDetails, getProductByName, createProduct } = require('./product')
+const { products, productDetails, getProductByName, createProduct, destroyProduct } = require('./product')
 const { categories, singleCategory } = require('./category')
 const { carts, removeFromCart, addToCart, incrementQty, decrementQty } = require('./cart')
 const { currentUser, loginUser, logout } = require('./user')
@@ -26,7 +26,8 @@ const Mutation = new GraphQLObjectType({
     addToCart,
     incrementQty,
     decrementQty,
-    createProduct
+    createProduct,
+    destroyProduct
   }
 })
 

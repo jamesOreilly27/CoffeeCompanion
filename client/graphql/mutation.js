@@ -49,3 +49,9 @@ export const createProduct = gql`
     createProduct(name: $name, description: $description, price: $price, image: $image, featured: $featured)
   }
 `
+
+export const deleteProduct = gql`
+  mutation($name: String!) {
+    destroyProduct(name: $name)
+  }
+`

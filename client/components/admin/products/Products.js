@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { Add, Featured } from '../products'
+import { Add, Featured, AdminList } from '../products'
 import { filterFeatured } from '../../helpers'
 
 const Wrapper = styled.div`
@@ -41,19 +41,26 @@ class Products extends Component {
     this.setState({ showAll: !this.state.showAll })
   }
 
+  showOrHide() {
+    if(!this.state.showAll) return 'Show'
+    else return 'Hide'
+  }
+
   render() {
     return (
       <Wrapper>
         {this.props.products &&
           <Container>
-            {console.log('STATE', this.state.showAll)}
             <AddAndContainers>
               <Add />
               <Featured products={filterFeatured(this.props.products)} />
             </AddAndContainers>
             <Show onClick={this.flipShowAll}>
-              Show All Products
+              {`${this.showOrHide()} Products`}
             </Show>
+            {this.state.showAll &&
+              <AdminList products={this.props.products} all />
+            }
           </Container>
         }
       </Wrapper>

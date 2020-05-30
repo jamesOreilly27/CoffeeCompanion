@@ -28,6 +28,11 @@ const create = (parent, args) => {
   return true
 }
 
+const destroy = (parent, args) => {
+  return Product.destroy({ where: { name: args.name } })
+  .then(() => true)
+}
+
 //Fields
 const products = {
   type: new GraphQLList(ProductType),
@@ -62,4 +67,11 @@ const createProduct = {
   resolve: create
 }
 
-module.exports = { products, productDetails, getProductByName, createProduct }
+const destroyProduct = {
+  type: GraphQLBoolean,
+  description: 'Remove a Product from the database',
+  args: { name: { type: GraphQLString } },
+  resolve: destroy
+}
+
+module.exports = { products, productDetails, getProductByName, createProduct, destroyProduct }

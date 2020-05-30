@@ -1,16 +1,23 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+import Alert from '@material-ui/lab/Alert'
+
+//keyframes
+const easeInAlert = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`
 
 //Buttons
 export const Button = styled.button`
+  width: ${({ width }) => `${width}%`};
+  height: ${({ height }) => `${height}px`};
   background-color: ${({ backgroundColor }) => backgroundColor };
-  color: ${({ color }) => color };
-  width: 150px;
+  color: #F8F8FF;
   border-radius: 4px;
-  border: ${({ color }) => `1px solid ${color}`};
+  border: 1px solid #F8F8FF;
   outline: none;
-  height: 40px;
   cursor: pointer;
-  margin: ${({ margin }) => `${margin}vh 0`}
+  margin: 1vh 0;
 `
 
 //Form Control
@@ -64,4 +71,8 @@ export const TextArea = styled.textarea`
   height: 5vh;
   border: 1px solid #CCC;
   border-radius: .3em;
+`
+
+export const EaseAlert = styled(Alert)`
+  animation: ${easeInAlert} .8s ease;
 `
