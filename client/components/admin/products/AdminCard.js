@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../../styled-components'
-import { RemoveButton } from '../products'
+import { RemoveButton, UpdateButton } from '../products'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Wrapper = styled.div`
@@ -51,9 +51,7 @@ const AdminCard = ({ product, all, featured }) => (
     </CardWrapper>
     {all &&
       <ButtonsContainer>
-        <Button backgroundColor="#2091E8" width={100} height={33}>
-          Update
-        </Button>
+        <UpdateButton product={product} />
         <RemoveButton product={product} />
       </ButtonsContainer>
     }
