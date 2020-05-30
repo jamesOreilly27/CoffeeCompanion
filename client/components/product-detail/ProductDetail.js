@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
-import styled, { keyframes } from 'styled-components'
+import styled from 'styled-components'
+import { EaseAlert } from '../styled-components'
+import AlertTitle from '@material-ui/lab/AlertTitle'
 import { flowRight as compose } from 'lodash'
 import { graphql } from 'react-apollo'
 import { getProductDetail, getCurrentUser } from '../../graphql'
 import { AddToCart, ReviewDisplay } from '../product-detail'
-import Alert from '@material-ui/lab/Alert'
-import AlertTitle from '@material-ui/lab/AlertTitle'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { urlToName } from '../helpers'
 
@@ -57,15 +57,6 @@ const Price = styled.div`
   font-weight: bold;
 `
 
-const easeInAlert = keyframes`
-  from { opacity: 0; }
-  to { opacity: 1; }
-`
-
-const CartAlert = styled(Alert)`
-  animation: ${easeInAlert} .8s ease;
-`
-
 const CartLink = styled(Link)`
   text-decoration: none;
 `
@@ -98,10 +89,10 @@ class ProductDetail extends Component {
               </PriceContainer>
               <AddToCart cartId={user.activeCart.id} productId={product.id} price={product.price} flipAlertActive={this.flipAlertActive} />
               {this.state.alertActive &&
-                <CartAlert severity="success" onClose={() => { this.flipAlertActive() } }>
+                <EaseAlert severity="success" onClose={() => { this.flipAlertActive() } }>
                   <AlertTitle>Added To Cart</AlertTitle>
                   <CartLink to="/your-account/orders"> Checkout </CartLink>
-                </CartAlert>
+                </EaseAlert>
               }
             </InfoContainer>
           </Container>

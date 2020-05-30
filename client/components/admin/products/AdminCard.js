@@ -1,17 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../../styled-components'
+import { RemoveButton } from '../products'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Wrapper = styled.div`
   @media(max-width: 960px) {
-    flex: 0 0 23%
+    flex: 0 0 31%
   }
   @media(max-width: 640px) {
-    flex: 0 0 31%;
+    flex: 0 0 48%;
   }
   @media(max-width: 450px) {
-    flex: 0 0 48%;
+    flex: 0 0 85%;
   }
   display: flex;
   justify-content: space-around;
@@ -53,9 +54,7 @@ const AdminCard = ({ product, all, featured }) => (
         <Button backgroundColor="#2091E8" width={100} height={33}>
           Update
         </Button>
-        <Button backgroundColor="red" width={100} height={33}>
-          Remove
-        </Button>
+        <RemoveButton product={product} />
       </ButtonsContainer>
     }
   </Wrapper>

@@ -1,4 +1,11 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+import Alert from '@material-ui/lab/Alert'
+
+//keyframes
+const easeInAlert = keyframes`
+  from { opacity: 0; }
+  to { opacity: 1; }
+`
 
 //Buttons
 export const Button = styled.button`
@@ -64,4 +71,8 @@ export const TextArea = styled.textarea`
   height: 5vh;
   border: 1px solid #CCC;
   border-radius: .3em;
+`
+
+export const EaseAlert = styled(Alert)`
+  animation: ${easeInAlert} .8s ease;
 `
