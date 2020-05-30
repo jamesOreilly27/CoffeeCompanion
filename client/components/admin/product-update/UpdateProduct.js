@@ -49,7 +49,7 @@ class UpdateProduct extends Component {
                 </PriceContainer>
               </InfoContainer>
             </DetailContainer>
-            <UpsertForm type="Update" />
+            <UpsertForm type="Update" product={product} />
           </Container>
         }
       </Wrapper>
