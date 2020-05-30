@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Title } from '../styled-components'
 import { MenuItem } from '../footer'
 
 const Wrapper = styled.div`
@@ -10,15 +11,14 @@ const Wrapper = styled.div`
   width: 15vw;
 `
 
-const Title = styled.div`
-  font-size: 12px;
+const LightTitle = styled(Title)`
   color: #ADADAC;
 `
 
 const Menu = ({ title, subMenus }) => {
   return (
     <Wrapper>
-      <Title>{ title }</Title>
+      <LightTitle size="sm"> {title} </LightTitle>
       { subMenus && subMenus.map(item => <MenuItem key={item.title} item={item} />) } 
     </Wrapper>
   )

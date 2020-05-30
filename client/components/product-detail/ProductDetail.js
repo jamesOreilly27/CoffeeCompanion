@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
-import { EaseAlert } from '../styled-components'
+import { EaseAlert, Title, Image, InfoContainer, PriceContainer, PriceHeader, Price } from '../styled-components'
 import AlertTitle from '@material-ui/lab/AlertTitle'
 import { flowRight as compose } from 'lodash'
 import { graphql } from 'react-apollo'
 import { getProductDetail, getCurrentUser } from '../../graphql'
 import { AddToCart, ReviewDisplay } from '../product-detail'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { urlToName } from '../helpers'
 
 const Wrapper = styled.div`
@@ -22,39 +21,6 @@ const Container = styled.div`
   align-items: center;
   width: 100%;
   justify-content: space-evenly;
-`
-
-const Image = styled(FontAwesomeIcon)`
-  flex: 0 0 50%;
-`
-
-const InfoContainer = styled.div`
-  display: flex;
-  flex: 0 0 50%;
-  flex-direction: column;
-  align-items: flex-start;
-  height: 45vh;
-`
-
-const Title = styled.h1`
-  margin-bottom: 0;
-`
-
-const PriceContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  margin: 30px 0;
-`
-
-const PriceHeader = styled.div`
-  font-size: 12px;
-`
-
-const Price = styled.div`
-  font-size: 42px;
-  font-weight: bold;
 `
 
 const CartLink = styled(Link)`

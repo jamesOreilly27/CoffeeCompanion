@@ -15,7 +15,7 @@ async function seed () {
     Cart.create({status: 'open', userId: 2 }),
     Cart.create({status: 'purchased', userId: 2 }),
     Cart.create({status: 'purchased', userId: 1 }),
-    Cart.create({status: 'purchased', userId: 1 }),
+    Cart.create({status: 'open', userId: 1 }),
     Cart.create({status: 'purchased', userId: 2 }),
     Cart.create({status: 'purchased', userId: 2 })
   ])

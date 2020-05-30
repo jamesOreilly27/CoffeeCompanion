@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Title } from '../styled-components'
 
 const Wrapper = styled.div`
   display: flex;
@@ -9,16 +10,12 @@ const Wrapper = styled.div`
   border-bottom: 1px solid #0D0D0B;
 `
 
-const Title = styled.h3`
-  margin: 5px 0 15px 0;
-`
-
 const ActiveCartHeader = ({ isEmpty }) => (
   <Wrapper>
     {isEmpty ?
-      <Title> Your Cart is Empty</Title>
+      <Title margin={1} size="med"> Your Cart is Empty</Title>
     :
-      <Title> Your Cart </Title>
+      <Title margin={1} size="med"> Your Cart </Title>
     }
   </Wrapper>
 )

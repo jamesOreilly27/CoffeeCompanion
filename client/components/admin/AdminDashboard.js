@@ -1,8 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Title } from '../styled-components'
 import { Route, Switch } from 'react-router-dom'
 import { AdminLink, Customers, Orders, Materials, Bids } from '../admin'
 import { Products } from './products'
+import { UpdateProduct } from './product-update'
 
 const Wrapper = styled.div`
 
@@ -12,10 +14,6 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-
-const Title = styled.h1`
-
 `
 
 const Navbar = styled.div`
@@ -48,13 +46,14 @@ class AdminDashboard extends Component {
       <Wrapper>
         {this.props.user && this.props.user.isAdmin &&
           <Container>
-            <Title> Admin Dashboard </Title>
+            <Title margin={2}> Admin Dashboard </Title>
             <Navbar>
               {adminTools.map(tool => <AdminLink key={tool.name} linkTo={tool.name} />)}
             </Navbar>
             <Switch>
               <Route exact path="/admin/customers" component={Customers} />
               <Route exact path="/admin/products" render={() => <Products products={this.props.products} /> } />
+              <Route exact path="/admin/product/:name" component={UpdateProduct} />
               <Route exact path="/admin/orders" component={Orders} />
               <Route exact path="/admin/materials" component={Materials} />
               <Route exact path="/admin/bids" component={Bids} />

@@ -44,9 +44,15 @@ export const decrementQty = gql`
 /********** Admin Tools **********/
 
 //Products
-export const createProduct = gql`
+export const upsertProduct = gql`
   mutation($name: String!, $description: String!, $price: Int!, $image: String!, $featured: Boolean!) {
-    createProduct(name: $name, description: $description, price: $price, image: $image, featured: $featured)
+    upsertProduct(name: $name, description: $description, price: $price, image: $image, featured: $featured) {
+      name
+      description
+      price
+      image
+      featured
+    }
   }
 `
 
