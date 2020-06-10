@@ -98,7 +98,6 @@ class UpsertForm extends Component {
                 <TextArea type="text" name="description" />
               </Label>
               <FlexContainer>
-                {console.log('STATE', this.state)}
                 <HalfLabel margin={1}>
                   <LabelName margin={1}> Price </LabelName>
                   <TextInput type="text" name="price" />

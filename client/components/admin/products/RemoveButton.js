@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Mutation } from 'react-apollo'
-import { deleteProduct } from '../../../graphql'
+import { deleteProduct, getAllProducts } from '../../../graphql'
 import { Button, EaseAlert } from '../../styled-components'
 import AlertTitle from '@material-ui/lab/AlertTitle'
 
@@ -38,7 +38,18 @@ class RemoveButton extends Component {
 
   render() {
     return (
-      <Mutation mutation={deleteProduct}>
+      <Mutation
+        mutation={deleteProduct}
+        update={(cache, { data: { deleteProduct } } ) => {
+          const products = cache.readQuery({ query: getAllProducts }).products
+          console.log('PROPS', this.props.product.name)
+          console.log('FILTER TEST', products.filter(product => product.name !== this.props.product.name))
+          cache.writeQuery({
+            query: getAllProducts,
+            data: { products: products.filter(product => product.name !== this.props.product.name) }
+          })
+        }}
+      >
         {(sendData, { data }) => (
           <Wrapper>
             <Button backgroundColor="#FF6961" width={100} height={33} onClick={this.flipAlertActive}>
