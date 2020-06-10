@@ -6,6 +6,7 @@ const Review = require('./review')
 const Cart = require('./cart')
 const LineItem = require('./lineitem')
 const RawMaterial = require('./rawMaterial')
+const Bid = require('./bid')
 
 /***** Associations ******/
 
@@ -14,13 +15,20 @@ Category.belongsToMany(Product, { through: ProductCategory })
 Product.belongsToMany(Category, { through: ProductCategory })
 
 //Product and RawMaterial
-Product.hasMant(RawMaterial, { as: 'rawMaterials' })
+Product.belongsToMany(RawMaterial, { through: 'kit-pieces' })
+RawMaterial.belongsToMany(Product, { through: 'kit-pieces' })
 
 //Product and Review
 Product.hasMany(Review, { as: 'reviews' })
 
 //Product and Item
 LineItem.belongsTo(Product, { constraints: false })
+
+//Bid and Product
+Bid.hasMany(Product)
+
+//Bid and User
+Bid.hasOne(User)
 
 //Cart and User
 User.hasMany(Cart, { as: 'carts' })
@@ -32,11 +40,12 @@ LineItem.belongsTo(Cart)
 
 module.exports = {
   Product,
-  RawMaterial,
+  Bid,
   Category,
   ProductCategory,
   Review,
   Cart,
   LineItem,
-  User
+  User,
+  RawMaterial
 }

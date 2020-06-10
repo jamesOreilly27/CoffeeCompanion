@@ -14,8 +14,10 @@ const RawMaterial = db.define('raw-material', {
     type: Sequelize.STRING,
     allowNull: false
   },
-  pricePerUnit: Sequelize.STRING,
-  allowNull: false
+  pricePerUnit: {
+    type: Sequelize.STRING,
+    allowNull: false
+  }
 })
 
 module.exports = RawMaterial
