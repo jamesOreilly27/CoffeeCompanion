@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Mutation } from 'react-apollo'
-import { upsertProduct } from '../../../graphql'
+import { upsertProduct, getAllProducts, getProductDetail } from '../../../graphql'
 import { Form, Label, LabelName, Select, Option, TextInput, HalfLabel, TextArea, Button } from '../../styled-components'
 
 const Wrapper = styled.div`
@@ -35,31 +35,56 @@ class UpsertForm extends Component {
     }
   }
 
-  chooseVal(evtVal, prodVal) {
-    if(evtVal) return evtVal
-    else return prodVal
+  insertCallback(cache, data) {
+    const products = cache.readQuery({ query: getAllProducts }).products
+    const updated = [Object.assign(data, { categories: [] } )]
+    cache.writeQuery({
+      query: getAllProducts,
+      data: { products: products.concat([data]) }
+    })
+  }
+
+  updateCallback(cache, data) {
+    const product = cache.readQuery({ query: getProductDetail, variables: { name: data.name } }).productDetails
+    cache.writeQuery({ 
+      query: getProductDetail,
+      data: { productDetails: Object.assign(product, data) }
+    })
+  }
+
+  chooseVal(evt, prod, type) {
+    if (evt.target[type].value) {
+      return type === 'name' ? evt.target[type].value.toUpperCase() : evt.target[type].value
+    }
+    else if (prod) {
+      return prod[type]
+    }
   }
 
   render() {
     return (
-      <Mutation mutation={upsertProduct}>
+      <Mutation
+        mutation={upsertProduct}
+        update={(cache, { data: { upsertProduct } } ) => {
+          if(this.props.type === "Create") {
+            this.insertCallback(cache, upsertProduct)
+          }
+          else {
+            this.updateCallback(cache, upsertProduct)
+          }
+        }}
+      >
         {(sendData, { data }) => (
           <Wrapper>
             <Form width={25} padding={3} onSubmit={evt => {
               evt.preventDefault()
-              console.log({
-                name: evt.target.name.value,
-                description: evt.target.description.value,
-                price: evt.target.price.value,
-                featured: this.parseBool(evt.target.featured.value)
-              })
               sendData({
                 variables: {
-                  name: this.chooseVal(evt.target.name.value.toUpperCase(), this.props.product.name),
-                  description: this.chooseVal(evt.target.description.value, this.props.product.description),
-                  price: this.chooseVal(parseInt(evt.target.price.value), this.props.product.price),
+                  name: this.chooseVal(evt, this.props.product, "name"),
+                  description: this.chooseVal(evt, this.props.product, "description"),
+                  price: parseInt(this.chooseVal(evt, this.props.product, "price")),
                   image: '',
-                  featured: this.parseBool(this.chooseVal(evt.target.featured.value), this.props.product.featured)
+                  featured: this.parseBool(this.chooseVal(evt, this.props.product, "featured"))
                 }
               })
             }}>
