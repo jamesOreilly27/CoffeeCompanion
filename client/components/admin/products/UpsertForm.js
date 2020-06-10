@@ -18,11 +18,13 @@ class UpsertForm extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { featured: '' }
+    this.state = { featured: "placeholder" }
   }
 
   parseBool(string) {
-    return string === 'true'
+    if(string === "true") return true
+    else if(string === "placeholder") return this.props.product.featured
+    else return false
   }
 
   sendData() {
@@ -37,7 +39,6 @@ class UpsertForm extends Component {
 
   insertCallback(cache, data) {
     const products = cache.readQuery({ query: getAllProducts }).products
-    const updated = [Object.assign(data, { categories: [] } )]
     cache.writeQuery({
       query: getAllProducts,
       data: { products: products.concat([data]) }
@@ -84,7 +85,7 @@ class UpsertForm extends Component {
                   description: this.chooseVal(evt, this.props.product, "description"),
                   price: parseInt(this.chooseVal(evt, this.props.product, "price")),
                   image: '',
-                  featured: this.parseBool(this.chooseVal(evt, this.props.product, "featured"))
+                  featured: this.parseBool(this.state.featured)
                 }
               })
             }}>
@@ -97,6 +98,7 @@ class UpsertForm extends Component {
                 <TextArea type="text" name="description" />
               </Label>
               <FlexContainer>
+                {console.log('STATE', this.state)}
                 <HalfLabel margin={1}>
                   <LabelName margin={1}> Price </LabelName>
                   <TextInput type="text" name="price" />

@@ -94,6 +94,7 @@ query($name: String!) {
    name
    description
    price
+   featured
    reviews {
      content
      rating
