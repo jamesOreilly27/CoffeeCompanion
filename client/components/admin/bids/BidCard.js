@@ -7,8 +7,7 @@ const Wrapper = styled.div`
 
 const BidCard = ({ bid }) => (
   <Wrapper>
-    {console.log(bid)}
-    {/* {bid.title} */}
+    {bid.title}
   </Wrapper>
 )
 
