@@ -8,7 +8,7 @@ const LineItem = require('./lineitem')
 const RawMaterial = require('./rawMaterial')
 const Bid = require('./bid')
 const BidArea = require('./bidArea')
-const AreaProducts = require('./areaProducts')
+const AreaProduct = require('./areaProduct')
 
 /***** Associations ******/
 
@@ -27,11 +27,11 @@ Product.hasMany(Review, { as: 'reviews' })
 LineItem.belongsTo(Product, { constraints: false })
 
 //Bid and BidArea
-Bid.hasMany(BidArea)
+Bid.hasMany(BidArea, { as: 'bidareas', constraints: false })
 
 //BidArea andd Product
-BidArea.belongsToMany(Product, { through: AreaProducts })
-Product.belongsToMany(BidArea, { through: AreaProducts })
+BidArea.belongsToMany(Product, { through: AreaProduct })
+Product.belongsToMany(BidArea, { through: AreaProduct })
 
 //Bid and User
 User.hasMany(Bid)
@@ -48,6 +48,7 @@ module.exports = {
   Product,
   Bid,
   BidArea,
+  AreaProduct,
   Category,
   ProductCategory,
   Review,

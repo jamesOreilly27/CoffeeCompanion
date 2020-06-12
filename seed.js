@@ -124,12 +124,21 @@ async function seed () {
     BidArea.create({ title: "", bidId: 4 })
   ])
 
+  const areaProducts = await Promise.all([
+    AreaProduct.create({ bidAreaId: 1, productId: 3, qty: 4 }),
+    AreaProduct.create({ bidAreaId: 1, productId: 2, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 1, productId: 1, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 1, productId: 4, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 1, productId: 10, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 1, productId: 12, qty: 2 })
+  ])
+
   const reviews = await Promise.all([
     Review.create({ content: "Delicious", rating: 4, productId: 1 }),
     Review.create({ content: "It's Great!", rating: 1, productId: 1 }),
     Review.create({ content: "I'm not a fan", rating: 2, productId: 2 }),
   ])
-  console.log(`seeded ${users.length} users, ${items.length} items, ${reviews.length} reviews, ${products.length} products, ${productCategories.length} productCategories, ${carts.length} carts, ${bids.length} bids, ${bidAreas.length} bidAreas, and ${categories.length} categories`)
+  console.log(`seeded ${users.length} users, ${items.length} items, ${reviews.length} reviews, ${products.length} products, ${productCategories.length} productCategories, ${carts.length} carts, ${bids.length} bids, ${bidAreas.length} bidAreas, ${areaProducts.length} areaProducts, and ${categories.length} categories`)
   console.log(`seeded successfully`)
 }
 
