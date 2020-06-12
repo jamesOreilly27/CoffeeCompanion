@@ -75,7 +75,6 @@ export const getOneCategory = gql`
 export const getAllProducts = gql`
   {
     products {
-      id
       name
       description
       image
@@ -95,6 +94,7 @@ query($name: String!) {
    name
    description
    price
+   featured
    reviews {
      content
      rating
@@ -108,6 +108,19 @@ export const getProductByName = gql`
     getProductByName(name: $name) {
       name
       id
+    }
+  }
+`
+
+export const getProductForUpdate = gql`
+  query($name: String!) {
+    getProductByName(name: $name) {
+      id
+      name
+      description
+      price
+      image
+      featured
     }
   }
 `
