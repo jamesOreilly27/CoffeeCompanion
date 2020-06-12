@@ -5,10 +5,10 @@ const Wrapper = styled.div`
 
 `
 
-const Bids = () => (
+const BidCard = ({ bid }) => (
   <Wrapper>
-    Hello From Bids
+    {console.log(bid)}
   </Wrapper>
 )
 
-export default Bids
+export default BidCard

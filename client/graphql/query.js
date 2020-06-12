@@ -1,7 +1,7 @@
 import { gql } from 'apollo-boost'
 
 /***** User *****/
-export const getCurrentUser =  gql`
+export const getCurrentUser = gql`
   {
     currentUser {
       id
@@ -71,7 +71,7 @@ export const getOneCategory = gql`
 `
 
 
-/**** products *****/
+/***** products *****/
 export const getAllProducts = gql`
   {
     products {
@@ -121,6 +121,22 @@ export const getProductForUpdate = gql`
       price
       image
       featured
+    }
+  }
+`
+
+/***** Bids *****/
+export const getAllBids = gql`
+  {
+    bids {
+      id
+      status
+      bidAreas {
+        id
+        products {
+          id
+        }
+      }
     }
   }
 `

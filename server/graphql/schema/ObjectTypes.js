@@ -169,13 +169,7 @@ const BidAreaType = new GraphQLObjectType({
     id: { type: GraphQLInt },
     title: { type: GraphQLString },
     products: {
-      type: new GraphQLList(ProductDetailType),
-      id: { type: GraphQLInt },
-      name: { type: GraphQLNonNull(GraphQLString) },
-      description: { type: GraphQLNonNull(GraphQLString) },
-      price: { type: GraphQLNonNull(GraphQLInt) },
-      image: { type: GraphQLNonNull(GraphQLString) },
-      featured: { type: GraphQLBoolean },
+      type: new GraphQLList(ProductType),
       resolve: bidArea => {
         return bidArea.getProducts()
         .then(products => products)
