@@ -1,10 +1,10 @@
 const db = require('./server/db')
 const chalk = require('chalk')
-const { Product, Category, Review, ProductCategory, Cart, LineItem, User } = require('./server/db/models')
+const { Product, Category, Review, ProductCategory, Cart, LineItem, Bid, BidArea, AreaProduct, User } = require('./server/db/models')
 
 async function seed () {
   await db.sync({force: true})
-  console.log(chalk.bgWhite.green.bold('db synced!'))
+  console.log(chalk.bgGreen.white.bold('db synced!'))
 
   const users = await Promise.all([
     User.create({firstName: 'cody', lastName: 'greene', email: 'cody@email.com', password: '123', isAdmin: true}),
@@ -67,7 +67,7 @@ async function seed () {
     Category.create({ name: 'TEST NINE', description: 'the nineth test' })
   ])
 
-  const ProductCategories = await Promise.all([
+  const productCategories = await Promise.all([
     ProductCategory.create({ categoryId: 1, productId: 1 }),
     ProductCategory.create({ categoryId: 2, productId: 2 }),
     ProductCategory.create({ categoryId: 3, productId: 3 }),
@@ -91,12 +91,45 @@ async function seed () {
     ProductCategory.create({ categoryId: 3, productId: 21 })
   ])
 
+  const bids =  await Promise.all([
+    Bid.create({ status: "open", userId: 1 }),
+    Bid.create({ status: "pending", userId: 1 }),
+    Bid.create({ status: "pending", userId: 1 }),
+    Bid.create({ status: "approved", userId: 1 }),
+    Bid.create({ status: "approved", userId: 1 })
+  ])
+
+  const bidAreas = await Promise.all([
+    BidArea.create({ title: "", bidId: 1 }),
+    BidArea.create({ title: "", bidId: 1 }),
+    BidArea.create({ title: "", bidId: 1 }),
+    BidArea.create({ title: "", bidId: 1 }),
+    BidArea.create({ title: "", bidId: 1 }),
+    BidArea.create({ title: "", bidId: 1 }),
+    BidArea.create({ title: "", bidId: 2 }),
+    BidArea.create({ title: "", bidId: 2 }),
+    BidArea.create({ title: "", bidId: 2 }),
+    BidArea.create({ title: "", bidId: 2 }),
+    BidArea.create({ title: "", bidId: 2 }),
+    BidArea.create({ title: "", bidId: 3 }),
+    BidArea.create({ title: "", bidId: 3 }),
+    BidArea.create({ title: "", bidId: 3 }),
+    BidArea.create({ title: "", bidId: 3 }),
+    BidArea.create({ title: "", bidId: 3 }),
+    BidArea.create({ title: "", bidId: 4 }),
+    BidArea.create({ title: "", bidId: 4 }),
+    BidArea.create({ title: "", bidId: 4 }),
+    BidArea.create({ title: "", bidId: 4 }),
+    BidArea.create({ title: "", bidId: 4 }),
+    BidArea.create({ title: "", bidId: 4 })
+  ])
+
   const reviews = await Promise.all([
     Review.create({ content: "Delicious", rating: 4, productId: 1 }),
     Review.create({ content: "It's Great!", rating: 1, productId: 1 }),
     Review.create({ content: "I'm not a fan", rating: 2, productId: 2 }),
   ])
-  console.log(`seeded ${users.length} users, ${items.length} items, ${reviews.length} reviews, ${products.length} products, and ${categories.length} categories`)
+  console.log(`seeded ${users.length} users, ${items.length} items, ${reviews.length} reviews, ${products.length} products, ${productCategories.length} productCategories, ${carts.length} carts, ${bids.length} bids, ${bidAreas.length} bidAreas, and ${categories.length} categories`)
   console.log(`seeded successfully`)
 }
 
@@ -107,9 +140,9 @@ seed()
     process.exitCode = 1
   })
   .then(() => {
-    console.log(chalk.bgWhite.blue.bold('closing db connection'))
+    console.log(chalk.bgBlue.white.bold('closing db connection'))
     db.close()
-    console.log(chalk.bgWhite.red.bold('db connection closed'))
+    console.log(chalk.bgRed.white.bold('db connection closed'))
   })
 
 console.log('seeding...')
