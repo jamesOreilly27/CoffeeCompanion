@@ -2,6 +2,10 @@ const db = require('../db')
 const Sequelize = require('sequelize')
 
 const Bid = db.define('bid', {
+  title: {
+    type: Sequelize.STRING,
+    allowNull: false
+  },
   status: {
     type: Sequelize.ENUM('open', 'pending', 'approved')
   },

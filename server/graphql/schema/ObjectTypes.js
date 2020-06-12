@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, GraphQLBoolean } = require('graphql')
+const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, GraphQLBoolean, GraphQLScalarType } = require('graphql')
 
 /********** User Related ObjectTypes **********/
 const UserType = new GraphQLObjectType({
@@ -149,6 +149,7 @@ const BidType = new GraphQLObjectType({
   description: 'A quote to be sent to a customer',
   fields: () => ({
     id: { type: GraphQLInt },
+    title: { type: GraphQLString },
     status: { type: GraphQLString },
     bidAreas: {
       type: new GraphQLList(BidAreaType),

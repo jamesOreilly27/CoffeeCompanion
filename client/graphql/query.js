@@ -130,11 +130,13 @@ export const getAllBids = gql`
   {
     bids {
       id
+      title
       status
       bidAreas {
         id
         products {
           id
+          price
         }
       }
     }

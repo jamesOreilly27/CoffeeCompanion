@@ -7,6 +7,8 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
+  background-color: #FFF;
+  border-radius: 4px;
 `
 
 const BidTypeContainer = ({ title, bids }) => (
