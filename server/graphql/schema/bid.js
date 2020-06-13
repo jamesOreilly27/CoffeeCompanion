@@ -1,4 +1,4 @@
-const { GraphQLList, GraphQLBoolean, GraphQLInt } = require('graphql')
+const { GraphQLList, GraphQLBoolean, GraphQLInt, GraphQLString } = require('graphql')
 const { BidType, BidAreaType } = require('./ObjectTypes')
 const { Bid, BidArea } = require('../../db/models')
 
@@ -10,6 +10,12 @@ const allBidsResolver = () => {
 
 const bidDetailsResolver = (parent, args) => {
   return Bid.findByPk(args.id)
+  .then(bid => bid)
+  .catch(err => console.log(err))
+}
+
+const newBidResolver = (parent, args) => {
+  return Bid.create(args)
   .then(bid => bid)
   .catch(err => console.log(err))
 }
@@ -27,7 +33,19 @@ const bidDetails = {
   resolve: bidDetailsResolver
 }
 
+const createBid = {
+  type: BidType,
+  description: "start a new bid",
+  args: {
+    title: { type: GraphQLString },
+    status: { type: GraphQLString },
+    userId: { type: GraphQLInt }
+  },
+  resolve: newBidResolver
+}
+
 module.exports = {
   bids,
-  bidDetails
+  bidDetails,
+  createBid
 }
