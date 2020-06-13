@@ -61,3 +61,12 @@ export const deleteProduct = gql`
     destroyProduct(name: $name)
   }
 `
+
+//Bids
+export const startNewBid = gql`
+  mutation($title: String!, $status: String!, $userId: Int!) {
+    createBid(title: $title, status: $status, userId: $userId) {
+      id
+    }
+  }
+`
