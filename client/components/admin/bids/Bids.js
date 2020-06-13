@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BidTypeContainer } from '../bids'
-import { Title } from '../../styled-components'
+import { BidTypeContainer, StartButton } from '../bids'
+import { Title, Button } from '../../styled-components'
 import { getAllBids } from '../../../graphql'
 import { graphql } from 'react-apollo'
 
@@ -22,15 +22,28 @@ const Container = styled.div`
   height: 100%;
 `
 
+const Header = styled.div`
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+`
+
+const BidTitle = styled(Title)`
+  margin-left: 2vw;
+`
+
 const filterBids = (filterType, bids) => {
   return bids.filter(bid => bid.status === filterType)
 }
 
 const Bids = props => (
   <Wrapper>
-    <Title>
-      Bids
-    </Title>
+    <Header>
+      <BidTitle>
+        Bids
+      </BidTitle>
+      <StartButton />
+    </Header>
     {props.data.bids &&
       <Container>
         <BidTypeContainer title="Open" bids={filterBids("open", props.data.bids)} />

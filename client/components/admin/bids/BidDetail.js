@@ -8,13 +8,14 @@ const Wrapper = styled.div`
 `
 
 const Container = styled.div`
-  
+
 `
 
 const BidDetail = props => (
   <Wrapper>
     {props.data.bidDetails &&
       <Container>
+        {console.log(props.data.bidDetails)}
         Hello From Bid Detail
       </Container>
     }

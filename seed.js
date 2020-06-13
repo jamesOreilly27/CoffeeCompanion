@@ -95,7 +95,8 @@ async function seed () {
     Bid.create({ title: "Test One", status: "open", userId: 1 }),
     Bid.create({ title: "Test Two", status: "pending", userId: 1 }),
     Bid.create({ title: "Test Three", status: "pending", userId: 1 }),
-    Bid.create({ title: "Test Four", status: "approved", userId: 1 })
+    Bid.create({ title: "Test Four", status: "approved", userId: 1 }),
+    Bid.create({ title: 'Test Five', status: "declined", userId: 1})
   ])
 
   const bidAreas = await Promise.all([

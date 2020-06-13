@@ -7,7 +7,7 @@ const Bid = db.define('bid', {
     allowNull: false
   },
   status: {
-    type: Sequelize.ENUM('open', 'pending', 'approved')
+    type: Sequelize.ENUM('open', 'pending', 'approved', 'declined')
   },
   createdAt: {
     type: Sequelize.DATE,
