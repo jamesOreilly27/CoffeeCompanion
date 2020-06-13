@@ -95,8 +95,7 @@ async function seed () {
     Bid.create({ title: "Test One", status: "open", userId: 1 }),
     Bid.create({ title: "Test Two", status: "pending", userId: 1 }),
     Bid.create({ title: "Test Three", status: "pending", userId: 1 }),
-    Bid.create({ title: "Test Four", status: "approved", userId: 1 }),
-    Bid.create({ title: "Test Five", status: "approved", userId: 1 })
+    Bid.create({ title: "Test Four", status: "approved", userId: 1 })
   ])
 
   const bidAreas = await Promise.all([
@@ -130,7 +129,28 @@ async function seed () {
     AreaProduct.create({ bidAreaId: 1, productId: 1, qty: 1 }),
     AreaProduct.create({ bidAreaId: 1, productId: 4, qty: 1 }),
     AreaProduct.create({ bidAreaId: 1, productId: 10, qty: 3 }),
-    AreaProduct.create({ bidAreaId: 1, productId: 12, qty: 2 })
+    AreaProduct.create({ bidAreaId: 1, productId: 12, qty: 2 }),
+    AreaProduct.create({ bidAreaId: 2, productId: 3, qty: 4 }),
+    AreaProduct.create({ bidAreaId: 3, productId: 2, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 4, productId: 1, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 5, productId: 4, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 6, productId: 10, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 7, productId: 12, qty: 2 }),
+    AreaProduct.create({ bidAreaId: 8, productId: 3, qty: 4 }),
+    AreaProduct.create({ bidAreaId: 9, productId: 2, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 10, productId: 1, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 11, productId: 4, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 12, productId: 10, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 13, productId: 12, qty: 2 }),
+    AreaProduct.create({ bidAreaId: 14, productId: 3, qty: 4 }),
+    AreaProduct.create({ bidAreaId: 15, productId: 2, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 16, productId: 1, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 17, productId: 4, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 18, productId: 10, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 19, productId: 12, qty: 2 }),
+    AreaProduct.create({ bidAreaId: 20, productId: 3, qty: 4 }),
+    AreaProduct.create({ bidAreaId: 21, productId: 2, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 22, productId: 2, qty: 3 })
   ])
 
   const reviews = await Promise.all([

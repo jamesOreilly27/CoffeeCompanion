@@ -9,6 +9,7 @@ const Wrapper = styled.div`
   width: 30%;
   background-color: #FFF;
   border-radius: 4px;
+  padding: 10px;
 `
 
 const BidTypeContainer = ({ title, bids }) => (
