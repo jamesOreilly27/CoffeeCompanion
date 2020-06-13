@@ -165,6 +165,25 @@ const BidType = new GraphQLObjectType({
   })
 })
 
+const BidDetailType = new GraphQLObjectType({
+  name: 'bidDetail',
+  description: 'A single bid with details',
+  fields: () => ({
+    id: { type: GraphQLInt },
+    title: { type: GraphQLString },
+    status: { type: GraphQLString },
+    bidAreas: {
+      type: new GraphQLList(BidAreaType),
+      description: 'An area in a bid',
+      resolve: bid => {
+        return bid.getBidareas()
+          .then(area => area)
+          .catch(err => console.log(err))
+      }
+    }
+  })
+})
+
 const BidAreaType = new GraphQLObjectType({
   name: 'bidAreas',
   description: 'An area attached to a bid',
@@ -191,5 +210,6 @@ module.exports = {
   CartType,
   LineItemType,
   BidType,
+  BidDetailType,
   BidAreaType
 }

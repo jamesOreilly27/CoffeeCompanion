@@ -3,7 +3,7 @@ const { products, productDetails, getProductByName, upsertProduct, destroyProduc
 const { categories, singleCategory } = require('./category')
 const { carts, removeFromCart, addToCart, incrementQty, decrementQty } = require('./cart')
 const { currentUser, loginUser, logout } = require('./user')
-const { bids } = require('./bid')
+const { bids, bidDetails } = require('./bid')
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
@@ -15,7 +15,8 @@ const RootQuery = new GraphQLObjectType({
     getProductByName,
     singleCategory,
     carts,
-    bids
+    bids,
+    bidDetails
   }
 })
 

@@ -143,3 +143,22 @@ export const getAllBids = gql`
     }
   }
 `
+
+export const getBidDetails = gql`
+  query($id: Int!) {
+    bidDetails(id: $id) {
+      id
+      title
+      status
+      bidAreas {
+        id
+        products {
+          id
+          name
+          cost
+          price
+        }
+      }
+    }
+  }
+`

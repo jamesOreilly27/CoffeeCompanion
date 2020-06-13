@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { nameToUrl } from '../../helpers'
 
 const Wrapper = styled(Link)`
   display: flex;
@@ -30,8 +31,9 @@ const sumAll = (bidAreas, type) => {
 }
 
 const BidCard = ({ bid }) => (
-  <Wrapper to="/admin">
+  <Wrapper to={`/admin/bids/${bid.id}`}>
     <Title>
+      {console.log('ID', bid.id)}
       {bid.title}
     </Title>
     <FlexContainer>
