@@ -98,7 +98,7 @@ const BidDetail = props => {
               </PriceAndCostContainer>
             </ProjectTotal>
             <AreaContainer>
-              {bid.bidAreas.map(location => <LocationLink key={location.title} location={location} />)}
+              {bid.bidAreas.map(location => <LocationLink key={location.title} location={location} id={props.match.params.id} />)}
               <AddLocation />
             </AreaContainer>
           </Sidebar>

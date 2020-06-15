@@ -59,6 +59,7 @@ class AdminDashboard extends Component {
               <Route exact path="/admin/materials" component={Materials} />
               <Route exact path="/admin/bids" component={Bids} />
               <Route exact path="/admin/bids/:id" component={BidDetail} />
+              <Route exact path="/admin/bids/:id/:areaname" component={BidDetail} />
             </Switch>
           </Container>
         }
