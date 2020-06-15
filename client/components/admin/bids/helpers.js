@@ -7,3 +7,7 @@ export const sumAll = (bidAreas, type) => {
   })
   return total
 }
+
+export const findArea = (str, areas) => {
+  return areas.filter(area => area.title === str)[0]
+}

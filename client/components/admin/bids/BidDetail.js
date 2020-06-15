@@ -1,10 +1,10 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
-import { LocationLink, AddLocation } from '../bids'
+import { LocationLink, AddLocation, BidAreaDetail } from '../bids'
 import { Title } from '../../styled-components'
-import { sumAll } from './helpers'
+import { sumAll, findArea } from './helpers'
 
 const Wrapper = styled.div`
   
@@ -21,6 +21,7 @@ const Sidebar = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  width: 15%:
 `
 
 const ProjectTotal = styled.div`
@@ -69,43 +70,63 @@ const AreaContainer = styled.div`
   padding: 10px;
 `
 
-const BidDetail = props => {
-  const bid = props.data.bidDetails
-  return (
-    <Wrapper>
-      {bid &&
-        <Container>
-          <Sidebar>
-            <ProjectTotal>
-              <Title size="med"> Project Totals </Title>
-              <PriceAndCostContainer>
-                <TotalContainer>
-                  <Title size="sm">
-                    Cost
-                </Title>
-                  <Cost>
-                    {`$${sumAll(bid.bidAreas, 'cost')}`}
-                  </Cost>
-                </TotalContainer>
-                <TotalContainer>
-                  <Title size="sm">
-                    Price
-                </Title>
-                  <Price>
-                    {`$${sumAll(bid.bidAreas, 'price')}`}
-                  </Price>
-                </TotalContainer>
-              </PriceAndCostContainer>
-            </ProjectTotal>
-            <AreaContainer>
-              {bid.bidAreas.map(location => <LocationLink key={location.title} location={location} id={props.match.params.id} />)}
-              <AddLocation />
-            </AreaContainer>
-          </Sidebar>
-        </Container>
-      }
-    </Wrapper>
-  )
+class BidDetail extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { selectedArea: " " }
+
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.data.bidDetails && this.state.selectedArea === " ") {
+      this.setState({ selectedArea: this.props.data.bidDetails.bidAreas[0].title })
+    }
+  }
+
+  handleClick(str) {
+    this.setState({ selectedArea: str })
+  }
+
+  render() {
+    const bid = this.props.data.bidDetails
+    return (
+      <Wrapper>
+        {bid &&
+          <Container>
+            <Sidebar>
+              <ProjectTotal>
+                <Title size="med"> Project Totals </Title>
+                <PriceAndCostContainer>
+                  <TotalContainer>
+                    <Title size="sm">
+                      Cost
+                    </Title>
+                    <Cost>
+                      {`$${sumAll(bid.bidAreas, 'cost')}`}
+                    </Cost>
+                  </TotalContainer>
+                  <TotalContainer>
+                    <Title size="sm">
+                      Price
+                    </Title>
+                    <Price>
+                      {`$${sumAll(bid.bidAreas, 'price')}`}
+                    </Price>
+                  </TotalContainer>
+                </PriceAndCostContainer>
+              </ProjectTotal>
+              <AreaContainer>
+                {bid.bidAreas.map(location => <LocationLink key={location.title} location={location} handleClick={this.handleClick} />)}
+                <AddLocation />
+              </AreaContainer>
+            </Sidebar>
+            <BidAreaDetail area={findArea(this.state.selectedArea, bid.bidAreas)} />
+          </Container>
+        }
+      </Wrapper>
+    )
+  }
 }
 
 export default graphql(getBidDetails, {
