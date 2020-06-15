@@ -6,6 +6,7 @@ const Wrapper = styled.div`
   margin-bottom: 1.5vh;
   text-decoration: none;
   color: #000;
+  cursor: pointer
 `
 
 const LocationLink = ({ location, handleClick }) => (
