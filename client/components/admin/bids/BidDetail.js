@@ -21,6 +21,7 @@ const Sidebar = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
+  margin-right: 20px;
   width: 15%:
 `
 
