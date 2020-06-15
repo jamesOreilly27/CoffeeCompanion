@@ -18,11 +18,20 @@ const SmallerText = styled(TextInput)`
   width: 70%;
 `
 
-const SubmitButton = styled.button`
+const Button = styled.div`
+  height: 20px;
+  width: 20px;
+  cursor: pointer;
   border-radius: 100%;
-  background-color: #58D558;
   color: #FFF;
   border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
+
+const SubmitButton = styled(Button)`
+  background-color: #58D558;
 `
 
 const StartButton = styled.div`
@@ -30,11 +39,17 @@ const StartButton = styled.div`
   cursor: pointer;
 `
 
+const CancelButton = styled(Button)`
+  background-color: #D92121;
+`
+
 class AddLocation extends Component {
   constructor(props) {
     super(props)
 
     this.state = { displayInput: false }
+
+    this.flipState = this.flipState.bind(this)
   }
 
   flipState() {
@@ -47,13 +62,16 @@ class AddLocation extends Component {
         {this.state.displayInput &&
           <InputField>
             <SmallerText></SmallerText>
-            <SubmitButton> + </SubmitButton>
+            <SubmitButton>
+              +
+            </SubmitButton>
+            <CancelButton onClick={this.flipState}>
+              -
+            </CancelButton>
           </InputField>
         }
         {!this.state.displayInput &&
-          <StartButton onClick={() => {
-            this.flipState()
-          }}>
+          <StartButton onClick={this.flipState}>
             Add Location
           </StartButton>
         }
