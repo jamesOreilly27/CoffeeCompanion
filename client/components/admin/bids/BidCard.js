@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import { sumAll } from './helpers'
 import { nameToUrl } from '../../helpers'
 
 const Wrapper = styled(Link)`
@@ -19,16 +20,6 @@ const FlexContainer = styled.div`
 const Title = styled(FlexContainer)`
   width: 100px;
 `
-
-const sumAll = (bidAreas, type) => {
-  let total = 0;
-  bidAreas.forEach(bidArea => {
-    for(let i = 0; i < bidArea.products.length; i++) {
-      total += bidArea.products[i][type]
-    }
-  })
-  return total
-}
 
 const BidCard = ({ bid }) => (
   <Wrapper to={`/admin/bids/${bid.id}`}>

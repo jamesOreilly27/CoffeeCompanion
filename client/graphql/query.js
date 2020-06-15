@@ -152,6 +152,7 @@ export const getBidDetails = gql`
       status
       bidAreas {
         id
+        title
         products {
           id
           name

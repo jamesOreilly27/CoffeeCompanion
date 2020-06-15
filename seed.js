@@ -100,12 +100,12 @@ async function seed () {
   ])
 
   const bidAreas = await Promise.all([
-    BidArea.create({ title: "", bidId: 1 }),
-    BidArea.create({ title: "", bidId: 1 }),
-    BidArea.create({ title: "", bidId: 1 }),
-    BidArea.create({ title: "", bidId: 1 }),
-    BidArea.create({ title: "", bidId: 1 }),
-    BidArea.create({ title: "", bidId: 1 }),
+    BidArea.create({ title: "Back Parking", bidId: 1 }),
+    BidArea.create({ title: "Front Parking", bidId: 1 }),
+    BidArea.create({ title: "Front Gate", bidId: 1 }),
+    BidArea.create({ title: "Side Fence", bidId: 1 }),
+    BidArea.create({ title: "Car Lot", bidId: 1 }),
+    BidArea.create({ title: "Shipping Dock", bidId: 1 }),
     BidArea.create({ title: "", bidId: 2 }),
     BidArea.create({ title: "", bidId: 2 }),
     BidArea.create({ title: "", bidId: 2 }),
