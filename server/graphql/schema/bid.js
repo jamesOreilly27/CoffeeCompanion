@@ -20,6 +20,12 @@ const newBidResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
+const newAreaResolver = (parent, args) => {
+  return BidArea.create(args)
+  .then(area => area)
+  .catch(err => console.log(err))
+}
+
 const bids = {
   type: new GraphQLList(BidType),
   description: 'a list of roys bids',
@@ -44,8 +50,19 @@ const createBid = {
   resolve: newBidResolver
 }
 
+const createBidArea = {
+  type: BidAreaType,
+  description: "add a new area to a bid",
+  args: {
+    title: { type: GraphQLString },
+    bidId: { type: GraphQLInt }
+  },
+  resolve: newAreaResolver
+}
+
 module.exports = {
   bids,
   bidDetails,
-  createBid
+  createBid,
+  createBidArea
 }

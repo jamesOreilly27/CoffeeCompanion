@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Title } from '../../styled-components'
+import { ProductCard } from './ProductCard'
 import { sumAll } from './helpers'
 
 const Wrapper = styled.div`
@@ -34,6 +35,10 @@ const AreaPrice = styled.div`
   padding: 10px;
 `
 
+const ProductContainer = styled.div`
+
+`
+
 const BidAreaDetail = props => (
   <Wrapper>
     {props.area &&
@@ -42,6 +47,9 @@ const BidAreaDetail = props => (
           <HeaderTitle margin={1}> {props.area.title} </HeaderTitle>
           <AreaPrice> {`$${sumAll([props.area], 'price')}`} </AreaPrice>
         </Header>
+        <ProductContainer>
+          {console.log('AREA', props.area)}
+        </ProductContainer>
       </Container>
     }
   </Wrapper>

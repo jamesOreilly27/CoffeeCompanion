@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import { Mutation } from 'react-apollo'
+import { addBidArea, getBidDetails } from '../../../graphql'
 import { TextInput } from '../../styled-components'
 
 const Wrapper = styled.form`
@@ -18,7 +20,7 @@ const SmallerText = styled(TextInput)`
   width: 70%;
 `
 
-const Button = styled.div`
+const Button = styled.button`
   height: 20px;
   width: 20px;
   cursor: pointer;
@@ -47,7 +49,7 @@ class AddLocation extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { displayInput: false }
+    this.state = { displayInput: false, title: '' }
 
     this.flipState = this.flipState.bind(this)
   }
@@ -56,26 +58,51 @@ class AddLocation extends Component {
     this.setState({ displayInput: !this.state.displayInput })
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.displayInput && this.state.displayInput !== prevState.displayInput) {
+      this.props.flipTrue()
+    }
+  }
+
   render() {
     return (
-      <Wrapper>
-        {this.state.displayInput &&
-          <InputField>
-            <SmallerText></SmallerText>
-            <SubmitButton>
-              +
-            </SubmitButton>
-            <CancelButton onClick={this.flipState}>
-              -
-            </CancelButton>
-          </InputField>
-        }
-        {!this.state.displayInput &&
-          <StartButton onClick={this.flipState}>
-            Add Location
-          </StartButton>
-        }
-      </Wrapper>
+      <Mutation
+        mutation={addBidArea}
+        update={(cache, { data: { createBidArea } }) => {
+          const bid = cache.readQuery({ query: getBidDetails, variables: { id: this.props.bid.id }}).bidDetails
+          const newAreas = bid.bidAreas.concat([createBidArea])
+          cache.writeQuery({
+            query: getBidDetails,
+            data: { bidDetails: Object.assign(bid, { bidAreas: newAreas } ) }
+          })
+        }}
+      >
+        {(addBidArea, { data }) => (
+          <Wrapper onSubmit={evt => {
+            evt.preventDefault()
+            addBidArea({ variables: { title: evt.target.title.value, bidId: this.props.bid.id }})
+            this.flipState()
+            this.props.flipFalse()
+          }}>
+            {this.state.displayInput &&
+              <InputField>
+                <SmallerText type="text" name="title"></SmallerText>
+                <SubmitButton type="submit">
+                  +
+                </SubmitButton>
+                <CancelButton onClick={this.flipState}>
+                  -
+                </CancelButton>
+              </InputField>
+            }
+            {!this.state.displayInput &&
+              <StartButton onClick={this.flipState}>
+                Add Location
+              </StartButton>
+            }
+          </Wrapper>
+        )}
+      </Mutation>
     )
   }
 }

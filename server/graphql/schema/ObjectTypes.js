@@ -41,15 +41,6 @@ const ProductType = new GraphQLObjectType({
     price: { type: GraphQLNonNull(GraphQLInt) },
     image: { type: GraphQLString },
     featured: { type: GraphQLBoolean },
-    categories: {
-      type: new GraphQLList(CategoryType),
-      description: 'category products',
-      resolve: product => {
-        return product.getCategories()
-          .then(categories => categories)
-          .catch(err => console.log(err))
-      }
-    }
   })
 })
 
@@ -191,7 +182,7 @@ const BidAreaType = new GraphQLObjectType({
     id: { type: GraphQLInt },
     title: { type: GraphQLString },
     products: {
-      type: new GraphQLList(ProductType),
+      type: new GraphQLList(ProductDetailType),
       resolve: bidArea => {
         return bidArea.getProducts()
         .then(products => products)

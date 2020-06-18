@@ -70,3 +70,18 @@ export const startNewBid = gql`
     }
   }
 `
+
+export const addBidArea = gql`
+  mutation($title: String!, $bidId: Int!) {
+    createBidArea(title: $title, bidId: $bidId) {
+      id
+      title
+      products {
+        id
+        name
+        cost
+        price
+      }
+    }
+  }
+`

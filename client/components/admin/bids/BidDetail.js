@@ -74,12 +74,18 @@ const AreaContainer = styled.div`
 class BidDetail extends Component {
   constructor(props) {
     super(props)
-    this.state = { selectedArea: " " }
+    this.state = { selectedArea: " ", added: false }
 
     this.handleClick = this.handleClick.bind(this)
+    this.addedToTrue = this.addedToTrue.bind(this)
+    this.addedToFalse = this.addedToFalse.bind(this)
   }
 
-  componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps, prevState) {
+    // console.log('PREVPROPS', prevProps)
+    // console.log('PROPS', this.props)
+    // console.log('PREVSTATE', prevState)
+    // console.log('STATE', this.state)
     if (this.props.data.bidDetails && this.state.selectedArea === " ") {
       this.setState({ selectedArea: this.props.data.bidDetails.bidAreas[0].title })
     }
@@ -88,13 +94,21 @@ class BidDetail extends Component {
   handleClick(str) {
     this.setState({ selectedArea: str })
   }
+  
+  addedToTrue() {
+    this.setState({ added: true })
+  }
+  
+  addedToFalse() {
+    this.setState({ added: false })
+  }
 
   render() {
-    const bid = this.props.data.bidDetails
     return (
       <Wrapper>
-        {bid &&
+        {this.props.data.bidDetails &&
           <Container>
+            {console.log(this.props.data.bidDetails)}
             <Sidebar>
               <ProjectTotal>
                 <Title size="med"> Project Totals </Title>
@@ -104,7 +118,7 @@ class BidDetail extends Component {
                       Cost
                     </Title>
                     <Cost>
-                      {`$${sumAll(bid.bidAreas, 'cost')}`}
+                      {`$${sumAll(this.props.data.bidDetails.bidAreas, 'cost')}`}
                     </Cost>
                   </TotalContainer>
                   <TotalContainer>
@@ -112,17 +126,17 @@ class BidDetail extends Component {
                       Price
                     </Title>
                     <Price>
-                      {`$${sumAll(bid.bidAreas, 'price')}`}
+                      {`$${sumAll(this.props.data.bidDetails.bidAreas, 'price')}`}
                     </Price>
                   </TotalContainer>
                 </PriceAndCostContainer>
               </ProjectTotal>
               <AreaContainer>
-                {bid.bidAreas.map(location => <LocationLink key={location.title} location={location} handleClick={this.handleClick} />)}
-                <AddLocation />
+                {this.props.data.bidDetails.bidAreas.map(location => <LocationLink key={location.title} location={location} handleClick={this.handleClick} />)}
+                <AddLocation bid={this.props.data.bidDetails} flipTrue={this.addedToTrue} flipFalse={this.addedToFalse} />
               </AreaContainer>
             </Sidebar>
-            <BidAreaDetail area={findArea(this.state.selectedArea, bid.bidAreas)} />
+            <BidAreaDetail area={findArea(this.state.selectedArea, this.props.data.bidDetails.bidAreas)} />
           </Container>
         }
       </Wrapper>

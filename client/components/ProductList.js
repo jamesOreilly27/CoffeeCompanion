@@ -86,7 +86,7 @@ const ProductList = ({ products, category, featured }) => {
           </SearchForm>
         }
         <ProductContainer>
-          {products && products.map(product => <ProductCard product={product} key={product.id} />)}
+          {products && products.map(product => <ProductCard key={product.id} product={product} />)}
         </ProductContainer>
       </Container>
     </Wrapper>

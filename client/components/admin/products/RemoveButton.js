@@ -42,8 +42,6 @@ class RemoveButton extends Component {
         mutation={deleteProduct}
         update={(cache, { data: { deleteProduct } } ) => {
           const products = cache.readQuery({ query: getAllProducts }).products
-          console.log('PROPS', this.props.product.name)
-          console.log('FILTER TEST', products.filter(product => product.name !== this.props.product.name))
           cache.writeQuery({
             query: getAllProducts,
             data: { products: products.filter(product => product.name !== this.props.product.name) }

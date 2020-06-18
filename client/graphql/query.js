@@ -80,9 +80,6 @@ export const getAllProducts = gql`
       image
       price
       featured
-      categories {
-        name
-      }
     }
   }
 `
