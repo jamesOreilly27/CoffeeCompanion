@@ -1,8 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Title } from '../../styled-components'
-import { ProductCard } from './ProductCard'
-import { sumAll } from './helpers'
+import { Title } from '../../../styled-components'
+import { ProductCard, SearchBar } from '../bidArea'
+import { sumAll } from '../helpers'
 
 const Wrapper = styled.div`
   width: 60%;
@@ -36,7 +36,12 @@ const AreaPrice = styled.div`
 `
 
 const ProductContainer = styled.div`
+  padding: 10px;
+`
 
+const ProductsList = styled.div`
+  display: flex;
+  flex-direction: column;
 `
 
 const BidAreaDetail = props => (
@@ -48,7 +53,10 @@ const BidAreaDetail = props => (
           <AreaPrice> {`$${sumAll([props.area], 'price')}`} </AreaPrice>
         </Header>
         <ProductContainer>
-          {console.log('AREA', props.area)}
+          <SearchBar />
+          <ProductsList>
+            {props.area.products.map(product => <ProductCard key={product.id} product={product} /> )}
+          </ProductsList>
         </ProductContainer>
       </Container>
     }

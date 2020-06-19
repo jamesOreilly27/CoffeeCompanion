@@ -38,6 +38,7 @@ const filterBids = (filterType, bids) => {
 
 const Bids = props => (
   <Wrapper>
+    {console.log('PRODUCTS', props.allProducts)}
     <Header>
       <BidTitle>
         Bids
