@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { SearchList } from '../bidArea'
+import { ProductCard } from '../bidArea'
 import { getAllProducts } from '../../../../graphql'
 import { graphql } from 'react-apollo'
 import { TextInput } from '../../../styled-components'
@@ -15,6 +15,19 @@ const ProductList = styled.div`
   background-color: #EDF5F9;
 `
 
+const CloseButton = styled.button`
+  border-radius: 50%;
+  background-color: #616060;
+  width: 20px;
+  color: #FFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  margin-left: 67vw;
+  margin-top: 5px;
+`
+
 class SearchBar extends Component {
   constructor(props) {
     super(props)
@@ -27,7 +40,7 @@ class SearchBar extends Component {
   }
 
   handleChange(evt) {
-    this.setState({ searchValue: evt.target.value})
+    this.setState({ searchValue: evt.target.value.toUpperCase()})
   }
 
   handleClick() {
@@ -50,6 +63,7 @@ class SearchBar extends Component {
   render() {
     return (
       <Wrapper>
+        {console.log('STATE', this.state)}
         <TextInput
           type="text"
           placeholder="Search..."
@@ -59,7 +73,8 @@ class SearchBar extends Component {
         </TextInput>
         {this.props.data.products.length && this.state.displayList &&
           <ProductList>
-            {this.filterProductList(this.state.searchValue).map(product => <SearchList key={product.id} product={product} /> )}
+            <CloseButton>X</CloseButton>
+            {this.filterProductList(this.state.searchValue).map(product => <ProductCard key={product.id} product={product} search/> )}
           </ProductList>
         }
       </Wrapper>

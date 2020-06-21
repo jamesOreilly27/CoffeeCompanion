@@ -78,6 +78,7 @@ export const getAllProducts = gql`
       name
       description
       image
+      cost
       price
       featured
     }
@@ -90,6 +91,7 @@ query($name: String!) {
    id
    name
    description
+   cost
    price
    featured
    reviews {
@@ -155,6 +157,7 @@ export const getBidDetails = gql`
           name
           cost
           price
+          description
         }
       }
     }

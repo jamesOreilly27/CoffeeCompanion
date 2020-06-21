@@ -1,6 +1,6 @@
 const { GraphQLList, GraphQLBoolean, GraphQLInt, GraphQLString } = require('graphql')
-const { BidType, BidAreaType } = require('./ObjectTypes')
-const { Bid, BidArea } = require('../../db/models')
+const { BidType, BidAreaType, AreaProductType} = require('./ObjectTypes')
+const { Bid, BidArea, AreaProduct } = require('../../db/models')
 
 const allBidsResolver = () => {
   return Bid.findAll()
@@ -23,6 +23,12 @@ const newBidResolver = (parent, args) => {
 const newAreaResolver = (parent, args) => {
   return BidArea.create(args)
   .then(area => area)
+  .catch(err => console.log(err))
+}
+
+const newAreaProductResolver = (parent, args) => {
+  return AreaProduct.create(args)
+  .then(areaProduct => areaProduct)
   .catch(err => console.log(err))
 }
 
@@ -60,9 +66,21 @@ const createBidArea = {
   resolve: newAreaResolver
 }
 
+const createAreaProduct = {
+  type: AreaProductType,
+  description: "add a new product to a bid area",
+  args: {
+    qty: { type: GraphQLInt },
+    bidAreaId: { type: GraphQLInt },
+    productId: { type: GraphQLInt }
+  },
+  resolve: newAreaProductResolver
+}
+
 module.exports = {
   bids,
   bidDetails,
   createBid,
-  createBidArea
+  createBidArea,
+  createAreaProduct
 }

@@ -3,7 +3,7 @@ const { products, productDetails, getProductByName, upsertProduct, destroyProduc
 const { categories, singleCategory } = require('./category')
 const { carts, removeFromCart, addToCart, incrementQty, decrementQty } = require('./cart')
 const { currentUser, loginUser, logout } = require('./user')
-const { bids, bidDetails, createBid, createBidArea } = require('./bid')
+const { bids, bidDetails, createBid, createBidArea, createAreaProduct } = require('./bid')
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
@@ -32,7 +32,8 @@ const Mutation = new GraphQLObjectType({
     upsertProduct,
     destroyProduct,
     createBid,
-    createBidArea
+    createBidArea,
+    createAreaProduct
   }
 })
 

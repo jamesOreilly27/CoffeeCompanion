@@ -1,4 +1,5 @@
 const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, GraphQLBoolean, GraphQLScalarType } = require('graphql')
+const { Product } = require('../../db/models')
 
 /********** User Related ObjectTypes **********/
 const UserType = new GraphQLObjectType({
@@ -192,6 +193,24 @@ const BidAreaType = new GraphQLObjectType({
   })
 })
 
+const AreaProductType = new GraphQLObjectType({
+  name: 'areaProduct',
+  description: 'a product attached to bid area',
+  fields: () => ({
+    id: { type: GraphQLInt },
+    qty: { type: GraphQLInt },
+    bidAreaId: { type: GraphQLInt },
+    product: {
+      type: ProductDetailType,
+      resolve: areaProduct => {
+        return Product.findByPk(areaProduct.productId)
+        .then(product => product)
+        .catch(err => console.log(err))
+      }
+    }
+  })
+})
+
 module.exports = {
   UserType,
   CategoryType,
@@ -202,5 +221,6 @@ module.exports = {
   LineItemType,
   BidType,
   BidDetailType,
-  BidAreaType
+  BidAreaType,
+  AreaProductType
 }
