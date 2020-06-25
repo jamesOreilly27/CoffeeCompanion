@@ -53,13 +53,14 @@ const BidAreaDetail = props => (
           <AreaPrice> {`$${sumAll([props.area], 'price')}`} </AreaPrice>
         </Header>
         <ProductContainer>
-          <SearchBar />
+          <SearchBar bidAreaId={props.area.id} bidId={props.bidId} />
           <ProductsList>
             {props.area.products.map(product =>
               <ProductCard
                 key={product.id}
-                id={product.id}
+                productId={product.id}
                 bidId={props.bidId}
+                bidAreaId={props.area.id}
                 name={product.product.name}
                 description={product.product.description}
                 qty={product.qty}

@@ -75,6 +75,7 @@ export const getOneCategory = gql`
 export const getAllProducts = gql`
   {
     products {
+      id
       name
       description
       image

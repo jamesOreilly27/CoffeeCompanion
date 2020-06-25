@@ -63,6 +63,7 @@ class SearchBar extends Component {
   render() {
     return (
       <Wrapper>
+        {console.log(this.props)}
         <TextInput
           type="text"
           placeholder="Search..."
@@ -76,7 +77,9 @@ class SearchBar extends Component {
             {this.filterProductList(this.state.searchValue).map(product =>
               <ProductCard
                 key={product.id}
-                id={product.id}
+                productId={product.id}
+                bidAreaId={this.props.bidAreaId}
+                bidId={this.props.bidId}
                 name={product.name}
                 description={product.description}
                 price={product.price}

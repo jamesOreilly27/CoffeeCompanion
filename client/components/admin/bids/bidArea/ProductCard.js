@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Title } from '../../../styled-components'
@@ -46,38 +46,66 @@ const TextInput = styled.input`
   border-radius: 4px;
   margin-top: 3px;
 `
+class ProductCard extends Component {
+  constructor(props) {
+    super(props)
 
-const ProductCard = ({ id, bidId, name, description, qty, price, cost, search }) => (
-  <Wrapper>
-    <FontAwesomeIcon icon={['fa', 'image']} size="3x" />
-    <Container>
-      <Title size="sm">{name}</Title>
-      <Description>{description}</Description>
-    </Container>
-    {search ?
-      <CenteredContainer>
-        <Title size="sm"> Qty. </Title>
-        <TextInput></TextInput>
-      </CenteredContainer>
-    :
-      <QtyContainer quantity={qty} id={id} bidId={bidId} />
+    this.state = { qty: 1 }
+
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(str) {
+    if(str === '') {
+      this.setState({ qty: 1 })
+    } else {
+      this.setState({ qty: parseInt(str) })
     }
-    <CenteredContainer>
-      <Title size="sm">Cost</Title>
-      <div>{`$${cost}`}</div>
-    </CenteredContainer>
-    <CenteredContainer>
-      <Title size="sm">Price</Title>
-      <div>{`$${price}`}</div>
-    </CenteredContainer>
-    <ButtonContainer>
-      {search ?
-        <AddButton id={id} bidId={bidId} />
-      :
-        <RemoveButton id={id} bidId={bidId} />
-      }
-    </ButtonContainer>
-  </Wrapper>
-)
+  }
+
+  render() {
+    return (
+      <Wrapper>
+        <FontAwesomeIcon icon={['fa', 'image']} size="3x" />
+        <Container>
+          <Title size="sm">{this.props.name}</Title>
+          <Description>{this.props.description}</Description>
+        </Container>
+        {this.props.search ?
+          <CenteredContainer>
+            <Title size="sm"> Qty </Title>
+            <TextInput onChange={evt => {
+              this.handleChange(evt.target.value)
+            }}></TextInput>
+          </CenteredContainer>
+          :
+          <QtyContainer quantity={this.props.qty} id={this.props.id} bidId={this.props.bidId} />
+        }
+        <CenteredContainer>
+          <Title size="sm">Cost</Title>
+          <div>{`$${this.props.cost}`}</div>
+        </CenteredContainer>
+        <CenteredContainer>
+          <Title size="sm">Price</Title>
+          <div>{`$${this.props.price}`}</div>
+        </CenteredContainer>
+        <ButtonContainer>
+          {this.props.search ?
+            <AddButton
+              productId={this.props.productId}
+              bidId={this.props.bidId}
+              bidAreaId={this.props.bidAreaId}
+              qty={this.state.qty}
+              price={this.props.price}
+              cost={this.props.cost}
+            />
+            :
+            <RemoveButton id={this.props.id} bidId={this.props.bidId} />
+          }
+        </ButtonContainer>
+      </Wrapper>
+    )
+  }
+}
 
 export default ProductCard

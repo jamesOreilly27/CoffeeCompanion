@@ -29,12 +29,6 @@ const newAreaResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
-const newAreaProductResolver = (parent, args) => {
-  return AreaProduct.create(args)
-  .then(areaProduct => areaProduct)
-  .catch(err => console.log(err))
-}
-
 const incrementQtyResolver = ( parent, { id }, request) => {
   return AreaProduct.findByPk(id)
   .then(areaProduct => areaProduct.update({ qty: areaProduct.qty + 1}))
@@ -60,6 +54,12 @@ const removeAreaProductResolver = ( parent, { id }, request ) => {
     areaProduct.destroy()
     return true
   })
+  .catch(err => console.log(err))
+}
+
+const addAreaProductResolver = (parent, args) => {
+  return AreaProduct.create(args)
+  .then(areaProduct => areaProduct)
   .catch(err => console.log(err))
 }
 
@@ -97,17 +97,6 @@ const addBidArea = {
   resolve: newAreaResolver
 }
 
-const createAreaProduct = {
-  type: AreaProductType,
-  description: "add a new product to a bid area",
-  args: {
-    qty: { type: GraphQLInt },
-    bidAreaId: { type: GraphQLInt },
-    productId: { type: GraphQLInt }
-  },
-  resolve: newAreaProductResolver
-}
-
 const incrementProductQty = {
   type: AreaProductType,
   args: { id: { type: GraphQLInt }},
@@ -122,6 +111,19 @@ const decrementProductQty = {
   resolve: decrementQtyResolver
 }
 
+const addAreaProduct = {
+  type: AreaProductType,
+  description: 'add a new area product',
+  args: {
+    qty: { type: GraphQLInt },
+    price: { type: GraphQLInt },
+    cost: { type: GraphQLInt },
+    productId: { type: GraphQLInt },
+    bidAreaId: { type: GraphQLInt }
+  },
+  resolve: addAreaProductResolver
+}
+
 const removeAreaProduct = {
   type: GraphQLBoolean,
   description: 'remove an areaproduct from a bidarea',
@@ -134,8 +136,8 @@ module.exports = {
   bidDetails,
   createBid,
   addBidArea,
-  createAreaProduct,
   incrementProductQty,
   decrementProductQty,
-  removeAreaProduct
+  removeAreaProduct,
+  addAreaProduct
 }
