@@ -66,15 +66,30 @@ class AddLocation extends Component {
 
   render() {
     return (
-      <Mutation mutation={addBidArea}>
+      <Mutation
+        mutation={addBidArea}
+        update={( cache, { data: { addBidArea } }) => {
+          const bid = cache.readQuery({ query: getBidDetails, variables: { id: this.props.bid.id } }).bidDetails
+          const newAreas = bid.bidAreas.concat([addBidArea])
+          const newBid = Object.assign(bid, { bidAreas: newAreas })
+
+          cache.writeQuery({
+            query: getBidDetails,
+            data: { bidDetails: Object.assign(bid, { bidArea: newAreas } ) }
+          })
+
+        }}
+      >
         {(addBidArea, { data }) => (
           <Wrapper onSubmit={evt => {
+            evt.preventDefault()
             addBidArea({ variables: { title: evt.target.title.value, bidId: this.props.bid.id }})
             this.flipState()
             this.props.flipFalse()
           }}>
             {this.state.displayInput &&
               <InputField>
+                {console.log('DATA', data)}
                 <SmallerText type="text" name="title"></SmallerText>
                 <SubmitButton type="submit">
                   +
