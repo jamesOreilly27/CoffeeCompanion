@@ -37,20 +37,20 @@ const Description = styled.div`
   color: #828181;
 `
 
-const ProductCard = ({ product, search }) => (
+const ProductCard = ({ name, description, price, cost, search }) => (
   <Wrapper>
     <FontAwesomeIcon icon={['fa', 'image']} size="3x" />
     <Container>
-      <Title size="sm">{product.product.name}</Title>
-      <Description>{product.product.description}</Description>
+      <Title size="sm">{name}</Title>
+      <Description>{description}</Description>
     </Container>
     <CenteredContainer>
       <Title size="sm">Cost</Title>
-      <div>{`$${product.cost}`}</div>
+      <div>{`$${cost}`}</div>
     </CenteredContainer>
     <CenteredContainer>
       <Title size="sm">Price</Title>
-      <div>{`$${product.price}`}</div>
+      <div>{`$${price}`}</div>
     </CenteredContainer>
     <ButtonContainer>
       {search ?

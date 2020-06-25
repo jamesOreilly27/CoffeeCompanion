@@ -73,7 +73,16 @@ class SearchBar extends Component {
         {this.props.data.products.length && this.state.displayList &&
           <ProductList>
             <CloseButton>X</CloseButton>
-            {this.filterProductList(this.state.searchValue).map(product => <ProductCard key={product.id} product={product} search/> )}
+            {this.filterProductList(this.state.searchValue).map(product =>
+              <ProductCard
+                key={product.id}
+                name={product.name}
+                description={product.description}
+                price={product.price}
+                cost={product.cost}
+                search
+              />
+            )}
           </ProductList>
         }
       </Wrapper>

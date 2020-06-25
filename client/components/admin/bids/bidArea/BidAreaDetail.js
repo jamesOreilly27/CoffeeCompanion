@@ -56,7 +56,15 @@ const BidAreaDetail = props => (
         <ProductContainer>
           <SearchBar />
           <ProductsList>
-            {props.area.products.map(product => <ProductCard key={product.id} product={product} /> )}
+            {props.area.products.map(product =>
+              <ProductCard
+                key={product.id}
+                name={product.product.name}
+                description={product.product.description}
+                cost={product.cost}
+                price={product.price}
+              />
+            )}
           </ProductsList>
         </ProductContainer>
       </Container>
