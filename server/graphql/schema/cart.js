@@ -31,7 +31,6 @@ const incrementQtyResolver = ( parent, { id }, request) => {
   return LineItem.findByPk(id)
   .then(lineitem => lineitem.update({ quantity: lineitem.quantity + 1 }) )
   .catch(err => console.log(err))
-  return true
 }
 
 const decrementQtyResolver = ( parent, { id }, request) => {
@@ -72,18 +71,18 @@ const removeFromCart = {
   resolve: removeResolver
 }
 
-const incrementQty = {
+const incrementLineitemQty = {
   type: LineItemType,
   args: { id: { type: GraphQLInt } },
   description: 'update a lineitem quantity',
   resolve: incrementQtyResolver
 }
 
-const decrementQty = {
+const decrementLineitemQty = {
   type: LineItemType,
   args: { id: { type: GraphQLInt } },
   description: 'update a lineitem quantity',
   resolve: decrementQtyResolver
 }
 
-module.exports = { carts, removeFromCart, addToCart, incrementQty, decrementQty }
+module.exports = { carts, removeFromCart, addToCart, incrementLineitemQty, decrementLineitemQty }

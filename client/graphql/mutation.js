@@ -25,17 +25,17 @@ export const removeFromCart = gql`
 `
 
 //Increment and Drecrement lineitem Quantity
-export const incrementQty = gql`
+export const incrementLineitemQty = gql`
   mutation($id: Int!) {
-    incrementQty(id: $id) {
+    incrementLineitemQty(id: $id) {
       quantity
     }
   }
 `
 
-export const decrementQty = gql`
+export const decrementLineitemQty = gql`
   mutation($id: Int!) {
-    decrementQty(id: $id) {
+    decrementLineitemQty(id: $id) {
       quantity
     }
   }
@@ -98,6 +98,22 @@ export const createAreaProduct = gql`
         price
         description
       }
+    }
+  }
+`
+
+export const incrementProductQty = gql`
+  mutation($id: Int!) {
+    incrementProductQty(id: $id) {
+      qty
+    }
+  }
+`
+
+export const decrementProductQty = gql`
+  mutation($id: Int!) {
+    decrementProductQty(id: $id) {
+      qty
     }
   }
 `

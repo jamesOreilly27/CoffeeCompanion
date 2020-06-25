@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Mutation } from 'react-apollo'
-import { incrementQty, getCurrentUser } from '../../graphql'
+import { incrementLineitemQty, getCurrentUser } from '../../graphql'
 
 const Wrapper = styled.div`
   display: flex;
@@ -16,13 +16,13 @@ const Wrapper = styled.div`
 
 const PlusButton = ({ qty, id }) => (
   <Mutation
-    mutation={incrementQty}
-    update={(cache, { data: { incrementQty } } ) => {
+    mutation={incrementLineitemQty}
+    update={(cache, { data: { incrementLineitemQty } } ) => {
       const user = cache.readQuery({ query: getCurrentUser }).currentUser
       const cart = user.activeCart
       const itemsArr = cart.lineitems
       const itemToReplace = itemsArr.find(item => item.id === id)
-      const updatedItem = Object.assign(itemToReplace, { quantity: incrementQty.quantity })
+      const updatedItem = Object.assign(itemToReplace, { quantity: incrementLineitemQty.quantity })
       itemsArr.splice(itemsArr.indexOf(itemToReplace), 1, updatedItem )
       const newCart = Object.assign(cart, { lineitems: itemsArr } )
       cache.writeQuery({
@@ -31,9 +31,9 @@ const PlusButton = ({ qty, id }) => (
       })
     }}
   >
-    {( incrementQty, { data }) => (
+    {( incrementLineitemQty, { data }) => (
       <Wrapper onClick={() => {
-        incrementQty({ variables: { id: id } })
+        incrementLineitemQty({ variables: { id: id } })
       }}>
         +
       </Wrapper>

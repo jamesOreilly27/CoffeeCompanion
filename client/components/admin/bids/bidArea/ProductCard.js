@@ -3,13 +3,14 @@ import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Title } from '../../../styled-components'
 import { ProductButton } from '../bidArea'
+import { QtyContainer } from '../bidArea'
 
-const Wrapper = styled.div`
+const Wrapper = styled.form`
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 7vh;
-  width: 50%;
+  width: 65%;
 `
 
 const Container = styled.div`
@@ -37,13 +38,28 @@ const Description = styled.div`
   color: #828181;
 `
 
-const ProductCard = ({ name, description, price, cost, search }) => (
+const TextInput = styled.input`
+  width: 5vw;
+  border: none;
+  border-radius: 4px;
+  margin-top: 3px;
+`
+
+const ProductCard = ({ id, bidId, name, description, qty, price, cost, search }) => (
   <Wrapper>
     <FontAwesomeIcon icon={['fa', 'image']} size="3x" />
     <Container>
       <Title size="sm">{name}</Title>
       <Description>{description}</Description>
     </Container>
+    {search ?
+      <CenteredContainer>
+        <Title size="sm"> Qty. </Title>
+        <TextInput></TextInput>
+      </CenteredContainer>
+    :
+      <QtyContainer quantity={qty} id={id} bidId={bidId} />
+    }
     <CenteredContainer>
       <Title size="sm">Cost</Title>
       <div>{`$${cost}`}</div>

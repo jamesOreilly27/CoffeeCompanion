@@ -1,9 +1,9 @@
 const { GraphQLObjectType, GraphQLSchema } = require('graphql')
 const { products, productDetails, getProductByName, upsertProduct, destroyProduct } = require('./product')
 const { categories, singleCategory } = require('./category')
-const { carts, removeFromCart, addToCart, incrementQty, decrementQty } = require('./cart')
+const { carts, removeFromCart, addToCart, incrementLineitemQty, decrementLineitemQty } = require('./cart')
 const { currentUser, loginUser, logout } = require('./user')
-const { bids, bidDetails, createBid, createBidArea, createAreaProduct } = require('./bid')
+const { bids, bidDetails, createBid, createBidArea, createAreaProduct, incrementProductQty, decrementProductQty } = require('./bid')
 
 const RootQuery = new GraphQLObjectType({
   name: 'RootQuery',
@@ -27,13 +27,15 @@ const Mutation = new GraphQLObjectType({
     logout,
     removeFromCart,
     addToCart,
-    incrementQty,
-    decrementQty,
+    incrementLineitemQty,
+    decrementLineitemQty,
     upsertProduct,
     destroyProduct,
     createBid,
     createBidArea,
-    createAreaProduct
+    createAreaProduct,
+    incrementProductQty,
+    decrementProductQty
   }
 })
 

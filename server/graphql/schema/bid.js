@@ -35,6 +35,25 @@ const newAreaProductResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
+const incrementQtyResolver = ( parent, { id }, request) => {
+  return AreaProduct.findByPk(id)
+  .then(areaProduct => areaProduct.update({ qty: areaProduct.qty + 1}))
+  .catch(err => console.log(err))
+}
+
+const decrementQtyResolver = ( parent, { id }, request) => {
+  return AreaProduct.findByPk(id)
+  .then(areaProduct => {
+    if(areaProduct.qty - 1 === 0) {
+      return areaProduct.destroy()
+    }
+    else {
+      return areaProduct.update({ qty: areaProduct.qty - 1})
+    }
+  })
+  .catch(err => console.log(err))
+}
+
 const bids = {
   type: new GraphQLList(BidType),
   description: 'a list of roys bids',
@@ -80,10 +99,26 @@ const createAreaProduct = {
   resolve: newAreaProductResolver
 }
 
+const incrementProductQty = {
+  type: AreaProductType,
+  args: { id: { type: GraphQLInt }},
+  description: 'increment the qty of an area product',
+  resolve: incrementQtyResolver
+}
+
+const decrementProductQty = {
+  type: AreaProductType,
+  args: { id: { type: GraphQLInt }},
+  description: 'decrement the qty of an area product',
+  resolve: decrementQtyResolver
+}
+
 module.exports = {
   bids,
   bidDetails,
   createBid,
   createBidArea,
-  createAreaProduct
+  createAreaProduct,
+  incrementProductQty,
+  decrementProductQty
 }

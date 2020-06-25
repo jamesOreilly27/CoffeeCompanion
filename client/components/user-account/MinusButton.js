@@ -1,6 +1,6 @@
 import React from 'react'
 import { Mutation } from 'react-apollo'
-import { decrementQty, getCurrentUser } from '../../graphql'
+import { decrementLineitemQty, getCurrentUser } from '../../graphql'
 import styled from 'styled-components'
 
 const Wrapper = styled.div`
@@ -16,14 +16,14 @@ const Wrapper = styled.div`
 
 const MinusButton = ({ qty, id }) => (
   <Mutation
-    mutation={decrementQty}
-    update={(cache, { data: { decrementQty } } ) => {
+    mutation={decrementLineitemQty}
+    update={(cache, { data: { decrementLineitemQty } } ) => {
       const user = cache.readQuery({ query: getCurrentUser }).currentUser
       const cart = user.activeCart
-      if(decrementQty.quantity) {
+      if(decrementLineitemQty.quantity) {
         const itemsArr = cart.lineitems
         const itemToReplace = itemsArr.find(item => item.id === id)
-        const updatedItem = Object.assign(itemToReplace, { quantity: decrementQty.quantity })
+        const updatedItem = Object.assign(itemToReplace, { quantity: decrementLineitemQty.quantity })
         itemsArr.splice(itemsArr.indexOf(itemToReplace), 1, updatedItem )
         const newCart = Object.assign(cart, { lineitems: itemsArr } )
         cache.writeQuery({
@@ -38,9 +38,9 @@ const MinusButton = ({ qty, id }) => (
         }) 
     }}
   }>
-    {( decrementQty, { data }) => (
+    {( decrementLineitemQty, { data }) => (
       <Wrapper onClick={() => {
-        decrementQty({ variables: { id: id } })
+        decrementLineitemQty({ variables: { id: id } })
       }}>
         -
       </Wrapper>
