@@ -64,6 +64,8 @@ class ProductCard extends Component {
   }
 
   render() {
+    let qty
+    this.props.qty ? qty = this.props.qty : qty = this.state.qty
     return (
       <Wrapper>
         <FontAwesomeIcon icon={['fa', 'image']} size="3x" />
@@ -83,11 +85,11 @@ class ProductCard extends Component {
         }
         <CenteredContainer>
           <Title size="sm">Cost</Title>
-          <div>{`$${this.props.cost}`}</div>
+          <div>{`$${this.props.cost * qty}`}</div>
         </CenteredContainer>
         <CenteredContainer>
           <Title size="sm">Price</Title>
-          <div>{`$${this.props.price}`}</div>
+          <div>{`$${this.props.price * qty}`}</div>
         </CenteredContainer>
         <ButtonContainer>
           {this.props.search ?
