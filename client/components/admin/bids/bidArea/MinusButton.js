@@ -33,7 +33,19 @@ const MinusButton = ({ qty, productId, bidId }) => (
           data: { bidDetails: Object.assign(bid, { bidArea: areas })}
         })
       } else {
-        console.log('HELLO WORLD')
+        let newAreas
+        areas.forEach(area => {
+          area.products.forEach(product => {
+            if(product.id === productId) {
+              newAreas = area.products.splice(area.products.indexOf(product), 1)
+            }
+          })
+        })
+
+        cache.writeQuery({
+          query: getBidDetails,
+          data: { bidDetails: Object.assign(bid, { bidArea: newAreas } )}
+        })
       }
     }}
   >
