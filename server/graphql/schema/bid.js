@@ -4,7 +4,10 @@ const { Bid, BidArea, AreaProduct } = require('../../db/models')
 
 const allBidsResolver = () => {
   return Bid.findAll()
-  .then(bids => bids)
+  .then(bids => {
+    console.log('BIDS', bids)
+    return bids
+  })
   .catch(err => console.log(err))
 }
 

@@ -48,6 +48,7 @@ const BidAreaDetail = props => (
   <Wrapper>
     {props.area &&
       <Container>
+        {console.log('AREA DETAIL', props.area)}
         <Header>
           <HeaderTitle margin={1}> {props.area.title} </HeaderTitle>
           <AreaPrice> {`$${sumAll([props.area], 'price')}`} </AreaPrice>

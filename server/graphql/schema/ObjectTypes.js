@@ -183,10 +183,12 @@ const BidAreaType = new GraphQLObjectType({
     id: { type: GraphQLInt },
     title: { type: GraphQLString },
     products: {
-      type: new GraphQLList(ProductDetailType),
+      type: new GraphQLList(AreaProductType),
       resolve: bidArea => {
         return bidArea.getProducts()
-        .then(products => products)
+        .then(products => {
+          return products
+        })
         .catch(err => console.log(err))
       }
     }
@@ -199,6 +201,8 @@ const AreaProductType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLInt },
     qty: { type: GraphQLInt },
+    cost: { type: GraphQLInt },
+    price: { type: GraphQLInt},
     bidAreaId: { type: GraphQLInt },
     product: {
       type: ProductDetailType,

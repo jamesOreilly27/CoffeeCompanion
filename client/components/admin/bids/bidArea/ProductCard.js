@@ -41,8 +41,8 @@ const ProductCard = ({ product, search }) => (
   <Wrapper>
     <FontAwesomeIcon icon={['fa', 'image']} size="3x" />
     <Container>
-      <Title size="sm">{product.name}</Title>
-      <Description>{product.description}</Description>
+      <Title size="sm">{product.product.name}</Title>
+      <Description>{product.product.description}</Description>
     </Container>
     <CenteredContainer>
       <Title size="sm">Cost</Title>

@@ -29,9 +29,9 @@ LineItem.belongsTo(Product, { constraints: false })
 //Bid and BidArea
 Bid.hasMany(BidArea, { as: 'bidareas', constraints: false })
 
-//BidArea andd Product
-BidArea.belongsToMany(Product, { through: AreaProduct })
-Product.belongsToMany(BidArea, { through: AreaProduct })
+//BidArea and Product
+AreaProduct.belongsTo(Product, { constraints: false })
+BidArea.hasMany(AreaProduct, { as: 'products' })
 
 //Bid and User
 User.hasMany(Bid)

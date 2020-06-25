@@ -154,10 +154,13 @@ export const getBidDetails = gql`
         title
         products {
           id
-          name
+          qty
           cost
           price
-          description
+          product {
+            name
+            description
+          }
         }
       }
     }

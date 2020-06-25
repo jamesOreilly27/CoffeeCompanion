@@ -63,7 +63,6 @@ class SearchBar extends Component {
   render() {
     return (
       <Wrapper>
-        {console.log('STATE', this.state)}
         <TextInput
           type="text"
           placeholder="Search..."

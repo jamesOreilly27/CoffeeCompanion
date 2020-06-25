@@ -85,3 +85,19 @@ export const addBidArea = gql`
     }
   }
 `
+
+export const createAreaProduct = gql`
+  mutation($qty: Int!, $bidAreaId: Int!, $productId: Int!) {
+    createAreaProduct(qty: $qty, bidAreaId: $bidAreaId, productId: $productId) {
+      id
+      bidAreaId
+      product {
+        id
+        name
+        cost
+        price
+        description
+      }
+    }
+  }
+`

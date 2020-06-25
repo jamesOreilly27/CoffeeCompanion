@@ -2,10 +2,13 @@ const Sequelize = require('sequelize')
 const db = require('../db')
 
 const AreaProduct = db.define('area-product', {
-  id: {
+  price: {
     type: Sequelize.INTEGER,
-    primaryKey: true,
-    autoIncrement: true
+    allowNull: false
+  },
+  cost: {
+    type: Sequelize.INTEGER,
+    allowNull: false
   },
   qty: {
     type: Sequelize.INTEGER,
