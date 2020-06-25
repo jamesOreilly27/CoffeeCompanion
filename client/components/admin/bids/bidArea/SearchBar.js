@@ -72,7 +72,7 @@ class SearchBar extends Component {
         </TextInput>
         {this.props.data.products.length && this.state.displayList &&
           <ProductList>
-            <CloseButton>X</CloseButton>
+            <CloseButton onClick={this.resetDisplayList}>X</CloseButton>
             {this.filterProductList(this.state.searchValue).map(product =>
               <ProductCard
                 key={product.id}
