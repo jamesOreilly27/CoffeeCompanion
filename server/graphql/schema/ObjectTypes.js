@@ -186,9 +186,7 @@ const BidAreaType = new GraphQLObjectType({
       type: new GraphQLList(AreaProductType),
       resolve: bidArea => {
         return bidArea.getProducts()
-        .then(products => {
-          return products
-        })
+        .then(products => products)
         .catch(err => console.log(err))
       }
     }

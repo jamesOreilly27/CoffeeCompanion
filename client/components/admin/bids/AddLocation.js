@@ -68,12 +68,14 @@ class AddLocation extends Component {
     return (
       <Mutation
         mutation={addBidArea}
-        update={(cache, { data: { createBidArea } }) => {
+        update={(cache, { data: { addBidArea } }) => {
           const bid = cache.readQuery({ query: getBidDetails, variables: { id: this.props.bid.id }}).bidDetails
-          const newAreas = bid.bidAreas.concat([createBidArea])
+          // const newAreas = bid.bidAreas.concat([addBidArea])
+          const areas = bid.bidAreas
+          areas.push(addBidArea)
           cache.writeQuery({
             query: getBidDetails,
-            data: { bidDetails: Object.assign(bid, { bidAreas: newAreas } ) }
+            data: { bidDetails: Object.assign(bid, { bidAreas: areas } ) }
           })
         }}
       >

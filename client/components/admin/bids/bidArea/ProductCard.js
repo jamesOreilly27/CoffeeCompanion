@@ -10,6 +10,9 @@ const Wrapper = styled.form`
   align-items: center;
   height: 7vh;
   width: 85%;
+  margin: 1.5vh;
+  border-top: 1px solid black;
+  padding-top: 2vh;
 `
 
 const Container = styled.div`
@@ -23,7 +26,7 @@ const Container = styled.div`
 
 const CenteredContainer = styled(Container)`
   align-items: center;
-  width: 10vw;
+  width: 12vw;
   padding: 0;
 `
 

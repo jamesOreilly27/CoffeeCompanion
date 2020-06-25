@@ -10,7 +10,7 @@ const Wrapper = styled.button`
 
 const AddButton = ({ id, bidId }) => (
   <Wrapper>
-
+    +
   </Wrapper>
 )
 

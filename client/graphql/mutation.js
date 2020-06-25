@@ -73,14 +73,16 @@ export const startNewBid = gql`
 
 export const addBidArea = gql`
   mutation($title: String!, $bidId: Int!) {
-    createBidArea(title: $title, bidId: $bidId) {
+    addBidArea(title: $title, bidId: $bidId) {
       id
       title
       products {
         id
-        name
         cost
         price
+        product {
+          name
+        }
       }
     }
   }
@@ -93,7 +95,6 @@ export const createAreaProduct = gql`
       bidAreaId
       product {
         id
-        name
         cost
         price
         description

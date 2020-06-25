@@ -87,7 +87,7 @@ const createBid = {
   resolve: newBidResolver
 }
 
-const createBidArea = {
+const addBidArea = {
   type: BidAreaType,
   description: "add a new area to a bid",
   args: {
@@ -133,7 +133,7 @@ module.exports = {
   bids,
   bidDetails,
   createBid,
-  createBidArea,
+  addBidArea,
   createAreaProduct,
   incrementProductQty,
   decrementProductQty,
