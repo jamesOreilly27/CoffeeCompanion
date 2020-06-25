@@ -10,7 +10,7 @@ const Wrapper = styled.button`
   border: none;
 `
 
-const RemoveButton = ({ id, bidId }) => (
+const RemoveButton = ({ productId, bidId }) => (
   <Mutation
     mutation={removeAreaProduct}
     update={( cache, { data: removeProductArea } ) => {
@@ -19,7 +19,7 @@ const RemoveButton = ({ id, bidId }) => (
       let newAreas;
       areas.forEach(area => {
         area.products.forEach(product => {
-          if(product.id === id) {
+          if(product.id === productId) {
             newAreas = area.products.splice(area.products.indexOf(product), 1)
           }
         })
@@ -33,7 +33,7 @@ const RemoveButton = ({ id, bidId }) => (
     {( removeAreaProduct, { data }) => (
       <Wrapper onClick={evt => {
         evt.preventDefault()
-        removeAreaProduct({ variables: { id: id } })
+        removeAreaProduct({ variables: { id: productId } })
       }}>
         -
       </Wrapper>

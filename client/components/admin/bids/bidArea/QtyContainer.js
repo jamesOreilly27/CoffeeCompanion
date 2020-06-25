@@ -21,11 +21,11 @@ const Quantity = styled(Element)`
   font-size: 11px;
 `
 
-const QtyContainer = ({ quantity, id, bidId}) => (
+const QtyContainer = ({ quantity, productId, bidId}) => (
   <Wrapper>
-    <MinusButton qty={quantity} id={id} bidId={bidId} />
+    <MinusButton qty={quantity} productId={productId} bidId={bidId} />
     <Quantity> {quantity} </Quantity>
-    <PlusButton qty={quantity} id={id} bidId={bidId} />
+    <PlusButton qty={quantity} productId={productId} bidId={bidId} />
   </Wrapper>
 )
 

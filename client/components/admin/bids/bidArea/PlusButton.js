@@ -14,7 +14,7 @@ const Wrapper = styled.div`
   cursor: pointer;
 `
 
-const PlusButton = ({ qty, id, bidId }) => (
+const PlusButton = ({ qty, productId, bidId }) => (
   <Mutation
     mutation={incrementProductQty}
     update={(cache, { data: { incrementProductQty } } ) => {
@@ -22,7 +22,7 @@ const PlusButton = ({ qty, id, bidId }) => (
       const areas = bid.bidAreas
       areas.forEach(area => {
         area.products.forEach(product => {
-          if(product.id === id) {
+          if(product.id === productId) {
             product = Object.assign(product, { qty: incrementProductQty.qty })
           }
         })
@@ -36,7 +36,7 @@ const PlusButton = ({ qty, id, bidId }) => (
   >
     {( incrementProductQty, { data }) => (
       <Wrapper onClick={() => {
-        incrementProductQty({ variables: { id: id } })
+        incrementProductQty({ variables: { id: productId } })
       }}>
         +
       </Wrapper>

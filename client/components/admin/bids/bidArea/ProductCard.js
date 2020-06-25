@@ -79,7 +79,7 @@ class ProductCard extends Component {
             }}></TextInput>
           </CenteredContainer>
           :
-          <QtyContainer quantity={this.props.qty} id={this.props.id} bidId={this.props.bidId} />
+          <QtyContainer quantity={this.props.qty} productId={this.props.productId} bidId={this.props.bidId} />
         }
         <CenteredContainer>
           <Title size="sm">Cost</Title>
@@ -100,7 +100,7 @@ class ProductCard extends Component {
               cost={this.props.cost}
             />
             :
-            <RemoveButton id={this.props.id} bidId={this.props.bidId} />
+            <RemoveButton productId={this.props.productId} bidId={this.props.bidId} />
           }
         </ButtonContainer>
       </Wrapper>
