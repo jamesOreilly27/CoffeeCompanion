@@ -2,15 +2,14 @@ import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Title } from '../../../styled-components'
-import { ProductButton } from '../bidArea'
-import { QtyContainer } from '../bidArea'
+import { QtyContainer, AddButton, RemoveButton } from '../bidArea'
 
 const Wrapper = styled.form`
   display: flex;
   justify-content: space-around;
   align-items: center;
   height: 7vh;
-  width: 65%;
+  width: 85%;
 `
 
 const Container = styled.div`
@@ -70,9 +69,9 @@ const ProductCard = ({ id, bidId, name, description, qty, price, cost, search })
     </CenteredContainer>
     <ButtonContainer>
       {search ?
-        <ProductButton add />
+        <AddButton id={id} bidId={bidId} />
       :
-        <ProductButton remove />
+        <RemoveButton id={id} bidId={bidId} />
       }
     </ButtonContainer>
   </Wrapper>

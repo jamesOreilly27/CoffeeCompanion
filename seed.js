@@ -37,7 +37,7 @@ async function seed () {
     Product.create({name: 'CARAMEL', description: 'sweet goodness', cost: 10, price: 40, image: '', featured: true }),
     Product.create({name: 'VANILLA', description: 'this vanilla isnt boring', cost: 10, price: 70, image: '' }),
     Product.create({name: 'ICED COFFEE', description: 'for the cold lovers', cost: 10, price: 95, image: '' }),
-    Product.create({name: 'MASTER BLEND', description: 'the blend will make you want more', price: 40, image: '' }),
+    Product.create({name: 'MASTER BLEND', description: 'the blend will make you want more', cost: 10, price: 40, image: '' }),
     Product.create({name: 'HOUSE BLEND', description: 'for around the hosue', cost: 10, price: 35, image: '' }),
     Product.create({name: 'TEST ONE', description: 'Test', cost: 10, price: 25, image: '' }),
     Product.create({name: 'TEST TWO', description: 'Test', cost: 10, price: 55, image: '' }),

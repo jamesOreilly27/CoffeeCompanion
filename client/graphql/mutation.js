@@ -117,3 +117,9 @@ export const decrementProductQty = gql`
     }
   }
 `
+
+export const removeAreaProduct = gql`
+  mutation($id: Int!) {
+    removeAreaProduct(id: $id)
+  }
+`

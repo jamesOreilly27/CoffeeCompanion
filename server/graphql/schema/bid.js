@@ -54,6 +54,15 @@ const decrementQtyResolver = ( parent, { id }, request) => {
   .catch(err => console.log(err))
 }
 
+const removeAreaProductResolver = ( parent, { id }, request ) => {
+  AreaProduct.findByPk(id)
+  .then(areaProduct => {
+    areaProduct.destroy()
+    return true
+  })
+  .catch(err => console.log(err))
+}
+
 const bids = {
   type: new GraphQLList(BidType),
   description: 'a list of roys bids',
@@ -113,6 +122,13 @@ const decrementProductQty = {
   resolve: decrementQtyResolver
 }
 
+const removeAreaProduct = {
+  type: GraphQLBoolean,
+  description: 'remove an areaproduct from a bidarea',
+  args: { id: { type: GraphQLInt }},
+  resolve: removeAreaProductResolver
+}
+
 module.exports = {
   bids,
   bidDetails,
@@ -120,5 +136,6 @@ module.exports = {
   createBidArea,
   createAreaProduct,
   incrementProductQty,
-  decrementProductQty
+  decrementProductQty,
+  removeAreaProduct
 }
