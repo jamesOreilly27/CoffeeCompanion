@@ -13,11 +13,24 @@ const Wrapper = styled.button`
 const AddButton = ({ productId, bidAreaId, bidId, price, cost, qty }) => (
   <Mutation
     mutation={addAreaProduct}
+    // update={( cache, { data: addAreaProduct }) => {
+    //   const bid = cache.readQuery({ query: getBidDetails, variables: { id: bidId } }).bidDetails
+    //   let areaToUpdate = bid.bidAreas.filter(area => area.id === bidAreaId)[0]
+
+    //   areaToUpdate = Object.assign(areaToUpdate, { products: areaToUpdate.products.concat([addAreaProduct.addAreaProduct])})
+
+    //   console.log('NEW AREA', areaToUpdate)
+    //   console.log('AREAS', bid.bidAreas)
+      
+    //   cache.writeQuery({
+    //     query: getBidDetails,
+    //     data: { bidDetails: Object.assign(bid, { bidAreas: bid.bidAreas } )}
+    //   })
+    // }}
   >
     {( addAreaProduct, { data }) => (
       <Wrapper onClick={evt => {
-        evt.preventDefault()
-        addAreaProduct({ variables: { productId: productId, bidAreaId: bidAreaId, price: price, cost: cost, qty: qty } })
+        addAreaProduct({ variables: { productId, bidAreaId, price, cost, qty } })
       }}>
         +
       </Wrapper>

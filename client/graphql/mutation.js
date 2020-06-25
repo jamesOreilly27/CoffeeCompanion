@@ -132,6 +132,10 @@ export const addAreaProduct = gql`
       qty
       cost
       price
+      product {
+        name
+        description
+      }
     }
   }
 `
