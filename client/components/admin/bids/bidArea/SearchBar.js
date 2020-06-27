@@ -77,6 +77,7 @@ class SearchBar extends Component {
             {this.filterProductList(this.state.searchValue).map(product =>
               <ProductCard
                 key={product.id}
+                handleAddChange={this.resetDisplayList}
                 productId={product.id}
                 bidAreaId={this.props.bidAreaId}
                 bidId={this.props.bidId}

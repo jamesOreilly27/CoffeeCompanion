@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { Title } from '../styled-components'
 import { Route, Switch } from 'react-router-dom'
 import { AdminLink, Customers, Orders, Materials } from '../admin'
-import { Bids, BidDetail, BidAreaDetail } from './bids'
+import { Bids, BidDetail, BidPDF } from './bids'
 import { Products } from './products'
 import { UpdateProduct } from './product-update'
 
@@ -59,6 +59,7 @@ class AdminDashboard extends Component {
               <Route exact path="/admin/materials" component={Materials} />
               <Route exact path="/admin/bids" component={Bids} />
               <Route exact path="/admin/bids/:id" component={BidDetail} />
+              <Route exact path="/admin/bids/:id/pdf" component={BidPDF} />
             </Switch>
           </Container>
         }

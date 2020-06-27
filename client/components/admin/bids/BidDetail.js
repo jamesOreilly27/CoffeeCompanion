@@ -83,10 +83,6 @@ class BidDetail extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    // console.log('PREVPROPS', prevProps)
-    // console.log('PROPS', this.props)
-    // console.log('PREVSTATE', prevState)
-    // console.log('STATE', this.state)
     if (this.props.data.bidDetails && this.state.selectedArea === " ") {
       this.setState({ selectedArea: this.props.data.bidDetails.bidAreas[0].title })
     }

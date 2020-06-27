@@ -95,6 +95,7 @@ class ProductCard extends Component {
           {this.props.search ?
             <AddButton
               productId={this.props.productId}
+              handleAddChange={this.props.handleAddChange}
               bidId={this.props.bidId}
               bidAreaId={this.props.bidAreaId}
               qty={this.state.qty}

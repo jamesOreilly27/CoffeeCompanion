@@ -10,26 +10,24 @@ const Wrapper = styled.button`
   border: none;
 `
 
-const AddButton = ({ productId, bidAreaId, bidId, price, cost, qty }) => (
+const AddButton = ({ productId, handleAddChange, bidAreaId, bidId, price, cost, qty }) => (
   <Mutation
     mutation={addAreaProduct}
-    // update={( cache, { data: addAreaProduct }) => {
-    //   const bid = cache.readQuery({ query: getBidDetails, variables: { id: bidId } }).bidDetails
-    //   let areaToUpdate = bid.bidAreas.filter(area => area.id === bidAreaId)[0]
-
-    //   areaToUpdate = Object.assign(areaToUpdate, { products: areaToUpdate.products.concat([addAreaProduct.addAreaProduct])})
-
-    //   console.log('NEW AREA', areaToUpdate)
-    //   console.log('AREAS', bid.bidAreas)
-      
-    //   cache.writeQuery({
-    //     query: getBidDetails,
-    //     data: { bidDetails: Object.assign(bid, { bidAreas: bid.bidAreas } )}
-    //   })
-    // }}
+    update={( cache, { data: { addAreaProduct } }) => {
+      const bid = cache.readQuery({ query: getBidDetails, variables: { id: bidId } }).bidDetails
+      const area = bid.bidAreas.find(area => area.id === bidAreaId)
+      const newArea = Object.assign(area, { products: area.products.concat([addAreaProduct]) } )
+      const newAreas = bid.bidAreas.filter(loopArea => loopArea.id !== area.id)
+      cache.writeQuery({
+        query: getBidDetails,
+        data: { bidDetails: Object.assign(bid, { bidArea: newAreas.concat([newArea]) }) }
+      })
+    }}
   >
     {( addAreaProduct, { data }) => (
       <Wrapper onClick={evt => {
+        evt.preventDefault()
+        handleAddChange()
         addAreaProduct({ variables: { productId, bidAreaId, price, cost, qty } })
       }}>
         +
