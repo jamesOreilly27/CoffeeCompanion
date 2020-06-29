@@ -15,7 +15,7 @@ export const HeaderView = styled.View`
 export const Customer = styled.View`
   width: 65%;
   height: 15vh;
-  background-color: #317888;
+  background-color: #317787;
 `
 
 export const AddyInfo = styled.View`
@@ -50,13 +50,29 @@ export const OurInfo = styled.View`
   margin-top: 10px;
 `
 
+export const AreaHeader = styled.Text`
+  padding: 10px 0 10px 10px;
+  fontSize: 30px;
+  background-color: #006481;
+  color: #FFF;
+`
+
+export const AreaDescription = styled.Text`
+  background-color: #006481;
+  padding: 10px 0 10px 10px;
+  fontSize: 15px;
+  color: #FFF;
+`
+
 export const ProductListHeader = styled.Text`
-  margin: 10px 0 10px 10px;
-  width: 59%;
+  margin-top: 25px;
+  padding: 10px 0 10px 10px;
+  width: 35%;
+  background-color: #317787;
+  color: #FFF;
 `
 
 export const ProductsView = styled.View`
-  border-top: 1px solid black;
   border-bottom: 1px solid black;
   padding-top: 10px 0 -5px;
 `
@@ -73,22 +89,25 @@ export const ProductCard = styled.View`
 
 export const ImagePlaceholder = styled.Text`
   font-size: 8px;
+  width: 15%;
 `
 
 export const ProductName = styled.Text`
-  width: 55%
+  width: 60%
   font-size: 15px;
-  color: blue;
+  color: #000;
 `
 
 export const ProductQty = styled.Text`
   font-size: 15px;
-  color: blue;
+  color: #000;
+  width: 10%;
 `
 
 export const ProductPrice = styled.Text`
   font-size: 15px;
-  color: blue;
+  color: #000;
+  width: 10%;
 `
 
 export const AreaTotalView = styled.View`
@@ -96,7 +115,7 @@ export const AreaTotalView = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 151%;
+  width: 144%;
   margin: 10px 0 10px 10px;
 `
 
