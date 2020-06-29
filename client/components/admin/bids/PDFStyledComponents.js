@@ -1,20 +1,53 @@
 import styled from '@react-pdf/styled-components'
-import { Page, Text, View } from '@react-pdf/renderer'
+import { Page, Text, View, Link } from '@react-pdf/renderer'
 
 export const TitlePage = styled.Page`
-  display: flex;
-  justify-content: center;
+  
 `
 
-export const TitleView = styled.View`
-  display: flex;
-  justify-content: center;
-  space-between: center;
+export const HeaderView = styled.View`
   width: 100%;
+  height: 15vh;
+  flex-direction: row;
+  justify-content: space-between;
+`
+
+export const Customer = styled.View`
+  width: 65%;
+  height: 15vh;
+  background-color: #317888;
+`
+
+export const AddyInfo = styled.View`
+  align-items: center;
+  padding: 10px;
+  width: 60%;
+  height: 75%;
+  background-color: #006481;
+  color: #FFF;
 `
 
 export const Header = styled.Text`
-  font-size: 35px;
+  font-size: 20px;
+`
+
+export const AddressLine = styled.Text`
+  color: #FFF;
+  font-size: 13px;
+`
+
+export const OurAddressLine = styled(AddressLine)`
+  color: #000;
+`
+
+export const OurLink = styled.Link`
+  font-size: 11px;
+`
+
+export const OurInfo = styled.View`
+  width: 35%;
+  align-items: center;
+  margin-top: 10px;
 `
 
 export const ProductListHeader = styled.Text`

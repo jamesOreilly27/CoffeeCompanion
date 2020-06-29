@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
 import { TitlePage, TitleView, Header, ProductsView, ProductCard, ImagePlaceholder, ProductName, ProductQty, ProductPrice, ProductListHeader, AreaTotalView, AreaTotalTitle, AreaTotalPrice, TotalPage, AreaCard, AreaTitle, FinalAreaTotalPrice, AreaPartsTotal, AreaTaxTotal, AreaTableHeader, AreaPartsHeader, AreaTaxHeader, FinalAreaPriceHeader, ProjectTotalsView } from './PDFStyledComponents'
+import { PDFTitlePage } from '../bids'
 import { PDFViewer, Page, View, Text, Image, Document, StyleSheet } from '@react-pdf/renderer'
 import { sumAll } from './helpers'
 
@@ -17,12 +18,6 @@ const Wrapper = styled.div`
 `
 
 const styles = StyleSheet.create({
-  viewer: {
-    color: '#000'
-  },
-  page: {
-
-  },
   section: {
     margin: 10,
     padding: 10,
@@ -31,11 +26,6 @@ const styles = StyleSheet.create({
   areaTitle: {
     margin: "10px, 0, 10px, 10px",
     fontSize: "30px"
-  },
-  productCard: {
-    backgroundColor: "#FFF",
-    flexDirection: "row",
-    margin: "10px 0 5px 10px"
   }
 });
 
@@ -46,14 +36,8 @@ const BidPDF = props => {
       <PDFViewer width="100%" height="100%">
         {bid &&
           <Document>
-            <TitlePage>
-              <TitleView fixed>
-                <Header>
-                  {`- Test Customer Bid -`}
-                </Header>
-              </TitleView>
-            </TitlePage>
-            <Page size="A4" style={styles.page}>
+            <PDFTitlePage />
+            <Page size="A4">
               {bid.bidAreas.map(area => {
                 return (
                   <View sytle={styles.section} break={bid.bidAreas.indexOf(area) !== 0}>
@@ -132,7 +116,6 @@ const BidPDF = props => {
     </Wrapper>
   )
 }
-
 
 export default graphql(getBidDetails, {
   options: props => ({
