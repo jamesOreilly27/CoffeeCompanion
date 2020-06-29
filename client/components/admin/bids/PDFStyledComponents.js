@@ -55,7 +55,7 @@ export const NewView = styled.View`
 `
 
 export const AreaDetailView = styled.View`
-  margin: 20px 150px 0 15px;
+  margin: 20px 50px 0 15px;
   padding: 10px;
   flexGrow: 1;
 `
