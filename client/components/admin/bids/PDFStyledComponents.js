@@ -5,7 +5,8 @@ export const TitlePage = styled.Page`
 `
 
 export const HeaderView = styled.View`
-  width: 100%;
+  width: 95%;
+  margin: 0 10px;
   height: 15vh;
   flex-direction: row;
   justify-content: space-between;
@@ -50,7 +51,7 @@ export const OurInfo = styled.View`
 `
 
 export const NewView = styled.View`
-  
+
 `
 
 export const AreaDetailView = styled.View`
