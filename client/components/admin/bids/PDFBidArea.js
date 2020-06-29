@@ -14,7 +14,7 @@ const PDFBidArea = ({ area, bid }) => (
       <ProductsView>
         {area.products.map(product => {
           return (
-            <ProductCard key={product.id}>
+            <ProductCard key={product.id} isEven={area.products.indexOf(product) % 2 === 0}>
               <ImagePlaceholder>
                 Image Placeholder
               </ImagePlaceholder>

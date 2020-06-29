@@ -78,13 +78,14 @@ export const AreaDescription = styled.Text`
 export const ProductListHeader = styled.Text`
   margin-top: 25px;
   padding: 10px;
-  width: 35%;
+  width: 100%;
   background-color: #317787;
   color: #FFF;
+  border: 1px solid black;
 `
 
 export const ProductsView = styled.View`
-  border-bottom: 1px solid black;
+  border: 1px solid black;
   padding-top: 10px 0 -5px;
 `
 
@@ -94,8 +95,11 @@ export const ProductCard = styled.View`
   width: 98%;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 0 5px 10px;
-  padding: 5px 0 8px;
+  padding: 15px 0 13px 0px;
+  background-color: ${({ isEven }) => {
+    if(isEven) return "#FFF"
+    else return "#F3F3F3"
+  }}
 `
 
 export const ImagePlaceholder = styled.Text`
