@@ -24,7 +24,9 @@ const BidPDF = props => {
       <PDFViewer width="100%" height="100%">
         {bid &&
           <Document>
-            <PDFTitlePage />
+            <Page>
+              <PDFTitlePage />
+            </Page>
             <Page size="A4">
               {bid.bidAreas.map(area => <PDFBidArea key={area.id} area={area} bid={bid} /> )}
             </Page>

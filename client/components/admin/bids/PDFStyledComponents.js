@@ -49,6 +49,10 @@ export const OurInfo = styled.View`
   margin-top: 10px;
 `
 
+export const NewView = styled.View`
+  
+`
+
 export const AreaDetailView = styled.View`
   margin: 20px 150px 0 15px;
   padding: 10px;
