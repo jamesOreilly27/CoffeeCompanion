@@ -50,23 +50,30 @@ export const OurInfo = styled.View`
   margin-top: 10px;
 `
 
+export const AreaDetailView = styled.View`
+  margin: 20px 150px 0 15px;
+  padding: 10px;
+  flexGrow: 1;
+`
+
 export const AreaHeader = styled.Text`
-  padding: 10px 0 10px 10px;
+  padding: 20px;
   fontSize: 30px;
   background-color: #006481;
   color: #FFF;
+  border-radius: 4px;
 `
 
 export const AreaDescription = styled.Text`
   background-color: #006481;
-  padding: 10px 0 10px 10px;
-  fontSize: 15px;
+  padding: 20px;
+  fontSize: 13px;
   color: #FFF;
 `
 
 export const ProductListHeader = styled.Text`
   margin-top: 25px;
-  padding: 10px 0 10px 10px;
+  padding: 10px;
   width: 35%;
   background-color: #317787;
   color: #FFF;
@@ -105,9 +112,12 @@ export const ProductQty = styled.Text`
 `
 
 export const ProductPrice = styled.Text`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
   font-size: 15px;
   color: #000;
-  width: 10%;
+  width: 15%;
 `
 
 export const AreaTotalView = styled.View`
@@ -115,7 +125,7 @@ export const AreaTotalView = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 144%;
+  width: 132%;
   margin: 10px 0 10px 10px;
 `
 

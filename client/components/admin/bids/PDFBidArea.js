@@ -1,0 +1,38 @@
+import React from 'react'
+import { AreaDetailView, AreaHeader, AreaDescription, ProductListHeader, ProductsView, ProductCard, ImagePlaceholder, ProductName, ProductQty, ProductPrice, AreaTotalView, AreaTotalTitle, AreaTotalPrice } from './PDFStyledComponents'
+import { sumAll } from './helpers'
+
+
+const PDFBidArea = ({ area, bid }) => (
+  <AreaDetailView break={bid.bidAreas.indexOf(area) !== 0}>
+    <AreaHeader> {area.title} </AreaHeader>
+    <AreaDescription> {`A brief description of the area so that there is no confusion as to where we are referring to. This field will have to be added to the BidArea Model as a property`} </AreaDescription>
+    <ProductListHeader> Products </ProductListHeader>
+    <ProductsView>
+      {area.products.map(product => {
+        return (
+          <ProductCard key={product.id}>
+            <ImagePlaceholder>
+              Image Placeholder
+            </ImagePlaceholder>
+            <ProductName>
+              {product.product.name}
+            </ProductName>
+            <ProductQty>
+              {`x${product.qty}`}
+            </ProductQty>
+            <ProductPrice>
+              {`$${(product.price * product.qty).toFixed(2)}`}
+            </ProductPrice>
+          </ProductCard>
+        )
+      })}
+    </ProductsView>
+    <AreaTotalView>
+      <AreaTotalTitle> Section Total </AreaTotalTitle>
+      <AreaTotalPrice> {`$${sumAll([area], 'price').toFixed(2)}`} </AreaTotalPrice>
+    </AreaTotalView>
+  </AreaDetailView>
+)
+
+export default PDFBidArea

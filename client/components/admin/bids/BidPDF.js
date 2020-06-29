@@ -2,8 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
-import { Header, ProductsView, ProductCard, ImagePlaceholder, ProductName, ProductQty, ProductPrice, ProductListHeader, AreaTotalView, AreaTotalTitle, AreaTotalPrice, TotalPage, AreaTableHeader, AreaPartsHeader, AreaTaxHeader, FinalAreaPriceHeader, ProjectTotalsView, AreaHeader, AreaDescription } from './PDFStyledComponents'
-import { PDFTitlePage, PDFAreaCard } from '../bids'
+import { Header, ProductListHeader, TotalPage, AreaTableHeader, AreaPartsHeader, AreaTaxHeader, FinalAreaPriceHeader, ProjectTotalsView } from './PDFStyledComponents'
+import { PDFTitlePage, PDFAreaCard, PDFBidArea } from '../bids'
 import { PDFViewer, Page, View, Text, Image, Document, StyleSheet } from '@react-pdf/renderer'
 import { sumAll } from './helpers'
 
@@ -17,14 +17,6 @@ const Wrapper = styled.div`
   border-radius: 4px;
 `
 
-const styles = StyleSheet.create({
-  section: {
-    margin: 10,
-    padding: 10,
-    flexGrow: 1
-  }
-});
-
 const BidPDF = props => {
   const bid = props.data.bidDetails
   return (
@@ -34,39 +26,7 @@ const BidPDF = props => {
           <Document>
             <PDFTitlePage />
             <Page size="A4">
-              {bid.bidAreas.map(area => {
-                return (
-                  <View sytle={styles.section} break={bid.bidAreas.indexOf(area) !== 0}>
-                    <AreaHeader> {area.title} </AreaHeader>
-                    <AreaDescription> {`A brief description of the area so that there is no confusion as to where we are referring to. This field will have to be added to the BidArea Model as a property`} </AreaDescription>
-                    <ProductListHeader> Products </ProductListHeader>
-                    <ProductsView>
-                      {area.products.map(product => {
-                        return (
-                          <ProductCard key={product.id}>
-                            <ImagePlaceholder>
-                              Image Placeholder
-                            </ImagePlaceholder>
-                            <ProductName>
-                              {product.product.name}
-                            </ProductName>
-                            <ProductQty>
-                              {`x${product.qty}`}
-                            </ProductQty>
-                            <ProductPrice>
-                              {`$${(product.price * product.qty).toFixed(2)}`}
-                            </ProductPrice>
-                          </ProductCard>
-                        )
-                      })}
-                    </ProductsView>
-                    <AreaTotalView>
-                      <AreaTotalTitle> Section Total </AreaTotalTitle>
-                      <AreaTotalPrice> {`$${sumAll([area], 'price').toFixed(2)}`} </AreaTotalPrice>
-                    </AreaTotalView>
-                  </View>
-                )
-              })}
+              {bid.bidAreas.map(area => <PDFBidArea key={area.id} area={area} bid={bid} /> )}
             </Page>
             <TotalPage>
               <Header>
