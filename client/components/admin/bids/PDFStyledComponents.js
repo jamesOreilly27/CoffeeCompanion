@@ -151,6 +151,10 @@ export const TotalPage = styled.Page`
 
 `
 
+export const TotalsView = styled.View`
+  
+`
+
 export const AreaTableHeader = styled.View`
   display: flex;
   flex-direction: row;
