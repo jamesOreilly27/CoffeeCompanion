@@ -89,7 +89,6 @@ class AddLocation extends Component {
           }}>
             {this.state.displayInput &&
               <InputField>
-                {console.log('DATA', data)}
                 <SmallerText type="text" name="title"></SmallerText>
                 <SubmitButton type="submit">
                   +

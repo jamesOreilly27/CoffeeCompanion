@@ -24,7 +24,6 @@ const Title = styled(FlexContainer)`
 const BidCard = ({ bid }) => (
   <Wrapper to={`/admin/bids/${bid.id}`}>
     <Title>
-      {console.log('ID', bid.id)}
       {bid.title}
     </Title>
     <FlexContainer>

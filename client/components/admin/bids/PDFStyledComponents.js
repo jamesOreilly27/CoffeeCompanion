@@ -77,4 +77,22 @@ export const AreaTotalPrice = styled.Text`
   width: 40%;
 `
 
-export const 
+export const TotalPage = styled.Page`
+
+`
+
+export const AreaCard = styled.View`
+  display: flex;
+  flex-direction: row;
+  width: 98%;
+  justify-content: space-around;
+  align-items: center;
+`
+
+export const AreaTitle = styled.Text`
+
+`
+
+export const AreaTotalPrice = styled.Text`
+
+`
