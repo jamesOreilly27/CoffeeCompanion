@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
-import { TitlePage, TitleView, Header, ProductsView, ProductCard, ImagePlaceholder, ProductName, ProductQty, ProductPrice, ProductListHeader, TotalView, TotalTitle, TotalPrice } from './PDFStyledComponents'
+import { TitlePage, TitleView, Header, ProductsView, ProductCard, ImagePlaceholder, ProductName, ProductQty, ProductPrice, ProductListHeader, AreaTotalView, AreaTotalTitle, AreaTotalPrice, TotalPage, AreaCard, AreaTitle, FinalAreaTotalPrice, AreaPartsTotal, AreaTaxTotal, AreaTableHeader, AreaPartsHeader, AreaTaxHeader, FinalAreaPriceHeader, ProjectTotalsView } from './PDFStyledComponents'
 import { PDFViewer, Page, View, Text, Image, Document, StyleSheet } from '@react-pdf/renderer'
 import { sumAll } from './helpers'
 
@@ -87,11 +87,45 @@ const BidPDF = props => {
                 )
               })}
             </Page>
-            <Page>
-              <View>
-                
-              </View>
-            </Page>
+            <TotalPage>
+              <Header>
+                {`Test Customer Bid`}
+              </Header>
+              <AreaTableHeader>
+                <ProductListHeader>
+                  Areas
+                </ProductListHeader>
+                <AreaPartsHeader> {`Parts`} </AreaPartsHeader>
+                <AreaTaxHeader> {` Tax `} </AreaTaxHeader>
+                <FinalAreaPriceHeader> {`Total`} </FinalAreaPriceHeader>
+              </AreaTableHeader>
+              {bid.bidAreas.map(area => {
+                return (
+                  <AreaCard>
+                    <AreaTitle>
+                      {area.title}
+                    </AreaTitle>
+                    <AreaPartsTotal>
+                      {`$${sumAll([area], 'price')}`}
+                    </AreaPartsTotal>
+                    <AreaTaxTotal>
+                      {`$${Math.ceil(sumAll([area], 'price') * .065 * 100) / 100}`}
+                    </AreaTaxTotal>
+                    <FinalAreaTotalPrice>
+                      {`$${sumAll([area], 'price') + Math.ceil((sumAll([area], 'price') * .065) * 100) / 100}`}
+                    </FinalAreaTotalPrice>
+                  </AreaCard>
+                )
+              })}
+              <ProjectTotalsView>
+                <ProductListHeader>
+                  Total
+                </ProductListHeader>
+                <AreaPartsHeader> {`$${sumAll(bid.bidAreas, 'price')}`} </AreaPartsHeader>
+                <AreaTaxHeader> {`$${Math.ceil(sumAll(bid.bidAreas, 'price') * .065 * 100) / 100}`} </AreaTaxHeader>
+                <FinalAreaPriceHeader> {`$${sumAll(bid.bidAreas, 'price') + Math.ceil((sumAll(bid.bidAreas, 'price') * .065) * 100) / 100}`} </FinalAreaPriceHeader>
+              </ProjectTotalsView>
+            </TotalPage>
           </Document>
         }
       </PDFViewer>
