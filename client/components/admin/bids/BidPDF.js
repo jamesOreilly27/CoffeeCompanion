@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
-import { Header, ProductListHeader, TotalPage, AreaTableHeader, AreaPartsHeader, AreaTaxHeader, FinalAreaPriceHeader, ProjectTotalsView } from './PDFStyledComponents'
+import { Viewer, Header, ProductListHeader, TotalPage, AreaTableHeader, AreaPartsHeader, AreaTaxHeader, FinalAreaPriceHeader, ProjectTotalsView } from './PDFStyledComponents'
 import { PDFTitlePage, PDFAreaCard, PDFBidArea } from '../bids'
-import { PDFViewer, Page, View, Text, Image, Document, StyleSheet } from '@react-pdf/renderer'
+import { PDFViewer, Page, Document } from '@react-pdf/renderer'
 import { sumAll } from './helpers'
 
 const Wrapper = styled.div`
@@ -13,7 +13,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 98vw;
   height: 105vh;
-  background-color: #FFF;
+  background-color: #EAEDED;
   border-radius: 4px;
 `
 

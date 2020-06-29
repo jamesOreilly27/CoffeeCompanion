@@ -1,5 +1,4 @@
 import styled from '@react-pdf/styled-components'
-import { Page, Text, View, Link } from '@react-pdf/renderer'
 
 export const TitlePage = styled.Page`
   
