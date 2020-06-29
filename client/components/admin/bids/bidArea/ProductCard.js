@@ -85,14 +85,14 @@ class ProductCard extends Component {
         }
         <CenteredContainer>
           <Title size="sm">Cost</Title>
-          <div>{`$${this.props.cost * qty}`}</div>
+          { this.props.cost && <div>{`$${this.props.cost * qty}`}</div> }
         </CenteredContainer>
         <CenteredContainer>
           <Title size="sm">Price</Title>
           <div>{`$${this.props.price * qty}`}</div>
         </CenteredContainer>
         <ButtonContainer>
-          {this.props.search ?
+          {this.props.search &&
             <AddButton
               productId={this.props.productId}
               handleAddChange={this.props.handleAddChange}
@@ -102,7 +102,8 @@ class ProductCard extends Component {
               price={this.props.price}
               cost={this.props.cost}
             />
-            :
+          }
+          {!this.props.PDF && !this.props.search &&
             <RemoveButton productId={this.props.productId} bidId={this.props.bidId} />
           }
         </ButtonContainer>

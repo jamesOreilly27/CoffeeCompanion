@@ -8,7 +8,8 @@ module.exports = {
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, "public"),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    globalObject: 'this'
   },
   devtool: 'source-map',
   module: {
