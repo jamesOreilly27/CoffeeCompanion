@@ -133,13 +133,13 @@ export const AreaTotalView = styled.View`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  width: 132%;
-  margin: 10px 0 10px 10px;
+  width: 100%;
+  border: 1px solid black;
 `
 
 export const AreaTotalTitle = styled.Text`
   font-size: 20px;
-  width: 35%;
+  width: 157%;
 `
 
 export const AreaTotalPrice = styled.Text`
