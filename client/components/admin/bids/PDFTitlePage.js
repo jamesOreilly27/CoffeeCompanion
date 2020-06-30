@@ -1,6 +1,5 @@
 import React from 'react'
-import styled from 'styled-components'
-import { TitlePage, HeaderView, Customer, OurInfo, OurAddressLine, AddyInfo, AddressLine, Header, OurLink } from './PDFStyledComponents'
+import { HeaderView, Customer, OurInfo, OurAddressLine, AddyInfo, AddressLine, Header, OurLink, FrontPage } from './PDFStyledComponents'
 
 const PDFTitlePage = () => (
   <HeaderView>

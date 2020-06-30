@@ -1,5 +1,5 @@
 import React from 'react'
-import { Header, AreaTableHeader, AreaTitle, HeaderItem, TotalsView, AreaView, AreasView, ProjectTotals, ProjectTotalLineContainer, ProjectLineItem } from './PDFStyledComponents'
+import { Header, AreaTableHeader, AreaTitle, HeaderItem, TotalsView, AreaView, AreasView, ProjectTotals, ProjectTotalLineContainer, ProjectLineItem, AreaHeader } from './PDFStyledComponents'
 import { PDFTitlePage, PDFAreaCard } from '../bids'
 import { sumAll } from './helpers'
 
@@ -7,9 +7,9 @@ const PDFFinalTotal = ({ bid }) => (
   <TotalsView>
     <PDFTitlePage />
     <AreasView>
-      <Header>
+      <AreaHeader>
         {`Total Proposal`}
-      </Header>
+      </AreaHeader>
       <AreaTableHeader>
         <AreaTitle>Areas</AreaTitle>
         <HeaderItem> {`Parts`} </HeaderItem>

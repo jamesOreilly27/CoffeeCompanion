@@ -4,6 +4,10 @@ export const TitlePage = styled.Page`
   
 `
 
+export const FrontPage = styled.View`
+  
+`
+
 export const HeaderView = styled.View`
   width: 95%;
   margin: 0 10px;

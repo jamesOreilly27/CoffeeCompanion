@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
 import { PDFTitlePage, PDFBidArea, PDFFinalTotal } from '../bids'
-import { PDFViewer, Page, Document } from '@react-pdf/renderer'
+import { PDFViewer, Page, Document, Image } from '@react-pdf/renderer'
 
 const Wrapper = styled.div`
   display: flex;
@@ -24,9 +24,10 @@ const BidPDF = props => {
           <Document>
             <Page>
               <PDFTitlePage />
+              <Image src={'https://workingperson.com/media/catalog/product/cache/1/small_image/225x/9df78eab33525d08d6e5fb8d27136e95/c/a/cat-90285-p_01.jpg'} />
             </Page>
             <Page size="A4">
-              {bid.bidAreas.map(area => <PDFBidArea key={area.id} area={area} bid={bid} /> )}
+              {bid.bidAreas.map(area => <PDFBidArea key={area.id} area={area} bid={bid} />)}
             </Page>
             <Page>
               <PDFFinalTotal bid={bid} />
