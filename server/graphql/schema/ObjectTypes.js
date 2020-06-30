@@ -1,4 +1,5 @@
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, GraphQLBoolean } = require('graphql')
+const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, GraphQLBoolean, GraphQLScalarType } = require('graphql')
+const { Product } = require('../../db/models')
 
 /********** User Related ObjectTypes **********/
 const UserType = new GraphQLObjectType({
@@ -14,8 +15,8 @@ const UserType = new GraphQLObjectType({
       description: 'Users Active Cart',
       resolve: user => {
         return user.getCarts()
-        .then(carts => carts.filter(cart => cart.status === 'open')[0])
-        .catch(err => console.log(err))
+          .then(carts => carts.filter(cart => cart.status === 'open')[0])
+          .catch(err => console.log(err))
       }
     },
     orders: {
@@ -23,8 +24,8 @@ const UserType = new GraphQLObjectType({
       description: 'list of a users placed orders',
       resolve: user => {
         return user.getCarts()
-        .then(carts => carts.filter(cart => cart.status !== 'open'))
-        .catch(err => console.log(err))
+          .then(carts => carts.filter(cart => cart.status !== 'open'))
+          .catch(err => console.log(err))
       }
     }
   })
@@ -37,18 +38,10 @@ const ProductType = new GraphQLObjectType({
     id: { type: GraphQLNonNull(GraphQLInt) },
     name: { type: GraphQLString },
     description: { type: GraphQLString },
+    cost: { type: GraphQLNonNull(GraphQLInt) },
     price: { type: GraphQLNonNull(GraphQLInt) },
     image: { type: GraphQLString },
-    featured: { type: GraphQLBoolean},
-    categories: {
-      type: new GraphQLList(CategoryType),
-      description: 'category products',
-      resolve: product => {
-        return product.getCategories()
-        .then(categories => categories)
-        .catch(err => console.log(err))
-      }
-    }
+    featured: { type: GraphQLBoolean },
   })
 })
 
@@ -58,17 +51,18 @@ const ProductDetailType = new GraphQLObjectType({
     id: { type: GraphQLInt },
     name: { type: GraphQLNonNull(GraphQLString) },
     description: { type: GraphQLNonNull(GraphQLString) },
+    cost: { type: GraphQLNonNull(GraphQLInt) },
     price: { type: GraphQLNonNull(GraphQLInt) },
     image: { type: GraphQLNonNull(GraphQLString) },
     featured: { type: GraphQLBoolean },
     reviews: {
       type: new GraphQLList(ReviewType),
       description: 'a list of reviews for this product',
-      args: { name: { type: GraphQLString }},
+      args: { name: { type: GraphQLString } },
       resolve: product => {
         return product.getReviews()
-        .then(reviews => reviews)
-        .catch(err => console.log(err))
+          .then(reviews => reviews)
+          .catch(err => console.log(err))
       }
     }
   })
@@ -96,8 +90,8 @@ const CategoryType = new GraphQLObjectType({
       description: 'category products',
       resolve: category => {
         return category.getProducts()
-        .then(products => products)
-        .catch(err => console.log(err))
+          .then(products => products)
+          .catch(err => console.log(err))
       }
     }
   })
@@ -110,14 +104,14 @@ const LineItemType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLInt },
     price: { type: GraphQLInt },
-    quantity: {type: GraphQLInt },
+    quantity: { type: GraphQLInt },
     product: {
       type: ProductDetailType,
       description: 'line item product details',
       resolve: lineitem => {
         return lineitem.getProduct()
-        .then(product => product)
-        .catch(err => console.log(err))
+          .then(product => product)
+          .catch(err => console.log(err))
       }
     }
   })
@@ -135,7 +129,84 @@ const CartType = new GraphQLObjectType({
       description: 'line item on a cart',
       resolve: cart => {
         return cart.getItems()
-        .then(lineitem => lineitem)
+          .then(lineitem => lineitem)
+          .catch(err => console.log(err))
+      }
+    }
+  })
+})
+
+/********** Bid Related Object Types ***********/
+
+const BidType = new GraphQLObjectType({
+  name: 'bid',
+  description: 'A quote to be sent to a customer',
+  fields: () => ({
+    id: { type: GraphQLInt },
+    title: { type: GraphQLString },
+    status: { type: GraphQLString },
+    bidAreas: {
+      type: new GraphQLList(BidAreaType),
+      description: 'An area in a bid',
+      resolve: bid => {
+        return bid.getBidareas()
+          .then(area => area)
+          .catch(err => console.log(err))
+      }
+    }
+  })
+})
+
+const BidDetailType = new GraphQLObjectType({
+  name: 'bidDetail',
+  description: 'A single bid with details',
+  fields: () => ({
+    id: { type: GraphQLInt },
+    title: { type: GraphQLString },
+    status: { type: GraphQLString },
+    bidAreas: {
+      type: new GraphQLList(BidAreaType),
+      description: 'An area in a bid',
+      resolve: bid => {
+        return bid.getBidareas()
+          .then(area => area)
+          .catch(err => console.log(err))
+      }
+    }
+  })
+})
+
+const BidAreaType = new GraphQLObjectType({
+  name: 'bidAreas',
+  description: 'An area attached to a bid',
+  fields: () => ({
+    id: { type: GraphQLInt },
+    title: { type: GraphQLString },
+    products: {
+      type: new GraphQLList(AreaProductType),
+      resolve: bidArea => {
+        return bidArea.getProducts()
+        .then(products => products)
+        .catch(err => console.log(err))
+      }
+    }
+  })
+})
+
+const AreaProductType = new GraphQLObjectType({
+  name: 'areaProduct',
+  description: 'a product attached to bid area',
+  fields: () => ({
+    id: { type: GraphQLInt },
+    qty: { type: GraphQLInt },
+    cost: { type: GraphQLInt },
+    price: { type: GraphQLInt},
+    bidAreaId: { type: GraphQLInt },
+    product: {
+      type: ProductDetailType,
+      resolve: areaProduct => {
+        return Product.findByPk(areaProduct.productId)
+        .then(product => product)
         .catch(err => console.log(err))
       }
     }
@@ -149,5 +220,9 @@ module.exports = {
   ProductDetailType,
   ReviewType,
   CartType,
-  LineItemType
+  LineItemType,
+  BidType,
+  BidDetailType,
+  BidAreaType,
+  AreaProductType
 }

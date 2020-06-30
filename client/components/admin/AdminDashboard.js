@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Title } from '../styled-components'
 import { Route, Switch } from 'react-router-dom'
-import { AdminLink, Customers, Orders, Materials, Bids } from '../admin'
+import { AdminLink, Customers, Orders, Materials } from '../admin'
+import { Bids, BidDetail, BidPDF } from './bids'
 import { Products } from './products'
 import { UpdateProduct } from './product-update'
 
@@ -52,11 +53,13 @@ class AdminDashboard extends Component {
             </Navbar>
             <Switch>
               <Route exact path="/admin/customers" component={Customers} />
-              <Route exact path="/admin/products" render={() => <Products products={this.props.products} /> } />
+              <Route exact path="/admin/products" render={() => <Products products={this.props.products} />} />
               <Route exact path="/admin/product/:name" component={UpdateProduct} />
               <Route exact path="/admin/orders" component={Orders} />
               <Route exact path="/admin/materials" component={Materials} />
               <Route exact path="/admin/bids" component={Bids} />
+              <Route exact path="/admin/bids/:id" component={BidDetail} />
+              <Route exact path="/admin/bids/:id/pdf" component={BidPDF} />
             </Switch>
           </Container>
         }

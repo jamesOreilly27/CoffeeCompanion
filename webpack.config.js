@@ -8,7 +8,8 @@ module.exports = {
   entry: './client/index.js',
   output: {
     path: path.resolve(__dirname, "public"),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    globalObject: 'this'
   },
   devtool: 'source-map',
   module: {
@@ -30,7 +31,6 @@ module.exports = {
     new LodashModuleReplacementPlugin({ "currying": true, "flattening": true }),
     new webpack.optimize.ModuleConcatenationPlugin(),
     new CompressionPlugin(),
-    new BundleAnalyzerPlugin()
   ],
   optimization: {
     runtimeChunk: 'single',

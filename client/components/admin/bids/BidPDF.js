@@ -1,0 +1,46 @@
+import React from 'react'
+import styled from 'styled-components'
+import { graphql } from 'react-apollo'
+import { getBidDetails } from '../../../graphql'
+import { PDFTitlePage, PDFBidArea, PDFFinalTotal } from '../bids'
+import { PDFViewer, Page, Document, Image } from '@react-pdf/renderer'
+
+const Wrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 98vw;
+  height: 105vh;
+  background-color: #EAEDED;
+  border-radius: 4px;
+`
+
+const BidPDF = props => {
+  const bid = props.data.bidDetails
+  return (
+    <Wrapper>
+      <PDFViewer width="100%" height="100%">
+        {bid &&
+          <Document>
+            <Page>
+              <PDFTitlePage />
+              <Image src={'https://workingperson.com/media/catalog/product/cache/1/small_image/225x/9df78eab33525d08d6e5fb8d27136e95/c/a/cat-90285-p_01.jpg'} />
+            </Page>
+            <Page size="A4">
+              {bid.bidAreas.map(area => <PDFBidArea key={area.id} area={area} bid={bid} />)}
+            </Page>
+            <Page>
+              <PDFFinalTotal bid={bid} />
+            </Page>
+          </Document>
+        }
+      </PDFViewer>
+    </Wrapper>
+  )
+}
+
+export default graphql(getBidDetails, {
+  options: props => ({
+    variables: { id: parseInt(props.match.params.id) }
+  })
+})(BidPDF)
