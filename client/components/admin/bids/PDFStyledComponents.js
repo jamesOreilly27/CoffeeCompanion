@@ -65,7 +65,6 @@ export const AreaHeader = styled.Text`
   fontSize: 30px;
   background-color: #006481;
   color: #FFF;
-  border-radius: 4px;
 `
 
 export const AreaDescription = styled.Text`
@@ -99,7 +98,7 @@ export const ProductCard = styled.View`
   background-color: ${({ isEven }) => {
     if(isEven) return "#FFF"
     else return "#F3F3F3"
-  }}
+  }};
 `
 
 export const ImagePlaceholder = styled.Text`
@@ -120,9 +119,7 @@ export const ProductQty = styled.Text`
 `
 
 export const ProductPrice = styled.Text`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
+  text-align: right;
   font-size: 15px;
   color: #000;
   width: 15%;
@@ -139,7 +136,7 @@ export const AreaTotalView = styled.View`
 
 export const AreaTotalTitle = styled.Text`
   font-size: 20px;
-  width: 157%;
+  width: 215%;
 `
 
 export const AreaTotalPrice = styled.Text`
@@ -152,66 +149,76 @@ export const TotalPage = styled.Page`
 `
 
 export const TotalsView = styled.View`
-  
+  width: 100%;
+`
+
+export const AreasView = styled.View`
+  margin: 10px 50px 0 10px;
 `
 
 export const AreaTableHeader = styled.View`
   display: flex;
-  flex-direction: row;
-  width: 98%;
-  justify-content: flex-start;
-  align-items: center;
   font-size: 14px;
-  border-bottom: 1px solid black;
-  font-weight: bold;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 25px;
+  padding: 10px;
+  width: 100%;
+  background-color: #317787;
+  color: #FFF;
+  border: 1px solid black;
+`
+
+export const AreaView = styled.View`
+  border: 1px solid black;
 `
 
 export const AreaCard = styled.View`
   display: flex;
   flex-direction: row;
-  width: 98%;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin: 10px 0 10px 10px;
+  padding: 15px 10px 13px 10px;
   font-size: 11px;
+  background-color: ${({ isEven }) => {
+    if(isEven) return "#FFF"
+    else return "#EAEDED"
+  }};
 `
 
 export const AreaTitle = styled.Text`
   width: 55%;
 `
 
-export const AreaPartsTotal = styled.Text`
+export const AreaItem = styled.Text`
   width: 10%;
+  text-align: right;
 `
 
-export const AreaPartsHeader = styled.Text`
-  margin-right: 53px;
-`
-
-export const AreaTaxTotal = styled.Text`
+export const HeaderItem = styled.Text`
   width: 10%;
+  text-align: right;
 `
 
-export const AreaTaxHeader = styled.Text`
-  margin-right: 53px;
+export const ProjectTotals = styled.View`
+  font-size: 14px;
+  width: 40%;
+  margin-left: 307px;
+  border: 1px solid black;
 `
 
-export const FinalAreaTotalPrice = styled.Text`
-  width: 10%;
-
-`
-
-export const FinalAreaPriceHeader = styled.Text`
-
-`
-
-export const ProjectTotalsView = styled.View`
+export const ProjectTotalLineContainer = styled.View`
   display: flex;
   flex-direction: row;
-  width: 98vw;
-  border-top: 2px solid black;
   justify-content: space-between;
-  align-items: center;
-  margin: 10px 0 10px 10px;
-  font-size: 11px;
+  padding: 10px 8px;
+  border-bottom: 1px solid black;
+`
+
+export const ProjectLineItem = styled.Text`
+  font-size: ${({ total }) => {
+    if(total) return "20px"
+    else return "14px"
+  }};
 `

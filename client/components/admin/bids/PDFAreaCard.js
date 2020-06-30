@@ -1,21 +1,21 @@
 import React from 'react'
 import { sumAll } from './helpers'
-import { AreaCard, AreaTitle, AreaPartsTotal, AreaTaxTotal, FinalAreaTotalPrice } from './PDFStyledComponents'
+import { AreaCard, AreaTitle, AreaItem } from './PDFStyledComponents'
 
-const PDFAreaCard = ({ area }) => (
-  <AreaCard>
+const PDFAreaCard = ({ area, isEven}) => (
+  <AreaCard isEven={isEven}>
     <AreaTitle>
       {area.title}
     </AreaTitle>
-    <AreaPartsTotal>
+    <AreaItem>
       {`$${sumAll([area], 'price').toFixed(2)}`}
-    </AreaPartsTotal>
-    <AreaTaxTotal>
+    </AreaItem>
+    <AreaItem>
       {`$${(Math.ceil(sumAll([area], 'price') * .065 * 100) / 100).toFixed(2)}`}
-    </AreaTaxTotal>
-    <FinalAreaTotalPrice>
-      {`$${sumAll([area], 'price') + Math.ceil((sumAll([area], 'price') * .065) * 100).toFixed(2) / 100}`}
-    </FinalAreaTotalPrice>
+    </AreaItem>
+    <AreaItem>
+      {`$${( sumAll([area], 'price') + Math.ceil((sumAll([area], 'price') * .065) * 100) / 100 ).toFixed(2) }`}
+    </AreaItem>
   </AreaCard>
 )
 

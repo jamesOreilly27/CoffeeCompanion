@@ -2,9 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
-import { PDFTitlePage, PDFAreaCard, PDFBidArea, PDFFinalTotal } from '../bids'
+import { PDFTitlePage, PDFBidArea, PDFFinalTotal } from '../bids'
 import { PDFViewer, Page, Document } from '@react-pdf/renderer'
-import { sumAll } from './helpers'
 
 const Wrapper = styled.div`
   display: flex;
