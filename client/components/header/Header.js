@@ -11,7 +11,7 @@ const Wrapper = styled.header`
 const Container = styled.div`
   display: flex;
   width: 100%;
-  height: 10vh;
+  height: 15vh;
   justify-content: space-around;
   align-items: center;
   margin-bottom: 2vh;
@@ -22,7 +22,7 @@ const Header = ({ products, categories, loggedIn }) => (
     <Container>
       <Logo />
       <Navbar />
-      <NavSearch products={products} categories={categories} />
+      {/* <NavSearch products={products} categories={categories} /> */}
       <UserHeaderInfo loggedIn={loggedIn} />
     </Container>
   </Wrapper>

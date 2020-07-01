@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
+import NavLogo from '../../images/navlogo.png'
 
 const Wrapper = styled(Link)`
   display: flex;
@@ -12,10 +13,15 @@ const Wrapper = styled(Link)`
   color: #0D0D0B;
 `
 
+const Image = styled.img`
+  width: 150px;
+  height: 150px;
+  margin-left: -25px;
+`
+
 const Logo = () => (
   <Wrapper to="/">
-    <div>SOS</div>
-    <div>Monitoring</div>
+    <Image src={NavLogo} />
   </Wrapper>
 )
 
