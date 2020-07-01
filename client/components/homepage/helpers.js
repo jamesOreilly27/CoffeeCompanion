@@ -1,6 +1,6 @@
 export const services = [
   {
-    name:"Live Video Monitoring",
+    name:` Live Video Monitoring`,
     blurb: "24/7 monitoring of video analytic cameras. We'll spot and deter criminals before they commit a crime",
     image: ""
   },
@@ -10,7 +10,7 @@ export const services = [
     image: ""
   },
   {
-    name: "Surveillance Solutions",
+    name: "Surveillance Cameras",
     blurb: "Not only do we monitor cameras, but we sell them too. Check out our state of the art video analytics cameras",
     image: ""
   }

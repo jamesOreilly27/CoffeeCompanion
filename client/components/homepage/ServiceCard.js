@@ -7,20 +7,23 @@ const Wrapper = styled.div`
   width: 30%;
   flex-direction: column;
   padding: 10px;
-  border: 1px dotted black;
   height: 200px;
 `
 
 const Title = styled.h2`
   margin: 1vh 0;
   font-size: 22px;
-  text-align: center;
 `
 
 const Blurb = styled.div`
   font-size: 15px;
   width: 80%;
   height: 71px;
+  margin-left: 10px;
+`
+
+const NewButton = styled(Button)`
+  margin: 43px 15% 0;
 `
 
 const ServiceCard = ({ service }) => (
@@ -31,9 +34,9 @@ const ServiceCard = ({ service }) => (
     <Blurb>
       {service.blurb}
     </Blurb>
-    <Button width={50} height={30} backgroundColor="#317787">
+    <NewButton width={50} height={30} backgroundColor="#317787">
       Learn More
-    </Button>
+    </NewButton>
   </Wrapper>
 )
 
