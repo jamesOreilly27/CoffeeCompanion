@@ -32,6 +32,7 @@ const IndustriesContainer = styled.div`
   width: 100%;
   flex-wrap: wrap;
   justify-content: space-evenly;
+  padding: 20px 0;
 `
 
 const Title = styled.h1`
@@ -39,7 +40,7 @@ const Title = styled.h1`
   width: 55%;
   border-bottom: 1px solid #006481;
   padding: 10px 0 5px 10px;
-  margin-bottom: 20px;
+  margin: 20px;
 `
 
 const Hompage = () => (

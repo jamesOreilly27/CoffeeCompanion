@@ -17,13 +17,12 @@ export const services = [
 ]
 
 export const industries = [
-  { name: "Auto Dealers", icon: ['fa', 'image'] },
-  { name: "Equipment Rentals", icon: ['fa', 'image'] },
-  { name: "Marine Outlets", icon: ['fa', 'image'] },
-  { name: "Cannabis", icon: ['fa', 'image'] },
-  { name: "Construction Sites", icon: ['fa', 'image'] },
-  { name: "Storage Units", icon: ['fa', 'image'] },
-  { name: "Scrap Metal & Recycling", icon: ['fa', 'image'] },
-  { name: "Outdoor Industrial Storage", icon: ['fa', 'image'] },
+  { name: "Auto Dealers", icon: ['fa', 'car'] },
+  { name: "Equipment Rentals", icon: ['fas', 'tractor'] },
+  { name: "Marine Outlets", icon: ['fa', 'anchor'] },
+  { name: "Cannabis", icon: ['fa', 'cannabis'] },
+  { name: "Construction Sites", icon: ['fas', 'tools'] },
+  { name: "Storage Units", icon: ['fas', 'warehouse'] },
+  { name: "Scrap Metal", icon: ['fas', 'dumpster'] },
+  { name: "Outdoor Storage", icon: ['fas', 'truck'] },
 ]
-

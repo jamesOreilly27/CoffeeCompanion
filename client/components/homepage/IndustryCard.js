@@ -1,18 +1,27 @@
 import React from 'react'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Wrapper = styled.div`
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
   width: 21%;
-  height: 150px;
-  border: 1px dotted black;
+  height: 125px;
   margin-bottom: 18px;
 `
 
-const IndustryCard = () => (
+const Name = styled.div`
+  font-size: 16px;
+  margin-top: 10px;
+`
+
+const IndustryCard = ({ industry }) => (
   <Wrapper>
-    Hello From IndustryCard
+    <FontAwesomeIcon icon={industry.icon} size="5x" color="#033645" />
+    <Name>
+      {industry.name}
+    </Name>
   </Wrapper>
 )
 
