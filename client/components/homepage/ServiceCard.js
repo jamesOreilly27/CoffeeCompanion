@@ -8,6 +8,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 10px;
   height: 200px;
+  background-color: #F2F2F2;
+  border-radius: 4px;
 `
 
 const Title = styled.h2`
