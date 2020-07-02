@@ -11,8 +11,8 @@ const chooseLink = isLoggedIn => {
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
-  width: 10%;
+  justify-content: space-between;
+  width: 9%;
 `
 
 const Authlink = styled(Link)`
