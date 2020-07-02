@@ -38,8 +38,8 @@ class Login extends Component {
               this.props.handleSubmit()
               sendCreds({ variables: { email: evt.target.email.value, password: evt.target.password.value }})
             }}>
-              { data && data.loginUser && <Redirect to='/products/all' /> }
-              { data && data.loginUser && history.push('/products/all') }
+              { data && data.loginUser && <Redirect to='/' /> }
+              { data && data.loginUser && history.push('/') }
               <Label margin={1}>
                 <LabelName margin={1}> Email </LabelName>
                 <TextInput type="email" name="email" required />

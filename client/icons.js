@@ -14,6 +14,7 @@ import { faDumpster } from '@fortawesome/free-solid-svg-icons/faDumpster'
 import { faTools } from '@fortawesome/free-solid-svg-icons/faTools'
 import { faWarehouse } from '@fortawesome/free-solid-svg-icons/faWarehouse'
 import { faTruck } from '@fortawesome/free-solid-svg-icons/faTruck'
+import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle'
 
 
 library.add(
@@ -31,5 +32,6 @@ library.add(
   faDumpster,
   faTools,
   faWarehouse,
-  faTruck
+  faTruck,
+  faUserCircle
 )
