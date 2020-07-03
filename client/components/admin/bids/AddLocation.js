@@ -8,6 +8,7 @@ const Wrapper = styled.form`
   display: flex;
   flex-direction: column;
   width: 80%;
+  align-items: center;
 `
 
 const InputField = styled.div`

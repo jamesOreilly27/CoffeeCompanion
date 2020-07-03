@@ -138,6 +138,7 @@ export const getAllBids = gql`
           id
           cost
           price
+          qty
         }
       }
     }
