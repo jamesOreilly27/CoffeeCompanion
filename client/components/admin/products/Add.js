@@ -4,7 +4,7 @@ import { UpsertForm } from '../products'
 import { AdminContainer, Label } from './styledComponents'
 
 const Wrapper = styled(AdminContainer)`
-  
+  background-color: #383737;
 `
 
 const Add = () => (

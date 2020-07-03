@@ -19,6 +19,7 @@ export const Title = styled.h1`
     if(size === 'med') return `18px`
     else return ''
   }};
+  color: #F8F8FF;
 `
 
 //Buttons
@@ -46,6 +47,7 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   width: 100%;
+  color: #F8F8FF;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

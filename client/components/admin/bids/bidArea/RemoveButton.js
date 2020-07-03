@@ -5,7 +5,7 @@ import { removeAreaProduct, getBidDetails } from '../../../../graphql'
 
 const Wrapper = styled.button`
   border-radius: 50%;
-  background-color: #FF6962;
+  background-color: #bd2f29;
   color: #FFF;
   border: none;
 `

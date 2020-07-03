@@ -20,7 +20,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: flex-start;
   align-items: flex-start;
-  background-color: #0F0F0F;
+  background-color: #1F1E1E;
   color: #F8F8FF;
   height: 45vh;
   margin-top: 3vh;
