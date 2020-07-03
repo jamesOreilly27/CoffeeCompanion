@@ -1,7 +1,9 @@
+import Atlis from '../../images/atlis.png'
+
 export const services = [
   {
     name:` Live Video Monitoring`,
-    blurb: "24/7 monitoring of video analytic cameras. We'll spot and deter criminals before they commit a crime",
+    blurb: "24/7 monitoring of video analytic cameras. We'll detect and deter criminals before they commit a crime",
     image: ""
   },
   {
@@ -17,12 +19,34 @@ export const services = [
 ]
 
 export const industries = [
-  { name: "Auto Dealers", icon: ['fa', 'car'] },
-  { name: "Equipment Rentals", icon: ['fas', 'tractor'] },
-  { name: "Marine Outlets", icon: ['fa', 'anchor'] },
-  { name: "Cannabis", icon: ['fa', 'cannabis'] },
-  { name: "Construction Sites", icon: ['fas', 'tools'] },
-  { name: "Storage Units", icon: ['fas', 'warehouse'] },
-  { name: "Scrap Metal", icon: ['fas', 'dumpster'] },
-  { name: "Outdoor Storage", icon: ['fas', 'truck'] },
+  {
+    name: "Auto Dealers",
+    icon: ['fa', 'car'],
+    image: Atlis
+  },
+  {
+    name: "Equipment Rentals",
+    icon: ['fas', 'tractor'],
+    image: Atlis
+  },
+  {
+    name: "Marine Outlets",
+    icon: ['fa', 'anchor'],
+    image: Atlis
+  },
+  {
+    name: "Construction Sites",
+    icon: ['fas', 'tools'],
+    image: Atlis
+  },
+  {
+    name: "Storage Units",
+    icon: ['fas', 'warehouse'],
+    image: Atlis
+  },
+  {
+    name: "Scrap Metal",
+    icon: ['fas', 'dumpster'],
+    image: Atlis
+  }
 ]

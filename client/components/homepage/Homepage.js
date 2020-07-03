@@ -64,7 +64,7 @@ const AvigImage = styled.img`
   width: 49%;
   height: 95%;
   border-radius: 10px;
-  margin: 15px 0 10px 5px;
+  margin: 0 0 10px 5px;
 `
 
 const AvigBlurb = styled.div`
@@ -124,7 +124,7 @@ const Hompage = () => (
           </Header>
           <Paragraph>
             <div>
-              We proudly partner with avigilon and and we're happy to pass those benefits on to you.
+              We proudly partner with avigilon and we're happy to pass those benefits on to you
             </div>
             <List>
               <AvigLI>State of the Art Video Analytics</AvigLI>

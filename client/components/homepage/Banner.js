@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Title } from '../styled-components'
 import Background from '../../images/banner-background.jpg'
 
 const Wrapper = styled.div`
@@ -8,12 +7,8 @@ const Wrapper = styled.div`
   width: 100vw;
   margin-bottom: 8vh;
   display: flex;
-  font-size: 30px;
   color: #FFF;
   background-image: url(${Background});
-  background-color: #CCC;
-  justify-content: flex-start;
-  align-items: flex-start;
   `
 
 const Message = styled.div`
@@ -31,7 +26,7 @@ const Subtitle = styled.div`
 const Banner = () => {
   return (
     <Wrapper>
-      <Message>
+      {/* <Message>
         <Title>
           SOS Monitoring
         </Title>
@@ -44,7 +39,7 @@ const Banner = () => {
         <Subtitle>
           - Proactive Security Monitoring
         </Subtitle>
-      </Message>
+      </Message> */}
     </Wrapper>
   )
 }
