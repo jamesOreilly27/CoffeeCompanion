@@ -5,8 +5,13 @@ import { Link } from 'react-router-dom'
 const Container = styled.div`
   border-radius: .3em;
   height: 100%;
+  width: 25%;
+  padding: 10px;
+  padding-top: 33px;
+  display: flex;
+  justify-content: center;
   &:hover {
-    background-color: rgba(33, 198, 0, 0.74);
+    background-color: #296d4d;
     transition: all .7s;
   }
 `
@@ -14,7 +19,7 @@ const Container = styled.div`
 const StyledLink = styled(Link)`
   text-decoration: none;
   font-family: 'Scope One', serif;
-  color: #0d0b0b;
+  color: #F8F8FF;
 
   &:hover {
     color: #FFFAFA;

@@ -3,38 +3,41 @@ import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
+const chooseLink = isLoggedIn => {
+  if (isLoggedIn) return "/your-account"
+  else return "/login"
+}
+
 const Wrapper = styled.div`
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 9%;
 `
 
 const Authlink = styled(Link)`
-  margin: 0 12px;
   text-decoration: none;
-  color: #0d0b0b;
   font-family: 'Scope One', serif;
   font-size: 13px;
 `
 
 const Cart = styled(FontAwesomeIcon)`
-  color: #0d0d0b;
+  color: #F8F8FF;
+`
+
+const User = styled(FontAwesomeIcon)`
+  color: #F8F8FF;
 `
 
 
 const UserHeaderInfo = ({ loggedIn }) => (
   <Wrapper>
-    {loggedIn ?
-      <Authlink to="/your-account">
-        {`Account \u25BE`}
-      </Authlink>
-    :
-      <Authlink to="/login">
-        {`Account \u25BE`}
-      </Authlink>
-    }
+    {console.log('TESTING', loggedIn)}
+    <Authlink to={chooseLink(loggedIn)}>
+      <User icon={['fa', 'user-circle']} size="2x" />
+    </Authlink>
     <Link to="/your-account/orders">
-      <Cart icon={['fa', 'shopping-cart']} />
+      <Cart icon={['fa', 'shopping-cart']} size="lg" />
     </Link>
   </Wrapper>
 )

@@ -24,7 +24,7 @@ const BidPDF = props => {
           <Document>
             <Page>
               <PDFTitlePage />
-              <Image src={'https://workingperson.com/media/catalog/product/cache/1/small_image/225x/9df78eab33525d08d6e5fb8d27136e95/c/a/cat-90285-p_01.jpg'} />
+              {/* <Image src={x} /> */}
             </Page>
             <Page size="A4">
               {bid.bidAreas.map(area => <PDFBidArea key={area.id} area={area} bid={bid} />)}
