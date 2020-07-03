@@ -118,7 +118,7 @@ class UpsertForm extends Component {
                   </Select>
                 </HalfLabel>
               </FlexContainer>
-              <Button type="submit" backgroundColor="#2091E8" width={70} height={40}>
+              <Button type="submit" backgroundColor="#296D4D" width={70} height={40}>
                 {this.props.type}
               </Button>
             </Form>
