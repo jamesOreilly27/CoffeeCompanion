@@ -8,11 +8,12 @@ const Wrapper = styled.form`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  background-color: #383737;
   height: 7vh;
   width: 85%;
-  margin: 1.5vh;
-  border-top: 1px solid black;
-  padding-top: 2vh;
+  margin: 0 1.5vh;
+  border-top: 1px solid #f8f8ff;
+  padding: 2vh 20px;
 `
 
 const Container = styled.div`
@@ -22,6 +23,10 @@ const Container = styled.div`
   height: 62%;
   width: 20vw;
   padding-left: 10px;
+`
+
+const Image = styled(FontAwesomeIcon)`
+  color: #C1C1C7;
 `
 
 const CenteredContainer = styled(Container)`
@@ -37,7 +42,7 @@ const ButtonContainer = styled(Container)`
 
 const Description = styled.div`
   font-size: 14px;
-  color: #828181;
+  color: #C1C1C7;
 `
 
 const TextInput = styled.input`
@@ -46,6 +51,11 @@ const TextInput = styled.input`
   border-radius: 4px;
   margin-top: 3px;
 `
+
+const DollarAmt = styled.div`
+  color: #F8F8FF;
+`
+
 class ProductCard extends Component {
   constructor(props) {
     super(props)
@@ -68,7 +78,7 @@ class ProductCard extends Component {
     this.props.qty ? qty = this.props.qty : qty = this.state.qty
     return (
       <Wrapper>
-        <FontAwesomeIcon icon={['fa', 'image']} size="3x" />
+        <Image icon={['fa', 'image']} size="3x" />
         <Container>
           <Title size="sm">{this.props.name}</Title>
           <Description>{this.props.description}</Description>
@@ -85,11 +95,11 @@ class ProductCard extends Component {
         }
         <CenteredContainer>
           <Title size="sm">Cost</Title>
-          { this.props.cost && <div>{`$${this.props.cost * qty}`}</div> }
+          { this.props.cost && <DollarAmt>{`$${this.props.cost * qty}`}</DollarAmt> }
         </CenteredContainer>
         <CenteredContainer>
           <Title size="sm">Price</Title>
-          <div>{`$${this.props.price * qty}`}</div>
+          <DollarAmt>{`$${this.props.price * qty}`}</DollarAmt>
         </CenteredContainer>
         <ButtonContainer>
           {this.props.search &&

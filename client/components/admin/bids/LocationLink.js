@@ -5,7 +5,7 @@ import { nameToUrl } from '../../helpers'
 const Wrapper = styled.div`
   margin-bottom: 1.5vh;
   text-decoration: none;
-  color: #000;
+  color: #F8F8FF;
   cursor: pointer
 `
 

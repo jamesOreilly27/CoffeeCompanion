@@ -34,7 +34,7 @@ const ProjectTotal = styled.div`
   align-items: center;
   padding: 5px;
   margin-bottom: 1vh;
-  background-color: #FFF;
+  background-color: #383737;
   border-radius: 4px;
   padding: 10px;
 `
@@ -54,11 +54,11 @@ const TotalContainer = styled.div`
 `
 
 const Cost = styled.div`
-  
+  color: #F8F8FF;
 `
 
 const Price = styled.div`
-
+  color: #F8F8FF;
 `
 
 const AreaContainer = styled.div`
@@ -66,7 +66,7 @@ const AreaContainer = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #FFF;
+  background-color: #383737;
   border-radius: 4px;
   width: 100%;
   padding: 10px;

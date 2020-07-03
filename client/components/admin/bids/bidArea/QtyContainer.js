@@ -6,7 +6,7 @@ const Wrapper = styled.div`
   display: flex;
   height: 22px;
   width: 10vw;
-  border: 1px solid #000;
+  border: 1px solid #F8F8FF;
 `
 
 const Element = styled.div`
@@ -19,6 +19,7 @@ const Element = styled.div`
 
 const Quantity = styled(Element)`
   font-size: 11px;
+  color: #F8F8FF;
 `
 
 const QtyContainer = ({ quantity, productId, bidId}) => (
