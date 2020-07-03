@@ -58,7 +58,7 @@ const AreaHeader = ({ area, bidId, PDF }) => (
           to={`/admin/bids/${bidId}/pdf`}
           width={30}
           height={38.4}
-          backgroundColor="#24A0ED"
+          backgroundColor="#1c6694"
         >
           View PDF
         </PDFButton>

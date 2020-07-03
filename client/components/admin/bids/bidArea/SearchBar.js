@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 const ProductList = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #EDF5F9;
+  background-color: #3C393E;
 `
 
 const CloseButton = styled.button`

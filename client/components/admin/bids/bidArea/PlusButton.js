@@ -10,7 +10,8 @@ const Wrapper = styled.div`
   height: 100%;
   width: 33%;
   font-size: 12px;
-  border-left: 1px solid #000;
+  border-left: 1px solid #F8F8FF;
+  color: #F8F8FF;
   cursor: pointer;
 `
 

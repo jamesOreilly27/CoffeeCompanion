@@ -13,7 +13,7 @@ const Wrapper = styled(Button)`
 const StartButton = () => (
   <Mutation mutation={startNewBid}>
     {(startNewBid, { data }) => (
-      <Wrapper width={25} height={30} backgroundColor="#29AE48" onClick={() => {
+      <Wrapper width={25} height={30} backgroundColor="#296D4D" onClick={() => {
         startNewBid({ variables: { title: '', status: 'open', userId: 1 } })
       }}>
       { data && data.createBid && <Redirect to={`/admin/bids/${data.createBid.id}`} /> }

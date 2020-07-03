@@ -48,6 +48,7 @@ const Title = styled.h1`
   border-bottom: 1px solid #296d4d;
   padding: 10px 0 5px 10px;
   margin: 20px;
+  margin-top: 0;
   color: #F8F8FF;
 `
 

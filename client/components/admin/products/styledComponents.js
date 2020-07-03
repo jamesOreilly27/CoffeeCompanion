@@ -16,7 +16,8 @@ export const Label = styled.h4`
   align-items: center;
   margin: 0;
   padding-left: 8px;
-  width: 100%;
+  width: 97%;
   height: 3.5vh;
-  border-bottom: 3px solid #EAEDED;
+  border-bottom: 3px solid #161616;
+  color: #F8F8FF;
 `

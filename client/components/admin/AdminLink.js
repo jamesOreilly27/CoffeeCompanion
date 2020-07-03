@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom'
 
 const Wrapper = styled(Link)`
   text-decoration: none;
-  margin-right: 10vw;
+  margin-right: 4vw;
   display: flex;
   justify-content: center;
   font-size: 20px;
-  color: #0D0D0B;
+  color: #F8F8FF;
 `
 
 const AdminLink = ({ linkTo }) => (

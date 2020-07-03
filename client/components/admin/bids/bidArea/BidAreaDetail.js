@@ -4,7 +4,7 @@ import { ProductCard, SearchBar, AreaHeader } from '../bidArea'
 
 const Wrapper = styled.div`
   width: 60%;
-  background-color: #FFF;
+  background-color: #383737;
   border-radius: 4px;
   width: 80%;
   display: flex;
