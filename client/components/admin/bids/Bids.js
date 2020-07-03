@@ -10,7 +10,6 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 2px dotted black;
   height: 50vh;
   justify-content: space-around;
 `

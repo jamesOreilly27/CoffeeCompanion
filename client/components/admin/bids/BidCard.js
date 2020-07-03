@@ -8,6 +8,7 @@ const Wrapper = styled(Link)`
   display: flex;
   justify-content: space-between;
   text-decoration: none;
+  color: #F8F8FF;
 `
 
 const FlexContainer = styled.div`
