@@ -6,7 +6,7 @@ const Wrapper = styled.header`
   width: 100vw;
   display: flex;
   justify-content: space-between;
-  background-color: #2D2A2E;
+  background-color: #1F1F1E;
   color: #F8F8FF;
 `
 
@@ -16,7 +16,6 @@ const Container = styled.div`
   height: 13vh;
   justify-content: space-around;
   align-items: center;
-  margin-bottom: 2vh;
 `
 
 const Header = ({ products, categories, loggedIn }) => (

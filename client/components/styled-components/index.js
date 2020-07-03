@@ -46,6 +46,7 @@ export const Form = styled.form`
 
 export const Label = styled.label`
   width: 100%;
+  color: #F8F8FF;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
