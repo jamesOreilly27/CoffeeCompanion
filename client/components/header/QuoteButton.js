@@ -7,7 +7,7 @@ const Wrapper = styled.div`
 `
 
 const QuoteButton = () => (
-  <Button width={17} height={30} backgroundColor="#317787">
+  <Button width={17} height={30} backgroundColor="#3B9D6E">
     Request A Quote
   </Button>
 )

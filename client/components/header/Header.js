@@ -5,7 +5,9 @@ import { NavSearch, Navbar, UserHeaderInfo, Logo, QuoteButton } from '../header'
 const Wrapper = styled.header`
   width: 100vw;
   display: flex;
-  justify-content: space-between
+  justify-content: space-between;
+  background-color: #2D2A2E;
+  color: #F8F8FF;
 `
 
 const Container = styled.div`

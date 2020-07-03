@@ -7,6 +7,7 @@ const Wrapper = styled.nav`
   justify-content: space-around;
   width: 50%;
   margin-left: -30px;
+  height: 100%;
 `
 
 const navItems = [

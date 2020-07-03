@@ -10,40 +10,43 @@ const Wrapper = styled.div`
   height: 400px;
   margin-bottom: 85px;
   position: relative;
+  padding: 1%;
+  border-radius: 10px;
+  background-color: #383737;
 
   .blurb {
-    background-color: #FFF;
+    background-color: #f8f8ff;
     color: #000;
-    transition: all 0.5s ease;
+    transition: all 0.4s ease;
   }
 
   .image {
     opacity: 1;
-    transition: all 0.5s ease;
+    transition: all 0.4s ease;
   }
 
   .test {
     width: 10px;
     height: 10px;
-    background-color: black;
+    background-color: #161616;
     opacity: 0.5;
     position: absolute;
     top: 190px;
-    transition: all 0.5s ease;
+    transition: all 0.5s ease-in;
     border-radius: 10px;
   }
 
   &:hover {
     .blurb {
-      background-color: green;
+      background-color: #3B9D6E;
       color: #F8F8FF;
     }
 
     .test {
-      width: 100%;
+      width: 94.5%;
       height: 260px;
-      top: 0;
-      opacity: .2
+      top: 9px;
+      opacity: 0;
     }
   }
 `

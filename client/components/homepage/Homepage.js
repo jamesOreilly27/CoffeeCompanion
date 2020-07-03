@@ -39,24 +39,26 @@ const IndustriesContainer = styled.div`
   width: 100%;
   flex-wrap: wrap;
   justify-content: space-evenly;
-  padding: 20px 0;
+  padding-bottom: 20px;
 `
 
 const Title = styled.h1`
   margin: 0; 
-  width: 55%;
-  border-bottom: 1px solid #006481;
+  width: 63%;
+  border-bottom: 1px solid #3B9D6E;
   padding: 10px 0 5px 10px;
   margin: 20px;
+  color: #F8F8FF;
 `
 
 const AvigSection = styled.div`
   display: flex;
   justify-content: space-around;
   height: 350px;
-  margin: 5vh 0;
+  margin-top: 3vh;
   padding: 15px 10px;
-  background-color: #FFF;
+  background-color: #383737;
+  color: #F8F8FF;
   align-items: center;
 `
 
@@ -110,7 +112,7 @@ const Hompage = () => (
       <Section>
         <Title>
           Our Services
-          </Title>
+        </Title>
         <ServicesContainer>
           {services.map(service => <ServiceCard key={service.name} service={service} />)}
         </ServicesContainer>

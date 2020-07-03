@@ -8,7 +8,8 @@ const Wrapper = styled.div`
   flex-direction: column;
   padding: 10px;
   height: 200px;
-  background-color: #F2F2F2;
+  background-color: #383737;
+  color: #F8F8FF;
   border-radius: 4px;
 `
 
@@ -36,7 +37,7 @@ const ServiceCard = ({ service }) => (
     <Blurb>
       {service.blurb}
     </Blurb>
-    <NewButton width={50} height={30} backgroundColor="#317787">
+    <NewButton width={50} height={30} backgroundColor="#3B9D6E">
       Learn More
     </NewButton>
   </Wrapper>

@@ -1,14 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import Background from '../../images/banner-background.jpg'
+import Background from '../../images/banner.png'
 
 const Wrapper = styled.div`
-  height: 75vh;
+  height: 85vh;
   width: 100vw;
-  margin-bottom: 8vh;
   display: flex;
-  color: #FFF;
   background-image: url(${Background});
+  background-color: #3B9D6E;
   `
 
 const Message = styled.div`

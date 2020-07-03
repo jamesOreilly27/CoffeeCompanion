@@ -22,11 +22,11 @@ const Authlink = styled(Link)`
 `
 
 const Cart = styled(FontAwesomeIcon)`
-  color: #0d0d0b;
+  color: #F8F8FF;
 `
 
 const User = styled(FontAwesomeIcon)`
-  color: #71716E;
+  color: #F8F8FF;
 `
 
 
@@ -34,7 +34,7 @@ const UserHeaderInfo = ({ loggedIn }) => (
   <Wrapper>
     {console.log('TESTING', loggedIn)}
     <Authlink to={chooseLink(loggedIn)}>
-      <User icon={['fa', 'user-circle']} size="2x" color="#ADB5BD" />
+      <User icon={['fa', 'user-circle']} size="2x" />
     </Authlink>
     <Link to="/your-account/orders">
       <Cart icon={['fa', 'shopping-cart']} size="lg" />
