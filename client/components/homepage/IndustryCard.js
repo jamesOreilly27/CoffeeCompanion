@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   align-items: center;
   width: 29%;
   height: 400px;
-  margin-bottom: 35px;
+  margin-bottom: 85px;
   position: relative;
 
   .blurb {
@@ -57,13 +57,14 @@ const ImageContainer = styled.img`
 const BlurbContainer = styled.div`
   position: absolute;
   top: 175px;
+  padding: 10px;
   border-radius: 8px;
   border: 1px solid silver;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 75%;
-  height: 225px;
+  height: 250px;
   z-index: 3;
 `
 
