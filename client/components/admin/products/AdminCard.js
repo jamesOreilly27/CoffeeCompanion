@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   justify-content: space-around;
   margin: 3px;
   padding: 2vh 0;
-  background-color: #FFF;
+  background-color: #383737;
 `
 
 const CardWrapper = styled.div`
@@ -29,6 +29,11 @@ const CardWrapper = styled.div`
 
 const Price = styled.div`
   font-size: 14px;
+  color: #F8F8FF;
+`
+
+const Image = styled(FontAwesomeIcon)`
+  color: #C1C1C1;
 `
 
 const ButtonsContainer = styled.div`
@@ -41,7 +46,7 @@ const ButtonsContainer = styled.div`
 const AdminCard = ({ product, all, featured }) => (
   <Wrapper>
     <CardWrapper>
-      <FontAwesomeIcon icon={["fa", "image"]} size="5x" />
+      <Image icon={["fa", "image"]} size="5x" />
       <Title size="sm">{product.name}</Title>
       <Price>{`$${product.price}`}</Price>
     </CardWrapper>

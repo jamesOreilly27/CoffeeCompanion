@@ -4,7 +4,7 @@ import { AdminList } from '../products'
 import { AdminContainer, Label } from './styledComponents'
 
 const Wrapper = styled(AdminContainer)`
-  
+  background-color: #383737;
 `
 
 class Featured extends Component {
