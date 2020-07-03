@@ -21,9 +21,9 @@ const Navbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 95vw;
+  width: 96vw;
   height: 5vh;
-  background-color: #FFF;
+  background-color: #383737;
   border-radius: 4px;
   margin-bottom: 1vh;
   padding: 10px;

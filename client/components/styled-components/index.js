@@ -19,6 +19,7 @@ export const Title = styled.h1`
     if(size === 'med') return `18px`
     else return ''
   }};
+  color: #F8F8FF;
 `
 
 //Buttons
