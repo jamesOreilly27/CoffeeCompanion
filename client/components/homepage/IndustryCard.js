@@ -17,10 +17,33 @@ const Wrapper = styled.div`
     transition: all 0.5s ease;
   }
 
+  .image {
+    opacity: 1;
+    transition: all 0.5s ease;
+  }
+
+  .test {
+    width: 10px;
+    height: 10px;
+    background-color: black;
+    opacity: 0.5;
+    position: absolute;
+    top: 190px;
+    transition: all 0.5s ease;
+    border-radius: 10px;
+  }
+
   &:hover {
     .blurb {
       background-color: green;
       color: #F8F8FF;
+    }
+
+    .test {
+      width: 100%;
+      height: 260px;
+      top: 0;
+      opacity: .2
     }
   }
 `
@@ -41,6 +64,7 @@ const BlurbContainer = styled.div`
   align-items: center;
   width: 75%;
   height: 225px;
+  z-index: 3;
 `
 
 const Name = styled.div`
@@ -56,7 +80,8 @@ const Paragraph = styled.div`
 
 const IndustryCard = ({ industry }) => (
   <Wrapper>
-    <ImageContainer src={industry.image} />
+    <div className="test"> </div>
+      <ImageContainer className="image" src={industry.image} />
     <BlurbContainer className="blurb">
       <Name> {industry.name} </Name>
       <Paragraph className="paragraph">
