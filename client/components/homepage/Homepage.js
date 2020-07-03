@@ -45,7 +45,7 @@ const IndustriesContainer = styled.div`
 const Title = styled.h1`
   margin: 0; 
   width: 63%;
-  border-bottom: 1px solid #3B9D6E;
+  border-bottom: 1px solid #296d4d;
   padding: 10px 0 5px 10px;
   margin: 20px;
   color: #F8F8FF;

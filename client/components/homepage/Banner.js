@@ -7,7 +7,7 @@ const Wrapper = styled.div`
   width: 100vw;
   display: flex;
   background-image: url(${Background});
-  background-color: #3B9D6E;
+  background-color: #296d4d;
   `
 
 const Message = styled.div`

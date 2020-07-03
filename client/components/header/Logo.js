@@ -15,7 +15,7 @@ const Wrapper = styled(Link)`
 
 const Image = styled.img`
   width: 150px;
-  height: 100px;
+  height: 80px;
   margin-left: -25px;
 `
 

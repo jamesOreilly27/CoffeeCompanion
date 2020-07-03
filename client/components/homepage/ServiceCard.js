@@ -27,6 +27,10 @@ const Blurb = styled.div`
 
 const NewButton = styled(Button)`
   margin: 43px 15% 0;
+  transition: all .1s;
+  &:hover {
+    background-color: #3B9D6E;
+  }
 `
 
 const ServiceCard = ({ service }) => (
@@ -37,7 +41,7 @@ const ServiceCard = ({ service }) => (
     <Blurb>
       {service.blurb}
     </Blurb>
-    <NewButton width={50} height={30} backgroundColor="#3B9D6E">
+    <NewButton width={50} height={30} backgroundColor="#296d4d">
       Learn More
     </NewButton>
   </Wrapper>

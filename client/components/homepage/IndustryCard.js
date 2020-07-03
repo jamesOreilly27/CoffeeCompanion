@@ -38,7 +38,7 @@ const Wrapper = styled.div`
 
   &:hover {
     .blurb {
-      background-color: #3B9D6E;
+      background-color: #296d4d;
       color: #F8F8FF;
     }
 
