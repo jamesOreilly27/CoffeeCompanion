@@ -21,7 +21,7 @@ const Container = styled.div`
 const Section = styled.div`
   display: flex;
   flex-direction: column;
-  width: 97vw;
+  width: 100vw;
   background-color: ${({ backgroundColor }) => {
     if (backgroundColor) return `${backgroundColor}`
     else return ``
