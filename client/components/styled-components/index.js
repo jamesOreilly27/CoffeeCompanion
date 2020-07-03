@@ -76,9 +76,10 @@ export const Option = styled.option`
 export const TextInput = styled.input`
   height: 3.5vh;
   width: 100%;
-  border: 1px solid #CCC;
+  border: 1px solid #161616;
   border-radius: .3em;
   font-size: .875em;
+  background-color: #585656;
 `
 
 export const TextArea = styled.textarea`

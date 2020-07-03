@@ -3,7 +3,6 @@ import styled from 'styled-components'
 import { ProductCard, SearchBar, AreaHeader } from '../bidArea'
 
 const Wrapper = styled.div`
-  width: 60%;
   background-color: #383737;
   border-radius: 4px;
   width: 80%;

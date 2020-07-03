@@ -12,7 +12,7 @@ const Wrapper = styled.form`
   height: 7vh;
   width: 85%;
   margin: 0 1.5vh;
-  border-top: 1px solid #f8f8ff;
+  border-bottom: 1px solid #f8f8ff;
   padding: 2vh 20px;
 `
 

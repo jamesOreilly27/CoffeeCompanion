@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom'
 
 const Container = styled.div`
   border-radius: .3em;
-  height: 100%;
+  height: 90%;
   width: 25%;
-  padding: 10px;
-  padding-top: 33px;
+  padding: 5px;
   display: flex;
   justify-content: center;
+  align-items: center;
   &:hover {
     background-color: #296d4d;
     transition: all .7s;
