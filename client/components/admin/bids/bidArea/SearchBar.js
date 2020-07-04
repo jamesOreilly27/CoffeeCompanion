@@ -84,6 +84,7 @@ class SearchBar extends Component {
                 description={product.description}
                 price={product.price}
                 cost={product.cost}
+                partNumber={product.partNumber}
                 search
               />
             )}

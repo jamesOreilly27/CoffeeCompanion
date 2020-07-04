@@ -77,6 +77,7 @@ export const getAllProducts = gql`
     products {
       id
       name
+      partNumber
       description
       image
       cost
@@ -161,6 +162,7 @@ export const getBidDetails = gql`
           price
           product {
             name
+            partNumber
             description
           }
         }

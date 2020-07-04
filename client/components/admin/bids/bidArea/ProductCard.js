@@ -9,7 +9,6 @@ const Wrapper = styled.form`
   justify-content: space-around;
   align-items: center;
   background-color: #383737;
-  height: 7vh;
   width: 85%;
   margin: 0 1.5vh;
   border-bottom: 1px solid #f8f8ff;
@@ -24,9 +23,21 @@ const Container = styled.div`
   width: 20vw;
   padding-left: 10px;
 `
+const ImageContainer = styled.div`
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #FFF;
 
-const Image = styled(FontAwesomeIcon)`
-  color: #C1C1C7;
+`
+
+const Image = styled.img`
+  width: 50px;
+  height: 50px;
 `
 
 const CenteredContainer = styled(Container)`
@@ -40,7 +51,7 @@ const ButtonContainer = styled(Container)`
   justify-content: center;
 `
 
-const Description = styled.div`
+const PartNumber = styled.div`
   font-size: 14px;
   color: #C1C1C7;
 `
@@ -76,12 +87,15 @@ class ProductCard extends Component {
   render() {
     let qty
     this.props.qty ? qty = this.props.qty : qty = this.state.qty
+    console.log(`/images/products/${this.props.partNumber}.png`)
     return (
       <Wrapper>
-        <Image icon={['fa', 'image']} size="3x" />
+        <ImageContainer>
+          <Image src={`/images/products/${this.props.partNumber}.png`} />
+        </ImageContainer>
         <Container>
           <Title size="sm">{this.props.name}</Title>
-          <Description>{this.props.description}</Description>
+          <PartNumber>{this.props.partNumber}</PartNumber>
         </Container>
         {this.props.search ?
           <CenteredContainer>
