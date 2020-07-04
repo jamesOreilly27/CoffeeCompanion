@@ -2,7 +2,7 @@ const db = require('./server/db')
 const chalk = require('chalk')
 const { Product, Category, Review, ProductCategory, Cart, LineItem, Bid, BidArea, AreaProduct, User } = require('./server/db/models')
 
-const markup = cost => cost * 1.3
+const markup = cost => (cost * 1.3).toFixed(2)
 const applyDiscount = cost => cost * .6
 
 async function seed () {
@@ -141,35 +141,35 @@ async function seed () {
     BidArea.create({ title: "", bidId: 4 })
   ])
 
-  // const areaProducts = await Promise.all([
-  //   AreaProduct.create({ bidAreaId: 1, price: 15, cost: 10, productId: 3, qty: 4 }),
-  //   AreaProduct.create({ bidAreaId: 1, price: 50, cost: 10, productId: 2, qty: 3 }),
-  //   AreaProduct.create({ bidAreaId: 1, price: 35, cost: 10, productId: 1, qty: 1 }),
-  //   AreaProduct.create({ bidAreaId: 1, price: 40, cost: 10, productId: 4, qty: 1 }),
-  //   AreaProduct.create({ bidAreaId: 1, price: 55, cost: 10, productId: 10, qty: 3 }),
-  //   AreaProduct.create({ bidAreaId: 1, price: 70, cost: 10, productId: 12, qty: 2 }),
-  //   AreaProduct.create({ bidAreaId: 2, price: 15, cost: 10, productId: 3, qty: 4 }),
-  //   AreaProduct.create({ bidAreaId: 3, price: 50, cost: 10, productId: 2, qty: 3 }),
-  //   AreaProduct.create({ bidAreaId: 4, price: 35, cost: 10, productId: 1, qty: 1 }),
-  //   AreaProduct.create({ bidAreaId: 5, price: 40, cost: 10, productId: 4, qty: 1 }),
-  //   AreaProduct.create({ bidAreaId: 6, price: 55, cost: 10, productId: 10, qty: 3 }),
-  //   AreaProduct.create({ bidAreaId: 7, price: 70, cost: 10, productId: 12, qty: 2 }),
-  //   AreaProduct.create({ bidAreaId: 8, price: 70, cost: 10, productId: 3, qty: 4 }),
-  //   AreaProduct.create({ bidAreaId: 9, price: 70, cost: 10, productId: 2, qty: 3 }),
-  //   AreaProduct.create({ bidAreaId: 10, price: 70, cost: 10, productId: 1, qty: 1 }),
-  //   AreaProduct.create({ bidAreaId: 11, price: 70, cost: 10, productId: 4, qty: 1 }),
-  //   AreaProduct.create({ bidAreaId: 12, price: 55, cost: 10, productId: 10, qty: 3 }),
-  //   AreaProduct.create({ bidAreaId: 13, price: 70, cost: 10, productId: 12, qty: 2 }),
-  //   AreaProduct.create({ bidAreaId: 14, price: 15, cost: 10, productId: 3, qty: 4 }),
-  //   AreaProduct.create({ bidAreaId: 15, price: 50, cost: 10, productId: 2, qty: 3 }),
-  //   AreaProduct.create({ bidAreaId: 16, price: 35, cost: 10, productId: 1, qty: 1 }),
-  //   AreaProduct.create({ bidAreaId: 17, price: 40, cost: 10, productId: 4, qty: 1 }),
-  //   AreaProduct.create({ bidAreaId: 18, price: 55, cost: 10, productId: 10, qty: 3 }),
-  //   AreaProduct.create({ bidAreaId: 19, price: 70, cost: 10, productId: 12, qty: 2 }),
-  //   AreaProduct.create({ bidAreaId: 20, price: 15, cost: 10, productId: 3, qty: 4 }),
-  //   AreaProduct.create({ bidAreaId: 21, price: 50, cost: 10, productId: 2, qty: 3 }),
-  //   AreaProduct.create({ bidAreaId: 22, price: 50, cost: 10, productId: 2, qty: 3 })
-  // ])
+  const areaProducts = await Promise.all([
+    AreaProduct.create({ bidAreaId: 1, price: 15, cost: 10, productId: 3, qty: 4 }),
+    AreaProduct.create({ bidAreaId: 1, price: 50, cost: 10, productId: 2, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 1, price: 35, cost: 10, productId: 1, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 1, price: 40, cost: 10, productId: 4, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 1, price: 55, cost: 10, productId: 10, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 1, price: 70, cost: 10, productId: 12, qty: 2 }),
+    AreaProduct.create({ bidAreaId: 2, price: 15, cost: 10, productId: 3, qty: 4 }),
+    AreaProduct.create({ bidAreaId: 3, price: 50, cost: 10, productId: 2, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 4, price: 35, cost: 10, productId: 1, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 5, price: 40, cost: 10, productId: 4, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 6, price: 55, cost: 10, productId: 10, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 7, price: 70, cost: 10, productId: 12, qty: 2 }),
+    AreaProduct.create({ bidAreaId: 8, price: 70, cost: 10, productId: 3, qty: 4 }),
+    AreaProduct.create({ bidAreaId: 9, price: 70, cost: 10, productId: 2, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 10, price: 70, cost: 10, productId: 1, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 11, price: 70, cost: 10, productId: 4, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 12, price: 55, cost: 10, productId: 10, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 13, price: 70, cost: 10, productId: 12, qty: 2 }),
+    AreaProduct.create({ bidAreaId: 14, price: 15, cost: 10, productId: 3, qty: 4 }),
+    AreaProduct.create({ bidAreaId: 15, price: 50, cost: 10, productId: 2, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 16, price: 35, cost: 10, productId: 1, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 17, price: 40, cost: 10, productId: 4, qty: 1 }),
+    AreaProduct.create({ bidAreaId: 18, price: 55, cost: 10, productId: 10, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 19, price: 70, cost: 10, productId: 12, qty: 2 }),
+    AreaProduct.create({ bidAreaId: 20, price: 15, cost: 10, productId: 3, qty: 4 }),
+    AreaProduct.create({ bidAreaId: 21, price: 50, cost: 10, productId: 2, qty: 3 }),
+    AreaProduct.create({ bidAreaId: 22, price: 50, cost: 10, productId: 2, qty: 3 })
+  ])
 
   const reviews = await Promise.all([
     Review.create({ content: "Delicious", rating: 4, productId: 1 }),
