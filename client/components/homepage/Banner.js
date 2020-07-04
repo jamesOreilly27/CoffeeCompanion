@@ -1,12 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
-import Background from '../../images/banner.png'
 
 const Wrapper = styled.div`
   height: 85vh;
   width: 100vw;
   display: flex;
-  background-image: url(${Background});
+  background-image: url(${"/images/banner.png"});
   background-color: #296d4d;
   `
 
