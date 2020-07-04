@@ -56,7 +56,7 @@ class SearchBar extends Component {
       return this.props.data.products
     }
     else {
-      return this.props.data.products.filter(product => product.name.includes(filterStr))
+      return this.props.data.products.filter(product => product.name.includes(filterStr)) 
     }
   }
 

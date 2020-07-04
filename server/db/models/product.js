@@ -7,8 +7,18 @@ const Product = db.define('product', {
     autoIncrement: true,
     primaryKey: true,
     type: Sequelize.INTEGER
-   },
+  },
+  vendor: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: { notEmpty: true }
+  },
   name: {
+    type: Sequelize.STRING,
+    allowNull: false,
+    validate: { notEmpty: true }
+  },
+  partNumber: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: { notEmpty: true }
@@ -16,13 +26,12 @@ const Product = db.define('product', {
   description: {
     type: Sequelize.TEXT,
     allowNull: false,
-    validate: { notEmpty: true }
   },
   cost: {
-    type: Sequelize.INTEGER
+    type: Sequelize.DECIMAL
   },
   price: {
-    type: Sequelize.INTEGER
+    type: Sequelize.DECIMAL
   },
   image: {
     type: Sequelize.STRING
