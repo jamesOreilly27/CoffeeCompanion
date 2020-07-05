@@ -44,6 +44,7 @@ const CenteredContainer = styled(Container)`
   align-items: center;
   width: 9vw;
   padding: 0;
+  cursor: default;
 `
 
 const ButtonContainer = styled(Container)`
@@ -72,9 +73,10 @@ class ProductCard extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { qty: 1 }
+    this.state = { qty: 1, editPrice: false }
 
     this.handleChange = this.handleChange.bind(this)
+    this.flipEditPrice = this.flipEditPrice.bind(this)
   }
 
   handleChange(str) {
@@ -83,6 +85,10 @@ class ProductCard extends Component {
     } else {
       this.setState({ qty: parseInt(str) })
     }
+  }
+
+  flipEditPrice() {
+    this.setState({ editPrice: !this.state.editPrice})
   }
 
   render() {
@@ -111,10 +117,17 @@ class ProductCard extends Component {
           <Title size="sm">Cost</Title>
           { this.props.cost && <DollarAmt>{`$${(this.props.cost * qty).toFixed(2)}`}</DollarAmt> }
         </CenteredContainer>
-        <CenteredContainer>
-          <Title size="sm">Price</Title>
-          <DollarAmt>{`$${(this.props.price * qty).toFixed(2)}`}</DollarAmt>
-        </CenteredContainer>
+        {!this.state.editPrice ?
+          <CenteredContainer onClick={this.flipEditPrice}>
+            <Title size="sm">Price</Title>
+            <DollarAmt>{`$${(this.props.price * qty).toFixed(2)}`}</DollarAmt>
+          </CenteredContainer>
+        :
+          <CenteredContainer onClick={this.flipEditPrice}>
+            <Title size="sm">Edit</Title>
+            <DollarAmt>{`$${(this.props.price * qty).toFixed(2)}`}</DollarAmt>
+          </CenteredContainer>
+        }
         <ButtonContainer>
           {this.props.search &&
             <AddButton
