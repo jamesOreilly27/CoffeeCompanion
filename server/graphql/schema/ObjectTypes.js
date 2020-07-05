@@ -201,8 +201,8 @@ const AreaProductType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLInt },
     qty: { type: GraphQLInt },
-    cost: { type: GraphQLInt },
-    price: { type: GraphQLInt},
+    cost: { type: GraphQLFloat },
+    price: { type: GraphQLFloat },
     bidAreaId: { type: GraphQLInt },
     product: {
       type: ProductDetailType,
