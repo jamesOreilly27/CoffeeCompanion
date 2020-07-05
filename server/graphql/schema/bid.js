@@ -77,6 +77,12 @@ const addAreaProductResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
+const updateProductPriceResolver = (parent, args) => {
+  return AreaProduct.findByPk(args.id)
+  .then(areaProduct => areaProduct.update({ price: args.price }))
+  .catch(err => console.log(err))
+}
+
 const bids = {
   type: new GraphQLList(BidType),
   description: 'a list of roys bids',
@@ -162,6 +168,16 @@ const removeAreaProduct = {
   resolve: removeAreaProductResolver
 }
 
+const updateAreaProductPrice = {
+  type: AreaProductType,
+  description: "update the price of an area product",
+  args: {
+    id: { type: GraphQLInt },
+    price: { type: GraphQLFloat }
+  },
+  resolve: updateProductPriceResolver
+}
+
 module.exports = {
   bids,
   bidDetails,
@@ -172,5 +188,6 @@ module.exports = {
   incrementProductQty,
   decrementProductQty,
   removeAreaProduct,
-  addAreaProduct
+  addAreaProduct,
+  updateAreaProductPrice
 }
