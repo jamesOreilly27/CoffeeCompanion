@@ -1,19 +1,28 @@
 import React from 'react'
 import styled from 'styled-components'
-import { nameToUrl } from '../../helpers'
+import { RemoveLocation } from '../bids'
 
 const Wrapper = styled.div`
-  margin-bottom: 1.5vh;
-  text-decoration: none;
+  display: flex;
+  margin-bottom: 3vh;
   color: #F8F8FF;
-  cursor: pointer
+  width: 90%;
+  justify-content: space-between;
+`
+
+const Link = styled.div`
+  text-decoration: none;
+  cursor: pointer;
 `
 
 const LocationLink = ({ location, handleClick }) => (
-  <Wrapper onClick={() => {
-    handleClick(location.title)
-  }}>
-    {location.title}
+  <Wrapper>
+    <Link onClick={() => {
+      handleClick(location.title)
+    }}>
+      {location.title}
+    </Link>
+    <RemoveLocation id={location.id} />
   </Wrapper>
 )
 
