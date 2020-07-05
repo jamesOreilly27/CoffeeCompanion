@@ -24,7 +24,7 @@ const CloseButton = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
-  margin-left: 67vw;
+  margin-left: 69vw;
   margin-top: 5px;
 `
 

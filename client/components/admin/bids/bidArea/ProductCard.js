@@ -9,8 +9,7 @@ const Wrapper = styled.form`
   justify-content: space-around;
   align-items: center;
   background-color: #383737;
-  width: 85%;
-  margin: 0 1.5vh;
+  width: 95%;
   border-bottom: 1px solid #f8f8ff;
   padding: 3vh 20px;
   height: 13vh;
@@ -43,7 +42,7 @@ const Image = styled.img`
 
 const CenteredContainer = styled(Container)`
   align-items: center;
-  width: 7vw;
+  width: 10vw;
   padding: 0;
 `
 
@@ -109,11 +108,11 @@ class ProductCard extends Component {
         }
         <CenteredContainer>
           <Title size="sm">Cost</Title>
-          { this.props.cost && <DollarAmt>{`$${this.props.cost * qty}`}</DollarAmt> }
+          { this.props.cost && <DollarAmt>{`$${(this.props.cost * qty).toFixed(2)}`}</DollarAmt> }
         </CenteredContainer>
         <CenteredContainer>
           <Title size="sm">Price</Title>
-          <DollarAmt>{`$${this.props.price * qty}`}</DollarAmt>
+          <DollarAmt>{`$${(this.props.price * qty).toFixed(2)}`}</DollarAmt>
         </CenteredContainer>
         <ButtonContainer>
           {this.props.search &&
