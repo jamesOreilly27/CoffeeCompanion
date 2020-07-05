@@ -13,6 +13,7 @@ const Header = styled.div`
 
 const HeaderTitle = styled(Title)`
   margin-left: 10px;
+  width: 45%;
 `
 
 const ContentContainer = styled.div`
@@ -51,7 +52,7 @@ const AreaHeader = ({ area, bidId, PDF }) => (
     </HeaderTitle>
     <ContentContainer>
       <AreaPrice>
-        {`$${sumAll([area], 'price')}`}
+        {`$${sumAll([area], 'price').toFixed(2)}`}
       </AreaPrice>
       {!PDF &&
         <PDFButton
