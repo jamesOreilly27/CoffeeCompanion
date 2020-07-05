@@ -12,8 +12,28 @@ const Wrapper = styled.button`
   color: #F8F8FF;
 `
 
-const RemoveLocation = ({ areaId }) => (
-  <Mutation mutation={removeBidArea}>
+const RemoveLocation = ({ areaId, bidId }) => (
+  <Mutation
+    mutation={removeBidArea}
+    update={( cache, { data: { removeBidArea } } ) => {
+      const bid = cache.readQuery({ query: getBidDetails, variables: { id: bidId } }).bidDetails
+      const areas = bid.bidAreas
+      let newAreas = []
+
+      areas.forEach(area => {
+        if(area.id !== areaId) {
+          newAreas.push(area)
+        }
+      })
+
+      const newBid = Object.assign(bid, { bidAreas: newAreas })
+      
+      cache.writeQuery({
+        query: getBidDetails,
+        data: { bidDetails: Object.assign(bid, { bidArea: newAreas } ) }
+      })
+    }}
+  >
     {(removeBidArea, { data }) => (
       <Wrapper onClick={evt => {
         evt.preventDefault()

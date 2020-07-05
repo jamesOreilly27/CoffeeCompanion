@@ -128,7 +128,7 @@ class BidDetail extends Component {
                 </PriceAndCostContainer>
               </ProjectTotal>
               <AreaContainer>
-                {this.props.data.bidDetails.bidAreas.map(location => <LocationLink key={location.title} location={location} handleClick={this.handleClick} />)}
+                {this.props.data.bidDetails.bidAreas.map(location => <LocationLink key={location.title} location={location} bidId={this.props.data.bidDetails.id} handleClick={this.handleClick} />)}
                 <AddLocation bid={this.props.data.bidDetails} flipTrue={this.addedToTrue} flipFalse={this.addedToFalse} />
               </AreaContainer>
             </Sidebar>

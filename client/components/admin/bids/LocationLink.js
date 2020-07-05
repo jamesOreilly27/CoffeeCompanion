@@ -15,14 +15,14 @@ const Link = styled.div`
   cursor: pointer;
 `
 
-const LocationLink = ({ location, handleClick }) => (
+const LocationLink = ({ location, bidId, handleClick }) => (
   <Wrapper>
     <Link onClick={() => {
       handleClick(location.title)
     }}>
       {location.title}
     </Link>
-    <RemoveLocation id={location.id} />
+    <RemoveLocation areaId={location.id} bidId={bidId} />
   </Wrapper>
 )
 

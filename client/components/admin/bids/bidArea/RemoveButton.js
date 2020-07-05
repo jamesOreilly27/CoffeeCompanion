@@ -13,7 +13,7 @@ const Wrapper = styled.button`
 const RemoveButton = ({ productId, bidId }) => (
   <Mutation
     mutation={removeAreaProduct}
-    update={( cache, { data: { removeProductArea } } ) => {
+    update={( cache, { data: { removeAreaProduct } } ) => {
       const bid = cache.readQuery({ query: getBidDetails, variables: { id: bidId } }).bidDetails
       const areas = bid.bidAreas
       let newAreas;
