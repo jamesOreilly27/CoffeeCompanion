@@ -12,14 +12,15 @@ const Wrapper = styled.form`
   width: 85%;
   margin: 0 1.5vh;
   border-bottom: 1px solid #f8f8ff;
-  padding: 2vh 20px;
+  padding: 3vh 20px;
+  height: 13vh;
 `
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 62%;
+  height: 50%;
   width: 20vw;
   padding-left: 10px;
 `
@@ -42,7 +43,7 @@ const Image = styled.img`
 
 const CenteredContainer = styled(Container)`
   align-items: center;
-  width: 12vw;
+  width: 7vw;
   padding: 0;
 `
 
@@ -53,7 +54,7 @@ const ButtonContainer = styled(Container)`
 
 const PartNumber = styled.div`
   font-size: 14px;
-  color: #C1C1C7;
+  color: #C3C3C3;
 `
 
 const TextInput = styled.input`
@@ -87,7 +88,6 @@ class ProductCard extends Component {
   render() {
     let qty
     this.props.qty ? qty = this.props.qty : qty = this.state.qty
-    console.log(`/images/products/${this.props.partNumber}.png`)
     return (
       <Wrapper>
         <ImageContainer>
