@@ -1,5 +1,6 @@
 export { default as BidAreaDetail } from './BidAreaDetail'
 export { default as AreaHeader } from './AreaHeader'
+export { default as UpdateTitleForm } from './UpdateTitleForm'
 export { default as ProductCard } from './ProductCard'
 export { default as SearchBar } from './SearchBar'
 export { default as QtyContainer } from './QtyContainer'

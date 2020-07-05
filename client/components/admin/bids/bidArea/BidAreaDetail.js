@@ -30,7 +30,7 @@ const BidAreaDetail = props => (
   <Wrapper>
     {props.area &&
       <Container>
-        <AreaHeader area={props.area} bidId={props.bidId} />
+        <AreaHeader area={props.area} bidId={props.bidId} updateTitleState={props.updateTitleState}/>
         <ProductContainer>
           <SearchBar bidAreaId={props.area.id} bidId={props.bidId} />
           <ProductsList>

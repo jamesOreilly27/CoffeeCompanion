@@ -132,7 +132,7 @@ class BidDetail extends Component {
                 <AddLocation bid={this.props.data.bidDetails} flipTrue={this.addedToTrue} flipFalse={this.addedToFalse} />
               </AreaContainer>
             </Sidebar>
-            <BidAreaDetail bidId={parseInt(this.props.match.params.id)} area={findArea(this.state.selectedArea, this.props.data.bidDetails.bidAreas)} />
+            <BidAreaDetail bidId={parseInt(this.props.match.params.id)} area={findArea(this.state.selectedArea, this.props.data.bidDetails.bidAreas)} updateTitleState={this.handleClick} />
           </Container>
         }
       </Wrapper>
