@@ -6,7 +6,7 @@ import { Title } from '../../../styled-components'
 import { sumAll } from '../helpers'
 
 const Header = styled.div`
-  width: 90%;
+  width: 95%;
   display: flex;
   align-items: center;
   justify-content: space-between;

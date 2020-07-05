@@ -9,9 +9,9 @@ const Wrapper = styled.form`
   justify-content: space-around;
   align-items: center;
   background-color: #383737;
-  width: 95%;
+  width: 98%;
   border-bottom: 1px solid #f8f8ff;
-  padding: 3vh 20px;
+  padding: 3vh 10px;
   height: 13vh;
 `
 
@@ -20,7 +20,7 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   height: 50%;
-  width: 20vw;
+  width: 16vw;
   padding-left: 10px;
 `
 const ImageContainer = styled.div`
@@ -42,7 +42,7 @@ const Image = styled.img`
 
 const CenteredContainer = styled(Container)`
   align-items: center;
-  width: 10vw;
+  width: 9vw;
   padding: 0;
 `
 
@@ -52,7 +52,7 @@ const ButtonContainer = styled(Container)`
 `
 
 const PartNumber = styled.div`
-  font-size: 14px;
+  font-size: 12px;
   color: #C3C3C3;
 `
 
@@ -65,6 +65,7 @@ const TextInput = styled.input`
 
 const DollarAmt = styled.div`
   color: #F8F8FF;
+  font-size: 14px;
 `
 
 class ProductCard extends Component {

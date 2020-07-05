@@ -23,7 +23,7 @@ const Sidebar = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-right: 20px;
-  width: 20%
+  width: 23%
 `
 
 const ProjectTotal = styled.div`
@@ -114,7 +114,7 @@ class BidDetail extends Component {
                       Cost
                     </Title>
                     <Cost>
-                      {`$${sumAll(this.props.data.bidDetails.bidAreas, 'cost')}`}
+                      {`$${sumAll(this.props.data.bidDetails.bidAreas, 'cost').toFixed(2)}`}
                     </Cost>
                   </TotalContainer>
                   <TotalContainer>
@@ -122,7 +122,7 @@ class BidDetail extends Component {
                       Price
                     </Title>
                     <Price>
-                      {`$${sumAll(this.props.data.bidDetails.bidAreas, 'price')}`}
+                      {`$${sumAll(this.props.data.bidDetails.bidAreas, 'price').toFixed(2)}`}
                     </Price>
                   </TotalContainer>
                 </PriceAndCostContainer>
