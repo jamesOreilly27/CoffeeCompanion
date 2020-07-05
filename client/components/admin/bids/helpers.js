@@ -2,7 +2,6 @@ export const sumAll = (bidAreas, type) => {
   let total = 0;
   bidAreas.forEach(bidArea => {
     for(let i = 0; i < bidArea.products.length; i++) {
-      console.log('BIDAREA', bidArea.products)
       total += bidArea.products[i][type] * bidArea.products[i].qty
     }
   })

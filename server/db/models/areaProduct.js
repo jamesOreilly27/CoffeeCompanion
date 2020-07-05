@@ -3,11 +3,11 @@ const db = require('../db')
 
 const AreaProduct = db.define('area-product', {
   price: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL,
     allowNull: false
   },
   cost: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.DECIMAL,
     allowNull: false
   },
   qty: {

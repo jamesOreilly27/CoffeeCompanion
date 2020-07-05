@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import NavLogo from '../../images/navlogo2.png'
 
 const Wrapper = styled(Link)`
   display: flex;
@@ -21,7 +20,7 @@ const Image = styled.img`
 
 const Logo = () => (
   <Wrapper to="/">
-    <Image src={NavLogo} />
+    <Image src="/images/navlogo2.png" />
   </Wrapper>
 )
 

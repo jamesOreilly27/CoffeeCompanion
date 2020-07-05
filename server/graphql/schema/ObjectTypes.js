@@ -1,4 +1,4 @@
-const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, GraphQLBoolean, GraphQLScalarType } = require('graphql')
+const { GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull, GraphQLList, GraphQLBoolean, GraphQLFloat } = require('graphql')
 const { Product } = require('../../db/models')
 
 /********** User Related ObjectTypes **********/
@@ -37,9 +37,10 @@ const ProductType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLNonNull(GraphQLInt) },
     name: { type: GraphQLString },
+    partNumber: { type: GraphQLString },
     description: { type: GraphQLString },
-    cost: { type: GraphQLNonNull(GraphQLInt) },
-    price: { type: GraphQLNonNull(GraphQLInt) },
+    cost: { type: GraphQLNonNull(GraphQLFloat) },
+    price: { type: GraphQLNonNull(GraphQLFloat) },
     image: { type: GraphQLString },
     featured: { type: GraphQLBoolean },
   })
@@ -50,9 +51,10 @@ const ProductDetailType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLInt },
     name: { type: GraphQLNonNull(GraphQLString) },
+    partNumber: { type: GraphQLNonNull(GraphQLString) },
     description: { type: GraphQLNonNull(GraphQLString) },
-    cost: { type: GraphQLNonNull(GraphQLInt) },
-    price: { type: GraphQLNonNull(GraphQLInt) },
+    cost: { type: GraphQLNonNull(GraphQLFloat) },
+    price: { type: GraphQLNonNull(GraphQLFloat) },
     image: { type: GraphQLNonNull(GraphQLString) },
     featured: { type: GraphQLBoolean },
     reviews: {
@@ -199,8 +201,8 @@ const AreaProductType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLInt },
     qty: { type: GraphQLInt },
-    cost: { type: GraphQLInt },
-    price: { type: GraphQLInt},
+    cost: { type: GraphQLFloat },
+    price: { type: GraphQLFloat },
     bidAreaId: { type: GraphQLInt },
     product: {
       type: ProductDetailType,

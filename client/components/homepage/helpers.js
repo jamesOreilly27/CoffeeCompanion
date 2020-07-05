@@ -1,5 +1,3 @@
-import Atlis from '../../images/atlis.png'
-
 export const services = [
   {
     name:` Live Video Monitoring`,
@@ -22,31 +20,31 @@ export const industries = [
   {
     name: "Auto Dealers",
     icon: ['fa', 'car'],
-    image: Atlis
+    image: '/images/atlis.png'
   },
   {
     name: "Equipment Rentals",
     icon: ['fas', 'tractor'],
-    image: Atlis
+    image: '/images/atlis.png'
   },
   {
     name: "Marine Outlets",
     icon: ['fa', 'anchor'],
-    image: Atlis
+    image: '/images/atlis.png'
   },
   {
     name: "Construction Sites",
     icon: ['fas', 'tools'],
-    image: Atlis
+    image: '/images/atlis.png'
   },
   {
     name: "Storage Units",
     icon: ['fas', 'warehouse'],
-    image: Atlis
+    image: '/images/atlis.png'
   },
   {
     name: "Scrap Metal",
     icon: ['fas', 'dumpster'],
-    image: Atlis
+    image: '/images/atlis.png'
   }
 ]

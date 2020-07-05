@@ -3,9 +3,6 @@ import styled from 'styled-components'
 import { Banner } from '../homepage'
 import { services, industries } from './helpers'
 import { ServiceCard, IndustryCard } from '../homepage'
-import AvigilonLogo from '../../images/avigilon.png'
-import Camera from '../../images/avigilon-camera1.png'
-import Conroe from '../../images/conroe.png'
 
 const Wrapper = styled.div`
   display: flex;
@@ -119,10 +116,10 @@ const Hompage = () => (
         </ServicesContainer>
       </Section>
       <AvigSection>
-        <AvigImage src={Conroe} />
+        <AvigImage src="/images/conroe.png" />
         <AvigBlurb>
           <Header>
-            <Image src={AvigilonLogo} />
+            <Image src="/images/avigilon.png" />
             {/* <SmallImage src={Camera} /> */}
           </Header>
           <Paragraph>

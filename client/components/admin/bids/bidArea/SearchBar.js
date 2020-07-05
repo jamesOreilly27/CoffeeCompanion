@@ -24,7 +24,7 @@ const CloseButton = styled.button`
   align-items: center;
   justify-content: center;
   border: none;
-  margin-left: 67vw;
+  margin-left: 69vw;
   margin-top: 5px;
 `
 
@@ -56,7 +56,7 @@ class SearchBar extends Component {
       return this.props.data.products
     }
     else {
-      return this.props.data.products.filter(product => product.name.includes(filterStr))
+      return this.props.data.products.filter(product => product.name.includes(filterStr)) 
     }
   }
 
@@ -84,6 +84,7 @@ class SearchBar extends Component {
                 description={product.description}
                 price={product.price}
                 cost={product.cost}
+                partNumber={product.partNumber}
                 search
               />
             )}

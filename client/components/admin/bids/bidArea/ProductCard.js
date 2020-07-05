@@ -9,29 +9,40 @@ const Wrapper = styled.form`
   justify-content: space-around;
   align-items: center;
   background-color: #383737;
-  height: 7vh;
-  width: 85%;
-  margin: 0 1.5vh;
+  width: 95%;
   border-bottom: 1px solid #f8f8ff;
-  padding: 2vh 20px;
+  padding: 3vh 20px;
+  height: 13vh;
 `
 
 const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 62%;
+  height: 50%;
   width: 20vw;
   padding-left: 10px;
 `
+const ImageContainer = styled.div`
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #FFF;
 
-const Image = styled(FontAwesomeIcon)`
-  color: #C1C1C7;
+`
+
+const Image = styled.img`
+  width: 50px;
+  height: 50px;
 `
 
 const CenteredContainer = styled(Container)`
   align-items: center;
-  width: 12vw;
+  width: 10vw;
   padding: 0;
 `
 
@@ -40,9 +51,9 @@ const ButtonContainer = styled(Container)`
   justify-content: center;
 `
 
-const Description = styled.div`
+const PartNumber = styled.div`
   font-size: 14px;
-  color: #C1C1C7;
+  color: #C3C3C3;
 `
 
 const TextInput = styled.input`
@@ -78,10 +89,12 @@ class ProductCard extends Component {
     this.props.qty ? qty = this.props.qty : qty = this.state.qty
     return (
       <Wrapper>
-        <Image icon={['fa', 'image']} size="3x" />
+        <ImageContainer>
+          <Image src={`/images/products/${this.props.partNumber}.png`} />
+        </ImageContainer>
         <Container>
           <Title size="sm">{this.props.name}</Title>
-          <Description>{this.props.description}</Description>
+          <PartNumber>{this.props.partNumber}</PartNumber>
         </Container>
         {this.props.search ?
           <CenteredContainer>
@@ -95,11 +108,11 @@ class ProductCard extends Component {
         }
         <CenteredContainer>
           <Title size="sm">Cost</Title>
-          { this.props.cost && <DollarAmt>{`$${this.props.cost * qty}`}</DollarAmt> }
+          { this.props.cost && <DollarAmt>{`$${(this.props.cost * qty).toFixed(2)}`}</DollarAmt> }
         </CenteredContainer>
         <CenteredContainer>
           <Title size="sm">Price</Title>
-          <DollarAmt>{`$${this.props.price * qty}`}</DollarAmt>
+          <DollarAmt>{`$${(this.props.price * qty).toFixed(2)}`}</DollarAmt>
         </CenteredContainer>
         <ButtonContainer>
           {this.props.search &&

@@ -43,6 +43,7 @@ const BidAreaDetail = props => (
                 qty={product.qty}
                 cost={product.cost}
                 price={product.price}
+                partNumber={product.product.partNumber}
               />
             )}
           </ProductsList>
