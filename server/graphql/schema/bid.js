@@ -28,6 +28,15 @@ const newAreaResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
+const destroyBidArea = (parent, args) => {
+  return BidArea.findByPk(args.id)
+  .then(area => {
+    area.destroy()
+    return true
+  })
+  .catch(err => console.log(err))
+}
+
 const incrementQtyResolver = ( parent, { id }, request) => {
   return AreaProduct.findByPk(id)
   .then(areaProduct => areaProduct.update({ qty: areaProduct.qty + 1}))
@@ -96,6 +105,13 @@ const addBidArea = {
   resolve: newAreaResolver
 }
 
+const removeBidArea = {
+  type: GraphQLBoolean,
+  description: "remove a bid area",
+  args: { id: { type: GraphQLInt } },
+  resolve: destroyBidArea
+}
+
 const incrementProductQty = {
   type: AreaProductType,
   args: { id: { type: GraphQLInt } },
@@ -135,6 +151,7 @@ module.exports = {
   bidDetails,
   createBid,
   addBidArea,
+  removeBidArea,
   incrementProductQty,
   decrementProductQty,
   removeAreaProduct,

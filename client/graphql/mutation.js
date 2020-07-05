@@ -88,6 +88,12 @@ export const addBidArea = gql`
   }
 `
 
+export const removeBidArea = gql`
+  mutation($id: Int!) {
+    removeBidArea(id: $id)
+  }
+`
+
 export const createAreaProduct = gql`
   mutation($qty: Int!, $bidAreaId: Int!, $productId: Int!) {
     createAreaProduct(qty: $qty, bidAreaId: $bidAreaId, productId: $productId) {
