@@ -1,4 +1,4 @@
-const { GraphQLList, GraphQLBoolean, GraphQLInt, GraphQLString } = require('graphql')
+const { GraphQLList, GraphQLBoolean, GraphQLInt, GraphQLString, GraphQLFloat } = require('graphql')
 const { BidType, BidAreaType, AreaProductType} = require('./ObjectTypes')
 const { Bid, BidArea, AreaProduct } = require('../../db/models')
 
@@ -41,7 +41,7 @@ const decrementQtyResolver = ( parent, { id }, request) => {
       return areaProduct.destroy()
     }
     else {
-      return areaProduct.update({ qty: areaProduct.qty - 1})
+      return areaProduct.update({ qty: areaProduct.qty - 1 })
     }
   })
   .catch(err => console.log(err))
@@ -98,14 +98,14 @@ const addBidArea = {
 
 const incrementProductQty = {
   type: AreaProductType,
-  args: { id: { type: GraphQLInt }},
+  args: { id: { type: GraphQLInt } },
   description: 'increment the qty of an area product',
   resolve: incrementQtyResolver
 }
 
 const decrementProductQty = {
   type: AreaProductType,
-  args: { id: { type: GraphQLInt }},
+  args: { id: { type: GraphQLInt } },
   description: 'decrement the qty of an area product',
   resolve: decrementQtyResolver
 }
@@ -115,8 +115,8 @@ const addAreaProduct = {
   description: 'add a new area product',
   args: {
     qty: { type: GraphQLInt },
-    price: { type: GraphQLInt },
-    cost: { type: GraphQLInt },
+    price: { type: GraphQLFloat },
+    cost: { type: GraphQLFloat },
     productId: { type: GraphQLInt },
     bidAreaId: { type: GraphQLInt }
   },
@@ -126,7 +126,7 @@ const addAreaProduct = {
 const removeAreaProduct = {
   type: GraphQLBoolean,
   description: 'remove an areaproduct from a bidarea',
-  args: { id: { type: GraphQLInt }},
+  args: { id: { type: GraphQLInt } },
   resolve: removeAreaProductResolver
 }
 

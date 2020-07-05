@@ -126,7 +126,7 @@ export const removeAreaProduct = gql`
 `
 
 export const addAreaProduct = gql`
-  mutation($qty: Int!, $price: Int!, $cost: Int!, $productId: Int!, $bidAreaId: Int!) {
+  mutation($qty: Int!, $price: Float!, $cost: Float!, $productId: Int!, $bidAreaId: Int!) {
     addAreaProduct(qty: $qty, price: $price, cost: $cost, productId: $productId, bidAreaId: $bidAreaId) {
       id
       qty
@@ -134,6 +134,7 @@ export const addAreaProduct = gql`
       price
       product {
         name
+        partNumber
         description
       }
     }
