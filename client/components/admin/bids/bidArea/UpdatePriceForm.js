@@ -16,8 +16,29 @@ const Submit = styled(Button)`
 
 `
 
-const UpdatePriceForm = ({ areaProductId, price, handleSubmit, qty }) => (
-  <Mutation mutation={updateAreaProductPrice}>
+const UpdatePriceForm = ({ areaProductId, price, handleSubmit, qty, bidId, bidAreaId }) => (
+  <Mutation
+    mutation={updateAreaProductPrice}
+    update={( cache, { data: { updateAreaProductPrice } }) => {
+      const bid = cache.readQuery({ query: getBidDetails, variables: { id: bidId } }).bidDetails
+      const areas = bid.bidAreas
+      const area = areas.filter(area => area.id === bidAreaId)[0] 
+
+      area.products.forEach(product => {
+        if(product.id === areaProductId) {
+          area.products.splice(area.products.indexOf(product), 1, updateAreaProductPrice)
+        }
+      })
+
+      const newBid = Object.assign(bid, { bidAreas: areas } )
+
+      cache.writeQuery({
+        query: getBidDetails,
+        data: { bidDetails: Object.assign(bid, { bidArea: areas } )}
+      })
+
+    }}
+  >
     {(updateAreaProductPrice, { data }) => (
       <Wrapper onSubmit={evt => {
         evt.preventDefault()

@@ -159,6 +159,8 @@ export const addAreaProduct = gql`
 export const updateAreaProductPrice = gql`
   mutation($id: Int!, $price: Float!) {
     updateAreaProductPrice(id: $id, price: $price) {
+      id
+      qty
       cost
       price
       product {

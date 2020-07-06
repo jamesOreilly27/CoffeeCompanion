@@ -127,7 +127,14 @@ class ProductCard extends Component {
           </CenteredContainer>
         :
           <CenteredContainer>
-            <UpdatePriceForm areaProductId={this.props.productId} price={this.props.price} handleSubmit={this.flipEditPrice} qty={this.props.qty} />
+            <UpdatePriceForm
+              areaProductId={this.props.productId}
+              price={this.props.price}
+              handleSubmit={this.flipEditPrice}
+              qty={this.props.qty}
+              bidId={this.props.bidId}
+              bidAreaId={this.props.bidAreaId}
+            />
           </CenteredContainer>
         }
         <ButtonContainer>
