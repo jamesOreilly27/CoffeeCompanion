@@ -9,6 +9,8 @@ const RawMaterial = require('./rawMaterial')
 const Bid = require('./bid')
 const BidArea = require('./bidArea')
 const AreaProduct = require('./areaProduct')
+const Customer = require('./customer')
+const Contact = require('./contact')
 
 /***** Associations ******/
 
@@ -44,6 +46,10 @@ Cart.belongsTo(User)
 Cart.hasMany(LineItem, { as: 'items' })
 LineItem.belongsTo(Cart)
 
+//Customer and Contact
+Customer.hasMany(Contact, { as: 'contacts' })
+Contact.belongsTo(Customer)
+
 module.exports = {
   Product,
   Bid,
@@ -55,5 +61,7 @@ module.exports = {
   Cart,
   LineItem,
   User,
-  RawMaterial
+  RawMaterial,
+  Customer,
+  Contact
 }

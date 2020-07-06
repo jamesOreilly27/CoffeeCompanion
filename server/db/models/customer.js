@@ -21,7 +21,7 @@ const Customer = db.define('customer', {
   phoneNumber: {
     type: Sequelize.STRING
   },
-  localPoliceNumber: {
+  localPolicePhone: {
     type: Sequelize.STRING
   },
   email: {

@@ -1,6 +1,6 @@
 const db = require('./server/db')
 const chalk = require('chalk')
-const { Product, Category, Review, ProductCategory, Cart, LineItem, Bid, BidArea, AreaProduct, User } = require('./server/db/models')
+const { Product, Category, Review, ProductCategory, Cart, LineItem, Bid, BidArea, AreaProduct, User, Customer, Contact } = require('./server/db/models')
 
 const markup = cost => (cost * 1.3).toFixed(2)
 const applyDiscount = cost => cost * .6
@@ -16,6 +16,14 @@ async function seed () {
   const users = await Promise.all([
     User.create({firstName: 'cody', lastName: 'greene', email: 'cody@email.com', password: '123', isAdmin: true}),
     User.create({firstName: 'eddie', lastName: 'murphy', email: 'murphy@email.com', password: '123', phone: '2125555555'})
+  ])
+
+  const customers = await Promise.all([
+    Customer.create({ companyName: "Palm City Yachts", industry: "Marine",  address: "2901 SE Gran Park Way", town: "Stuart, FL", zipCode: "34994", phoneNumber: "772-220-3000", localPolicePhone: "772-287-1122", email: "palmcitytest@email.com" })
+  ])
+
+  const contacts = await Promise.all([
+    Contact.create({ firstName: "JOHN", lastName: "DOE", phoneNumber: "(516)-476-6739", email: "johndoe@email.com", primary: true, customerId: 1 })
   ])
   
   const carts = await Promise.all([
