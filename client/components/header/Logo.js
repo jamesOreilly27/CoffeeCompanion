@@ -13,14 +13,14 @@ const Wrapper = styled(Link)`
 `
 
 const Image = styled.img`
-  width: 150px;
+  width: 90px;
   height: 80px;
   margin-left: -25px;
 `
 
 const Logo = () => (
   <Wrapper to="/">
-    <Image src="/images/navlogo2.png" />
+    <Image src="/images/newlogo.png" />
   </Wrapper>
 )
 
