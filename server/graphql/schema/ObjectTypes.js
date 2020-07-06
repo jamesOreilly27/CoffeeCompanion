@@ -215,6 +215,25 @@ const AreaProductType = new GraphQLObjectType({
   })
 })
 
+/********** Customer Object Types **********/
+
+const CustomerType = new GraphQLObjectType({
+  name: "customer",
+  description: "A Customer",
+  fields: () => ({
+    id: { type: GraphQLInt },
+    companyName: { type: GraphQLString },
+    industry: { type: GraphQLString },
+    address: { type: GraphQLString },
+    town: { type: GraphQLString },
+    zipCode: { type: GraphQLString },
+    phoneNumber: { type: GraphQLString },
+    localPolicePhone: { type: GraphQLString },
+    email: { type: GraphQLString }
+  })
+
+})
+
 module.exports = {
   UserType,
   CategoryType,
@@ -226,5 +245,6 @@ module.exports = {
   BidType,
   BidDetailType,
   BidAreaType,
-  AreaProductType
+  AreaProductType,
+  CustomerType
 }
