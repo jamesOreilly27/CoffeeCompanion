@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Title } from '../../../styled-components'
 import { QtyContainer, AddButton, RemoveButton } from '../bidArea'
+import { UpdatePriceForm } from '../bidArea'
 
-const Wrapper = styled.form`
+const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -88,7 +88,9 @@ class ProductCard extends Component {
   }
 
   flipEditPrice() {
-    this.setState({ editPrice: !this.state.editPrice})
+    if(!this.props.search) {
+      this.setState({ editPrice: !this.state.editPrice})
+    }
   }
 
   render() {
@@ -96,6 +98,7 @@ class ProductCard extends Component {
     this.props.qty ? qty = this.props.qty : qty = this.state.qty
     return (
       <Wrapper>
+        {console.log('PROPS', this.props)}
         <ImageContainer>
           <Image src={`/images/products/${this.props.partNumber}.png`} />
         </ImageContainer>
@@ -123,9 +126,8 @@ class ProductCard extends Component {
             <DollarAmt>{`$${(this.props.price * qty).toFixed(2)}`}</DollarAmt>
           </CenteredContainer>
         :
-          <CenteredContainer onClick={this.flipEditPrice}>
-            <Title size="sm">Edit</Title>
-            <DollarAmt>{`$${(this.props.price * qty).toFixed(2)}`}</DollarAmt>
+          <CenteredContainer>
+            <UpdatePriceForm areaProductId={this.props.productId} price={this.props.price} handleSubmit={this.flipEditPrice} qty={this.props.qty} />
           </CenteredContainer>
         }
         <ButtonContainer>

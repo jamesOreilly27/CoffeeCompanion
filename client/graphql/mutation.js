@@ -155,3 +155,17 @@ export const addAreaProduct = gql`
     }
   }
 `
+
+export const updateAreaProductPrice = gql`
+  mutation($id: Int!, $price: Float!) {
+    updateAreaProductPrice(id: $id, price: $price) {
+      cost
+      price
+      product {
+        name
+        partNumber
+        description
+      }
+    }
+  }
+`
