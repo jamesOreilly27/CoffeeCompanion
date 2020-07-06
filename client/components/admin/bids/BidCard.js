@@ -29,10 +29,10 @@ const BidCard = ({ bid }) => (
     </Title>
     <FlexContainer>
       {console.log('BID', bid)}
-      {`$${sumAll(bid.bidAreas, 'cost')}`}
+      {`$${sumAll(bid.bidAreas, 'cost').toFixed(2)}`}
     </FlexContainer>
     <FlexContainer>
-      {`$${sumAll(bid.bidAreas, 'price')}`}
+      {`$${sumAll(bid.bidAreas, 'price').toFixed(2)}`}
     </FlexContainer>
   </Wrapper>
 )

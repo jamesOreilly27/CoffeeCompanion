@@ -110,6 +110,12 @@ export const ImagePlaceholder = styled.Text`
   width: 15%;
 `
 
+export const ProductImage = styled.Image`
+  width: 15%
+  height: 90%;
+  margin: 0 10px;
+`
+
 export const ProductName = styled.Text`
   width: 60%
   font-size: 15px;

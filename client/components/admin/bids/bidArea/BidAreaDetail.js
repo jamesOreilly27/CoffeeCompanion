@@ -17,9 +17,8 @@ const Container = styled.div`
 
 const ProductContainer = styled.div`
   padding: 10px;
-  border-top: 3px solid #2D2A2E;
+  border-top: 3px solid #252525;
   margin: 10px 0;
-  border-radius: 4px;
 `
 
 const ProductsList = styled.div`

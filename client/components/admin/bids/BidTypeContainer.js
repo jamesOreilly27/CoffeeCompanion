@@ -12,11 +12,15 @@ const Wrapper = styled.div`
   padding: 10px;
 `
 
+const CenteredTitle = styled(Title)`
+  text-align: center;
+`
+
 const BidTypeContainer = ({ title, bids }) => (
   <Wrapper>
-    <Title size="med">
+    <CenteredTitle size="med">
       {title}
-    </Title>
+    </CenteredTitle>
     <BidList bids={bids} />
   </Wrapper>
 )

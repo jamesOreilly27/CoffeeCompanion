@@ -1,5 +1,5 @@
 import React from 'react'
-import { NewView, AreaDetailView, AreaHeader, AreaDescription, ProductListHeader, ProductsView, ProductCard, ImagePlaceholder, ProductName, ProductQty, ProductPrice, AreaTotalView, AreaTotalTitle, AreaTotalPrice } from './PDFStyledComponents'
+import { NewView, AreaDetailView, AreaHeader, AreaDescription, ProductListHeader, ProductsView, ProductCard, ProductImage, ProductName, ProductQty, ProductPrice, AreaTotalView, AreaTotalTitle, AreaTotalPrice } from './PDFStyledComponents'
 import { PDFTitlePage } from '../bids'
 import { sumAll } from './helpers'
 
@@ -15,9 +15,7 @@ const PDFBidArea = ({ area, bid }) => (
         {area.products.map(product => {
           return (
             <ProductCard key={product.id} isEven={area.products.indexOf(product) % 2 === 0}>
-              <ImagePlaceholder>
-                Image Placeholder
-              </ImagePlaceholder>
+              <ProductImage src={`/images/products/${product.product.partNumber}.png`} />
               <ProductName>
                 {product.product.name}
               </ProductName>

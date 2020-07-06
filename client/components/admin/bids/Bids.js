@@ -24,7 +24,10 @@ const Container = styled.div`
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  width: 100%;
+  width: 99%;
+  background-color: #373738;
+  margin-bottom: 5px;
+  border-radius: 4px;
 `
 
 const BidTitle = styled(Title)`
