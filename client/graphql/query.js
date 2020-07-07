@@ -170,3 +170,19 @@ export const getBidDetails = gql`
     }
   }
 `
+
+export const allCustomers = gql`
+  {
+    allCustomers {
+      id
+      companyName
+      industry
+      address
+      town
+      zipCode
+      phoneNumber
+      localPolicePhone
+      email
+    }
+  }
+`

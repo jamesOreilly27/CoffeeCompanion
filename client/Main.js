@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import { getAllProducts, getCurrentUser, getAllCategories } from './graphql'
+import { getAllProducts, getCurrentUser, getAllCategories, allCustomers } from './graphql'
 import { graphql } from 'react-apollo'
 import { flowRight as compose } from 'lodash'
 import { ProductList, CategoriesList, Login, Signup, Logout } from './components'
@@ -56,7 +56,7 @@ class Main extends Component {
             <Route exact path='/categories/all' render={() => <CategoriesList categories={this.props.categoriesQuery.categories} />} />
             <Route exact path='/categories/:name' component={CategoryHome} />
             <Route exact path='/products/:name' component={ProductDetail} />
-            <Route path="/admin" render={() => <AdminDashboard user={this.props.userQuery.currentUser} products={this.props.productsQuery.products} /> } />
+            <Route path="/admin" render={() => <AdminDashboard user={this.props.userQuery.currentUser} products={this.props.productsQuery.products}  customers={this.props.customersQuery.allCustomers} /> } />
           </Switch>
           <Logout handleClick={this.controlLoginState} />
           <Footer />
@@ -69,5 +69,6 @@ class Main extends Component {
 export default compose(
   graphql(getCurrentUser, { name: 'userQuery' }),
   graphql(getAllProducts, { name: 'productsQuery' }),
-  graphql(getAllCategories, { name: 'categoriesQuery' })
+  graphql(getAllCategories, { name: 'categoriesQuery' }),
+  graphql(allCustomers, { name: 'customersQuery' })
 )(Main)

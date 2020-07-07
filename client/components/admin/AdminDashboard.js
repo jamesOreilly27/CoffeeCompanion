@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Title } from '../styled-components'
 import { Route, Switch } from 'react-router-dom'
-import { AdminLink, Customers, Orders, Materials } from '../admin'
-import { Bids, BidDetail, BidPDF } from './bids'
+import { AdminLink, Orders, Materials } from '../admin'
+import { Bids, BidDetail, BidPDF, NewBidForm } from './bids'
 import { Products } from './products'
 import { UpdateProduct } from './product-update'
+import { Customers } from './customers'
 
 const Wrapper = styled.div`
 
@@ -52,12 +53,13 @@ class AdminDashboard extends Component {
               {adminTools.map(tool => <AdminLink key={tool.name} linkTo={tool.name} />)}
             </Navbar>
             <Switch>
-              <Route exact path="/admin/customers" component={Customers} />
+              <Route exact path="/admin/customers" render={() => <Customers customers={this.props.customers} /> } />
               <Route exact path="/admin/products" render={() => <Products products={this.props.products} />} />
               <Route exact path="/admin/product/:name" component={UpdateProduct} />
               <Route exact path="/admin/orders" component={Orders} />
               <Route exact path="/admin/materials" component={Materials} />
               <Route exact path="/admin/bids" component={Bids} />
+              <Route exact path="/admin/bids/new" render={() => <NewBidForm customers={this.props.customers} /> } />
               <Route exact path="/admin/bids/:id" component={BidDetail} />
               <Route exact path="/admin/bids/:id/pdf" component={BidPDF} />
             </Switch>
