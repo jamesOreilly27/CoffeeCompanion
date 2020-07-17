@@ -24,7 +24,7 @@ const Sidebar = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-right: 20px;
-  width: 23%
+  width: 95.5vw;
 `
 
 const ContentContainer = styled.div`

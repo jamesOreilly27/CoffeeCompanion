@@ -23,6 +23,10 @@ const Customer = db.define('customer', {
   },
   email: {
     type: Sequelize.STRING,
+  },
+  armed: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 

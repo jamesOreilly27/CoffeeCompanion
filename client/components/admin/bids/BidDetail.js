@@ -23,7 +23,7 @@ const Sidebar = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-right: 20px;
-  width: 23%
+  width: 23%;
 `
 
 const ProjectTotal = styled.div`

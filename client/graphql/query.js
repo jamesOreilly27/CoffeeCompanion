@@ -180,7 +180,6 @@ export const allCustomers = gql`
       address
       town
       zipCode
-      phoneNumber
       localPolicePhone
       email
     }
