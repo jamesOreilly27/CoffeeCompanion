@@ -3,16 +3,17 @@ const Sequelize = require('sequelize')
 
 const Contact = db.define('contact', {
   firstName: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   lastName: {
-    type: Sequelize.STRING,
-    allowNull: false
+    type: Sequelize.STRING
   },
   phoneNumber: {
+    type: Sequelize.STRING
+  },
+  passcode: {
     type: Sequelize.STRING,
-    allowNull: false
+    defaultValue: "N/A"
   },
   email: {
     type: Sequelize.STRING
