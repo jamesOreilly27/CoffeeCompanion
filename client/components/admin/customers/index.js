@@ -1,4 +1,6 @@
 export { default as Customers } from './Customers'
+export { default as ArmedPanel } from './ArmedPanel'
+export { default as PanelCustomerCard } from './PanelCustomerCard'
 export { default as CustomerLink } from './CustomerLink'
 export { default as CustomerList } from './CustomerList'
 export { default as CustomerCard } from './CustomerCard'

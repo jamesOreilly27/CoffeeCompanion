@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { sortCustomers } from './helpers'
-import { CreateForm, CustomerList } from '../customers'
+import { CustomerList } from '../customers'
 import { Title } from '../../styled-components'
 
 const Wrapper = styled.div`
@@ -25,7 +25,7 @@ const Sidebar = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-right: 20px;
-  width: 23%;
+  width: 95.5vw;
 `
 
 const ContentContainer = styled.div`
@@ -37,7 +37,7 @@ const CustomerTitle = styled(Title)`
   margin-left: 2vw;
 `
 
-const Customers = ({ customers }) => (
+const ArmedPanel = ({ customers }) => (
   <Wrapper>
     <Header>
       <CustomerTitle>
@@ -46,10 +46,10 @@ const Customers = ({ customers }) => (
     </Header>
     <Sidebar>
       {customers &&
-        <CustomerList customers={sortCustomers(customers)} home/>
+        <CustomerList customers={sortCustomers(customers)} />
       }
     </Sidebar>
   </Wrapper>
 )
 
-export default Customers
+export default ArmedPanel

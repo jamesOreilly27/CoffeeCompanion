@@ -171,3 +171,19 @@ export const updateAreaProductPrice = gql`
     }
   }
 `
+
+export const flipArmed = gql`
+  mutation($id: Int!, $armed: Boolean!) {
+    flipArmed(id: $id, armed: $armed) {
+      id
+      companyName
+      industry
+      address
+      town
+      zipCode
+      localPolicePhone
+      email
+      armed
+    }
+  }
+`

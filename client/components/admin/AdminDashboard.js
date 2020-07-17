@@ -6,7 +6,7 @@ import { AdminLink, Orders, Materials } from '../admin'
 import { Bids, BidDetail, BidPDF, NewBidForm } from './bids'
 import { Products } from './products'
 import { UpdateProduct } from './product-update'
-import { Customers } from './customers'
+import { Customers, ArmedPanel } from './customers'
 
 const Wrapper = styled.div`
 
@@ -54,6 +54,7 @@ class AdminDashboard extends Component {
             </Navbar>
             <Switch>
               <Route exact path="/admin/customers" render={() => <Customers customers={this.props.customers} /> } />
+              <Route exact path="/admin/customers/armed-panel" render={() => <ArmedPanel customers={this.props.customers} /> } />
               <Route exact path="/admin/products" render={() => <Products products={this.props.products} />} />
               <Route exact path="/admin/product/:name" component={UpdateProduct} />
               <Route exact path="/admin/orders" component={Orders} />

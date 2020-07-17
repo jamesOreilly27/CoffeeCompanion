@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { CustomerCard } from '../customers'
+import { CustomerCard, PanelCustomerCard } from '../customers'
 
 const Wrapper = styled.div`
   display: flex;
@@ -8,9 +8,10 @@ const Wrapper = styled.div`
   width: 100%;
 `
 
-const CustomerList = ({ customers }) => (
+const CustomerList = ({ customers, home }) => (
   <Wrapper>
-    { customers && customers.map(customer => <CustomerCard customer={customer} /> )}
+    { customers && !home && customers.map(customer => <PanelCustomerCard customer={customer} /> )}
+    { customers && home && customers.map(customer => <CustomerCard customer={customer} /> )}
   </Wrapper>
 )
 
