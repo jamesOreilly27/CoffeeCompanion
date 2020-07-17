@@ -18,7 +18,7 @@ const Wrapper = styled.div`
   }};
   opacity: ${({ armed }) => {
     if (armed) return "1"
-    else return "0.2"
+    else return "0.3"
   }}
 `
 
