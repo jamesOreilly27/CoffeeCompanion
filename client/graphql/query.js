@@ -182,6 +182,7 @@ export const allCustomers = gql`
       zipCode
       localPolicePhone
       email
+      armed
     }
   }
 `
