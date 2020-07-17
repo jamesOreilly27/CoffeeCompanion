@@ -19,7 +19,41 @@ async function seed () {
   ])
 
   const customers = await Promise.all([
-    Customer.create({ companyName: "Palm City Yachts", industry: "Marine",  address: "2901 SE Gran Park Way", town: "Stuart, FL", zipCode: "34994", phoneNumber: "772-220-3000", localPolicePhone: "772-287-1122", email: "palmcitytest@email.com" })
+    Customer.create({ companyName: "Palm City Yachts", industry: "Marine",  address: "2901 SE Gran Park Way", town: "Stuart, FL", zipCode: "34994", localPolicePhone: "772-287-1122", email: "palmcitytest@email.com" }),
+    Customer.create({ companyName: "2nd Chance Salvage", industry: "Junk Yard", address: "1303 Angle Road", town: "Fort Pierce, FL", zipCode: "34947", localPolicePhone: "772-462-7300", email: "" }),
+    Customer.create({ companyName: "Atlis Little Havana", industry: "Construction", address: "", town: "Miami, FL", zipCode: "33135", localPolicePhone: "305-579-6111", email: "" }),
+    Customer.create({ companyName: "CBS Corpus Christi", industry: "Equipment Rental", address: "7219 I-37 Frontage Rd", town: "Corpus Christi, TX", zipCode: "78409", localPolicePhone: "361-886-2600", email: "" }),
+    Customer.create({ companyName: "CBS San Antonio", industry: "Equipment Rental", address: "11500 N North Loop Rd", town: "San Antonio, TX", zipCode: "78217", localPolicePhone: "210-207-7273", email: "" }),
+    Customer.create({ companyName: "CBS Houston", industry: "Equipment Rental", address: "8660 S Loop E Freeway", town: "Houston, TX", zipCode: "77017", localPolicePhone: "713-884-3131", email: "" }),
+    Customer.create({ companyName: "CBS Longview", industry: "Equipment Rental", address: "4622 W. Loop 281", town: "Longview, TX", zipCode: "75604", localPolicePhone: "903-237-1199", email: "" }),
+    Customer.create({ companyName: "CBS Tyler", industry: "Equipment Rental", address: "401 N NE 323 Loop", town: "Tyler, TX", zipCode: "75708", localPolicePhone: "903-531-1000", email: "" }),
+    Customer.create({ companyName: "CBS Conroe", industry: "Equipment Rental", address: "610 N. Loop 366 W.", town: "Conroe, TX", zipCode: "77301", localPolicePhone: "936-522-3200", email: "" }),
+    Customer.create({ companyName: "CBS Austin", industry: "Equipment Rental", address: "109 US-183", town: "Austin, TX", zipCode: "78747", localPolicePhone: "512-854-9770", email: "" }),
+    Customer.create({ companyName: "CBS Arlington", industry: "Equipment Rental", address: "601 N. Great SW Pkwy", town: "Arlington, TX", zipCode: "76011", localPolicePhone: "817-459-5700", email: "" }),
+    Customer.create({ companyName: "CBS Caddo Mills", industry: "Equipment Rental", address: "4899 W. Interstate 30", town: "Caddo Mills, TX", zipCode: "75135", localPolicePhone: "903-527-3122", email: "" }),
+    Customer.create({ companyName: "CBS Odessa", industry: "Equipment Rental", address: "12501 W. I-20 E", town: "Odessa, TX", zipCode: "79765", localPolicePhone: "432-333-3641", email: "" }),
+    Customer.create({ companyName: "CBS Bryan", industry: "Equiment Rental", address: "610 N. Loop 366 W.", town: "Conroe, TX", zipCode: "77201", localPolicePhone: "936-522-3200", email: "" }),
+    Customer.create({ companyName: "CBS Carlsbad", industry: "Equipment Rental", address: "4620 National Parks Hwy", town: "Carlsbad, NM", zipCode: "88220", localPolicePhone: "", email: "" }),
+    Customer.create({ companyName: "Grounds Group", industry: "Landscaping", address: "1110 S. Flamingo Rd.", town: "Davis, FL", zipCode: "33325", localPolicePhone: "", email: "" }),
+    Customer.create({ companyName: "Lions Plumbing", industry: "Plumbing", address: "14350 NW 7th Ave", town: "Miami, FL", zipCode: "33168", localPolicePhone: "305-476-5423", email: "" }),
+    Customer.create({ companyName: "Miami Shores", industry: "Public Works", address: "620 NE 126th St.", town: "Miami, FL", zipCode: "33161", localPolicePhone: "305-759-2468", email: "" }),
+    Customer.create({ companyName: "Sunbelt PC-019", industry: "Equipment Rental", address: "6550 NW 77th Ct.", town: "Miami, FL", zipCode: "33166", localPolicePhone: "305-471-2800", email: "" }),
+    Customer.create({ companyName: "Sunbelt PC-080", industry: "Equipment Rental", address: "21100 Sheridan St.", town: "Pembroke Pines, FL", zipCode: "33332", localPolicePhone: "954-431-2200", email: "" }),
+    Customer.create({ companyName: "Sunbelt PC-090", industry: "Equipment Rental", address: "5770 N. Military Trail", town: "West Palm Beach, FL", zipCode: "33407", localPolicePhone: "", email: "" }),
+    Customer.create({ companyName: "Sunbelt PC-115", industry: "Equipment Rental", address: "65 NE 27th St.", town: "Miami, FL", zipCode: "33137", localPolicePhone: "305-603-6640", email: "" }),
+    Customer.create({ companyName: "Sunbelt PC-249", industry: "Equipment Rental", address: "1450 NE 1st Ave", town: "Florida City, FL", zipCode: "33034", localPolicePhone: "305-247-8220", email: "" }),
+    Customer.create({ companyName: "Sunbelt PC-507", industry: "Equipment Rental", address: "2700 South Federal Hwy", town: "Hollywood, FL", zipCode: "33316", localPolicePhone: "954-754-4957", email: "" }),
+    Customer.create({ companyName: "Atlantic Southern Paving", industry: "Work Yard", address: "", town: "Fort Pierce, FL", zipCode: "34947", localPolicePhone: "772-462-7300", email: "" }),
+    Customer.create({ companyName: "Wilco Baron & Sign", industry: "Electric", address: "900 W. 13th St.", town: "Riviera Beach, FL", zipCode: "33403", localPolicePhone: "561-845-4123", email: "" }),
+    Customer.create({ companyName: "Wilco St. Lucie", industry: "Electric", address: "1303 Angle Road", town: "Fort Pierce, FL", zipCode: "34947", localPolicePhone: "772-462-7300", email: "" }),
+    Customer.create({ companyName: "Wilco Royal Palm", industry: "Electric", address: "430 Business Parkway", town: "Royal Palm Beach, FL", zipCode: "33421", localPolicePhone: "561-790-5180", email: "" }),
+    Customer.create({ companyName: "Global Parts Supply", industry: "Retail", address: "2550/2595NW 4th Court", town: "Fort Lauderdale, FL", zipCode: "33311", localPolicePhone: "", email: "" }),
+    Customer.create({ companyName: "ISS Mechanical", industry: "Outdoor Storage", address: "3144 N John Young Pkwy", town: "Orlando, FL", zipCode: "32804", localPolicePhone: "321-253-5300", email: "" }),
+    Customer.create({ companyName: "Offshore Marine", industry: "Marine", address: "2135 N. Old Dixie Hwy", town: "Fort Pierce, FL", zipCode: "34946", localPolicePhone: "772-462-7300", email: "" }),
+    Customer.create({ companyName: "Parks Rental St. Lucie", industry: "Equipment Rental", address: "1676 SW Baltimore St", town: "Port St. Lucie, FL", zipCode: "34984", localPolicePhone: "772-871-5000", email: "" }),
+    Customer.create({ companyName: "Parks Rental Vero Beach", industry: "Equipment Rental", address: "1230 16th St", town: "Vero Beach, FL", zipCode: "32960", localPolicePhone: "772-978-4600", email: "" }),
+    Customer.create({ companyName: "Parks Rental Fort Pierce", industry: "Equipment Rental", address: "2306 Okeechobee Road", town: "Fort Pierce, FL", zipCode: "34950", localPolicePhone: "772-467-6800", email: "" }),
+    Customer.create({ companyName: "Regency Party Rentals", industry: "Rental", address: "5900 N. Austrailian Ave", town: "West Palm Beach, FL", zipCode: "33407", localPolicePhone: "561-688-3000", email: "" })
   ])
 
   const contacts = await Promise.all([

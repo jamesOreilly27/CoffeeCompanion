@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   width: 100%;
 `
 
-const CustomerTitleList = ({ customers }) => (
+const CustomerList = ({ customers }) => (
   <Wrapper>
     { customers && customers.map(customer => <CustomerCard customer={customer} /> )}
   </Wrapper>

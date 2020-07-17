@@ -18,15 +18,11 @@ const Customer = db.define('customer', {
   zipCode: {
     type: Sequelize.STRING
   },
-  phoneNumber: {
-    type: Sequelize.STRING
-  },
   localPolicePhone: {
     type: Sequelize.STRING
   },
   email: {
     type: Sequelize.STRING,
-    allowNull: false
   }
 })
 
