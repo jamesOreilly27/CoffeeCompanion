@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { ContactCard } from '../customers'
 import { Title } from '../../styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { filterPrimary } from './helpers'
 
 const Wrapper = styled.div`
@@ -10,6 +11,16 @@ const Wrapper = styled.div`
   background-color: #373738;
   display: flex;
   flex-direction: column;
+`
+
+const Header = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+`
+const Mic = styled(FontAwesomeIcon)`
+  margin-left: 10px;
+  color: #F8F8FF;
 `
 
 const ContactsContainer = styled.div`
@@ -26,9 +37,12 @@ const Section = styled.div`
 
 const ContactList = ({ customer }) => (
   <Wrapper>
-    <Title margin={1}>
-      {customer.companyName}
-    </Title>
+    <Header>
+      <Title margin={1}>
+        {customer.companyName}
+      </Title>
+      <Mic icon={['fa', 'microphone']} size="2x" />
+    </Header>
     <ContactsContainer>
       <Title margin={2}>
         Primary Contacts

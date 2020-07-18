@@ -1,9 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import Switch from '@material-ui/core/Switch'
-import { Mutation } from 'react-apollo'
-import { flipArmed } from '../../../graphql'
-import { combineAddy, isActiveCustomer } from './helpers'
+import { isActiveCustomer } from './helpers'
 
 const Wrapper = styled.div`
   width: 100%;
@@ -39,10 +36,6 @@ const Name = styled.div`
   font-weight: bold;
 `
 
-const Address = styled.div`
-  font-size: 14px;
-`
-
 const CustomerTitleCard = ({ customer, activeName, handleClick }) => (
   <Wrapper
     active={isActiveCustomer(activeName, customer)}
@@ -54,9 +47,6 @@ const CustomerTitleCard = ({ customer, activeName, handleClick }) => (
       <Name>
         {customer.companyName}
       </Name>
-      {/* <Address>
-        {combineAddy(customer)}
-      </Address> */}
     </Title>
   </Wrapper>
 )
