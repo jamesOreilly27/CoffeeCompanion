@@ -28,12 +28,13 @@ const Sidebar = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-right: 20px;
-  width: 27%;
+  width: 15%;
 `
 
 const ContentContainer = styled.div`
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  width: 99%;
 `
 
 const CustomerTitle = styled(Title)`

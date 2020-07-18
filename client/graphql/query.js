@@ -184,11 +184,13 @@ export const allCustomers = gql`
       email
       armed
       contacts {
+        id
         firstName
         lastName
         phoneNumber
         email
         passcode
+        primary
       }
     }
   }

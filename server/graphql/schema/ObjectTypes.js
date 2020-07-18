@@ -245,12 +245,13 @@ const ContactType = new GraphQLObjectType({
   name: "contact",
   description: "A Contact",
   fields: () => ({
+    id: { type: GraphQLInt },
     firstName: { type: GraphQLString },
     lastName: { type: GraphQLString },
     phoneNumber: { type: GraphQLString },
     passcode: { type: GraphQLString },
     email: { type: GraphQLString },
-    primary: { type: GraphQLBoolean },
+    primary: { type: GraphQLBoolean }
   })
 })
 

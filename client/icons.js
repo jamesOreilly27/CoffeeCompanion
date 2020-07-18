@@ -6,6 +6,8 @@ import { faTwitter } from '@fortawesome/free-brands-svg-icons/faTwitter'
 import { faInstagram } from '@fortawesome/free-brands-svg-icons/faInstagram'
 import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle'
+import { faMicrophone } from '@fortAwesome/free-solid-svg-icons/faMicrophone'
+import { faMicrophoneSlash } from '@fortAwesome/free-solid-svg-icons/faMicrophoneSlash'
 
 
 library.add(
@@ -15,5 +17,7 @@ library.add(
   faTwitter,
   faInstagram,
   faLinkedin,
-  faUserCircle
+  faUserCircle,
+  faMicrophone,
+  faMicrophoneSlash
 )

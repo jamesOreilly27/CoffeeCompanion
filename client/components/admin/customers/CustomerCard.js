@@ -11,13 +11,16 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: space-between;
   color: #F8F8FF;
-  padding: 8px;
-  height: 6vh;
-  margin: .5vh 0;
+  padding: 2px 6px;
   background-color: ${({ active }) => {
     if (active) return "#000"
     else return "#373738"
   }};
+  cursor: default;
+
+  &:hover {
+    background-color: #000;
+  }
 `
 
 const CustomerSection = styled.div`
@@ -32,7 +35,7 @@ const Title = styled(CustomerSection)`
 `
 
 const Name = styled.div`
-  font-size: 20px;
+  font-size: 15px;
   font-weight: bold;
 `
 
@@ -51,9 +54,9 @@ const CustomerTitleCard = ({ customer, activeName, handleClick }) => (
       <Name>
         {customer.companyName}
       </Name>
-      <Address>
+      {/* <Address>
         {combineAddy(customer)}
-      </Address>
+      </Address> */}
     </Title>
   </Wrapper>
 )

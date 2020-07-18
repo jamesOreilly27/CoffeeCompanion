@@ -11,7 +11,7 @@ const easeInAlert = keyframes`
 //Headers
 export const Title = styled.h1`
   margin: ${({ margin }) => {
-    if(margin) return `${margin}vh 0`
+    if(margin) return `${margin}vh 0 ${margin}vh 10px`
     else return `0`
   }};
   font-size: ${({ size }) => {

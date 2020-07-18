@@ -12,3 +12,14 @@ export const sortCustomers = customers => {
 export const isActiveCustomer = (activeName, customer) => activeName === customer.companyName
 
 export const getActiveCustomer = (activeName, customers) => customers.filter(customer => customer.companyName === activeName)[0]
+
+export const filterPrimary = (contacts, type) => {
+  if(type === 'primary') {
+    return contacts.filter(contact => {
+      console.log('CONTACT TEST', contact)
+      return contact.primary
+    })
+  } else if(type === 'non-primary') {
+    return contacts.filter(contact => !contact.primary)
+  }
+}
