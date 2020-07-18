@@ -8,3 +8,7 @@ export const sortCustomers = customers => {
     return (textA < textB) ? -1 : (textA > textB) ? 1 : 0;
   })
 }
+
+export const isActiveCustomer = (activeName, customer) => activeName === customer.companyName
+
+export const getActiveCustomer = (activeName, customers) => customers.filter(customer => customer.companyName === activeName)[0]

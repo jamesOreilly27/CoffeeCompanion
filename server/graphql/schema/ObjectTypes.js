@@ -229,9 +229,29 @@ const CustomerType = new GraphQLObjectType({
     zipCode: { type: GraphQLString },
     armed: { type: GraphQLBoolean },
     localPolicePhone: { type: GraphQLString },
-    email: { type: GraphQLString }
+    email: { type: GraphQLString },
+    contacts: {
+      type: new GraphQLList(ContactType),
+      resolve: customer => {
+        return customer.getContacts()
+        .then(contacts => contacts)
+        .catch(err => console.log(err))
+      }
+    }
   })
+})
 
+const ContactType = new GraphQLObjectType({
+  name: "contact",
+  description: "A Contact",
+  fields: () => ({
+    firstName: { type: GraphQLString },
+    lastName: { type: GraphQLString },
+    phoneNumber: { type: GraphQLString },
+    passcode: { type: GraphQLString },
+    email: { type: GraphQLString },
+    primary: { type: GraphQLBoolean },
+  })
 })
 
 module.exports = {
@@ -246,5 +266,6 @@ module.exports = {
   BidDetailType,
   BidAreaType,
   AreaProductType,
-  CustomerType
+  CustomerType,
+  ContactType
 }

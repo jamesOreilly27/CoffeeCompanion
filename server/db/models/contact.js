@@ -13,7 +13,7 @@ const Contact = db.define('contact', {
   },
   passcode: {
     type: Sequelize.STRING,
-    defaultValue: "N/A"
+    defaultValue: ""
   },
   email: {
     type: Sequelize.STRING

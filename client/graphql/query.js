@@ -183,6 +183,13 @@ export const allCustomers = gql`
       localPolicePhone
       email
       armed
+      contacts {
+        firstName
+        lastName
+        phoneNumber
+        email
+        passcode
+      }
     }
   }
 `

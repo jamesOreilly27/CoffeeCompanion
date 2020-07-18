@@ -1,10 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
-import { sortCustomers } from './helpers'
-import { CreateForm, CustomerList } from '../customers'
+import { sortCustomers, getActiveCustomer } from './helpers'
+import { CustomerList, ContactList } from '../customers'
 import { Title } from '../../styled-components'
 
 const Wrapper = styled.div`
+  
+`
+const Container = styled.div`
   display: flex;
   flex-direction: column;
   width: 98vw;
@@ -25,7 +28,7 @@ const Sidebar = styled.div`
   align-items: center;
   justify-content: flex-start;
   margin-right: 20px;
-  width: 23%;
+  width: 27%;
 `
 
 const ContentContainer = styled.div`
@@ -37,19 +40,40 @@ const CustomerTitle = styled(Title)`
   margin-left: 2vw;
 `
 
-const Customers = ({ customers }) => (
-  <Wrapper>
-    <Header>
-      <CustomerTitle>
-        Customers
-      </CustomerTitle>
-    </Header>
-    <Sidebar>
-      {customers &&
-        <CustomerList customers={sortCustomers(customers)} home/>
-      }
-    </Sidebar>
-  </Wrapper>
-)
+class Customers extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { activeCustomer: '2nd Chance Salvage' }
+    this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick(str) {
+    this.setState({ activeCustomer: str })
+  }
+
+  render() {
+    const customers = this.props.customers
+    return (
+      <Wrapper>
+        {customers &&
+          <Container>
+            <Header>
+              <CustomerTitle>
+                Customers
+              </CustomerTitle>
+            </Header>
+            <ContentContainer>
+              <Sidebar>
+                <CustomerList customers={sortCustomers(customers)} activeName={this.state.activeCustomer} handleClick={this.handleClick} home />
+              </Sidebar>
+              <ContactList customer={getActiveCustomer(this.state.activeCustomer, customers)} />
+            </ContentContainer>
+          </Container>
+        }
+      </Wrapper>
+    )
+  }
+}
 
 export default Customers
