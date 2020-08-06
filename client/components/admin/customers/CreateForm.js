@@ -1,8 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
+import { Redirect } from 'react-router-dom'
+import history from '../../history'
 import { Button } from '../../styled-components'
 import { Mutation } from 'react-apollo'
-import { createCustomer } from '../../../graphql'
+import { addCustomer } from '../../../graphql'
 
 const Wrapper = styled.form`
   width: 69vw;
@@ -62,21 +64,24 @@ const TextInput = styled.input`
 `
 
 const CreateForm = ({ bidId }) => (
-  <Mutation mutation={createCustomer}>
-    {(createCustomer, { data }) => (
+  <Mutation mutation={addCustomer}>
+    {(addCustomer, { data }) => (
       <Wrapper onSubmit={evt => {
         evt.preventDefault()
-        createCustomer({ variables: {
+        addCustomer({ variables: {
           companyName: evt.target.companyName.value,
           email: evt.target.email.value,
           phoneNumber: evt.target.phoneNumber.value,
           address: evt.target.address.value,
           town: evt.target.town.value,
           zipCode: evt.target.zipCode.value,
-          state: evt.target.state.value
+          state: evt.target.state.value,
+          id: bidId
         }})
       }}>
         <Row>
+          {data && data.addCustomer && history.push(`/admin/bids/${data.addCustomer.id}`)}
+          {data && data.addCustomer && <Redirect to={`/admin/bids/${data.addCustomer.id}`} /> }
           <RowItemThirds>
             <Label> Company Name </Label>
             <TextInput type="text" name="companyName"/>

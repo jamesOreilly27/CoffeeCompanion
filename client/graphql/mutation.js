@@ -180,3 +180,11 @@ export const createCustomer = gql`
     }
   }
 `
+
+export const addCustomer = gql`
+mutation($companyName: String!, $email: String!, $phoneNumber: String!, $address: String!, $town: String!, $zipCode: String!, $state: String!, $id: Int!) {
+  addCustomer(companyName: $companyName, email: $email, phoneNumber: $phoneNumber, address: $address, town: $town, zipCode: $zipCode, state: $state, id: $id) {
+    id
+  }
+}
+`

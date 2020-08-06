@@ -84,10 +84,13 @@ const updateProductPriceResolver = (parent, args) => {
 }
 
 const addCustomerResolver = (parent, { companyName, email, phoneNumber, address, town, zipCode, state, id}) => {
-  return Customer.create({ companyName, email, phoneNumber, address, town, zipCode, state})
-  .then(customer => {
-    return Bid.findByPk(id)
-    .then(bid => bid.update({ customerId: customer.id }))
+  return BidArea.create({ title: "Area", bidId: id })
+  .then(() => {
+    return Customer.create({ companyName, email, phoneNumber, address, town, zipCode, state})
+    .then(customer => {
+      return Bid.findByPk(id)
+      .then(bid => bid.update({ customerId: customer.id, title: customer.companyName }))
+    })
   })
   .catch(err => console.log(err))
 }
