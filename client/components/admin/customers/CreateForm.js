@@ -1,6 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Button } from '../../styled-components'
+import { Mutation } from 'react-apollo'
+import { createCustomer } from '../../../graphql'
 
 const Wrapper = styled.form`
   width: 69vw;
@@ -60,44 +62,59 @@ const TextInput = styled.input`
 `
 
 const CreateForm = () => (
-  <Wrapper>
-    <Row>
-      <RowItemThirds>
-        <Label> Company Name </Label>
-        <TextInput type="text"> </TextInput>
-      </RowItemThirds>
-      <RowItemThirds>
-        <Label> Email </Label>
-        <TextInput type="text"> </TextInput>
-      </RowItemThirds>
-      <RowItemThirds>
-        <Label> Phone Number </Label>
-        <TextInput type="text"> </TextInput>
-      </RowItemThirds>
-    </Row>
-    <Row>
-      <AddyItem>
-        <Label> Address </Label>
-        <TextInput type="text"></TextInput>
-      </AddyItem>
-      <TownItem>
-        <Label> Town </Label>
-        <TextInput type="text"></TextInput>
-      </TownItem>
-      <ZipItem>
-        <Label> Zip Code </Label>
-        <TextInput type="text"></TextInput>
-      </ZipItem>
-      <StateItem>
-        <Label> State </Label>
-        <TextInput type="text"></TextInput>
-      </StateItem>
-    </Row>
+  <Mutation mutation={createCustomer}>
+    {(createCustomer, { data }) => (
+      <Wrapper onSubmit={evt => {
+        evt.preventDefault()
+        createCustomer({ variables: {
+          companyName: evt.target.companyName.value,
+          email: evt.target.email.value,
+          phoneNumber: evt.target.phoneNumber.value,
+          address: evt.target.address.value,
+          town: evt.target.town.value,
+          zipCode: evt.target.zipCode.value,
+          state: evt.target.state.value
+        }})
+      }}>
+        <Row>
+          <RowItemThirds>
+            <Label> Company Name </Label>
+            <TextInput type="text" name="companyName"/>
+          </RowItemThirds>
+          <RowItemThirds>
+            <Label> Email </Label>
+            <TextInput type="text" name="email"/>
+          </RowItemThirds>
+          <RowItemThirds>
+            <Label> Phone Number </Label>
+            <TextInput type="text" name="phoneNumber"/>
+          </RowItemThirds>
+        </Row>
+        <Row>
+          <AddyItem>
+            <Label> Address </Label>
+            <TextInput type="text" name="address"/>
+          </AddyItem>
+          <TownItem>
+            <Label> Town </Label>
+            <TextInput type="text" name="town"/>
+          </TownItem>
+          <ZipItem>
+            <Label> Zip Code </Label>
+            <TextInput type="text" name="zipCode"/>
+          </ZipItem>
+          <StateItem>
+            <Label> State </Label>
+            <TextInput type="text" name="state"/>
+          </StateItem>
+        </Row>
 
-    <Button width={50} height={30} backgroundColor="#296D4D">
-      Create
-    </Button>
-  </Wrapper>
+        <Button type="submit" width={50} height={30} backgroundColor="#296D4D">
+          Create
+        </Button>
+      </Wrapper>
+    )}
+  </Mutation>
 )
 
 export default CreateForm

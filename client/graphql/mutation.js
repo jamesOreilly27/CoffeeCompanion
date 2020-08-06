@@ -171,3 +171,11 @@ export const updateAreaProductPrice = gql`
     }
   }
 `
+
+export const createCustomer = gql`
+  mutation($companyName: String!, $email: String!, $phoneNumber: String!, $address: String!, $town: String!, $zipCode: String!, $state: String!) {
+    createCustomer(companyName: $companyName, email: $email, phoneNumber: $phoneNumber, address: $address, town: $town, zipCode: $zipCode, state: $state) {
+      companyName
+    }
+  }
+`
