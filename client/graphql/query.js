@@ -172,6 +172,12 @@ export const getBidDetails = gql`
       }
       customer {
         id
+        companyName
+        phoneNumber
+        address
+        town
+        zipCode
+        state
       }
     }
   }

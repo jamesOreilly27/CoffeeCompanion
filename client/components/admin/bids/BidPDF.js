@@ -17,13 +17,14 @@ const Wrapper = styled.div`
 
 const BidPDF = props => {
   const bid = props.data.bidDetails
+  console.log('BID', bid)
   return (
     <Wrapper>
       <PDFViewer width="100%" height="100%">
         {bid &&
           <Document>
             <Page>
-              <PDFTitlePage />
+              <PDFTitlePage customer={bid.customer} />
               <Image src="/images/navlogo.png" />
             </Page>
             <Page size="A4">

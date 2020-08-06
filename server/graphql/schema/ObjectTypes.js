@@ -160,7 +160,6 @@ const BidType = new GraphQLObjectType({
       type: CustomerType,
       description: "Customer attached to the bid",
       resolve: bid => {
-        console.log('FIRING')
         return bid.getCustomer()
         .then(customer => customer)
         .catch(err => console.log(err))
@@ -239,6 +238,7 @@ const CustomerType = new GraphQLObjectType({
     zipCode: { type: GraphQLString },
     relayPort: { type: GraphQLString },
     phoneNumber: { type: GraphQLString },
+    state: { type: GraphQLString },
     relayId: { type: GraphQLString },
     localPolicePhone: { type: GraphQLString },
     email: { type: GraphQLString },

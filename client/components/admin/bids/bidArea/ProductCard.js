@@ -98,7 +98,6 @@ class ProductCard extends Component {
     this.props.qty ? qty = this.props.qty : qty = this.state.qty
     return (
       <Wrapper>
-        {console.log('PROPS', this.props)}
         <ImageContainer>
           <Image src={`/images/products/${this.props.partNumber}.png`} />
         </ImageContainer>

@@ -5,7 +5,7 @@ import { sumAll } from './helpers'
 
 const PDFFinalTotal = ({ bid }) => (
   <TotalsView>
-    <PDFTitlePage />
+    <PDFTitlePage customer={bid.customer} />
     <AreasView>
       <AreaHeader>
         {`Total Proposal`}

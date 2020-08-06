@@ -31,7 +31,6 @@ const NewContainer = styled(Container)`
 
 const NewBidForm = props => (
   <Wrapper width={50}>
-    {console.log('PROPS', props)}
     <ExistingContainer>
       {props.customers &&
         <CustomerSelectContainer>

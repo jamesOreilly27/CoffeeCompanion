@@ -1,21 +1,22 @@
 import React from 'react'
 import { HeaderView, Customer, OurInfo, OurAddressLine, AddyInfo, AddressLine, Header, OurLink, FrontPage } from './PDFStyledComponents'
 
-const PDFTitlePage = () => (
+const PDFTitlePage = ({ customer }) => (
   <HeaderView>
     <Customer>
+      {console.log('CUSTOMER', customer)}
       <AddyInfo>
         <Header>
-          {`Test Customer`}
+          {customer.companyName}
         </Header>
         <AddressLine>
-          {`555-347-5902`}
+          {customer.phoneNumber}
         </AddressLine>
         <AddressLine>
-          {`123 Main Street`}
+          {customer.address}
         </AddressLine>
         <AddressLine>
-          {`Palm City, FL 34990`}
+          {`${customer.town} ${customer.zipCode}`}
         </AddressLine>
       </AddyInfo>
     </Customer>
@@ -24,7 +25,7 @@ const PDFTitlePage = () => (
         {`Sight On Site`}
       </Header>
       <OurAddressLine>
-        {`555-123-4567`}
+        {`772-800-0698`}
       </OurAddressLine>
       <OurAddressLine>
         {`3533 SW Corporate Pkwy`}

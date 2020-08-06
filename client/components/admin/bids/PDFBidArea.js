@@ -6,7 +6,7 @@ import { sumAll } from './helpers'
 
 const PDFBidArea = ({ area, bid }) => (
   <NewView break={bid.bidAreas.indexOf(area) !== 0}>
-    <PDFTitlePage />
+    <PDFTitlePage customer={bid.customer}/>
     <AreaDetailView>
       <AreaHeader> {area.title} </AreaHeader>
       <AreaDescription> {`A brief description of the area so that there is no confusion as to where we are referring to. This field will have to be added to the BidArea Model as a property`} </AreaDescription>
