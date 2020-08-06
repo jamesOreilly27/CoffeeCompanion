@@ -62,11 +62,22 @@ class BidCard extends Component {
     super(props)
 
     this.state = { redirect: false }
+
     this.handleViewClick = this.handleViewClick.bind(this)
+    this.handleLeftArrowClick = this.handleLeftArrowClick.bind(this)
+    this.handleRightArrowClick = this.handleRightArrowClick.bind(this)
   }
 
   handleViewClick() {
     this.setState({ redirect: true })
+  }
+
+  handleLeftArrowClick() {
+
+  }
+
+  handleRightArrowClick() {
+
   }
 
   render() {
