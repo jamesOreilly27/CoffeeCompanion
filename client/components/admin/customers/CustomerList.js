@@ -8,9 +8,9 @@ const Wrapper = styled.div`
   width: 100%;
 `
 
-const CustomerList = ({ customers, home, activeName, handleClick }) => (
+const CustomerList = ({ customers, home, activeName, handleClick, relayState, arm, disarm }) => (
   <Wrapper>
-    { customers && !home && customers.map(customer => <PanelCustomerCard customer={customer} /> )}
+    { customers && !home && customers.map(customer => <PanelCustomerCard customer={customer} relayState={relayState} arm={arm} disarm={disarm} /> )}
     { customers && home && customers.map(customer => <CustomerCard customer={customer} activeName={activeName} handleClick={handleClick} /> )}
   </Wrapper>
 )

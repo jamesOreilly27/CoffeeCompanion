@@ -182,7 +182,8 @@ export const allCustomers = gql`
       zipCode
       localPolicePhone
       email
-      armed
+      relayPort
+      relayId
       contacts {
         id
         firstName

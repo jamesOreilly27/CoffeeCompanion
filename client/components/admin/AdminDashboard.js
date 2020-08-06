@@ -46,7 +46,8 @@ class AdminDashboard extends Component {
   render() {
     return (
       <Wrapper>
-        {this.props.user && this.props.user.isAdmin &&
+        {console.log('DASHBOARD', this.props.customers)}
+        {this.props.user && this.props.user.isAdmin && this.props.customers &&
           <Container>
             <Title margin={2}> Admin Dashboard </Title>
             <Navbar>

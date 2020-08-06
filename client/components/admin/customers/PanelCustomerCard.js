@@ -1,8 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
 import Switch from '@material-ui/core/Switch'
-import { Mutation } from 'react-apollo'
-import { flipArmed } from '../../../graphql'
 import { combineAddy } from './helpers'
 
 const Wrapper = styled.div`
@@ -63,43 +61,39 @@ const Checkbox = styled.div`
   justify-content: center;
 `
 
-const CustomerTitleCard = ({ customer }) => (
-  <Mutation mutation={flipArmed}>
-    {(flipArmed, { data }) => (
-      <Wrapper armed={customer.armed}>
-        {console.log('CUSTOMER', customer)}
-        <Title>
-          <Name>
-            {customer.companyName}
-          </Name>
-          <Address>
-            {combineAddy(customer)}
-          </Address>
-        </Title>
-        <PoliceNumber>
-          <Subtitle>
-            Police Number
+const CustomerTitleCard = ({ customer, relayState, arm, disarm }) => (
+  <Wrapper armed={parseInt(relayState[`relay${customer.relayId}state`]._text)}>
+    <Title>
+      <Name>
+        {customer.companyName}
+      </Name>
+      <Address>
+        {combineAddy(customer)}
+      </Address>
+    </Title>
+    <PoliceNumber>
+      <Subtitle>
+        Police Number
+      </Subtitle>
+      <PhoneNum>
+        {customer.localPolicePhone}
+      </PhoneNum>
+    </PoliceNumber>
+    <PoliceNumber>
+      <Subtitle>
+        Fire Number
           </Subtitle>
-          <PhoneNum>
-            {customer.localPolicePhone}
-          </PhoneNum>
-        </PoliceNumber>
-        <PoliceNumber>
-          <Subtitle>
-            Fire Number
-          </Subtitle>
-          <PhoneNum>
-            {'555-555-5555'}
-          </PhoneNum>
-        </PoliceNumber>
-        <Checkbox>
-          <Switch checked={customer.armed} color="primary" onChange={() => {
-            flipArmed({ variables: { id: customer.id, armed: !customer.armed } })
-          }} />
-        </Checkbox>
-      </Wrapper>
-    )}
-  </Mutation>
+      <PhoneNum>
+        {'516-476-6739'}
+      </PhoneNum>
+    </PoliceNumber>
+    <Checkbox>
+      <Switch checked={parseInt(relayState[`relay${customer.relayId}state`]._text)} color="primary" onChange={() => {
+        if (parseInt(relayState[`relay${customer.relayId}state`]._text)) disarm(customer.relayPort, customer.relayId)
+        else arm(customer.relayPort, customer.relayId)
+      }} />
+    </Checkbox>
+  </Wrapper>
 )
 
 export default CustomerTitleCard

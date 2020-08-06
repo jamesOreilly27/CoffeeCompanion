@@ -52,6 +52,8 @@ const createApp = () => {
 
   app.use(`/graphql`, require('./graphql'))
 
+  app.use('/relay', require('./relay'))
+
   app.use(expressStaticGzip(path.join(__dirname, '..', 'public')))
   app.use('/static', expressStaticGzip(path.join(__dirname, 'public')))
   app.use('*', (req, res, next) => res.sendFile(path.join(__dirname, '..', 'public', 'index.html')))

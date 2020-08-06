@@ -24,9 +24,11 @@ const Customer = db.define('customer', {
   email: {
     type: Sequelize.STRING,
   },
-  armed: {
-    type: Sequelize.BOOLEAN,
-    defaultValue: false
+  relayPort: {
+    type: Sequelize.STRING
+  },
+  relayId: {
+    type: Sequelize.STRING
   }
 })
 

@@ -14,14 +14,6 @@ const customerDetailsResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
-const flipArmedResolver = (parent, args) => {
-  return Customer.findByPk(args.id)
-  .then(customer => {
-    if(customer) return customer.update(args)
-  })
-  .catch(err => console.log(err))
-}
-
 const allCustomers = {
   type: new GraphQLList(CustomerType),
   description: 'a list of roys bids',
@@ -33,16 +25,6 @@ const getCustomerDetails = {
   description: 'a single customer',
   args: { id: { type: GraphQLInt } },
   resolve: customerDetailsResolver
-}
-
-const flipArmed = {
-  type: CustomerType,
-  description: 'change the armed status',
-  args: {
-    id: { type: GraphQLInt },
-    armed: { type: GraphQLBoolean }
-  },
-  resolve: flipArmedResolver
 }
 
 module.exports = {

@@ -227,7 +227,8 @@ const CustomerType = new GraphQLObjectType({
     address: { type: GraphQLString },
     town: { type: GraphQLString },
     zipCode: { type: GraphQLString },
-    armed: { type: GraphQLBoolean },
+    relayPort: { type: GraphQLString },
+    relayId: { type: GraphQLString },
     localPolicePhone: { type: GraphQLString },
     email: { type: GraphQLString },
     contacts: {
