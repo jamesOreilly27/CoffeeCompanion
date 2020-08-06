@@ -1,6 +1,6 @@
 const { GraphQLList, GraphQLBoolean, GraphQLInt, GraphQLString, GraphQLFloat } = require('graphql')
 const { BidType, BidAreaType, AreaProductType} = require('./ObjectTypes')
-const { Bid, BidArea, AreaProduct } = require('../../db/models')
+const { Bid, BidArea, AreaProduct, Customer } = require('../../db/models')
 
 const allBidsResolver = () => {
   return Bid.findAll()
@@ -83,6 +83,15 @@ const updateProductPriceResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
+const addCustomerResolver = (parent, { companyName, email, phoneNumber, address, town, zipCode, state, id}) => {
+  return Customer.create({ companyName, email, phoneNumber, address, town, zipCode, state})
+  .then(customer => {
+    return Bid.findByPk(id)
+    .then(bid => bid.update({ customerId: customer.id }))
+  })
+  .catch(err => console.log(err))
+}
+
 const bids = {
   type: new GraphQLList(BidType),
   description: 'a list of roys bids',
@@ -105,6 +114,22 @@ const createBid = {
     userId: { type: GraphQLInt }
   },
   resolve: newBidResolver
+}
+
+const addCustomer = {
+  type: BidType,
+  description: 'attach a new customer to the newest bid',
+  args: {
+    companyName: { type: GraphQLString },
+    email: { type: GraphQLString },
+    phoneNumber: { type: GraphQLString },
+    address: { type: GraphQLString },
+    town: { type: GraphQLString },
+    zipCode: { type: GraphQLString },
+    state: { type: GraphQLString },
+    id: { type: GraphQLInt }
+  },
+  resolve: addCustomerResolver
 }
 
 const addBidArea = {
@@ -189,5 +214,6 @@ module.exports = {
   decrementProductQty,
   removeAreaProduct,
   addAreaProduct,
-  updateAreaProductPrice
+  updateAreaProductPrice,
+  addCustomer
 }

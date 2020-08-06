@@ -155,6 +155,16 @@ const BidType = new GraphQLObjectType({
           .then(area => area)
           .catch(err => console.log(err))
       }
+    },
+    customer: {
+      type: CustomerType,
+      description: "Customer attached to the bid",
+      resolve: bid => {
+        console.log('FIRING')
+        return bid.getCustomer()
+        .then(customer => customer)
+        .catch(err => console.log(err))
+      }
     }
   })
 })

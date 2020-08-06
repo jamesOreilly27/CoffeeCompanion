@@ -142,6 +142,9 @@ export const getAllBids = gql`
           qty
         }
       }
+      customer {
+        id
+      }
     }
   }
 `
@@ -166,6 +169,9 @@ export const getBidDetails = gql`
             description
           }
         }
+      }
+      customer {
+        id
       }
     }
   }

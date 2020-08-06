@@ -15,7 +15,6 @@ const customerDetailsResolver = (parent, args) => {
 }
 
 const createCustomerResolver = (parent, args) => {
-  console.log('FIRING')
   return Customer.create(args)
   .then(customer => customer)
   .catch(err => console.log(err))
