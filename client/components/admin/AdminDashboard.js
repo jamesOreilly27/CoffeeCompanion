@@ -59,8 +59,8 @@ class AdminDashboard extends Component {
               <Route exact path="/admin/product/:name" component={UpdateProduct} />
               <Route exact path="/admin/orders" component={Orders} />
               <Route exact path="/admin/materials" component={Materials} />
-              <Route exact path="/admin/bids" component={Bids} />
-              <Route exact path="/admin/bids/new" render={() => <NewBidForm customers={this.props.customers} /> } />
+              <Route exact path="/admin/bids" render={() => <Bids user={this.props.user} /> } />
+              <Route exact path="/admin/bids/new/:bidId" render={matchProps => <NewBidForm {...matchProps} customers={this.props.customers} /> } />
               <Route exact path="/admin/bids/:id" component={BidDetail} />
               <Route exact path="/admin/bids/:id/pdf" component={BidPDF} />
             </Switch>

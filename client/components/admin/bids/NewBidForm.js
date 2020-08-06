@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { CreateForm } from '../customers'
-import { Form, Label, Select, Option, TextInput, Button } from '../../styled-components'
+import { Label, Select, Option, TextInput, Button } from '../../styled-components'
 
 const Wrapper = styled.div`
   display: flex;
@@ -29,14 +29,15 @@ const NewContainer = styled(Container)`
   align-items: center;
 `
 
-const NewBidForm = ({ customers }) => (
+const NewBidForm = props => (
   <Wrapper width={50}>
+    {console.log('PROPS', props)}
     <ExistingContainer>
-      {customers &&
+      {props.customers &&
         <CustomerSelectContainer>
           <Label>Exisiting Customer</Label>
           <Select>
-            {customers.map(customer => (
+            {props.customers.map(customer => (
               <Option value={customer.id}>
                 {customer.companyName}
               </Option>
@@ -50,7 +51,7 @@ const NewBidForm = ({ customers }) => (
     </ExistingContainer>
     <NewContainer>
       <Label> Create a New Customer </Label>
-      <CreateForm />
+      <CreateForm bidId={parseInt(props.match.params.bidId)} />
     </NewContainer>
   </Wrapper>
 )

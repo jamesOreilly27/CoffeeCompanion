@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { BidTypeContainer, StartButton } from '../bids'
-import { Title, Button } from '../../styled-components'
+import { Title } from '../../styled-components'
 import { getAllBids } from '../../../graphql'
 import { graphql } from 'react-apollo'
 
@@ -38,19 +38,19 @@ const filterBids = (filterType, bids) => {
   return bids.filter(bid => bid.status === filterType)
 }
 
-const Bids = props => (
+const Bids = ({ user, data }) => (
   <Wrapper>
     <Header>
       <BidTitle>
         Bids
       </BidTitle>
-      <StartButton />
+      <StartButton user={user} />
     </Header>
-    {props.data.bids &&
+    {data.bids &&
       <Container>
-        <BidTypeContainer title="Open" bids={filterBids("open", props.data.bids)} />
-        <BidTypeContainer title="Pending" bids={filterBids("pending", props.data.bids)} />
-        <BidTypeContainer title="Approved" bids={filterBids("approved", props.data.bids)} />
+        <BidTypeContainer title="Open" bids={filterBids("open", data.bids)} />
+        <BidTypeContainer title="Pending" bids={filterBids("pending", data.bids)} />
+        <BidTypeContainer title="Approved" bids={filterBids("approved", data.bids)} />
       </Container>
     }
   </Wrapper>

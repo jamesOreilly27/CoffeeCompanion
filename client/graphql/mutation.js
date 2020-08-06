@@ -67,6 +67,7 @@ export const startNewBid = gql`
   mutation($title: String!, $status: String!, $userId: Int!) {
     createBid(title: $title, status: $status, userId: $userId) {
       id
+      status
     }
   }
 `

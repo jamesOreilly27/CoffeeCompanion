@@ -61,7 +61,7 @@ const TextInput = styled.input`
   height: 25px;
 `
 
-const CreateForm = () => (
+const CreateForm = ({ bidId }) => (
   <Mutation mutation={createCustomer}>
     {(createCustomer, { data }) => (
       <Wrapper onSubmit={evt => {
