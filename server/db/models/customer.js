@@ -22,7 +22,10 @@ const Customer = db.define('customer', {
     type: Sequelize.STRING
   },
   email: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING
+  },
+  phoneNumber: {
+    type: Sequelize.STRING
   },
   relayPort: {
     type: Sequelize.STRING

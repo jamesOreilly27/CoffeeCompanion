@@ -14,6 +14,13 @@ const customerDetailsResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
+const createCustomerResolver = (parent, args) => {
+  console.log('FIRING')
+  return Customer.create(args)
+  .then(customer => customer)
+  .catch(err => console.log(err))
+}
+
 const allCustomers = {
   type: new GraphQLList(CustomerType),
   description: 'a list of roys bids',
@@ -27,8 +34,23 @@ const getCustomerDetails = {
   resolve: customerDetailsResolver
 }
 
+const createCustomer = {
+  type: CustomerType,
+  description: 'Add a customer to the database',
+  args: {
+    companyName: { type: GraphQLString },
+    email: { type: GraphQLString },
+    phoneNumber: { type: GraphQLString },
+    address: { type: GraphQLString },
+    town: { type: GraphQLString },
+    zipCode: { type: GraphQLString },
+    state: { type: GraphQLString }
+  },
+  resolve: createCustomerResolver
+}
+
 module.exports = {
   allCustomers,
   getCustomerDetails,
-  flipArmed
+  createCustomer
 }
