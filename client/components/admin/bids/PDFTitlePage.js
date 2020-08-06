@@ -4,7 +4,6 @@ import { HeaderView, Customer, OurInfo, OurAddressLine, AddyInfo, AddressLine, H
 const PDFTitlePage = ({ customer }) => (
   <HeaderView>
     <Customer>
-      {console.log('CUSTOMER', customer)}
       <AddyInfo>
         <Header>
           {customer.companyName}
