@@ -129,7 +129,6 @@ const addCustomer = {
     address: { type: GraphQLString },
     town: { type: GraphQLString },
     zipCode: { type: GraphQLString },
-    state: { type: GraphQLString },
     id: { type: GraphQLInt }
   },
   resolve: addCustomerResolver

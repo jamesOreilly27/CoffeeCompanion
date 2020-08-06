@@ -42,8 +42,7 @@ const createCustomer = {
     phoneNumber: { type: GraphQLString },
     address: { type: GraphQLString },
     town: { type: GraphQLString },
-    zipCode: { type: GraphQLString },
-    state: { type: GraphQLString }
+    zipCode: { type: GraphQLString }
   },
   resolve: createCustomerResolver
 }

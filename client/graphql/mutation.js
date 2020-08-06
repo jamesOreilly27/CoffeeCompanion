@@ -174,16 +174,16 @@ export const updateAreaProductPrice = gql`
 `
 
 export const createCustomer = gql`
-  mutation($companyName: String!, $email: String!, $phoneNumber: String!, $address: String!, $town: String!, $zipCode: String!, $state: String!) {
-    createCustomer(companyName: $companyName, email: $email, phoneNumber: $phoneNumber, address: $address, town: $town, zipCode: $zipCode, state: $state) {
+  mutation($companyName: String!, $email: String!, $phoneNumber: String!, $address: String!, $town: String!, $zipCode: String!) {
+    createCustomer(companyName: $companyName, email: $email, phoneNumber: $phoneNumber, address: $address, town: $town, zipCode: $zipCode) {
       companyName
     }
   }
 `
 
 export const addCustomer = gql`
-mutation($companyName: String!, $email: String!, $phoneNumber: String!, $address: String!, $town: String!, $zipCode: String!, $state: String!, $id: Int!) {
-  addCustomer(companyName: $companyName, email: $email, phoneNumber: $phoneNumber, address: $address, town: $town, zipCode: $zipCode, state: $state, id: $id) {
+mutation($companyName: String!, $email: String!, $phoneNumber: String!, $address: String!, $town: String!, $zipCode: String!, $id: Int!) {
+  addCustomer(companyName: $companyName, email: $email, phoneNumber: $phoneNumber, address: $address, town: $town, zipCode: $zipCode, id: $id) {
     id
   }
 }

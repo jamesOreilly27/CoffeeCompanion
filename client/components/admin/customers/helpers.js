@@ -15,7 +15,6 @@ export const getActiveCustomer = (activeName, customers) => customers.filter(cus
 export const filterPrimary = (contacts, type) => {
   if(type === 'primary') {
     return contacts.filter(contact => {
-      console.log('CONTACT TEST', contact)
       return contact.primary
     })
   } else if(type === 'non-primary') {

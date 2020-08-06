@@ -73,9 +73,8 @@ const CreateForm = ({ bidId }) => (
           email: evt.target.email.value,
           phoneNumber: evt.target.phoneNumber.value,
           address: evt.target.address.value,
-          town: evt.target.town.value,
+          town: `${evt.target.town.value}, ${evt.target.state.value}`,
           zipCode: evt.target.zipCode.value,
-          state: evt.target.state.value,
           id: bidId
         }})
       }}>
