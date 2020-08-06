@@ -30,7 +30,7 @@ const NewContainer = styled(Container)`
 `
 
 const NewBidForm = ({ customers }) => (
-  <Wrapper width={50} paddin>
+  <Wrapper width={50}>
     <ExistingContainer>
       {customers &&
         <CustomerSelectContainer>

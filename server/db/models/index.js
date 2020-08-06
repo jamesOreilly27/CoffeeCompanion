@@ -50,6 +50,10 @@ LineItem.belongsTo(Cart)
 Customer.hasMany(Contact, { as: 'contacts' })
 Contact.belongsTo(Customer)
 
+//Bid and Customer
+Customer.hasMany(Bid, { as: 'bids' })
+Bid.belongsTo(Customer)
+
 module.exports = {
   Product,
   Bid,
