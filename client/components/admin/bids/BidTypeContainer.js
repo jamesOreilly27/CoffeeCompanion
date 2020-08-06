@@ -7,18 +7,17 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   width: 30%;
-  background-color: #383737;
   border-radius: 4px;
-  padding: 10px;
 `
 
 const CenteredTitle = styled(Title)`
   text-align: center;
+  font-size: 26px;
 `
 
 const BidTypeContainer = ({ title, bids }) => (
   <Wrapper>
-    <CenteredTitle size="med">
+    <CenteredTitle size="med" margin={1}>
       {title}
     </CenteredTitle>
     <BidList bids={bids} />

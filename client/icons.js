@@ -8,6 +8,8 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons/faLinkedin'
 import { faUserCircle } from '@fortawesome/free-solid-svg-icons/faUserCircle'
 import { faMicrophone } from '@fortAwesome/free-solid-svg-icons/faMicrophone'
 import { faMicrophoneSlash } from '@fortAwesome/free-solid-svg-icons/faMicrophoneSlash'
+import { faAngleLeft } from '@fortAwesome/free-solid-svg-icons/faAngleLeft'
+import { faAngleRight } from '@fortAwesome/free-solid-svg-icons/faAngleRight'
 
 
 library.add(
@@ -19,5 +21,7 @@ library.add(
   faLinkedin,
   faUserCircle,
   faMicrophone,
-  faMicrophoneSlash
+  faMicrophoneSlash,
+  faAngleLeft,
+  faAngleRight
 )
