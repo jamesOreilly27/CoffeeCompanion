@@ -1,14 +1,31 @@
 import React from 'react'
 import styled from 'styled-components'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Mutation } from 'react-apollo'
+import { updateStatus } from '../../../graphql'
 
-const Wrapper = styled.div`
-
+const Wrapper = styled(FontAwesomeIcon)`
+  color: #F8F8FF;
 `
 
-const ArrowLeft = () => (
-  <Wrapper>
+const chooseNewStatus = status => {
+  if(status === 'approved') return 'pending'
+  else if(status === 'pending') return 'open'
+}
 
-  </Wrapper>
+const ArrowLeft = ({ id, status }) => (
+  <Mutation mutation={updateStatus}>
+    {(updateStatus, { data }) => (
+      <Wrapper
+        icon={['fa', 'angle-left']}
+        size="2x"
+        onClick={() => {
+          updateStatus({ variables: { id: id, status: chooseNewStatus(status) } })
+        }}
+      >
+      </Wrapper>
+    )}
+  </Mutation>
 )
 
 export default ArrowLeft

@@ -6,13 +6,16 @@ import { BidList } from '../bids'
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
+  width: 32%;
   border-radius: 4px;
+  border: 2px solid #F8F8FF;
 `
 
 const CenteredTitle = styled(Title)`
   text-align: center;
   font-size: 26px;
+  background-color: #383738;
+  margin: 0;
 `
 
 const BidTypeContainer = ({ title, bids }) => (

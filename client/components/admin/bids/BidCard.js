@@ -5,17 +5,18 @@ import history from '../../history'
 import { sumAll } from './helpers'
 import { Button } from '../../styled-components'
 import { nameToUrl } from '../../helpers'
+import { ArrowRight, ArrowLeft } from '../bids'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 93%;
   background-color: #383737;
   text-decoration: none;
   color: #F8F8FF;
   padding: 10px;
-  margin: 4px 0;
+  margin: 3px 0;
 `
 
 const Header = styled.div`
@@ -64,20 +65,10 @@ class BidCard extends Component {
     this.state = { redirect: false }
 
     this.handleViewClick = this.handleViewClick.bind(this)
-    this.handleLeftArrowClick = this.handleLeftArrowClick.bind(this)
-    this.handleRightArrowClick = this.handleRightArrowClick.bind(this)
   }
 
   handleViewClick() {
     this.setState({ redirect: true })
-  }
-
-  handleLeftArrowClick() {
-
-  }
-
-  handleRightArrowClick() {
-
   }
 
   render() {
@@ -97,18 +88,22 @@ class BidCard extends Component {
         <CostContainer>
           <div>
             {bid.status !== 'open' &&
-              <Arrow icon={['fa', 'angle-left']} size="2x" />
+              <ArrowLeft id={bid.id} status={bid.status} />
             }
           </div>
           <FlexContainer>
-            <AmtTitle>My Cost</AmtTitle>
+            <AmtTitle>Cost</AmtTitle>
             <Amt>{`$${sumAll(bid.bidAreas, 'cost').toFixed(2)}`}</Amt>
           </FlexContainer>
           <FlexContainer>
             <AmtTitle>Price</AmtTitle>
             <Amt>{`$${sumAll(bid.bidAreas, 'price').toFixed(2)}`}</Amt>
           </FlexContainer>
-          <Arrow icon={['fa', 'angle-right']} size="2x" />
+          <div>
+            {bid.status !== 'approved' &&
+              <ArrowRight id={bid.id} status={bid.status} />
+            }
+          </div>
         </CostContainer>
       </Wrapper>
     )
