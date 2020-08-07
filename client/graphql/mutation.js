@@ -89,6 +89,14 @@ export const addBidArea = gql`
   }
 `
 
+export const updateStatus = gql`
+  mutation($id: Int!, $status: String!) {
+    updateStatus(id: $id, status: $status) {
+      id
+    }
+  }
+`
+
 export const updateAreaTitle = gql`
   mutation($id: Int!, $title: String!) {
     updateAreaTitle(id: $id, title: $title) {

@@ -22,6 +22,12 @@ const newBidResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
+const updateStatusResolver = ( parent, { id, status }) => {
+  return Bid.findByPk(id)
+  .then(bid => bid.update({ status }))
+  .catch(err => console.log(err))
+}
+
 const newAreaResolver = (parent, args) => {
   return BidArea.create(args)
   .then(area => area)
@@ -119,6 +125,16 @@ const createBid = {
   resolve: newBidResolver
 }
 
+const updateStatus = {
+  type: BidType,
+  description: "change the status of a bid",
+  args: {
+    id: { type: GraphQLInt },
+    status: { type: GraphQLString }
+  },
+  resolve: updateStatusResolver
+}
+
 const addCustomer = {
   type: BidType,
   description: 'attach a new customer to the newest bid',
@@ -209,6 +225,7 @@ module.exports = {
   bids,
   bidDetails,
   createBid,
+  updateStatus,
   addBidArea,
   updateAreaTitle,
   removeBidArea,
