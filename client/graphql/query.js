@@ -179,6 +179,10 @@ export const getBidDetails = gql`
         zipCode
         state
       }
+      notes {
+        id
+        text
+      }
     }
   }
 `

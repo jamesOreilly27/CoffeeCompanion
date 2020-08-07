@@ -164,6 +164,15 @@ const BidType = new GraphQLObjectType({
         .then(customer => customer)
         .catch(err => console.log(err))
       }
+    },
+    notes: {
+      type: new GraphQLList(NoteType),
+      description: "a note on the bid",
+      resolve: bid => {
+        return bid.getNotes()
+        .then(notes => notes)
+        .catch(err => console.log(err))
+      }
     }
   })
 })
@@ -267,6 +276,15 @@ const ContactType = new GraphQLObjectType({
   })
 })
 
+const NoteType = new GraphQLObjectType({
+  name: 'note',
+  description: "a note",
+  fields: () => ({
+    id: { type: GraphQLInt },
+    text: { type: GraphQLString }
+  })
+})
+
 module.exports = {
   UserType,
   CategoryType,
@@ -280,5 +298,6 @@ module.exports = {
   BidAreaType,
   AreaProductType,
   CustomerType,
-  ContactType
+  ContactType,
+  NoteType
 }

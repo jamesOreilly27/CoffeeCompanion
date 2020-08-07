@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Mutation } from 'react-apollo'
-import { updateStatus } from '../../../graphql'
+import { updateStatus, getAllBids } from '../../../graphql'
 
 const Wrapper = styled(FontAwesomeIcon)`
   color: #F8F8FF;
@@ -14,7 +14,18 @@ const chooseNewStatus = status => {
 }
 
 const ArrowLeft = ({ id, status }) => (
-  <Mutation mutation={updateStatus}>
+  <Mutation
+    mutation={updateStatus}
+    update={(cache, { data: { updateStatus } } ) => {
+      const bids = cache.readQuery({ query: getAllBids }).bids
+      const bid = Object.assign(bids.filter(bid => bid.id === id)[0])
+      
+      cache.writeQuery({
+        query: getAllBids,
+        data: Object.assign(bids)
+      })
+    }}
+  >
     {(updateStatus, { data }) => (
       <Wrapper
         icon={['fa', 'angle-left']}

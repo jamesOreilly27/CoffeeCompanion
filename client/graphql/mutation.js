@@ -93,6 +93,7 @@ export const updateStatus = gql`
   mutation($id: Int!, $status: String!) {
     updateStatus(id: $id, status: $status) {
       id
+      status
     }
   }
 `

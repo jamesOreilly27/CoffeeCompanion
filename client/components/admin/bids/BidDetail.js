@@ -105,6 +105,7 @@ class BidDetail extends Component {
       <Wrapper>
         {this.props.data.bidDetails &&
           <Container>
+            {console.log('BID', this.props.data.bidDetails)}
             <Sidebar>
               <ProjectTotal>
                 <Title size="med"> Project Totals </Title>

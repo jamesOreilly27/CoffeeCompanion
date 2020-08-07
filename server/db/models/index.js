@@ -11,6 +11,7 @@ const BidArea = require('./bidArea')
 const AreaProduct = require('./areaProduct')
 const Customer = require('./customer')
 const Contact = require('./contact')
+const Note = require('./note')
 
 /***** Associations ******/
 
@@ -54,6 +55,10 @@ Contact.belongsTo(Customer)
 Customer.hasMany(Bid, { as: 'bids' })
 Bid.belongsTo(Customer)
 
+//Note and Bid
+Bid.hasMany(Note, { as: 'notes' })
+Note.belongsTo(Bid)
+
 module.exports = {
   Product,
   Bid,
@@ -67,5 +72,6 @@ module.exports = {
   User,
   RawMaterial,
   Customer,
-  Contact
+  Contact,
+  Note
 }

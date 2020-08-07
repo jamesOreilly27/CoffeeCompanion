@@ -1,6 +1,6 @@
 const db = require('./server/db')
 const chalk = require('chalk')
-const { Product, Category, Review, ProductCategory, Cart, LineItem, Bid, BidArea, AreaProduct, User, Customer, Contact } = require('./server/db/models')
+const { Product, Category, Review, ProductCategory, Cart, LineItem, Bid, BidArea, AreaProduct, User, Customer, Contact, Note } = require('./server/db/models')
 
 const markup = cost => (cost * 1.3).toFixed(2)
 const applyDiscount = cost => cost * .6
@@ -367,6 +367,13 @@ async function seed () {
     Bid.create({ title: "Test Three", status: "pending", userId: 1, customerId: customers[2].id }),
     Bid.create({ title: "Test Four", status: "approved", userId: 1, customerId: customers[3].id }),
     Bid.create({ title: 'Test Five', status: "declined", userId: 1, customerId: customers[4].id })
+  ])
+
+  const notes = await Promise.all([
+    Note.create({ text: 'This is a note', bidId: 1 }),
+    Note.create({ text: 'Heres another one', bidId: 1 }),
+    Note.create({ text: 'Last One', bidId: 1 }),
+    Note.create({ text: 'This is a note on the other bid', bidId: 2 })
   ])
 
   const bidAreas = await Promise.all([

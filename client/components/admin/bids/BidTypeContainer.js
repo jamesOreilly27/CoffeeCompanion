@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   width: 32%;
   border-radius: 4px;
-  border: 2px solid #F8F8FF;
+  border: 2px solid #4E4E6F;
 `
 
 const CenteredTitle = styled(Title)`

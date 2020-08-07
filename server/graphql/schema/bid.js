@@ -1,6 +1,6 @@
 const { GraphQLList, GraphQLBoolean, GraphQLInt, GraphQLString, GraphQLFloat } = require('graphql')
 const { BidType, BidAreaType, AreaProductType} = require('./ObjectTypes')
-const { Bid, BidArea, AreaProduct, Customer } = require('../../db/models')
+const { Bid, BidArea, AreaProduct, Customer, NoteType } = require('../../db/models')
 
 const allBidsResolver = () => {
   return Bid.findAll()
