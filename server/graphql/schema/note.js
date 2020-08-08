@@ -1,4 +1,4 @@
-const { GraphQLInt, GraphQLString } = require('graphql')
+const { GraphQLInt, GraphQLString, GraphQLBoolean } = require('graphql')
 const { NoteType } = require('./ObjectTypes')
 const { Note } = require('../../db/models')
 
@@ -12,6 +12,14 @@ const updateNoteResolver = (parent, { id, subject, text }) => {
   return Note.findByPk(id)
   .then(note => note.update({ subject, text }))
   .catch(err => console.log(err))
+}
+
+const deleteNoteResolver = (parent, { id }) => {
+  Note.findByPk(id)
+  .then(note => note.destroy())
+  .catch(err => console.log(err))
+
+  return true
 }
 
 const createNote = {
@@ -36,8 +44,18 @@ const updateNote = {
   resolve: updateNoteResolver
 }
 
+const deleteNote = {
+  type: GraphQLBoolean,
+  description: 'delete a note',
+  args: {
+    id: { type: GraphQLInt }
+  },
+  resolve: deleteNoteResolver
+}
+
 module.exports = {
   createNote,
-  updateNote
+  updateNote,
+  deleteNote
 }
 
