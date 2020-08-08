@@ -4,10 +4,12 @@ import { RemoveLocation } from '../bids'
 
 const Wrapper = styled.div`
   display: flex;
-  margin-bottom: 3vh;
+  margin: 2vh 0 1vh;
   color: #F8F8FF;
   width: 95%;
   justify-content: space-between;
+  align-items: center;
+  font-size: 20px;
 `
 
 const Link = styled.div`

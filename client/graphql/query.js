@@ -181,6 +181,7 @@ export const getBidDetails = gql`
       }
       notes {
         id
+        subject
         text
       }
     }

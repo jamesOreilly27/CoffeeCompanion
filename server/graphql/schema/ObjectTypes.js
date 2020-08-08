@@ -281,6 +281,7 @@ const NoteType = new GraphQLObjectType({
   description: "a note",
   fields: () => ({
     id: { type: GraphQLInt },
+    subject: { type: GraphQLString },
     text: { type: GraphQLString }
   })
 })

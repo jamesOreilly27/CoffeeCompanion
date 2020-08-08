@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
-import { LocationLink, AddLocation } from '../bids'
+import { LocationLink, AddLocation, Note } from '../bids'
 import { BidAreaDetail } from './bidArea'
 import { Title } from '../../styled-components'
 import { sumAll, findArea } from './helpers'
@@ -33,7 +33,7 @@ const ProjectTotal = styled.div`
   width: 100%;
   align-items: center;
   padding: 5px;
-  margin-bottom: 1vh;
+  margin-bottom: 0.7vh;
   background-color: #383737;
   border-radius: 4px;
   padding: 10px;
@@ -55,10 +55,12 @@ const TotalContainer = styled.div`
 
 const Cost = styled.div`
   color: #F8F8FF;
+  font-size: 18px;
 `
 
 const Price = styled.div`
   color: #F8F8FF;
+  font-size: 18px;
 `
 
 const AreaContainer = styled.div`
@@ -69,6 +71,18 @@ const AreaContainer = styled.div`
   background-color: #383737;
   border-radius: 4px;
   width: 100%;
+  padding: 10px;
+`
+
+const NoteContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 0.7vh;
+  background-color: #383738;
+  color: #F8F8FF;
   padding: 10px;
 `
 
@@ -108,10 +122,10 @@ class BidDetail extends Component {
             {console.log('BID', this.props.data.bidDetails)}
             <Sidebar>
               <ProjectTotal>
-                <Title size="med"> Project Totals </Title>
+                <Title size="lg"> Project Totals </Title>
                 <PriceAndCostContainer>
                   <TotalContainer>
-                    <Title size="sm">
+                    <Title size="med">
                       Cost
                     </Title>
                     <Cost>
@@ -119,7 +133,7 @@ class BidDetail extends Component {
                     </Cost>
                   </TotalContainer>
                   <TotalContainer>
-                    <Title size="sm">
+                    <Title size="med">
                       Price
                     </Title>
                     <Price>
@@ -128,7 +142,16 @@ class BidDetail extends Component {
                   </TotalContainer>
                 </PriceAndCostContainer>
               </ProjectTotal>
+              <NoteContainer>
+                <Title size="lg">
+                  Notes
+                </Title>
+                {this.props.data.bidDetails.notes.map(note => <Note subject={note.subject} /> )}
+              </NoteContainer>
               <AreaContainer>
+                <Title size="lg">
+                  Sections
+                </Title>
                 {this.props.data.bidDetails.bidAreas.map(location => <LocationLink key={location.title} location={location} bidId={this.props.data.bidDetails.id} handleClick={this.handleClick} />)}
                 <AddLocation bid={this.props.data.bidDetails} flipTrue={this.addedToTrue} flipFalse={this.addedToFalse} />
               </AreaContainer>

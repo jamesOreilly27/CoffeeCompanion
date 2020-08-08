@@ -16,7 +16,8 @@ export const Title = styled.h1`
   }};
   font-size: ${({ size }) => {
     if(size === 'sm') return `14px`
-    if(size === 'med') return `18px`
+    if(size === 'med') return `20px`
+    if(size === 'lg') return `24px`
     else return ''
   }};
   color: #F8F8FF;

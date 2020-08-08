@@ -370,10 +370,10 @@ async function seed () {
   ])
 
   const notes = await Promise.all([
-    Note.create({ text: 'This is a note', bidId: 1 }),
-    Note.create({ text: 'Heres another one', bidId: 1 }),
-    Note.create({ text: 'Last One', bidId: 1 }),
-    Note.create({ text: 'This is a note on the other bid', bidId: 2 })
+    Note.create({ subject: 'Note 1', text: 'This is a note', bidId: 1 }),
+    Note.create({ subject: 'Note 2', text: 'Heres another one', bidId: 1 }),
+    Note.create({ subject: 'Note 3', text: 'Last One', bidId: 1 }),
+    Note.create({ subject: 'Note 4', text: 'This is a note on the other bid', bidId: 2 })
   ])
 
   const bidAreas = await Promise.all([

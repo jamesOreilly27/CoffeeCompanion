@@ -19,7 +19,7 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 50%;
+  height: 40%;
   width: 16vw;
   padding-left: 10px;
 `
