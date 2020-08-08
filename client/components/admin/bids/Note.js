@@ -12,7 +12,7 @@ class Note extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { showNote: false }
+    this.state = { showNote: this.props.created }
 
     this.showNote = this.showNote.bind(this)
     this.hideNote = this.hideNote.bind(this)

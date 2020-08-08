@@ -208,7 +208,7 @@ export const createNote = gql`
 `
 
 export const updateNote = gql`
-  mutation($id: Int!, $subject String!, $text: String!) {
+  mutation($id: Int!, $subject: String!, $text: String!) {
     updateNote(id: $id, subject: $subject, text: $text) {
       subject
       text
