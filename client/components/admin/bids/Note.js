@@ -1,5 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styled from 'styled-components'
+import { NoteDetail } from '../bids'
 
 const Wrapper = styled.div`
   width: 95%;
@@ -7,10 +8,37 @@ const Wrapper = styled.div`
   margin: 1vh 0 0.5vh;
 `
 
-const Note = ({ subject }) => (
-  <Wrapper>
-    {subject}
-  </Wrapper>
-)
+class Note extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = { showNote: false }
+
+    this.showNote = this.showNote.bind(this)
+    this.hideNote = this.hideNote.bind(this)
+  }
+
+  showNote() {
+    this.setState({ showNote: true })
+  }
+
+  hideNote() {
+    this.setState({ showNote: false })
+  }
+
+  render() {
+    const note = this.props.note
+    return (
+      <Wrapper>
+        <div onClick={this.showNote}>
+          {note.subject}
+        </div>
+        {this.state.showNote &&
+          <NoteDetail note={note} hideNote={this.hideNote} />
+        }
+      </Wrapper>
+    )
+  }
+}
 
 export default Note

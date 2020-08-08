@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
-import { LocationLink, AddLocation, Note } from '../bids'
+import { LocationLink, AddLocation, Note, NoteDetail } from '../bids'
 import { BidAreaDetail } from './bidArea'
 import { Title } from '../../styled-components'
 import { sumAll, findArea } from './helpers'
@@ -119,7 +119,6 @@ class BidDetail extends Component {
       <Wrapper>
         {this.props.data.bidDetails &&
           <Container>
-            {console.log('BID', this.props.data.bidDetails)}
             <Sidebar>
               <ProjectTotal>
                 <Title size="lg"> Project Totals </Title>
@@ -146,7 +145,7 @@ class BidDetail extends Component {
                 <Title size="lg">
                   Notes
                 </Title>
-                {this.props.data.bidDetails.notes.map(note => <Note subject={note.subject} /> )}
+                {this.props.data.bidDetails.notes.map(note => <Note note={note} /> )}
               </NoteContainer>
               <AreaContainer>
                 <Title size="lg">
