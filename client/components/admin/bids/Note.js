@@ -30,11 +30,13 @@ class Note extends Component {
     const note = this.props.note
     return (
       <Wrapper>
-        <div onClick={this.showNote}>
-          {note.subject}
-        </div>
+        {!this.props.created &&
+          <div onClick={this.showNote}>
+            {note.subject}
+          </div>
+        }
         {this.state.showNote &&
-          <NoteDetail note={note} hideNote={this.hideNote} />
+          <NoteDetail note={note} hideNote={this.hideNote} created={this.props.created} />
         }
       </Wrapper>
     )

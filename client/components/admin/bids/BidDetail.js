@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
-import { LocationLink, AddLocation, Note, NoteDetail } from '../bids'
+import { LocationLink, AddLocation, Note, AddNote } from '../bids'
 import { BidAreaDetail } from './bidArea'
 import { Title } from '../../styled-components'
 import { sumAll, findArea } from './helpers'
@@ -115,9 +115,10 @@ class BidDetail extends Component {
   }
 
   render() {
+    const bid = this.props.data.bidDetails
     return (
       <Wrapper>
-        {this.props.data.bidDetails &&
+        {bid &&
           <Container>
             <Sidebar>
               <ProjectTotal>
@@ -128,7 +129,7 @@ class BidDetail extends Component {
                       Cost
                     </Title>
                     <Cost>
-                      {`$${sumAll(this.props.data.bidDetails.bidAreas, 'cost').toFixed(2)}`}
+                      {`$${sumAll(bid.bidAreas, 'cost').toFixed(2)}`}
                     </Cost>
                   </TotalContainer>
                   <TotalContainer>
@@ -136,7 +137,7 @@ class BidDetail extends Component {
                       Price
                     </Title>
                     <Price>
-                      {`$${sumAll(this.props.data.bidDetails.bidAreas, 'price').toFixed(2)}`}
+                      {`$${sumAll(bid.bidAreas, 'price').toFixed(2)}`}
                     </Price>
                   </TotalContainer>
                 </PriceAndCostContainer>
@@ -145,17 +146,18 @@ class BidDetail extends Component {
                 <Title size="lg">
                   Notes
                 </Title>
-                {this.props.data.bidDetails.notes.map(note => <Note note={note} /> )}
+                {bid.notes.map(note => <Note note={note} /> )}
+                <AddNote bidId={bid.id} />
               </NoteContainer>
               <AreaContainer>
                 <Title size="lg">
                   Sections
                 </Title>
-                {this.props.data.bidDetails.bidAreas.map(location => <LocationLink key={location.title} location={location} bidId={this.props.data.bidDetails.id} handleClick={this.handleClick} />)}
-                <AddLocation bid={this.props.data.bidDetails} flipTrue={this.addedToTrue} flipFalse={this.addedToFalse} />
+                {bid.bidAreas.map(location => <LocationLink key={location.title} location={location} bidId={bid.id} handleClick={this.handleClick} />)}
+                <AddLocation bid={bid} flipTrue={this.addedToTrue} flipFalse={this.addedToFalse} />
               </AreaContainer>
             </Sidebar>
-            <BidAreaDetail bidId={parseInt(this.props.match.params.id)} area={findArea(this.state.selectedArea, this.props.data.bidDetails.bidAreas)} updateTitleState={this.handleClick} />
+            <BidAreaDetail bidId={parseInt(this.props.match.params.id)} area={findArea(this.state.selectedArea, bid.bidAreas)} updateTitleState={this.handleClick} />
           </Container>
         }
       </Wrapper>
