@@ -14,11 +14,24 @@ const AddLink = styled.div`
 `
 
 const AddNote = ({ bidId }) => (
-  <Mutation mutation={createNote}>
+  <Mutation
+    mutation={createNote}
+    update={(cache, { data: { createNote } }) => {
+      const bid = cache.readQuery({ query: getBidDetails, variables: { id: bidId } }).bidDetails
+
+      const newNotes = Object.assign(bid.notes)
+      newNotes.push(createNote)
+
+      cache.writeQuery({
+        query: getBidDetails,
+        data: { bidDetails: Object.assign(bid, { note: newNotes })}
+      })
+    }}
+  >
     {(createNote, { data }) => (
       <Wrapper>
         {data && data.createNote && 
-          <Note note={data.createNote} created />
+          <Note bidId={bidId} note={data.createNote} created />
         }
         <AddLink onClick={() => {
           createNote({ variables: { bidId, subject: 'Subject', text: 'text' } })

@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Mutation } from 'react-apollo'
-import { updateNote } from '../../../graphql'
-import { NoteSave } from '../bids'
+import { updateNote, getBidDetails } from '../../../graphql'
+import { NoteSave, NoteDelete } from '../bids'
 
 const Wrapper = styled.form`
   position: absolute;
@@ -61,24 +61,50 @@ class NoteDetail extends Component {
   constructor(props) {
     super(props)
 
+    this.state = { subject: '', text: '' }
+
+    this.handleChange = this.handleChange.bind(this)
+  }
+
+  handleChange(evt) {
+    const value = evt.target.value
+    this.setState({[evt.target.name]: value })
+  }
+
+  componentDidMount() {
+    this.setState({ subject: this.props.note.subject, text: this.props.note.text })
   }
 
   render() {
     return (
-      <Mutation mutation={updateNote}>
+      <Mutation
+        mutation={updateNote}
+        update={(cache, { data: { updateNote } }) => {
+          const bid = cache.readQuery({ query: getBidDetails, variables: { id: this.props.bidId } }).bidDetails
+          const notes = Object.assign(bid.notes)
+    
+          cache.writeQuery({
+            query: getBidDetails,
+            data: { bidDetails: Object.assign(bid, { note: notes}) }
+          })
+        }}
+      >
         {(updateNote, { data } ) => (
           <Wrapper onSubmit={evt => {
             evt.preventDefault()
             updateNote({ variables: { id: this.props.note.id, subject: evt.target.subject.value, text: evt.target.text.value } })
+            this.props.hideNote()
           }}>
             <Header>
-              <Input name="subject" type="text" placeholder={this.props.note.subject} />
+              {console.log(this.props.note)}
+              <Input name="subject" type="text" value={this.state.subject} onChange={this.handleChange} />
               <NoteSave subject={this.props.note.subject} text={this.props.note.text} />
+              <NoteDelete bidId={this.props.bidId} id={this.props.note.id} />
               <Close onClick={this.props.hideNote}>
                 x
               </Close>
             </Header>
-            <Body name="text" type="textarea" placeholder={this.props.note.text} />
+            <Body name="text" type="textarea" value={this.state.text} onChange={this.handleChange} />
           </Wrapper>
         )}
       </Mutation>
@@ -87,16 +113,3 @@ class NoteDetail extends Component {
 }
 
 export default NoteDetail
-
-
-  // ({ note, hideNote }) => (
-  //   <Wrapper>
-  //     <Header>
-  //       <Input type="text" placeholder={note.subject} />
-  //       <Close onClick={hideNote}>
-  //         x
-  //     </Close>
-  //     </Header>
-  //     <Body type="textarea" placeholder={note.text} />
-  //   </Wrapper>
-  // )

@@ -201,6 +201,7 @@ mutation($companyName: String!, $email: String!, $phoneNumber: String!, $address
 export const createNote = gql`
   mutation($bidId: Int!, $subject: String!, $text: String!) {
     createNote(bidId: $bidId, subject: $subject, text: $text) {
+      id
       subject
       text
     }
@@ -210,6 +211,7 @@ export const createNote = gql`
 export const updateNote = gql`
   mutation($id: Int!, $subject: String!, $text: String!) {
     updateNote(id: $id, subject: $subject, text: $text) {
+      id
       subject
       text
     }

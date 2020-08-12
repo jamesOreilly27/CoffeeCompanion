@@ -146,7 +146,7 @@ class BidDetail extends Component {
                 <Title size="lg">
                   Notes
                 </Title>
-                {bid.notes.map(note => <Note note={note} /> )}
+                {bid.notes.map(note => <Note note={note} bidId={bid.id} /> )}
                 <AddNote bidId={bid.id} />
               </NoteContainer>
               <AreaContainer>
