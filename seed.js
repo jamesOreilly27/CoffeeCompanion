@@ -289,7 +289,8 @@ async function seed () {
     Product.create({name: '16 CHANNEL DVR', vendor: "DH VISION", partNumber: "PVR16H1-X", description: '', cost: 125, price: markup(125), image: '' }),
     Product.create({name: '32 CHANNEL DVR', vendor: "DH VISION", partNumber: "PVR32H2-X", description: '', cost: 270, price: markup(270), image: '' }),
     Product.create({name: 'UNIVIEW 8 CHANNEL NVR', vendor: "UNIVIEW", partNumber: "NVR301-08L-P8", description: '', cost: 93, price: markup(93), image: '' }),
-    Product.create({name: 'UNIVIEW 16 CHANNEL NVR', vendor: "UNIVISION", partNumber: "NVR302-16E-P16-B", description: '', cost: 280, price: markup(280), image: '' })
+    Product.create({name: 'UNIVIEW 16 CHANNEL NVR', vendor: "UNIVISION", partNumber: "NVR302-16E-P16-B", description: '', cost: 280, price: markup(280), image: '' }),
+    Product.create({ name: 'WIRE', vendor: "ENS", partNumber: "WIRE", description: "WIRE", cost: 0.08, price: 0.23, image: ''})
   ])
 
   const categories = await Promise.all([
