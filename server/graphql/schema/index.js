@@ -3,7 +3,7 @@ const { products, productDetails, getProductByName, upsertProduct, destroyProduc
 const { categories, singleCategory } = require('./category')
 const { carts, removeFromCart, addToCart, incrementLineitemQty, decrementLineitemQty } = require('./cart')
 const { currentUser, loginUser, logout } = require('./user')
-const { bids, bidDetails, createBid, addBidArea, removeBidArea, addAreaProduct, updateAreaTitle, incrementProductQty, decrementProductQty, removeAreaProduct, updateAreaProductPrice, addCustomer, updateStatus } = require('./bid')
+const { bids, bidDetails, createBid, addBidArea, removeBidArea, addAreaProduct, updateAreaTitle, incrementProductQty, decrementProductQty, removeAreaProduct, updateAreaProductPrice, addCustomer, updateStatus, updateAreaProductCost } = require('./bid')
 const { allCustomers, getCustomerDetails, createCustomer } = require('./customer')
 const { createNote, updateNote, deleteNote } = require('./note')
 
@@ -44,6 +44,7 @@ const Mutation = new GraphQLObjectType({
     decrementProductQty,
     removeAreaProduct,
     updateAreaProductPrice,
+    updateAreaProductCost,
     createCustomer,
     addCustomer,
     updateStatus,

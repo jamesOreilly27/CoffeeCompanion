@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { Title } from '../../../styled-components'
 import { QtyContainer, AddButton, RemoveButton } from '../bidArea'
-import { UpdatePriceForm } from '../bidArea'
+import { UpdatePriceForm, UpdateCostForm } from '../bidArea'
 
 const Wrapper = styled.div`
   display: flex;
@@ -77,10 +77,11 @@ class ProductCard extends Component {
 
     this.handleChange = this.handleChange.bind(this)
     this.flipEditPrice = this.flipEditPrice.bind(this)
+    this.flipEditCost = this.flipEditCost.bind(this)
   }
 
   handleChange(str) {
-    if(str === '') {
+    if (str === '') {
       this.setState({ qty: 1 })
     } else {
       this.setState({ qty: parseInt(str) })
@@ -88,8 +89,14 @@ class ProductCard extends Component {
   }
 
   flipEditPrice() {
-    if(!this.props.search) {
-      this.setState({ editPrice: !this.state.editPrice})
+    if (!this.props.search) {
+      this.setState({ editPrice: !this.state.editPrice })
+    }
+  }
+
+  flipEditCost() {
+    if (!this.props.search) {
+      this.setState({ editCost: !this.state.editCost })
     }
   }
 
@@ -115,16 +122,30 @@ class ProductCard extends Component {
           :
           <QtyContainer quantity={this.props.qty} productId={this.props.productId} bidId={this.props.bidId} />
         }
-        <CenteredContainer>
-          <Title size="sm">Cost</Title>
-          { this.props.cost && <DollarAmt>{`$${(this.props.cost * qty).toFixed(2)}`}</DollarAmt> }
-        </CenteredContainer>
+        {!this.state.editCost ?
+          <CenteredContainer onClick={this.flipEditCost}>
+            <Title size="sm">Cost</Title>
+            {this.props.cost && <DollarAmt>{`$${(this.props.cost * qty).toFixed(2)}`}</DollarAmt>}
+          </CenteredContainer>
+
+          :
+          <CenteredContainer>
+            <UpdateCostForm
+              areaProductId={this.props.productId}
+              cost={this.props.cost}
+              handleSubmit={this.flipEditCost}
+              qty={this.props.qty}
+              bidId={this.props.bidId}
+              bidAreaId={this.props.bidAreaId}
+            />
+          </CenteredContainer>
+        }
         {!this.state.editPrice ?
           <CenteredContainer onClick={this.flipEditPrice}>
             <Title size="sm">Price</Title>
             <DollarAmt>{`$${(this.props.price * qty).toFixed(2)}`}</DollarAmt>
           </CenteredContainer>
-        :
+          :
           <CenteredContainer>
             <UpdatePriceForm
               areaProductId={this.props.productId}

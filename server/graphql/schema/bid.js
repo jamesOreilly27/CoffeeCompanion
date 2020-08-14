@@ -89,6 +89,12 @@ const updateProductPriceResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
+const updateProductCostResolver = (parent, args) => {
+  return AreaProduct.findByPk(args.id)
+  .then(areaProduct => areaProduct.update({ cost: args.cost }))
+  .catch(err => console.log(err))
+}
+
 const addCustomerResolver = (parent, { companyName, email, phoneNumber, address, town, zipCode, state, id}) => {
   return BidArea.create({ title: "Area", bidId: id })
   .then(() => {
@@ -221,6 +227,16 @@ const updateAreaProductPrice = {
   resolve: updateProductPriceResolver
 }
 
+const updateAreaProductCost = {
+  type: AreaProductType,
+  description: "update the price of an area product",
+  args: {
+    id: { type: GraphQLInt },
+    cost: { type: GraphQLFloat }
+  },
+  resolve: updateProductCostResolver
+}
+
 module.exports = {
   bids,
   bidDetails,
@@ -234,5 +250,6 @@ module.exports = {
   removeAreaProduct,
   addAreaProduct,
   updateAreaProductPrice,
+  updateAreaProductCost,
   addCustomer
 }

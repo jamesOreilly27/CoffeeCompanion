@@ -182,6 +182,22 @@ export const updateAreaProductPrice = gql`
   }
 `
 
+export const updateAreaProductCost = gql`
+  mutation($id: Int!, $cost: Float!) {
+    updateAreaProductCost(id: $id, cost: $cost) {
+      id
+      qty
+      cost
+      price
+      product {
+        name
+        partNumber
+        description
+      }
+    }
+  }
+`
+
 export const createCustomer = gql`
   mutation($companyName: String!, $email: String!, $phoneNumber: String!, $address: String!, $town: String!, $zipCode: String!) {
     createCustomer(companyName: $companyName, email: $email, phoneNumber: $phoneNumber, address: $address, town: $town, zipCode: $zipCode) {
