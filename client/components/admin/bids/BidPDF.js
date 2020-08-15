@@ -4,6 +4,8 @@ import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
 import { PDFTitlePage, PDFBidArea, PDFFinalTotal } from '../bids'
 import { PDFViewer, Page, Document, Image } from '@react-pdf/renderer'
+import { TitleImage } from './PDFStyledComponents'
+
 
 const Wrapper = styled.div`
   display: flex;
@@ -25,7 +27,7 @@ const BidPDF = props => {
           <Document>
             <Page>
               <PDFTitlePage customer={bid.customer} />
-              <Image src="/images/navlogo.png" />
+              <TitleImage src="/images/navlogo1.png" />
             </Page>
             <Page size="A4">
               {bid.bidAreas.map(area => <PDFBidArea key={area.id} area={area} bid={bid} />)}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Header, AreaTableHeader, AreaTitle, HeaderItem, TotalsView, AreaView, AreasView, ProjectTotals, ProjectTotalLineContainer, ProjectLineItem, AreaHeader } from './PDFStyledComponents'
 import { PDFTitlePage, PDFAreaCard } from '../bids'
-import { sumAll } from './helpers'
+import { sumAll, taxExemptTotal } from './helpers'
 
 const PDFFinalTotal = ({ bid }) => (
   <TotalsView>
@@ -34,15 +34,15 @@ const PDFFinalTotal = ({ bid }) => (
           {"Tax"}
         </ProjectLineItem>
         <ProjectLineItem>
-          {`$${(Math.ceil(sumAll(bid.bidAreas, 'price') * .065 * 100) / 100).toFixed(2)}`}
+          {`$${taxExemptTotal((Math.ceil(sumAll(bid.bidAreas, 'price') * .065 * 100) / 100).toFixed(2), true)}`}
         </ProjectLineItem>
       </ProjectTotalLineContainer>
       <ProjectTotalLineContainer>
         <ProjectLineItem>
-          {"Labor"}
+          {"Estimated Labor (8 Hours)"}
         </ProjectLineItem>
         <ProjectLineItem>
-          {`$250`}
+          {`$520.00`}
         </ProjectLineItem>
       </ProjectTotalLineContainer>
       <ProjectTotalLineContainer>
@@ -50,7 +50,7 @@ const PDFFinalTotal = ({ bid }) => (
           {"Total Due:"}
         </ProjectLineItem>
         <ProjectLineItem total>
-          {`$${((sumAll(bid.bidAreas, 'price') + Math.ceil((sumAll(bid.bidAreas, 'price') * .065) * 100) / 100 ) + 250).toFixed(2)}`}
+          {`$${((sumAll(bid.bidAreas, 'price')) + 520).toFixed(2)}`}
         </ProjectLineItem>
       </ProjectTotalLineContainer>
     </ProjectTotals>

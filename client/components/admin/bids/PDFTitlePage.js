@@ -1,13 +1,13 @@
 import React from 'react'
-import { HeaderView, Customer, OurInfo, OurAddressLine, AddyInfo, AddressLine, Header, OurLink, FrontPage } from './PDFStyledComponents'
+import { HeaderView, Customer, OurInfo, OurAddressLine, AddyInfo, AddressLine, Header, OurLink, FrontPage, OurHeader } from './PDFStyledComponents'
 
 const PDFTitlePage = ({ customer }) => (
   <HeaderView>
     <Customer>
       <AddyInfo>
-        <Header>
+        <OurHeader>
           {customer.companyName}
-        </Header>
+        </OurHeader>
         <AddressLine>
           {customer.phoneNumber}
         </AddressLine>
@@ -20,14 +20,17 @@ const PDFTitlePage = ({ customer }) => (
       </AddyInfo>
     </Customer>
     <OurInfo>
-      <Header>
-        {`Sight On Site`}
-      </Header>
+      <OurHeader>
+        {`Fastrack Security Solutions LLC`}
+      </OurHeader>
       <OurAddressLine>
-        {`772-800-0698`}
+        {`833-484-8273`}
       </OurAddressLine>
       <OurAddressLine>
-        {`3533 SW Corporate Pkwy`}
+        {`2740 SW Martin Downs Blvd`}
+      </OurAddressLine>
+      <OurAddressLine>
+        {`PO BOX #163`}
       </OurAddressLine>
       <OurAddressLine>
         {`Palm City, FL 34990`}

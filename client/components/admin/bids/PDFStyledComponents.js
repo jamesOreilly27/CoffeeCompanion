@@ -8,6 +8,10 @@ export const FrontPage = styled.View`
   
 `
 
+export const TitleImage = styled.Image`
+  margin-top: 175px;
+`
+
 export const HeaderView = styled.View`
   width: 95%;
   margin: 0 10px;
@@ -19,7 +23,7 @@ export const HeaderView = styled.View`
 export const Customer = styled.View`
   width: 65%;
   height: 15vh;
-  background-color: #317787;
+  background-color: #255941;
 `
 
 export const AddyInfo = styled.View`
@@ -27,7 +31,7 @@ export const AddyInfo = styled.View`
   padding: 10px;
   width: 60%;
   height: 75%;
-  background-color: #006481;
+  background-color: #255941;
   color: #FFF;
 `
 
@@ -40,6 +44,11 @@ export const AddressLine = styled.Text`
   font-size: 13px;
 `
 
+export const OurHeader = styled.Text`
+  font-weight: bold;
+  font-size: 14px;
+`
+
 export const OurAddressLine = styled(AddressLine)`
   color: #000;
 `
@@ -50,6 +59,9 @@ export const OurLink = styled.Link`
 
 export const OurInfo = styled.View`
   width: 35%;
+  display: flex;
+  margin-left: 8px;
+  flex-direction: column;
   align-items: center;
   margin-top: 10px;
 `
@@ -67,12 +79,12 @@ export const AreaDetailView = styled.View`
 export const AreaHeader = styled.Text`
   padding: 20px;
   fontSize: 30px;
-  background-color: #006481;
+  background-color: #255941;
   color: #FFF;
 `
 
 export const AreaDescription = styled.Text`
-  background-color: #006481;
+  background-color: #255941;
   padding: 20px;
   fontSize: 13px;
   color: #FFF;
@@ -82,7 +94,7 @@ export const ProductListHeader = styled.Text`
   margin-top: 25px;
   padding: 10px;
   width: 100%;
-  background-color: #317787;
+  background-color: #255941;
   color: #FFF;
   border: 1px solid black;
 `
@@ -105,11 +117,6 @@ export const ProductCard = styled.View`
   }};
 `
 
-export const ImagePlaceholder = styled.Text`
-  font-size: 8px;
-  width: 15%;
-`
-
 export const ProductImage = styled.Image`
   width: 15%
   height: 90%;
@@ -117,15 +124,23 @@ export const ProductImage = styled.Image`
 `
 
 export const ProductName = styled.Text`
-  width: 60%
+  width: 45%
   font-size: 15px;
   color: #000;
 `
 
+export const QtyContainer = styled.View`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 20%;
+`
+
 export const ProductQty = styled.Text`
   font-size: 15px;
+  text-align: center;
   color: #000;
-  width: 10%;
+  width: 100%;
 `
 
 export const ProductPrice = styled.Text`
@@ -152,6 +167,7 @@ export const AreaTotalTitle = styled.Text`
 export const AreaTotalPrice = styled.Text`
   font-size: 20px;
   width: 40%;
+  margin-right: 10px;
 `
 
 export const TotalPage = styled.Page`
@@ -174,7 +190,7 @@ export const AreaTableHeader = styled.View`
   margin-top: 25px;
   padding: 10px;
   width: 100%;
-  background-color: #317787;
+  background-color: #255941;
   color: #FFF;
   border: 1px solid black;
 `

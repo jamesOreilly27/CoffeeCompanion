@@ -1,5 +1,5 @@
 import React from 'react'
-import { NewView, AreaDetailView, AreaHeader, AreaDescription, ProductListHeader, ProductsView, ProductCard, ProductImage, ProductName, ProductQty, ProductPrice, AreaTotalView, AreaTotalTitle, AreaTotalPrice } from './PDFStyledComponents'
+import { NewView, AreaDetailView, AreaHeader, AreaDescription, QtyContainer, ProductListHeader, ProductsView, ProductCard, ProductImage, ProductName, ProductQty, ProductPrice, AreaTotalView, AreaTotalTitle, AreaTotalPrice } from './PDFStyledComponents'
 import { PDFTitlePage } from '../bids'
 import { sumAll } from './helpers'
 
@@ -9,7 +9,6 @@ const PDFBidArea = ({ area, bid }) => (
     <PDFTitlePage customer={bid.customer}/>
     <AreaDetailView>
       <AreaHeader> {area.title} </AreaHeader>
-      <AreaDescription> {`A brief description of the area so that there is no confusion as to where we are referring to. This field will have to be added to the BidArea Model as a property`} </AreaDescription>
       <ProductListHeader> Products </ProductListHeader>
       <ProductsView>
         {area.products.map(product => {
@@ -19,9 +18,14 @@ const PDFBidArea = ({ area, bid }) => (
               <ProductName>
                 {product.product.name}
               </ProductName>
-              <ProductQty>
-                {`x${product.qty}`}
-              </ProductQty>
+              <QtyContainer>
+                <ProductQty>
+                  {`$${(product.price).toFixed(2)} EA`}
+                </ProductQty>
+                <ProductQty>
+                  {`Qty ${product.qty}`}
+                </ProductQty>
+              </QtyContainer>
               <ProductPrice>
                 {`$${(product.price * product.qty).toFixed(2)}`}
               </ProductPrice>
