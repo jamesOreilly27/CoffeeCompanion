@@ -6,7 +6,6 @@ import { sumAll } from './helpers'
 
 const PDFBidArea = ({ area, bid }) => (
   <NewView break={bid.bidAreas.indexOf(area) !== 0}>
-    <PDFTitlePage customer={bid.customer}/>
     <AreaDetailView>
       <AreaHeader> {area.title} </AreaHeader>
       <ProductListHeader> Products </ProductListHeader>
@@ -34,7 +33,7 @@ const PDFBidArea = ({ area, bid }) => (
         })}
       </ProductsView>
       <AreaTotalView>
-        <AreaTotalTitle> Section Total </AreaTotalTitle>
+        <AreaTotalTitle> {`${area.title} Total`} </AreaTotalTitle>
         <AreaTotalPrice> {`$${sumAll([area], 'price').toFixed(2)}`} </AreaTotalPrice>
       </AreaTotalView>
     </AreaDetailView>

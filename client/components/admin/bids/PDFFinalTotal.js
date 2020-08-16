@@ -1,14 +1,14 @@
 import React from 'react'
-import { Header, AreaTableHeader, AreaTitle, HeaderItem, TotalsView, AreaView, AreasView, ProjectTotals, ProjectTotalLineContainer, ProjectLineItem, AreaHeader } from './PDFStyledComponents'
+import { AreaTableHeader, AreaTitle, HeaderItem, TotalsView, AreaView, AreasView, ProjectTotals, ProjectTotalLineContainer, ProjectLineItem, AreaHeader } from './PDFStyledComponents'
+import { Text } from '@react-pdf/renderer'
 import { PDFTitlePage, PDFAreaCard } from '../bids'
 import { sumAll, taxExemptTotal } from './helpers'
 
 const PDFFinalTotal = ({ bid }) => (
   <TotalsView>
-    <PDFTitlePage customer={bid.customer} />
     <AreasView>
       <AreaHeader>
-        {`Total Proposal`}
+        {`Total Proposal: This proposal is only valid for 30 days`}
       </AreaHeader>
       <AreaTableHeader>
         <AreaTitle>Areas</AreaTitle>

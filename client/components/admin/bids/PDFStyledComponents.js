@@ -1,38 +1,41 @@
 import styled from '@react-pdf/styled-components'
 
+export const Doc = styled.Document`
+  width: 100%;
+`
+
 export const TitlePage = styled.Page`
-  
+  width: 100%;
+  height: 100%;
+  padding: 0;
 `
 
 export const FrontPage = styled.View`
   
 `
 
-export const TitleImage = styled.Image`
-  margin-top: 175px;
-`
-
 export const HeaderView = styled.View`
-  width: 95%;
-  margin: 0 10px;
-  height: 15vh;
-  flex-direction: row;
+  width: 100%;
   justify-content: space-between;
 `
 
 export const Customer = styled.View`
-  width: 65%;
+  width: 50%;
   height: 15vh;
-  background-color: #255941;
+  margin-left: 15px;
+  margin-bottom: -30px;
+`
+
+export const ProposalMessage = styled.Text`
+  font-size: 12px;
+  margin-left: 13px;
 `
 
 export const AddyInfo = styled.View`
-  align-items: center;
   padding: 10px;
-  width: 60%;
+  width: 100%;
   height: 75%;
-  background-color: #255941;
-  color: #FFF;
+  color: #000;
 `
 
 export const Header = styled.Text`
@@ -40,16 +43,21 @@ export const Header = styled.Text`
 `
 
 export const AddressLine = styled.Text`
-  color: #FFF;
-  font-size: 13px;
+  color: #000;
+  font-size: 12px;
 `
 
 export const OurHeader = styled.Text`
   font-weight: bold;
-  font-size: 14px;
+  font-size: 20px;
+`
+
+export const MyHeader = styled.Text`
+  font-size: 12px;
 `
 
 export const OurAddressLine = styled(AddressLine)`
+  font-size: 12px;
   color: #000;
 `
 
@@ -58,12 +66,11 @@ export const OurLink = styled.Link`
 `
 
 export const OurInfo = styled.View`
-  width: 35%;
+  width: 100%;
   display: flex;
   margin-left: 8px;
   flex-direction: column;
   align-items: center;
-  margin-top: 10px;
 `
 
 export const NewView = styled.View`
@@ -77,40 +84,41 @@ export const AreaDetailView = styled.View`
 `
 
 export const AreaHeader = styled.Text`
-  padding: 20px;
-  fontSize: 30px;
-  background-color: #255941;
+  padding: 8px;
+  fontSize: 20px;
+  background-color: #000;
   color: #FFF;
+  border-bottom: 1px solid #FFF;
 `
 
 export const AreaDescription = styled.Text`
-  background-color: #255941;
+  background-color: #000;
   padding: 20px;
   fontSize: 13px;
   color: #FFF;
 `
 
 export const ProductListHeader = styled.Text`
-  margin-top: 25px;
   padding: 10px;
   width: 100%;
-  background-color: #255941;
+  background-color: #000;
   color: #FFF;
   border: 1px solid black;
+  font-size: 13px;
 `
 
 export const ProductsView = styled.View`
   border: 1px solid black;
-  padding-top: 10px 0 -5px;
 `
 
 export const ProductCard = styled.View`
   display: flex;
   flex-direction: row;
-  width: 98%;
+  width: 100%;
+  height: 10vh;
   justify-content: space-between;
   align-items: center;
-  padding: 15px 0 13px 0px;
+  padding: 0 5px 0 0;
   background-color: ${({ isEven }) => {
     if(isEven) return "#FFF"
     else return "#F3F3F3"
@@ -119,13 +127,13 @@ export const ProductCard = styled.View`
 
 export const ProductImage = styled.Image`
   width: 15%
-  height: 90%;
+  height: 80%;
   margin: 0 10px;
 `
 
 export const ProductName = styled.Text`
   width: 45%
-  font-size: 15px;
+  font-size: 12px;
   color: #000;
 `
 
@@ -137,7 +145,7 @@ export const QtyContainer = styled.View`
 `
 
 export const ProductQty = styled.Text`
-  font-size: 15px;
+  font-size: 12px;
   text-align: center;
   color: #000;
   width: 100%;
@@ -145,7 +153,7 @@ export const ProductQty = styled.Text`
 
 export const ProductPrice = styled.Text`
   text-align: right;
-  font-size: 15px;
+  font-size: 12px;
   color: #000;
   width: 15%;
 `
@@ -160,14 +168,13 @@ export const AreaTotalView = styled.View`
 `
 
 export const AreaTotalTitle = styled.Text`
-  font-size: 20px;
+  font-size: 17px;
   width: 215%;
 `
 
 export const AreaTotalPrice = styled.Text`
-  font-size: 20px;
+  font-size: 17px;
   width: 40%;
-  margin-right: 10px;
 `
 
 export const TotalPage = styled.Page`
@@ -176,6 +183,7 @@ export const TotalPage = styled.Page`
 
 export const TotalsView = styled.View`
   width: 100%;
+  margin-left: 15px;
 `
 
 export const AreasView = styled.View`
@@ -187,12 +195,11 @@ export const AreaTableHeader = styled.View`
   font-size: 14px;
   flex-direction: row;
   justify-content: space-between;
-  margin-top: 25px;
   padding: 10px;
   width: 100%;
-  background-color: #255941;
+  background-color: #000;
   color: #FFF;
-  border: 1px solid black;
+  border-bottom: 1px solid black;
 `
 
 export const AreaView = styled.View`
@@ -248,3 +255,8 @@ export const ProjectLineItem = styled.Text`
     else return "14px"
   }};
 `
+
+//#255941
+
+//padding: 15px 0 13px 0px;
+//padding-top: 10px 0 -5px;
