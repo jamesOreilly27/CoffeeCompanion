@@ -262,7 +262,7 @@ async function seed () {
     Product.create({name: '180 DEGREE MULTISENSOR', vendor: "AVIGILON", partNumber: "9C-H4A-3MH-180", description: '9MP', cost: applyDiscount(1655), price: markup(applyDiscount(1655)), image: '' }),
     Product.create({name: '270 DEGREE MULTISENSOR', vendor: "AVIGILON", partNumber: "9C-H4A-3MH-270", description: '9MP', cost: applyDiscount(1655), price: markup(applyDiscount(1655)), image: '' }),
     Product.create({name: '360 DEGREE MULTISENSOR', vendor: "AVIGILON", partNumber: "12C-H4A-4MH-360", description: 'the blend will make you want more', cost: applyDiscount(1905), price: markup(applyDiscount(1905)), image: '' }),
-    Product.create({name: 'ANALYTICS PLUS', vendor: "DAHUA", partNumber: "N45EF63", description: '4MP', cost: 190, price: markup(190), image: '' }),
+    Product.create({name: '4MP BULLET CAMERA ANALYTICS PLUS', vendor: "DAHUA", partNumber: "N45EF63", description: '4MP', cost: 190, price: markup(190), image: '' }),
     Product.create({name: 'STARLIGHT VARI-FOCAL', vendor: "DAHUA", partNumber: "N45DB7Z", description: '4MP', cost: 290, price: markup(290), image: '' }),
     Product.create({name: 'AI NETWORK CAMERA', vendor: "DAHUA", partNumber: "HNC5I142T-ASEN236", description: '4MP', cost: 179, price: markup(179), image: '' }),
     Product.create({name: 'STARLIGHT BULLET NETWORK CAMERA', vendor: "DAHUA", partNumber: "HNC3V141T-IR-ZS-S2", description: 'Test', cost: 139, price: markup(139), image: '' }),
@@ -290,7 +290,12 @@ async function seed () {
     Product.create({name: '32 CHANNEL DVR', vendor: "DH VISION", partNumber: "PVR32H2-X", description: '', cost: 270, price: markup(270), image: '' }),
     Product.create({name: 'UNIVIEW 8 CHANNEL NVR', vendor: "UNIVIEW", partNumber: "NVR301-08L-P8", description: '', cost: 93, price: markup(93), image: '' }),
     Product.create({name: 'UNIVIEW 16 CHANNEL NVR', vendor: "UNIVISION", partNumber: "NVR302-16E-P16-B", description: '', cost: 280, price: markup(280), image: '' }),
-    Product.create({ name: 'WIRE', vendor: "ENS", partNumber: "WIRE", description: "WIRE", cost: 0.08, price: 0.23, image: ''})
+    Product.create({ name: 'WIRE', vendor: "ENS", partNumber: "WIRE", description: "WIRE", cost: 0.08, price: 0.23, image: ''}),
+    Product.create({ name: '16 CHANNEL POE SWITCH', vendor: 'UBIQUITI', partNumber: 'USW-16-POE', description: '',  cost: 299, price: 350, image: '' }),
+    Product.create({ name: 'ACC-7 STANDARD LICENSE', vendor: 'AVIGILON', partNumber: 'ACC-7-STD', description: '',  cost: 99, price: 125, image: '' }),
+    Product.create({ name: 'NVR AVIGILON SERVER SOFTWARE', vendor: 'SUPERLOGIC', partNumber: 'SUPERLOGIC', description: '',  cost: 1622, price: 1999, image: '' }),
+    Product.create({ name: '12MP FISHEYE CAMERA', vendor: 'AVIGILON', partNumber: '12-H4F-D01', description: '',  cost: 648, price: 799, image: '' }),
+    Product.create({ name: '4K STARLIGHT FIXED-FOCAL DOME CAMERA', vendor: 'ENS', partNumber: 'HNC3V281E-IRS-S2', description: '',  cost: 109, price: 160, image: '' })
   ])
 
   const categories = await Promise.all([
@@ -362,60 +367,60 @@ async function seed () {
     ProductCategory.create({ categoryId: 9, productId: 35 }),
   ])
 
-  const bids =  await Promise.all([
-    Bid.create({ title: "Test One", status: "open", userId: 1, customerId: customers[0].id }),
-    Bid.create({ title: "Test Two", status: "pending", userId: 1, customerId: customers[1].id }),
-    Bid.create({ title: "Test Three", status: "pending", userId: 1, customerId: customers[2].id }),
-    Bid.create({ title: "Test Four", status: "approved", userId: 1, customerId: customers[3].id }),
-    Bid.create({ title: 'Test Five', status: "declined", userId: 1, customerId: customers[4].id })
-  ])
+  // const bids =  await Promise.all([
+  //   Bid.create({ title: "Test One", status: "open", userId: 1, customerId: customers[0].id }),
+  //   Bid.create({ title: "Test Two", status: "pending", userId: 1, customerId: customers[1].id }),
+  //   Bid.create({ title: "Test Three", status: "pending", userId: 1, customerId: customers[2].id }),
+  //   Bid.create({ title: "Test Four", status: "approved", userId: 1, customerId: customers[3].id }),
+  //   Bid.create({ title: 'Test Five', status: "declined", userId: 1, customerId: customers[4].id })
+  // ])
 
-  const notes = await Promise.all([
-    Note.create({ subject: 'Note 1', text: 'This is a note', bidId: 1 }),
-    Note.create({ subject: 'Note 2', text: 'Heres another one', bidId: 1 }),
-    Note.create({ subject: 'Note 3', text: 'Last One', bidId: 1 }),
-    Note.create({ subject: 'Note 4', text: 'This is a note on the other bid', bidId: 2 })
-  ])
+  // const notes = await Promise.all([
+  //   Note.create({ subject: 'Note 1', text: 'This is a note', bidId: 1 }),
+  //   Note.create({ subject: 'Note 2', text: 'Heres another one', bidId: 1 }),
+  //   Note.create({ subject: 'Note 3', text: 'Last One', bidId: 1 }),
+  //   Note.create({ subject: 'Note 4', text: 'This is a note on the other bid', bidId: 2 })
+  // ])
 
-  const bidAreas = await Promise.all([
-    BidArea.create({ title: "Back Parking", bidId: 1 }),
-    BidArea.create({ title: "Front Parking", bidId: 1 }),
-    BidArea.create({ title: "Front Gate", bidId: 1 }),
-    BidArea.create({ title: "Side Fence", bidId: 1 }),
-    BidArea.create({ title: "Car Lot", bidId: 1 }),
-    BidArea.create({ title: "Shipping Dock", bidId: 1 }),
-    BidArea.create({ title: "Back Parking", bidId: 2 }),
-    BidArea.create({ title: "Front Parking", bidId: 2 }),
-    BidArea.create({ title: "Front Gate", bidId: 2 }),
-    BidArea.create({ title: "Car Lot", bidId: 2 }),
-    BidArea.create({ title: "Shipping Dock", bidId: 2 })
-  ])
+  // const bidAreas = await Promise.all([
+  //   BidArea.create({ title: "Back Parking", bidId: 1 }),
+  //   BidArea.create({ title: "Front Parking", bidId: 1 }),
+  //   BidArea.create({ title: "Front Gate", bidId: 1 }),
+  //   BidArea.create({ title: "Side Fence", bidId: 1 }),
+  //   BidArea.create({ title: "Car Lot", bidId: 1 }),
+  //   BidArea.create({ title: "Shipping Dock", bidId: 1 }),
+  //   BidArea.create({ title: "Back Parking", bidId: 2 }),
+  //   BidArea.create({ title: "Front Parking", bidId: 2 }),
+  //   BidArea.create({ title: "Front Gate", bidId: 2 }),
+  //   BidArea.create({ title: "Car Lot", bidId: 2 }),
+  //   BidArea.create({ title: "Shipping Dock", bidId: 2 })
+  // ])
 
-  const areaProducts = await Promise.all([
-    AreaProduct.create({ bidAreaId: 1, price: findProp(products, 3, 'price'), cost: findProp(products, 3, 'cost'), productId: 3, qty: 4 }),
-    AreaProduct.create({ bidAreaId: 1, price: findProp(products, 2, 'price'), cost: findProp(products, 2, 'cost'), productId: 2, qty: 3 }),
-    AreaProduct.create({ bidAreaId: 1, price: findProp(products, 1, 'price'), cost: findProp(products, 1, 'cost'), productId: 1, qty: 1 }),
-    AreaProduct.create({ bidAreaId: 1, price: findProp(products, 4, 'price'), cost: findProp(products, 4, 'cost'), productId: 4, qty: 1 }),
-    AreaProduct.create({ bidAreaId: 1, price: findProp(products, 10, 'price'), cost: findProp(products, 10, 'cost'), productId: 10, qty: 3 }),
-    AreaProduct.create({ bidAreaId: 1, price: findProp(products, 12, 'price'), cost: findProp(products, 12, 'cost'), productId: 12, qty: 2 }),
-    AreaProduct.create({ bidAreaId: 2, price: findProp(products, 3, 'price'), cost: findProp(products, 3, 'cost'), productId: 3, qty: 4 }),
-    AreaProduct.create({ bidAreaId: 3, price: findProp(products, 2, 'price'), cost: findProp(products, 2, 'cost'), productId: 2, qty: 3 }),
-    AreaProduct.create({ bidAreaId: 4, price: findProp(products, 1, 'price'), cost: findProp(products, 1, 'cost'), productId: 1, qty: 1 }),
-    AreaProduct.create({ bidAreaId: 5, price: findProp(products, 4, 'price'), cost: findProp(products, 4, 'cost'), productId: 4, qty: 1 }),
-    AreaProduct.create({ bidAreaId: 6, price: findProp(products, 10, 'price'), cost: findProp(products, 10, 'cost'), productId: 10, qty: 3 }),
-    AreaProduct.create({ bidAreaId: 7, price: findProp(products, 12, 'price'), cost: findProp(products, 12, 'cost'), productId: 12, qty: 2 }),
-    AreaProduct.create({ bidAreaId: 8, price: findProp(products, 3, 'price'), cost: findProp(products, 3, 'cost'), productId: 3, qty: 4 }),
-    AreaProduct.create({ bidAreaId: 9, price: findProp(products, 2, 'price'), cost: findProp(products, 2, 'cost'), productId: 2, qty: 3 }),
-    AreaProduct.create({ bidAreaId: 10, price: findProp(products, 1, 'price'), cost: findProp(products, 1, 'cost'), productId: 1, qty: 1 }),
-    AreaProduct.create({ bidAreaId: 11, price: findProp(products, 4, 'price'), cost: findProp(products, 4, 'cost'), productId: 4, qty: 1 }),
-  ])
+  // const areaProducts = await Promise.all([
+  //   AreaProduct.create({ bidAreaId: 1, price: findProp(products, 3, 'price'), cost: findProp(products, 3, 'cost'), productId: 3, qty: 4 }),
+  //   AreaProduct.create({ bidAreaId: 1, price: findProp(products, 2, 'price'), cost: findProp(products, 2, 'cost'), productId: 2, qty: 3 }),
+  //   AreaProduct.create({ bidAreaId: 1, price: findProp(products, 1, 'price'), cost: findProp(products, 1, 'cost'), productId: 1, qty: 1 }),
+  //   AreaProduct.create({ bidAreaId: 1, price: findProp(products, 4, 'price'), cost: findProp(products, 4, 'cost'), productId: 4, qty: 1 }),
+  //   AreaProduct.create({ bidAreaId: 1, price: findProp(products, 10, 'price'), cost: findProp(products, 10, 'cost'), productId: 10, qty: 3 }),
+  //   AreaProduct.create({ bidAreaId: 1, price: findProp(products, 12, 'price'), cost: findProp(products, 12, 'cost'), productId: 12, qty: 2 }),
+  //   AreaProduct.create({ bidAreaId: 2, price: findProp(products, 3, 'price'), cost: findProp(products, 3, 'cost'), productId: 3, qty: 4 }),
+  //   AreaProduct.create({ bidAreaId: 3, price: findProp(products, 2, 'price'), cost: findProp(products, 2, 'cost'), productId: 2, qty: 3 }),
+  //   AreaProduct.create({ bidAreaId: 4, price: findProp(products, 1, 'price'), cost: findProp(products, 1, 'cost'), productId: 1, qty: 1 }),
+  //   AreaProduct.create({ bidAreaId: 5, price: findProp(products, 4, 'price'), cost: findProp(products, 4, 'cost'), productId: 4, qty: 1 }),
+  //   AreaProduct.create({ bidAreaId: 6, price: findProp(products, 10, 'price'), cost: findProp(products, 10, 'cost'), productId: 10, qty: 3 }),
+  //   AreaProduct.create({ bidAreaId: 7, price: findProp(products, 12, 'price'), cost: findProp(products, 12, 'cost'), productId: 12, qty: 2 }),
+  //   AreaProduct.create({ bidAreaId: 8, price: findProp(products, 3, 'price'), cost: findProp(products, 3, 'cost'), productId: 3, qty: 4 }),
+  //   AreaProduct.create({ bidAreaId: 9, price: findProp(products, 2, 'price'), cost: findProp(products, 2, 'cost'), productId: 2, qty: 3 }),
+  //   AreaProduct.create({ bidAreaId: 10, price: findProp(products, 1, 'price'), cost: findProp(products, 1, 'cost'), productId: 1, qty: 1 }),
+  //   AreaProduct.create({ bidAreaId: 11, price: findProp(products, 4, 'price'), cost: findProp(products, 4, 'cost'), productId: 4, qty: 1 }),
+  // ])
 
   const reviews = await Promise.all([
     Review.create({ content: "Delicious", rating: 4, productId: 1 }),
     Review.create({ content: "It's Great!", rating: 1, productId: 1 }),
     Review.create({ content: "I'm not a fan", rating: 2, productId: 2 }),
   ])
-  console.log(`seeded ${users.length} users, ${items.length} items, ${reviews.length} reviews, ${products.length} products, ${productCategories.length} productCategories, ${carts.length} carts, ${bids.length} bids, ${bidAreas.length} bidAreas, and ${categories.length} categories`)
+  console.log(`seeded ${users.length} users, ${items.length} items, ${reviews.length} reviews, ${products.length} products, ${productCategories.length} productCategories, ${carts.length} carts, and ${categories.length} categories`)
   console.log(`seeded successfully`)
 }
 

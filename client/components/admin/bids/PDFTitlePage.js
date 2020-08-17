@@ -1,5 +1,6 @@
 import React from 'react'
 import { HeaderView, Customer, OurInfo, OurAddressLine, AddyInfo, AddressLine, OurLink, OurHeader, MyHeader, ProposalMessage } from './PDFStyledComponents'
+import { Text } from '@react-pdf/renderer'
 import styled from '@react-pdf/styled-components'
 
 let date = ( new Date() ).toLocaleDateString().split("/")
