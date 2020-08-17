@@ -39,6 +39,10 @@ const Product = db.define('product', {
   featured: {
     type: Sequelize.BOOLEAN,
     defaultValue: false
+  },
+  laborTime: {
+    type: Sequelize.FLOAT,
+    allowNull: false
   }
 })
 

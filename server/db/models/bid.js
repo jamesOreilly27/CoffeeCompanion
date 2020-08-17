@@ -8,6 +8,14 @@ const Bid = db.define('bid', {
   status: {
     type: Sequelize.ENUM('open', 'pending', 'approved', 'declined')
   },
+  laborRate: {
+    type: Sequelize.INTEGER,
+    defaultValue: 65
+  },
+  laborTotal: {
+    type: Sequelize.INTEGER,
+    defaultValue: 0
+  },
   createdAt: {
     type: Sequelize.DATE,
     allowNull: false,
