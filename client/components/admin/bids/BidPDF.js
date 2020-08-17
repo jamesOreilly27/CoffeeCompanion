@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
 import { PDFTitlePage, PDFBidArea, PDFFinalTotal } from '../bids'
-import { PDFViewer, Page, Document, Image } from '@react-pdf/renderer'
-import { TitleImage, TitlePage, Doc } from './PDFStyledComponents'
+import { PDFViewer, Page } from '@react-pdf/renderer'
+import { TitlePage, Doc } from './PDFStyledComponents'
 
 
 const Wrapper = styled.div`

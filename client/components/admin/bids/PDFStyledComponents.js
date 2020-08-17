@@ -234,10 +234,38 @@ export const HeaderItem = styled.Text`
   text-align: right;
 `
 
+export const FlexContainer = styled.View`
+  flex-direction: row;
+  width: 91.5%;
+  justify-content: space-between;
+`
+
+export const SignatureContainer = styled.View`
+  flex-direction: column;
+  width: 45%;
+  justfity-content: space-between;
+`
+
+export const DisclaimerText = styled.Text`
+  font-size: 12px;
+  width: 100%;
+  margin-left: 12px;
+  margin-top: 15px;
+`
+
+export const SignatureText = styled.View`
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 95%;
+  border-top: 1px solid black;
+  margin-top: 56spx;
+  margin-left: 10px;
+  font-size: 13px;
+`
+
 export const ProjectTotals = styled.View`
   font-size: 14px;
-  width: 40%;
-  margin-left: 307px;
+  width: 50%;
   border: 1px solid black;
 `
 

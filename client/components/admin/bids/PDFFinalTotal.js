@@ -1,5 +1,5 @@
 import React from 'react'
-import { AreaTableHeader, AreaTitle, HeaderItem, TotalsView, AreaView, AreasView, ProjectTotals, ProjectTotalLineContainer, ProjectLineItem, AreaHeader } from './PDFStyledComponents'
+import { AreaTableHeader, AreaTitle, HeaderItem, TotalsView, AreaView, AreasView, ProjectTotals, ProjectTotalLineContainer, ProjectLineItem, AreaHeader, FlexContainer, DisclaimerText, SignatureContainer, SignatureText } from './PDFStyledComponents'
 import { Text } from '@react-pdf/renderer'
 import { PDFTitlePage, PDFAreaCard } from '../bids'
 import { sumAll, taxExemptTotal } from './helpers'
@@ -8,7 +8,7 @@ const PDFFinalTotal = ({ bid }) => (
   <TotalsView>
     <AreasView>
       <AreaHeader>
-        {`Total Proposal: This proposal is only valid for 30 days`}
+        {`Total Proposal`}
       </AreaHeader>
       <AreaTableHeader>
         <AreaTitle>Areas</AreaTitle>
@@ -20,40 +20,55 @@ const PDFFinalTotal = ({ bid }) => (
         {bid.bidAreas.map(area => <PDFAreaCard key={area.id} area={area} isEven={bid.bidAreas.indexOf(area) % 2 === 0} />)}
       </AreaView>
     </AreasView>
-    <ProjectTotals>
-      <ProjectTotalLineContainer>
-        <ProjectLineItem>
-          {"Subtotal"}
-        </ProjectLineItem>
-        <ProjectLineItem>
-          {`$${sumAll(bid.bidAreas, 'price').toFixed(2)}`}
-        </ProjectLineItem>
-      </ProjectTotalLineContainer>
-      <ProjectTotalLineContainer>
-        <ProjectLineItem>
-          {"Tax"}
-        </ProjectLineItem>
-        <ProjectLineItem>
-          {`$${taxExemptTotal((Math.ceil(sumAll(bid.bidAreas, 'price') * .065 * 100) / 100).toFixed(2), true)}`}
-        </ProjectLineItem>
-      </ProjectTotalLineContainer>
-      <ProjectTotalLineContainer>
-        <ProjectLineItem>
-          {"Estimated Labor (8 Hours)"}
-        </ProjectLineItem>
-        <ProjectLineItem>
-          {`$520.00`}
-        </ProjectLineItem>
-      </ProjectTotalLineContainer>
-      <ProjectTotalLineContainer>
-        <ProjectLineItem total>
-          {"Total Due:"}
-        </ProjectLineItem>
-        <ProjectLineItem total>
-          {`$${((sumAll(bid.bidAreas, 'price')) + 520).toFixed(2)}`}
-        </ProjectLineItem>
-      </ProjectTotalLineContainer>
-    </ProjectTotals>
+    <FlexContainer>
+      <SignatureContainer>
+        <DisclaimerText>
+          This Proposal is valid for 30 days from the date hereof and becomes binding if signed and delivered during that period. A 50% deposit will be due at the time of signing.
+        </DisclaimerText>
+        <SignatureText>
+          <Text style={{ marginLeft: '15px' }}>
+            Signature
+          </Text>
+          <Text style={{ marginLeft: '125px' }}>
+            Date
+          </Text>
+        </SignatureText>
+      </SignatureContainer>
+      <ProjectTotals>
+        <ProjectTotalLineContainer>
+          <ProjectLineItem>
+            {"Subtotal"}
+          </ProjectLineItem>
+          <ProjectLineItem>
+            {`$${sumAll(bid.bidAreas, 'price').toFixed(2)}`}
+          </ProjectLineItem>
+        </ProjectTotalLineContainer>
+        <ProjectTotalLineContainer>
+          <ProjectLineItem>
+            {"Tax"}
+          </ProjectLineItem>
+          <ProjectLineItem>
+            {`$${taxExemptTotal((Math.ceil(sumAll(bid.bidAreas, 'price') * .065 * 100) / 100).toFixed(2), true)}`}
+          </ProjectLineItem>
+        </ProjectTotalLineContainer>
+        <ProjectTotalLineContainer>
+          <ProjectLineItem>
+            {"Estimated Labor (8 Hours)"}
+          </ProjectLineItem>
+          <ProjectLineItem>
+            {`$520.00`}
+          </ProjectLineItem>
+        </ProjectTotalLineContainer>
+        <ProjectTotalLineContainer>
+          <ProjectLineItem total>
+            {"Total Due:"}
+          </ProjectLineItem>
+          <ProjectLineItem total>
+            {`$${((sumAll(bid.bidAreas, 'price')) + 520).toFixed(2)}`}
+          </ProjectLineItem>
+        </ProjectTotalLineContainer>
+      </ProjectTotals>
+    </FlexContainer>
   </TotalsView>
 )
 
