@@ -5,10 +5,10 @@ const Wrapper = styled.div`
 
 `
 
-const Customers = () => (
+const CustomerLink = () => (
   <Wrapper>
-    Hello From Customers
+
   </Wrapper>
 )
 
-export default Customers
+export default CustomerLink

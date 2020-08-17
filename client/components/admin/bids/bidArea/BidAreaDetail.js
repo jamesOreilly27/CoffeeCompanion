@@ -5,7 +5,7 @@ import { ProductCard, SearchBar, AreaHeader } from '../bidArea'
 const Wrapper = styled.div`
   background-color: #383737;
   border-radius: 4px;
-  width: 80%;
+  width: 76%;
   display: flex;
 `
 
@@ -17,6 +17,8 @@ const Container = styled.div`
 
 const ProductContainer = styled.div`
   padding: 10px;
+  border-top: 3px solid #252525;
+  margin: 10px 0;
 `
 
 const ProductsList = styled.div`
@@ -28,7 +30,7 @@ const BidAreaDetail = props => (
   <Wrapper>
     {props.area &&
       <Container>
-        <AreaHeader area={props.area} bidId={props.bidId} />
+        <AreaHeader area={props.area} bidId={props.bidId} updateTitleState={props.updateTitleState}/>
         <ProductContainer>
           <SearchBar bidAreaId={props.area.id} bidId={props.bidId} />
           <ProductsList>

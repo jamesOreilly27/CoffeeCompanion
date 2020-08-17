@@ -11,12 +11,13 @@ const easeInAlert = keyframes`
 //Headers
 export const Title = styled.h1`
   margin: ${({ margin }) => {
-    if(margin) return `${margin}vh 0`
+    if(margin) return `${margin}vh 0 ${margin}vh 10px`
     else return `0`
   }};
   font-size: ${({ size }) => {
     if(size === 'sm') return `14px`
-    if(size === 'med') return `18px`
+    if(size === 'med') return `20px`
+    if(size === 'lg') return `24px`
     else return ''
   }};
   color: #F8F8FF;
@@ -42,7 +43,7 @@ export const Form = styled.form`
   align-items: center;
   justify-content: space-around;
   width: ${({ width }) => `${width}vw`};
-  padding-top: ${({ padding }) => `${padding}vh`}
+  padding-top: ${({ padding }) => `${padding}vh`};
 `
 
 export const Label = styled.label`

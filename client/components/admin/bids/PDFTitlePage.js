@@ -1,33 +1,66 @@
 import React from 'react'
-import { HeaderView, Customer, OurInfo, OurAddressLine, AddyInfo, AddressLine, Header, OurLink, FrontPage } from './PDFStyledComponents'
+import { HeaderView, Customer, OurInfo, OurAddressLine, AddyInfo, AddressLine, OurLink, OurHeader, MyHeader, ProposalMessage } from './PDFStyledComponents'
+import { Text } from '@react-pdf/renderer'
+import styled from '@react-pdf/styled-components'
 
-const PDFTitlePage = () => (
+let date = ( new Date() ).toLocaleDateString().split("/")
+
+const createDateString = arr => {
+  let string = ''
+
+  for(let i = 0; i < arr.length; i++) {
+    if(i === 0) string += arr[i]
+    else string += `/${arr[i]}`
+  }
+
+  return string
+}
+
+const HeaderImage = styled.Image`
+  width: 100%;
+  height: 400px;
+  margin-bottom: 20px;
+`
+
+const Logo = styled.Image`
+  width: 300px;
+  height: 200px;
+  margin-left: 150px;
+`
+
+const PDFTitlePage = ({ customer }) => (
   <HeaderView>
+    <HeaderImage src="/images/goodwill.png" />
     <Customer>
+      <ProposalMessage>
+        {`Prepared on ${createDateString(date)}`}
+      </ProposalMessage>
+      <ProposalMessage>
+        A Proposal For
+      </ProposalMessage>
       <AddyInfo>
-        <Header>
-          {`Test Customer`}
-        </Header>
+        <OurHeader>
+          {customer.companyName}
+        </OurHeader>
         <AddressLine>
-          {`555-347-5902`}
+          {customer.address}
         </AddressLine>
         <AddressLine>
-          {`123 Main Street`}
-        </AddressLine>
-        <AddressLine>
-          {`Palm City, FL 34990`}
+          {`${customer.town} ${customer.zipCode}`}
         </AddressLine>
       </AddyInfo>
     </Customer>
+
+    <Logo src="/images/title-logo.png" />
     <OurInfo>
-      <Header>
-        {`Sight On Site`}
-      </Header>
+      <MyHeader>
+        {`Fastrack Security Solutions LLC`}
+      </MyHeader>
       <OurAddressLine>
-        {`555-123-4567`}
+        {`2740 SW Martin Downs Blvd`}
       </OurAddressLine>
       <OurAddressLine>
-        {`3533 SW Corporate Pkwy`}
+        {`PO BOX #163`}
       </OurAddressLine>
       <OurAddressLine>
         {`Palm City, FL 34990`}

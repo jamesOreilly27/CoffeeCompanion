@@ -32,7 +32,6 @@ const User = styled(FontAwesomeIcon)`
 
 const UserHeaderInfo = ({ loggedIn }) => (
   <Wrapper>
-    {console.log('TESTING', loggedIn)}
     <Authlink to={chooseLink(loggedIn)}>
       <User icon={['fa', 'user-circle']} size="2x" />
     </Authlink>

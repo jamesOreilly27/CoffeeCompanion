@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Title } from '../../../styled-components'
 import { QtyContainer, AddButton, RemoveButton } from '../bidArea'
+import { UpdatePriceForm, UpdateCostForm } from '../bidArea'
 
-const Wrapper = styled.form`
+const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
   background-color: #383737;
-  width: 95%;
+  width: 98%;
   border-bottom: 1px solid #f8f8ff;
-  padding: 3vh 20px;
+  padding: 3vh 10px;
   height: 13vh;
 `
 
@@ -19,8 +19,8 @@ const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 50%;
-  width: 20vw;
+  height: 40%;
+  width: 16vw;
   padding-left: 10px;
 `
 const ImageContainer = styled.div`
@@ -42,8 +42,9 @@ const Image = styled.img`
 
 const CenteredContainer = styled(Container)`
   align-items: center;
-  width: 10vw;
+  width: 9vw;
   padding: 0;
+  cursor: default;
 `
 
 const ButtonContainer = styled(Container)`
@@ -52,7 +53,7 @@ const ButtonContainer = styled(Container)`
 `
 
 const PartNumber = styled.div`
-  font-size: 14px;
+  font-size: 12px;
   color: #C3C3C3;
 `
 
@@ -65,22 +66,37 @@ const TextInput = styled.input`
 
 const DollarAmt = styled.div`
   color: #F8F8FF;
+  font-size: 14px;
 `
 
 class ProductCard extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { qty: 1 }
+    this.state = { qty: 1, editPrice: false }
 
     this.handleChange = this.handleChange.bind(this)
+    this.flipEditPrice = this.flipEditPrice.bind(this)
+    this.flipEditCost = this.flipEditCost.bind(this)
   }
 
   handleChange(str) {
-    if(str === '') {
+    if (str === '') {
       this.setState({ qty: 1 })
     } else {
       this.setState({ qty: parseInt(str) })
+    }
+  }
+
+  flipEditPrice() {
+    if (!this.props.search) {
+      this.setState({ editPrice: !this.state.editPrice })
+    }
+  }
+
+  flipEditCost() {
+    if (!this.props.search) {
+      this.setState({ editCost: !this.state.editCost })
     }
   }
 
@@ -106,14 +122,41 @@ class ProductCard extends Component {
           :
           <QtyContainer quantity={this.props.qty} productId={this.props.productId} bidId={this.props.bidId} />
         }
-        <CenteredContainer>
-          <Title size="sm">Cost</Title>
-          { this.props.cost && <DollarAmt>{`$${(this.props.cost * qty).toFixed(2)}`}</DollarAmt> }
-        </CenteredContainer>
-        <CenteredContainer>
-          <Title size="sm">Price</Title>
-          <DollarAmt>{`$${(this.props.price * qty).toFixed(2)}`}</DollarAmt>
-        </CenteredContainer>
+        {!this.state.editCost ?
+          <CenteredContainer onClick={this.flipEditCost}>
+            <Title size="sm">Cost</Title>
+            {this.props.cost && <DollarAmt>{`$${(this.props.cost * qty).toFixed(2)}`}</DollarAmt>}
+          </CenteredContainer>
+
+          :
+          <CenteredContainer>
+            <UpdateCostForm
+              areaProductId={this.props.productId}
+              cost={this.props.cost}
+              handleSubmit={this.flipEditCost}
+              qty={this.props.qty}
+              bidId={this.props.bidId}
+              bidAreaId={this.props.bidAreaId}
+            />
+          </CenteredContainer>
+        }
+        {!this.state.editPrice ?
+          <CenteredContainer onClick={this.flipEditPrice}>
+            <Title size="sm">Price</Title>
+            <DollarAmt>{`$${(this.props.price * qty).toFixed(2)}`}</DollarAmt>
+          </CenteredContainer>
+          :
+          <CenteredContainer>
+            <UpdatePriceForm
+              areaProductId={this.props.productId}
+              price={this.props.price}
+              handleSubmit={this.flipEditPrice}
+              qty={this.props.qty}
+              bidId={this.props.bidId}
+              bidAreaId={this.props.bidAreaId}
+            />
+          </CenteredContainer>
+        }
         <ButtonContainer>
           {this.props.search &&
             <AddButton

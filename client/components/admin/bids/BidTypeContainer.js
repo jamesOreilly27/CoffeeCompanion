@@ -6,17 +6,23 @@ import { BidList } from '../bids'
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  width: 30%;
-  background-color: #383737;
+  width: 32%;
   border-radius: 4px;
-  padding: 10px;
+  border: 2px solid #4E4E6F;
+`
+
+const CenteredTitle = styled(Title)`
+  text-align: center;
+  font-size: 26px;
+  background-color: #383738;
+  margin: 0;
 `
 
 const BidTypeContainer = ({ title, bids }) => (
   <Wrapper>
-    <Title size="med">
+    <CenteredTitle size="med" margin={1}>
       {title}
-    </Title>
+    </CenteredTitle>
     <BidList bids={bids} />
   </Wrapper>
 )

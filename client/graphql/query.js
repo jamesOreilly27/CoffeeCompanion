@@ -142,6 +142,9 @@ export const getAllBids = gql`
           qty
         }
       }
+      customer {
+        id
+      }
     }
   }
 `
@@ -166,6 +169,46 @@ export const getBidDetails = gql`
             description
           }
         }
+      }
+      customer {
+        id
+        companyName
+        phoneNumber
+        address
+        town
+        zipCode
+        state
+      }
+      notes {
+        id
+        subject
+        text
+      }
+    }
+  }
+`
+
+export const allCustomers = gql`
+  {
+    allCustomers {
+      id
+      companyName
+      industry
+      address
+      town
+      zipCode
+      localPolicePhone
+      email
+      relayPort
+      relayId
+      contacts {
+        id
+        firstName
+        lastName
+        phoneNumber
+        email
+        passcode
+        primary
       }
     }
   }

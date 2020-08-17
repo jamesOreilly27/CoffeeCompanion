@@ -1,6 +1,6 @@
-const { GraphQLList, GraphQLBoolean, GraphQLInt, GraphQLString } = require('graphql')
-const { BidType, BidAreaType, AreaProductType} = require('./ObjectTypes')
-const { Bid, BidArea, AreaProduct } = require('../../db/models')
+const { GraphQLList, GraphQLBoolean, GraphQLInt, GraphQLString, GraphQLFloat } = require('graphql')
+const { BidType, BidAreaType, AreaProductType, NoteType } = require('./ObjectTypes')
+const { Bid, BidArea, AreaProduct, Customer, Note } = require('../../db/models')
 
 const allBidsResolver = () => {
   return Bid.findAll()
@@ -22,9 +22,30 @@ const newBidResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
+const updateStatusResolver = ( parent, { id, status }) => {
+  return Bid.findByPk(id)
+  .then(bid => bid.update({ status }))
+  .catch(err => console.log(err))
+}
+
 const newAreaResolver = (parent, args) => {
   return BidArea.create(args)
   .then(area => area)
+  .catch(err => console.log(err))
+}
+
+const updateAreaResolver = (parent, args) => {
+  return BidArea.findByPk(args.id)
+  .then(area => area.update({ title: args.title }) )
+  .catch(err => console.log(err))
+}
+
+const destroyBidArea = (parent, args) => {
+  return BidArea.findByPk(args.id)
+  .then(area => {
+    area.destroy()
+    return true
+  })
   .catch(err => console.log(err))
 }
 
@@ -41,14 +62,14 @@ const decrementQtyResolver = ( parent, { id }, request) => {
       return areaProduct.destroy()
     }
     else {
-      return areaProduct.update({ qty: areaProduct.qty - 1})
+      return areaProduct.update({ qty: areaProduct.qty - 1 })
     }
   })
   .catch(err => console.log(err))
 }
 
 const removeAreaProductResolver = ( parent, { id }, request ) => {
-  AreaProduct.findByPk(id)
+  return AreaProduct.findByPk(id)
   .then(areaProduct => {
     areaProduct.destroy()
     return true
@@ -59,6 +80,30 @@ const removeAreaProductResolver = ( parent, { id }, request ) => {
 const addAreaProductResolver = (parent, args) => {
   return AreaProduct.create(args)
   .then(areaProduct => areaProduct)
+  .catch(err => console.log(err))
+}
+
+const updateProductPriceResolver = (parent, args) => {
+  return AreaProduct.findByPk(args.id)
+  .then(areaProduct => areaProduct.update({ price: args.price }))
+  .catch(err => console.log(err))
+}
+
+const updateProductCostResolver = (parent, args) => {
+  return AreaProduct.findByPk(args.id)
+  .then(areaProduct => areaProduct.update({ cost: args.cost }))
+  .catch(err => console.log(err))
+}
+
+const addCustomerResolver = (parent, { companyName, email, phoneNumber, address, town, zipCode, state, id}) => {
+  return BidArea.create({ title: "Area", bidId: id })
+  .then(() => {
+    return Customer.create({ companyName, email, phoneNumber, address, town, zipCode, state})
+  .then(customer => {
+    return Bid.findByPk(id)
+  .then(bid => bid.update({ customerId: customer.id, title: customer.companyName }))
+    })
+  })
   .catch(err => console.log(err))
 }
 
@@ -86,6 +131,31 @@ const createBid = {
   resolve: newBidResolver
 }
 
+const updateStatus = {
+  type: BidType,
+  description: "change the status of a bid",
+  args: {
+    id: { type: GraphQLInt },
+    status: { type: GraphQLString }
+  },
+  resolve: updateStatusResolver
+}
+
+const addCustomer = {
+  type: BidType,
+  description: 'attach a new customer to the newest bid',
+  args: {
+    companyName: { type: GraphQLString },
+    email: { type: GraphQLString },
+    phoneNumber: { type: GraphQLString },
+    address: { type: GraphQLString },
+    town: { type: GraphQLString },
+    zipCode: { type: GraphQLString },
+    id: { type: GraphQLInt }
+  },
+  resolve: addCustomerResolver
+}
+
 const addBidArea = {
   type: BidAreaType,
   description: "add a new area to a bid",
@@ -96,16 +166,33 @@ const addBidArea = {
   resolve: newAreaResolver
 }
 
+const updateAreaTitle = {
+  type: BidAreaType,
+  description: "change the name of a bid area",
+  args: {
+    id: { type: GraphQLInt },
+    title: { type: GraphQLString },
+  },
+  resolve: updateAreaResolver
+}
+
+const removeBidArea = {
+  type: GraphQLBoolean,
+  description: "remove a bid area",
+  args: { id: { type: GraphQLInt } },
+  resolve: destroyBidArea
+}
+
 const incrementProductQty = {
   type: AreaProductType,
-  args: { id: { type: GraphQLInt }},
+  args: { id: { type: GraphQLInt } },
   description: 'increment the qty of an area product',
   resolve: incrementQtyResolver
 }
 
 const decrementProductQty = {
   type: AreaProductType,
-  args: { id: { type: GraphQLInt }},
+  args: { id: { type: GraphQLInt } },
   description: 'decrement the qty of an area product',
   resolve: decrementQtyResolver
 }
@@ -115,8 +202,8 @@ const addAreaProduct = {
   description: 'add a new area product',
   args: {
     qty: { type: GraphQLInt },
-    price: { type: GraphQLInt },
-    cost: { type: GraphQLInt },
+    price: { type: GraphQLFloat },
+    cost: { type: GraphQLFloat },
     productId: { type: GraphQLInt },
     bidAreaId: { type: GraphQLInt }
   },
@@ -126,17 +213,43 @@ const addAreaProduct = {
 const removeAreaProduct = {
   type: GraphQLBoolean,
   description: 'remove an areaproduct from a bidarea',
-  args: { id: { type: GraphQLInt }},
+  args: { id: { type: GraphQLInt } },
   resolve: removeAreaProductResolver
+}
+
+const updateAreaProductPrice = {
+  type: AreaProductType,
+  description: "update the price of an area product",
+  args: {
+    id: { type: GraphQLInt },
+    price: { type: GraphQLFloat }
+  },
+  resolve: updateProductPriceResolver
+}
+
+const updateAreaProductCost = {
+  type: AreaProductType,
+  description: "update the price of an area product",
+  args: {
+    id: { type: GraphQLInt },
+    cost: { type: GraphQLFloat }
+  },
+  resolve: updateProductCostResolver
 }
 
 module.exports = {
   bids,
   bidDetails,
   createBid,
+  updateStatus,
   addBidArea,
+  updateAreaTitle,
+  removeBidArea,
   incrementProductQty,
   decrementProductQty,
   removeAreaProduct,
-  addAreaProduct
+  addAreaProduct,
+  updateAreaProductPrice,
+  updateAreaProductCost,
+  addCustomer
 }

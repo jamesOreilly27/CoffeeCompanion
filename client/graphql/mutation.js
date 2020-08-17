@@ -67,6 +67,7 @@ export const startNewBid = gql`
   mutation($title: String!, $status: String!, $userId: Int!) {
     createBid(title: $title, status: $status, userId: $userId) {
       id
+      status
     }
   }
 `
@@ -85,6 +86,30 @@ export const addBidArea = gql`
         }
       }
     }
+  }
+`
+
+export const updateStatus = gql`
+  mutation($id: Int!, $status: String!) {
+    updateStatus(id: $id, status: $status) {
+      id
+      status
+    }
+  }
+`
+
+export const updateAreaTitle = gql`
+  mutation($id: Int!, $title: String!) {
+    updateAreaTitle(id: $id, title: $title) {
+      title
+      id
+    }
+  }
+`
+
+export const removeBidArea = gql`
+  mutation($id: Int!) {
+    removeBidArea(id: $id)
   }
 `
 
@@ -126,7 +151,7 @@ export const removeAreaProduct = gql`
 `
 
 export const addAreaProduct = gql`
-  mutation($qty: Int!, $price: Int!, $cost: Int!, $productId: Int!, $bidAreaId: Int!) {
+  mutation($qty: Int!, $price: Float!, $cost: Float!, $productId: Int!, $bidAreaId: Int!) {
     addAreaProduct(qty: $qty, price: $price, cost: $cost, productId: $productId, bidAreaId: $bidAreaId) {
       id
       qty
@@ -134,8 +159,83 @@ export const addAreaProduct = gql`
       price
       product {
         name
+        partNumber
         description
       }
     }
+  }
+`
+
+export const updateAreaProductPrice = gql`
+  mutation($id: Int!, $price: Float!) {
+    updateAreaProductPrice(id: $id, price: $price) {
+      id
+      qty
+      cost
+      price
+      product {
+        name
+        partNumber
+        description
+      }
+    }
+  }
+`
+
+export const updateAreaProductCost = gql`
+  mutation($id: Int!, $cost: Float!) {
+    updateAreaProductCost(id: $id, cost: $cost) {
+      id
+      qty
+      cost
+      price
+      product {
+        name
+        partNumber
+        description
+      }
+    }
+  }
+`
+
+export const createCustomer = gql`
+  mutation($companyName: String!, $email: String!, $phoneNumber: String!, $address: String!, $town: String!, $zipCode: String!) {
+    createCustomer(companyName: $companyName, email: $email, phoneNumber: $phoneNumber, address: $address, town: $town, zipCode: $zipCode) {
+      companyName
+    }
+  }
+`
+
+export const addCustomer = gql`
+mutation($companyName: String!, $email: String!, $phoneNumber: String!, $address: String!, $town: String!, $zipCode: String!, $id: Int!) {
+  addCustomer(companyName: $companyName, email: $email, phoneNumber: $phoneNumber, address: $address, town: $town, zipCode: $zipCode, id: $id) {
+    id
+  }
+}
+`
+
+export const createNote = gql`
+  mutation($bidId: Int!, $subject: String!, $text: String!) {
+    createNote(bidId: $bidId, subject: $subject, text: $text) {
+      id
+      subject
+      text
+    }
+  }
+`
+
+export const updateNote = gql`
+  mutation($id: Int!, $subject: String!, $text: String!) {
+    updateNote(id: $id, subject: $subject, text: $text) {
+      id
+      subject
+      text
+    }
+  }
+`
+
+export const deleteNote = gql`
+  mutation($id: Int!) {
+    deleteNote(id: $id)
   }
 `

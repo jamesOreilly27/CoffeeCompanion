@@ -155,6 +155,24 @@ const BidType = new GraphQLObjectType({
           .then(area => area)
           .catch(err => console.log(err))
       }
+    },
+    customer: {
+      type: CustomerType,
+      description: "Customer attached to the bid",
+      resolve: bid => {
+        return bid.getCustomer()
+        .then(customer => customer)
+        .catch(err => console.log(err))
+      }
+    },
+    notes: {
+      type: new GraphQLList(NoteType),
+      description: "a note on the bid",
+      resolve: bid => {
+        return bid.getNotes()
+        .then(notes => notes)
+        .catch(err => console.log(err))
+      }
     }
   })
 })
@@ -215,6 +233,59 @@ const AreaProductType = new GraphQLObjectType({
   })
 })
 
+/********** Customer Object Types **********/
+
+const CustomerType = new GraphQLObjectType({
+  name: "customer",
+  description: "A Customer",
+  fields: () => ({
+    id: { type: GraphQLInt },
+    companyName: { type: GraphQLString },
+    industry: { type: GraphQLString },
+    address: { type: GraphQLString },
+    town: { type: GraphQLString },
+    zipCode: { type: GraphQLString },
+    relayPort: { type: GraphQLString },
+    phoneNumber: { type: GraphQLString },
+    state: { type: GraphQLString },
+    relayId: { type: GraphQLString },
+    localPolicePhone: { type: GraphQLString },
+    email: { type: GraphQLString },
+    contacts: {
+      type: new GraphQLList(ContactType),
+      resolve: customer => {
+        return customer.getContacts()
+        .then(contacts => contacts)
+        .catch(err => console.log(err))
+      }
+    }
+  })
+})
+
+const ContactType = new GraphQLObjectType({
+  name: "contact",
+  description: "A Contact",
+  fields: () => ({
+    id: { type: GraphQLInt },
+    firstName: { type: GraphQLString },
+    lastName: { type: GraphQLString },
+    phoneNumber: { type: GraphQLString },
+    passcode: { type: GraphQLString },
+    email: { type: GraphQLString },
+    primary: { type: GraphQLBoolean }
+  })
+})
+
+const NoteType = new GraphQLObjectType({
+  name: 'note',
+  description: "a note",
+  fields: () => ({
+    id: { type: GraphQLInt },
+    subject: { type: GraphQLString },
+    text: { type: GraphQLString }
+  })
+})
+
 module.exports = {
   UserType,
   CategoryType,
@@ -226,5 +297,8 @@ module.exports = {
   BidType,
   BidDetailType,
   BidAreaType,
-  AreaProductType
+  AreaProductType,
+  CustomerType,
+  ContactType,
+  NoteType
 }
