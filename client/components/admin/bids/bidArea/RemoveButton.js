@@ -10,7 +10,7 @@ const Wrapper = styled.button`
   border: none;
 `
 
-const RemoveButton = ({ productId, bidId }) => (
+const RemoveButton = ({ productId, bidId, qty, laborRate, laborTime, laborTotal }) => (
   <Mutation
     mutation={removeAreaProduct}
     update={( cache, { data: { removeAreaProduct } } ) => {
@@ -33,7 +33,7 @@ const RemoveButton = ({ productId, bidId }) => (
     {( removeAreaProduct, { data }) => (
       <Wrapper onClick={evt => {
         evt.preventDefault()
-        removeAreaProduct({ variables: { id: productId } })
+        removeAreaProduct({ variables: { id: productId, bidId: bidId, qty: qty, laborRate: laborRate, laborTime: laborTime, laborTotal: laborTotal } })
       }}>
         -
       </Wrapper>

@@ -13,7 +13,7 @@ const Bid = db.define('bid', {
     defaultValue: 65
   },
   laborTotal: {
-    type: Sequelize.INTEGER,
+    type: Sequelize.FLOAT,
     defaultValue: 0
   },
   createdAt: {

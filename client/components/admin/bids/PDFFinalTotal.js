@@ -56,7 +56,7 @@ const PDFFinalTotal = ({ bid }) => (
             {"Labor"}
           </ProjectLineItem>
           <ProjectLineItem>
-            {`$237.25`}
+            { ((bid.laborTotal * 100) / 100).toFixed(2) }
           </ProjectLineItem>
         </ProjectTotalLineContainer>
         <ProjectTotalLineContainer>
@@ -64,7 +64,7 @@ const PDFFinalTotal = ({ bid }) => (
             {"Total Due:"}
           </ProjectLineItem>
           <ProjectLineItem total>
-            {`$${((sumAll(bid.bidAreas, 'price')) + 237.25).toFixed(2)}`}
+            {`$${((sumAll(bid.bidAreas, 'price')) + ((bid.laborTotal * 100) / 100)).toFixed(2)}`}
           </ProjectLineItem>
         </ProjectTotalLineContainer>
       </ProjectTotals>

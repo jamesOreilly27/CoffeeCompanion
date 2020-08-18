@@ -68,8 +68,15 @@ const decrementQtyResolver = ( parent, { id }, request) => {
   .catch(err => console.log(err))
 }
 
-const removeAreaProductResolver = ( parent, { id }, request ) => {
-  return AreaProduct.findByPk(id)
+const removeAreaProductResolver = (parent, { id, bidId, qty, laborTotal, laborRate, laborTime}) => {
+  return Bid.findByPk(bidId)
+  .then(bid => {
+    bid.update({ laborTotal: laborTotal - (laborRate * laborTime * qty) })
+    return
+  })
+  .then(() => {
+    return AreaProduct.findByPk(id)
+  })
   .then(areaProduct => {
     areaProduct.destroy()
     return true
@@ -77,8 +84,13 @@ const removeAreaProductResolver = ( parent, { id }, request ) => {
   .catch(err => console.log(err))
 }
 
-const addAreaProductResolver = (parent, args) => {
-  return AreaProduct.create(args)
+const addAreaProductResolver = (parent, { qty, price, cost, productId, bidAreaId, bidId, laborTime, laborRate, laborTotal }) => {
+  return Bid.findByPk(bidId)
+  .then(bid => {
+    bid.update({ laborTotal: laborTotal + (laborRate * laborTime * qty) })
+    return
+  })
+  .then(() => AreaProduct.create({ qty, price, cost, productId, bidAreaId }))
   .then(areaProduct => areaProduct)
   .catch(err => console.log(err))
 }
@@ -204,8 +216,12 @@ const addAreaProduct = {
     qty: { type: GraphQLInt },
     price: { type: GraphQLFloat },
     cost: { type: GraphQLFloat },
+    bidId: { type: GraphQLInt },
     productId: { type: GraphQLInt },
-    bidAreaId: { type: GraphQLInt }
+    bidAreaId: { type: GraphQLInt },
+    laborTime: { type: GraphQLFloat },
+    laborRate: { type: GraphQLInt },
+    laborTotal: { type: GraphQLFloat }
   },
   resolve: addAreaProductResolver
 }
@@ -213,7 +229,14 @@ const addAreaProduct = {
 const removeAreaProduct = {
   type: GraphQLBoolean,
   description: 'remove an areaproduct from a bidarea',
-  args: { id: { type: GraphQLInt } },
+  args: {
+    id: { type: GraphQLInt },
+    qty: { type: GraphQLInt },
+    bidId: { type: GraphQLInt },
+    laborRate: { type: GraphQLInt },
+    laborTime: { type: GraphQLFloat },
+    laborTotal: { type: GraphQLFloat }
+  },
   resolve: removeAreaProductResolver
 }
 

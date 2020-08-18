@@ -10,7 +10,7 @@ const Wrapper = styled.button`
   border: none;
 `
 
-const AddButton = ({ productId, handleAddChange, bidAreaId, bidId, price, cost, qty }) => (
+const AddButton = ({ productId, handleAddChange, bidAreaId, bidId, price, cost, qty, laborRate, laborTotal, laborTime }) => (
   <Mutation
     mutation={addAreaProduct}
     update={( cache, { data: { addAreaProduct } }) => {
@@ -28,7 +28,7 @@ const AddButton = ({ productId, handleAddChange, bidAreaId, bidId, price, cost, 
       <Wrapper onClick={evt => {
         evt.preventDefault()
         handleAddChange()
-        addAreaProduct({ variables: { productId, bidAreaId, price, cost, qty } })
+        addAreaProduct({ variables: { productId, bidAreaId, price, cost, qty, bidId, laborRate, laborTotal, laborTime } })
       }}>
         +
       </Wrapper>
