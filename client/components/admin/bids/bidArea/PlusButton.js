@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   cursor: pointer;
 `
 
-const PlusButton = ({ qty, productId, bidId }) => (
+const PlusButton = ({ qty, productId, bidId, laborRate, laborTime, laborTotal }) => (
   <Mutation
     mutation={incrementProductQty}
     update={(cache, { data: { incrementProductQty } } ) => {
@@ -37,7 +37,7 @@ const PlusButton = ({ qty, productId, bidId }) => (
   >
     {( incrementProductQty, { data }) => (
       <Wrapper onClick={() => {
-        incrementProductQty({ variables: { id: productId } })
+        incrementProductQty({ variables: { id: productId, bidId, laborRate, laborTotal, laborTime } })
       }}>
         +
       </Wrapper>

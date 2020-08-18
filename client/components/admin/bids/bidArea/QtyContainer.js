@@ -22,11 +22,11 @@ const Quantity = styled(Element)`
   color: #F8F8FF;
 `
 
-const QtyContainer = ({ quantity, productId, bidId}) => (
+const QtyContainer = ({ quantity, productId, bidId, laborRate, laborTotal, laborTime }) => (
   <Wrapper>
-    <MinusButton qty={quantity} productId={productId} bidId={bidId} />
+    <MinusButton qty={quantity} productId={productId} bidId={bidId} laborRate={laborRate} laborTime={laborTime} laborTotal={laborTotal} />
     <Quantity> {quantity} </Quantity>
-    <PlusButton qty={quantity} productId={productId} bidId={bidId} />
+    <PlusButton qty={quantity} productId={productId} bidId={bidId} laborRate={laborRate} laborTime={laborTime} laborTotal={laborTotal} />
   </Wrapper>
 )
 

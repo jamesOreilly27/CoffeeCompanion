@@ -120,7 +120,7 @@ class ProductCard extends Component {
             }}></TextInput>
           </CenteredContainer>
           :
-          <QtyContainer quantity={this.props.qty} productId={this.props.productId} bidId={this.props.bidId} />
+          <QtyContainer quantity={this.props.qty} productId={this.props.productId} bidId={this.props.bidId} laborRate={this.props.laborRate} laborTime={this.props.laborTime} laborTotal={this.props.laborTotal} />
         }
         {!this.state.editCost ?
           <CenteredContainer onClick={this.flipEditCost}>

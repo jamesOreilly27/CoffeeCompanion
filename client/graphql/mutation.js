@@ -129,16 +129,16 @@ export const createAreaProduct = gql`
 `
 
 export const incrementProductQty = gql`
-  mutation($id: Int!) {
-    incrementProductQty(id: $id) {
+  mutation($id: Int!, $bidId: Int!, $laborRate: Int!, $laborTotal: Float!, $laborTime: Float!) {
+    incrementProductQty(id: $id, bidId: $bidId, laborRate: $laborRate, laborTotal: $laborTotal, laborTime: $laborTime) {
       qty
     }
   }
 `
 
 export const decrementProductQty = gql`
-  mutation($id: Int!) {
-    decrementProductQty(id: $id) {
+  mutation($id: Int!, $bidId: Int!, $laborRate: Int!, $laborTotal: Float!, $laborTime: Float!) {
+    decrementProductQty(id: $id, bidId: $bidId, laborRate: $laborRate, laborTotal: $laborTotal, laborTime: $laborTime) {
       qty
     }
   }

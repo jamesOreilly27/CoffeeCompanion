@@ -8,7 +8,7 @@ const webRelay = axios.create({
   baseURL: '',
   timeout: 1000,
   headers: {
-    'Authorization': relayAuth,
+    'Authorization': 'Basic YWRtaW46ZnNzNjMxOTc3',
     'X-Requested-With': 'XMLHttpRequest'
   }
 })

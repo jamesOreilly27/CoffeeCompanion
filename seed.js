@@ -295,7 +295,8 @@ async function seed () {
     Product.create({ name: 'ACC-7 STANDARD LICENSE', vendor: 'AVIGILON', partNumber: 'ACC-7-STD', description: '',  cost: 99, price: 125, image: '', laborTime: 0 }),
     Product.create({ name: 'NVR AVIGILON SERVER SOFTWARE', vendor: 'SUPERLOGIC', partNumber: 'SUPERLOGIC', description: '',  cost: 1622, price: 1999, image: '', laborTime: 0.5 }),
     Product.create({ name: '12MP FISHEYE CAMERA', vendor: 'AVIGILON', partNumber: '12-H4F-D01', description: '',  cost: 648, price: 799, image: '', laborTime: 0.335 }),
-    Product.create({ name: '4K STARLIGHT FIXED-FOCAL DOME CAMERA', vendor: 'ENS', partNumber: 'HNC3V281E-IRS-S2', description: '',  cost: 109, price: 160, image: '', laborTime: 0.335 })
+    Product.create({ name: '4K STARLIGHT FIXED-FOCAL DOME CAMERA', vendor: 'ENS', partNumber: 'HNC3V281E-IRS-S2', description: '',  cost: 109, price: 160, image: '', laborTime: 0.335 }),
+    Product.create({ name: "8TB SURVEILLANCE HARD DIRVE", vendor: "AMAZON", partNumber: "8TB-SUR-HDRV", description: "a hard drive", cost: 154, price: 199, image: "", laborTime: 0.18 })
   ])
 
   const categories = await Promise.all([
