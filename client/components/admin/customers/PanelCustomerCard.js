@@ -88,7 +88,7 @@ const CustomerTitleCard = ({ customer, relayState, arm, disarm }) => (
       </PhoneNum>
     </PoliceNumber>
     <Checkbox>
-      <Switch checked={parseInt(relayState[`relay${customer.relayId}state`]._text)} color="primary" onChange={() => {
+      <Switch checked={parseInt(relayState[`relay${customer.relayId}state`]._text) !== 0} color="primary" onChange={() => {
         if (parseInt(relayState[`relay${customer.relayId}state`]._text)) disarm(customer.relayPort, customer.relayId)
         else arm(customer.relayPort, customer.relayId)
       }} />

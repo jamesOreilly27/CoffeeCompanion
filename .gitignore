@@ -1,4 +1,5 @@
 node_modules
+secret.js
 public/bundle.js
 public/bundle.js.gz
 public/bundle.js.map

@@ -44,7 +44,6 @@ class ArmingPanel extends Component {
   render() {
     return (
       <Wrapper>
-        {console.log('STATE', this.state)}
         <Keypad handleNumberClick={this.handleNumberClick} handleArmingClick={this.props.handleArmingClick} passcode={this.state.passcode} relay={1} />
         <ClearButton onClick={this.clearPasscode}>
           Clear

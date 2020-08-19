@@ -30,9 +30,9 @@ const BidAreaDetail = props => (
   <Wrapper>
     {props.area &&
       <Container>
-        <AreaHeader area={props.area} bidId={props.bidId} updateTitleState={props.updateTitleState}/>
+        <AreaHeader area={props.area} bidId={props.bidId} updateTitleState={props.updateTitleState} />
         <ProductContainer>
-          <SearchBar bidAreaId={props.area.id} bidId={props.bidId} />
+          <SearchBar bidAreaId={props.area.id} bidId={props.bidId} laborRate={props.laborRate} laborTotal={props.laborTotal} />
           <ProductsList>
             {props.area.products.map(product =>
               <ProductCard
@@ -46,6 +46,9 @@ const BidAreaDetail = props => (
                 cost={product.cost}
                 price={product.price}
                 partNumber={product.product.partNumber}
+                laborRate={props.laborRate}
+                laborTotal={props.laborTotal}
+                laborTime={product.product.laborTime}
               />
             )}
           </ProductsList>

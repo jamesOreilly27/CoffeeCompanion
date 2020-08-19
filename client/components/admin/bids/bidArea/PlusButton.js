@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   cursor: pointer;
 `
 
-const PlusButton = ({ qty, productId, bidId }) => (
+const PlusButton = ({ qty, productId, bidId, laborRate, laborTime, laborTotal }) => (
   <Mutation
     mutation={incrementProductQty}
     update={(cache, { data: { incrementProductQty } } ) => {
@@ -25,19 +25,20 @@ const PlusButton = ({ qty, productId, bidId }) => (
         area.products.forEach(product => {
           if(product.id === productId) {
             product = Object.assign(product, { qty: incrementProductQty.qty })
+            bid.laborTotal = bid.laborTotal + (bid.laborRate * product.product.laborTime)
           }
         })
       })
 
       cache.writeQuery({
         query: getBidDetails,
-        data: { bidDetails: Object.assign(bid, { bidArea: areas }) }
+        data: { bidDetails: Object.assign(bid, { bidArea: areas, laborTotal: bid.laborTotal }) }
       })
     }}
   >
     {( incrementProductQty, { data }) => (
       <Wrapper onClick={() => {
-        incrementProductQty({ variables: { id: productId } })
+        incrementProductQty({ variables: { id: productId, bidId, laborRate, laborTotal, laborTime } })
       }}>
         +
       </Wrapper>

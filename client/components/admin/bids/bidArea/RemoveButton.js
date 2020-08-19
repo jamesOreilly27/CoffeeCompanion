@@ -10,11 +10,18 @@ const Wrapper = styled.button`
   border: none;
 `
 
-const RemoveButton = ({ productId, bidId }) => (
+const RemoveButton = ({ productId, bidId, qty, laborRate, laborTime, laborTotal }) => (
   <Mutation
     mutation={removeAreaProduct}
     update={( cache, { data: { removeAreaProduct } } ) => {
+      console.log('TESTING', removeAreaProduct)
       const bid = cache.readQuery({ query: getBidDetails, variables: { id: bidId } }).bidDetails
+      if(bid.laborTotal - (bid.laborRate * removeAreaProduct.product.laborTime) > 0) {
+        bid.laborTotal = bid.laborTotal - (bid.laborRate * removeAreaProduct.product.laborTime)
+      }
+      else {
+        bid.laborTotal = 0
+      }
       const areas = bid.bidAreas
       let newAreas;
       areas.forEach(area => {
@@ -26,14 +33,14 @@ const RemoveButton = ({ productId, bidId }) => (
       })
       cache.writeQuery({
         query: getBidDetails,
-        data: { bidDetails: Object.assign(bid, { bidArea: newAreas } ) }
+        data: { bidDetails: Object.assign(bid, { bidArea: newAreas, laborTotal: bid.laborTotal } ) }
       })
     }}
   >
     {( removeAreaProduct, { data }) => (
       <Wrapper onClick={evt => {
         evt.preventDefault()
-        removeAreaProduct({ variables: { id: productId } })
+        removeAreaProduct({ variables: { id: productId, bidId: bidId, qty: qty, laborRate: laborRate, laborTime: laborTime, laborTotal: laborTotal } })
       }}>
         -
       </Wrapper>

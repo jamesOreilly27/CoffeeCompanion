@@ -51,11 +51,11 @@ class ArmedPanel extends Component {
 
   handleArmingClick(number) {
     if(number === 'Arm') {
-      axios.get('/relay/turn-on/9013/1')
+      axios.get('/relay/turn-on/9011/1')
       .then(res => { this.setState({ relayState: res.data.datavalues }) })
       .catch(err => console.log(err))
     } else if(number === 'Disarm') {
-      axios.get('/relay/turn-off/9013/2')
+      axios.get('/relay/turn-off/9011/2')
       .then(res => { this.setState({ relayState: res.data.datavalues }) })
       .catch(err => console.log(err))
     }

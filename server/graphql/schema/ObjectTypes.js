@@ -43,6 +43,7 @@ const ProductType = new GraphQLObjectType({
     price: { type: GraphQLNonNull(GraphQLFloat) },
     image: { type: GraphQLString },
     featured: { type: GraphQLBoolean },
+    laborTime: { type: GraphQLFloat }
   })
 })
 
@@ -57,6 +58,7 @@ const ProductDetailType = new GraphQLObjectType({
     price: { type: GraphQLNonNull(GraphQLFloat) },
     image: { type: GraphQLNonNull(GraphQLString) },
     featured: { type: GraphQLBoolean },
+    laborTime: { type: GraphQLFloat },
     reviews: {
       type: new GraphQLList(ReviewType),
       description: 'a list of reviews for this product',
@@ -147,6 +149,8 @@ const BidType = new GraphQLObjectType({
     id: { type: GraphQLInt },
     title: { type: GraphQLString },
     status: { type: GraphQLString },
+    laborRate: { type: GraphQLInt },
+    laborTotal: { type: GraphQLFloat },
     bidAreas: {
       type: new GraphQLList(BidAreaType),
       description: 'An area in a bid',
@@ -172,25 +176,6 @@ const BidType = new GraphQLObjectType({
         return bid.getNotes()
         .then(notes => notes)
         .catch(err => console.log(err))
-      }
-    }
-  })
-})
-
-const BidDetailType = new GraphQLObjectType({
-  name: 'bidDetail',
-  description: 'A single bid with details',
-  fields: () => ({
-    id: { type: GraphQLInt },
-    title: { type: GraphQLString },
-    status: { type: GraphQLString },
-    bidAreas: {
-      type: new GraphQLList(BidAreaType),
-      description: 'An area in a bid',
-      resolve: bid => {
-        return bid.getBidareas()
-          .then(area => area)
-          .catch(err => console.log(err))
       }
     }
   })
@@ -295,7 +280,6 @@ module.exports = {
   CartType,
   LineItemType,
   BidType,
-  BidDetailType,
   BidAreaType,
   AreaProductType,
   CustomerType,

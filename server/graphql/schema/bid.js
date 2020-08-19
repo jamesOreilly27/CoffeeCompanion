@@ -49,17 +49,29 @@ const destroyBidArea = (parent, args) => {
   .catch(err => console.log(err))
 }
 
-const incrementQtyResolver = ( parent, { id }, request) => {
-  return AreaProduct.findByPk(id)
+const incrementQtyResolver = ( parent, { id, bidId, laborRate, laborTotal, laborTime }, request) => {
+  return Bid.findByPk(bidId)
+  .then(bid => bid.update({ laborTotal: laborTotal + (laborRate * laborTime)}))
+  .then(() => AreaProduct.findByPk(id))
   .then(areaProduct => areaProduct.update({ qty: areaProduct.qty + 1}))
   .catch(err => console.log(err))
 }
 
-const decrementQtyResolver = ( parent, { id }, request) => {
-  return AreaProduct.findByPk(id)
+const decrementQtyResolver = ( parent, { id, bidId, laborRate, laborTotal, laborTime } ) => {
+  return Bid.findByPk(bidId)
+  .then(bid => {
+    let newTotal
+    if(laborTotal - (laborRate * laborTime) > 0) newTotal = laborTotal - (laborRate * laborTime)
+    else newTotal = 0
+    bid.update({ laborTotal: newTotal })
+    return
+  })
+  .then(() => AreaProduct.findByPk(id))
   .then(areaProduct => {
     if(areaProduct.qty - 1 === 0) {
-      return areaProduct.destroy()
+      const deleted = Object.assign(areaProduct, { qty: 0 })
+      areaProduct.destroy()
+      return deleted
     }
     else {
       return areaProduct.update({ qty: areaProduct.qty - 1 })
@@ -68,17 +80,34 @@ const decrementQtyResolver = ( parent, { id }, request) => {
   .catch(err => console.log(err))
 }
 
-const removeAreaProductResolver = ( parent, { id }, request ) => {
-  return AreaProduct.findByPk(id)
+const removeAreaProductResolver = (parent, { id, bidId, qty, laborTotal, laborRate, laborTime }) => {
+  return Bid.findByPk(bidId)
+  .then(bid => {
+    let newTotal
+    if(laborTotal - (laborRate * laborTime * qty) > 0) newTotal = laborTotal - (laborRate * laborTime * qty)
+    else newTotal = 0
+    bid.update({ laborTotal: newTotal })
+    return
+  })
+  .then(() => {
+    return AreaProduct.findByPk(id)
+  })
   .then(areaProduct => {
+    const deleted = Object.assign(areaProduct)
     areaProduct.destroy()
-    return true
+    console.log('DELETED', deleted)
+    return deleted
   })
   .catch(err => console.log(err))
 }
 
-const addAreaProductResolver = (parent, args) => {
-  return AreaProduct.create(args)
+const addAreaProductResolver = (parent, { qty, price, cost, productId, bidAreaId, bidId, laborTime, laborRate, laborTotal }) => {
+  return Bid.findByPk(bidId)
+  .then(bid => {
+    bid.update({ laborTotal: laborTotal + (laborRate * laborTime * qty) })
+    return
+  })
+  .then(() => AreaProduct.create({ qty, price, cost, productId, bidAreaId }))
   .then(areaProduct => areaProduct)
   .catch(err => console.log(err))
 }
@@ -95,7 +124,7 @@ const updateProductCostResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
-const addCustomerResolver = (parent, { companyName, email, phoneNumber, address, town, zipCode, state, id}) => {
+const addCustomerResolver = (parent, { companyName, email, phoneNumber, address, town, zipCode, state, id }) => {
   return BidArea.create({ title: "Area", bidId: id })
   .then(() => {
     return Customer.create({ companyName, email, phoneNumber, address, town, zipCode, state})
@@ -185,14 +214,28 @@ const removeBidArea = {
 
 const incrementProductQty = {
   type: AreaProductType,
-  args: { id: { type: GraphQLInt } },
+  args: {
+    id: { type: GraphQLInt },
+    qty: { type: GraphQLInt },
+    bidId: { type: GraphQLInt },
+    laborRate: { type: GraphQLInt },
+    laborTotal: { type: GraphQLFloat },
+    laborTime: { type: GraphQLFloat }
+  },
   description: 'increment the qty of an area product',
   resolve: incrementQtyResolver
 }
 
 const decrementProductQty = {
   type: AreaProductType,
-  args: { id: { type: GraphQLInt } },
+  args: {
+    id: { type: GraphQLInt },
+    qty: { type: GraphQLInt },
+    bidId: { type: GraphQLInt },
+    laborRate: { type: GraphQLInt },
+    laborTotal: { type: GraphQLFloat },
+    laborTime: { type: GraphQLFloat }
+  },
   description: 'decrement the qty of an area product',
   resolve: decrementQtyResolver
 }
@@ -204,16 +247,27 @@ const addAreaProduct = {
     qty: { type: GraphQLInt },
     price: { type: GraphQLFloat },
     cost: { type: GraphQLFloat },
+    bidId: { type: GraphQLInt },
     productId: { type: GraphQLInt },
-    bidAreaId: { type: GraphQLInt }
+    bidAreaId: { type: GraphQLInt },
+    laborTime: { type: GraphQLFloat },
+    laborRate: { type: GraphQLInt },
+    laborTotal: { type: GraphQLFloat }
   },
   resolve: addAreaProductResolver
 }
 
 const removeAreaProduct = {
-  type: GraphQLBoolean,
+  type: AreaProductType,
   description: 'remove an areaproduct from a bidarea',
-  args: { id: { type: GraphQLInt } },
+  args: {
+    id: { type: GraphQLInt },
+    qty: { type: GraphQLInt },
+    bidId: { type: GraphQLInt },
+    laborRate: { type: GraphQLInt },
+    laborTime: { type: GraphQLFloat },
+    laborTotal: { type: GraphQLFloat }
+  },
   resolve: removeAreaProductResolver
 }
 

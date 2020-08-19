@@ -120,7 +120,7 @@ class ProductCard extends Component {
             }}></TextInput>
           </CenteredContainer>
           :
-          <QtyContainer quantity={this.props.qty} productId={this.props.productId} bidId={this.props.bidId} />
+          <QtyContainer quantity={this.props.qty} productId={this.props.productId} bidId={this.props.bidId} laborRate={this.props.laborRate} laborTime={this.props.laborTime} laborTotal={this.props.laborTotal} />
         }
         {!this.state.editCost ?
           <CenteredContainer onClick={this.flipEditCost}>
@@ -167,10 +167,20 @@ class ProductCard extends Component {
               qty={this.state.qty}
               price={this.props.price}
               cost={this.props.cost}
+              laborRate={this.props.laborRate}
+              laborTotal={this.props.laborTotal}
+              laborTime={this.props.laborTime}
             />
           }
           {!this.props.PDF && !this.props.search &&
-            <RemoveButton productId={this.props.productId} bidId={this.props.bidId} />
+            <RemoveButton
+              productId={this.props.productId}
+              bidId={this.props.bidId}
+              qty={this.props.qty}
+              laborRate={this.props.laborRate}
+              laborTotal={this.props.laborTotal}
+              laborTime={this.props.laborTime}
+            />
           }
         </ButtonContainer>
       </Wrapper>

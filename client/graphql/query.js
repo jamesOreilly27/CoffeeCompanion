@@ -83,6 +83,7 @@ export const getAllProducts = gql`
       cost
       price
       featured
+      laborTime
     }
   }
 `
@@ -155,6 +156,8 @@ export const getBidDetails = gql`
       id
       title
       status
+      laborRate
+      laborTotal
       bidAreas {
         id
         title
@@ -167,6 +170,7 @@ export const getBidDetails = gql`
             name
             partNumber
             description
+            laborTime
           }
         }
       }

@@ -1,7 +1,7 @@
 import React from 'react'
 import { AreaTableHeader, AreaTitle, HeaderItem, TotalsView, AreaView, AreasView, ProjectTotals, ProjectTotalLineContainer, ProjectLineItem, AreaHeader, FlexContainer, DisclaimerText, SignatureContainer, SignatureText } from './PDFStyledComponents'
 import { Text } from '@react-pdf/renderer'
-import { PDFTitlePage, PDFAreaCard } from '../bids'
+import { PDFAreaCard } from '../bids'
 import { sumAll, taxExemptTotal } from './helpers'
 
 const PDFFinalTotal = ({ bid }) => (
@@ -53,10 +53,10 @@ const PDFFinalTotal = ({ bid }) => (
         </ProjectTotalLineContainer>
         <ProjectTotalLineContainer>
           <ProjectLineItem>
-            {"Estimated Labor (8 Hours)"}
+            {"Labor"}
           </ProjectLineItem>
           <ProjectLineItem>
-            {`$520.00`}
+            { `$${((bid.laborTotal * 100) / 100).toFixed(2)}` }
           </ProjectLineItem>
         </ProjectTotalLineContainer>
         <ProjectTotalLineContainer>
@@ -64,7 +64,10 @@ const PDFFinalTotal = ({ bid }) => (
             {"Total Due:"}
           </ProjectLineItem>
           <ProjectLineItem total>
-            {`$${((sumAll(bid.bidAreas, 'price')) + 520).toFixed(2)}`}
+            {console.log('TESTING', parseFloat(((bid.laborTotal * 100) / 100).toFixed(2)) )}
+            {console.log('TESTING123', parseFloat(sumAll(bid.bidAreas, 'price').toFixed(2)))}
+            {console.log('TESTING456', parseFloat(sumAll(bid.bidAreas, 'price').toFixed(2)) + parseFloat(((bid.laborTotal * 100) / 100).toFixed(2)))}
+            {`$${(parseFloat(sumAll(bid.bidAreas, 'price').toFixed(2)) + parseFloat(((bid.laborTotal * 100) / 100).toFixed(2))).toFixed(2)}`}
           </ProjectLineItem>
         </ProjectTotalLineContainer>
       </ProjectTotals>

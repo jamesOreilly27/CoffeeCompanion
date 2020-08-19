@@ -129,30 +129,39 @@ export const createAreaProduct = gql`
 `
 
 export const incrementProductQty = gql`
-  mutation($id: Int!) {
-    incrementProductQty(id: $id) {
+  mutation($id: Int!, $bidId: Int!, $laborRate: Int!, $laborTotal: Float!, $laborTime: Float!) {
+    incrementProductQty(id: $id, bidId: $bidId, laborRate: $laborRate, laborTotal: $laborTotal, laborTime: $laborTime) {
       qty
     }
   }
 `
 
 export const decrementProductQty = gql`
-  mutation($id: Int!) {
-    decrementProductQty(id: $id) {
+  mutation($id: Int!, $bidId: Int!, $laborRate: Int!, $laborTotal: Float!, $laborTime: Float!) {
+    decrementProductQty(id: $id, bidId: $bidId, laborRate: $laborRate, laborTotal: $laborTotal, laborTime: $laborTime) {
       qty
     }
   }
 `
 
 export const removeAreaProduct = gql`
-  mutation($id: Int!) {
-    removeAreaProduct(id: $id)
+  mutation($id: Int!, $bidId: Int!, $qty: Int!, $laborTotal: Float!, $laborRate: Int!, $laborTime: Float!) {
+    removeAreaProduct(id: $id, bidId: $bidId, qty: $qty, laborTotal: $laborTotal, laborRate: $laborRate, laborTime: $laborTime) {
+      id
+      bidAreaId
+      product {
+        id
+        cost
+        price
+        description
+      }
+    }
   }
 `
 
 export const addAreaProduct = gql`
-  mutation($qty: Int!, $price: Float!, $cost: Float!, $productId: Int!, $bidAreaId: Int!) {
-    addAreaProduct(qty: $qty, price: $price, cost: $cost, productId: $productId, bidAreaId: $bidAreaId) {
+  mutation($qty: Int!, $price: Float!, $cost: Float!, $productId: Int!, $bidAreaId: Int!, $bidId: Int!, $laborTime: Float!, $laborRate: Int!, $laborTotal: Float!) {
+    addAreaProduct(qty: $qty, price: $price, cost: $cost, productId: $productId, bidAreaId: $bidAreaId, bidId: $bidId, laborTime: $laborTime, laborRate: $laborRate, laborTotal: $laborTotal) {
       id
       qty
       cost
@@ -161,6 +170,7 @@ export const addAreaProduct = gql`
         name
         partNumber
         description
+        laborTime
       }
     }
   }
