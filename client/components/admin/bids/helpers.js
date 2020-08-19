@@ -13,6 +13,6 @@ export const findArea = (str, areas) => {
 }
 
 export const taxExemptTotal = (num, isExempt) => {
-  if(isExempt) return '0.00'
+  if(isExempt) return 0.00
   else return num
 }
