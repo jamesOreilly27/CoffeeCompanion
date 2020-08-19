@@ -53,6 +53,15 @@ const StateItem = styled(RowItem)`
   width: 5%;
 `
 
+const TaxExempt = styled(RowItem)`
+  
+`
+
+const Select = styled.select`
+  height: 30px;
+  width: 95%;
+`
+
 const Label = styled.label`
   width: 100%;
   color: #F8F8FF;
@@ -75,7 +84,8 @@ const CreateForm = ({ bidId }) => (
           address: evt.target.address.value,
           town: `${evt.target.town.value}, ${evt.target.state.value}`,
           zipCode: evt.target.zipCode.value,
-          id: bidId
+          id: bidId,
+          taxExempt: evt.target.exemption.value === 'true'
         }})
       }}>
         <Row>
@@ -111,6 +121,13 @@ const CreateForm = ({ bidId }) => (
             <Label> State </Label>
             <TextInput type="text" name="state"/>
           </StateItem>
+          <TaxExempt>
+            <Label> Tax Exempt </Label>
+            <Select name="exemption">
+              <option value={false}>No</option>
+              <option value={true}>Yes</option>
+            </Select>
+          </TaxExempt>
         </Row>
 
         <Button type="submit" width={50} height={30} backgroundColor="#296D4D">

@@ -124,10 +124,10 @@ const updateProductCostResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
-const addCustomerResolver = (parent, { companyName, email, phoneNumber, address, town, zipCode, state, id }) => {
+const addCustomerResolver = (parent, { companyName, email, phoneNumber, address, town, zipCode, state, id, taxExempt }) => {
   return BidArea.create({ title: "Area", bidId: id })
   .then(() => {
-    return Customer.create({ companyName, email, phoneNumber, address, town, zipCode, state})
+    return Customer.create({ companyName, email, phoneNumber, address, town, zipCode, state, taxExempt })
   .then(customer => {
     return Bid.findByPk(id)
   .then(bid => bid.update({ customerId: customer.id, title: customer.companyName }))
@@ -180,7 +180,8 @@ const addCustomer = {
     address: { type: GraphQLString },
     town: { type: GraphQLString },
     zipCode: { type: GraphQLString },
-    id: { type: GraphQLInt }
+    id: { type: GraphQLInt },
+    taxExempt: { type: GraphQLBoolean }
   },
   resolve: addCustomerResolver
 }
