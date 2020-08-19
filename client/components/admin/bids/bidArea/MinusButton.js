@@ -15,7 +15,7 @@ const Wrapper = styled.div`
   cursor: pointer;
 `
 
-const MinusButton = ({ qty, productId, bidId }) => (
+const MinusButton = ({ qty, productId, bidId, laborRate, laborTime, laborTotal }) => (
   <Mutation
     mutation={decrementProductQty}
     update={(cache, { data: { decrementProductQty } } ) => {
@@ -26,33 +26,47 @@ const MinusButton = ({ qty, productId, bidId }) => (
           area.products.forEach(product => {
             if(product.id === productId) {
               product = Object.assign(product, { qty: decrementProductQty.qty })
+              if(bid.laborTotal - (bid.laborRate * product.product.laborTime) > 0) {
+                bid.laborTotal = bid.laborTotal - (bid.laborRate * product.product.laborTime)
+              }
+              else {
+                bid.laborTotal = 0
+              }
             }
           })
         })
         cache.writeQuery({
           query: getBidDetails,
-          data: { bidDetails: Object.assign(bid, { bidArea: areas })}
+          data: { bidDetails: Object.assign(bid, { bidArea: areas, laborTotal: bid.laborTotal })}
         })
       } else {
         let newAreas
         areas.forEach(area => {
           area.products.forEach(product => {
             if(product.id === productId) {
+              console.log('PRODUCT', product)
               newAreas = area.products.splice(area.products.indexOf(product), 1)
+              console.log('BIDAREA',bid.laborTotal - (bid.laborRate * product.product.laborTime) > 0.005)
+              if(bid.laborTotal - (bid.laborRate * product.product.laborTime) > 0) {
+                bid.laborTotal = bid.laborTotal - (bid.laborRate * product.product.laborTime)
+              }
+              else {
+                bid.laborTotal = 0
+              }
             }
           })
         })
-
+        console.log('BID', bid)
         cache.writeQuery({
           query: getBidDetails,
-          data: { bidDetails: Object.assign(bid, { bidArea: newAreas } )}
+          data: { bidDetails: Object.assign(bid, { bidArea: newAreas, laborTotal: bid.laborTotal } )}
         })
       }
     }}
   >
     {( decrementProductQty, { data }) => (
       <Wrapper onClick={() => {
-        decrementProductQty({ variables: { id: productId } })
+        decrementProductQty({ variables: { id: productId, bidId, laborRate, laborTotal, laborTime } })
       }}>
         -
       </Wrapper>

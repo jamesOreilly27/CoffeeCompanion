@@ -146,7 +146,16 @@ export const decrementProductQty = gql`
 
 export const removeAreaProduct = gql`
   mutation($id: Int!, $bidId: Int!, $qty: Int!, $laborTotal: Float!, $laborRate: Int!, $laborTime: Float!) {
-    removeAreaProduct(id: $id, bidId: $bidId, qty: $qty, laborTotal: $laborTotal, laborRate: $laborRate, laborTime: $laborTime)
+    removeAreaProduct(id: $id, bidId: $bidId, qty: $qty, laborTotal: $laborTotal, laborRate: $laborRate, laborTime: $laborTime) {
+      id
+      bidAreaId
+      product {
+        id
+        cost
+        price
+        description
+      }
+    }
   }
 `
 

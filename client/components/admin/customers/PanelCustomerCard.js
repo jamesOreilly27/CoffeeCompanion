@@ -63,7 +63,6 @@ const Checkbox = styled.div`
 
 const CustomerTitleCard = ({ customer, relayState, arm, disarm }) => (
   <Wrapper armed={parseInt(relayState[`relay${customer.relayId}state`]._text)}>
-    {console.log('TESTING', parseInt(relayState[`relay${customer.relayId}state`]._text))}
     <Title>
       <Name>
         {customer.companyName}

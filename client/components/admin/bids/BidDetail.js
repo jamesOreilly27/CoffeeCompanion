@@ -120,7 +120,6 @@ class BidDetail extends Component {
       <Wrapper>
         {bid &&
           <Container>
-            {console.log('BID', bid)}
             <Sidebar>
               <ProjectTotal>
                 <Title size="lg"> Project Totals </Title>

@@ -74,7 +74,6 @@ class SearchBar extends Component {
           <ProductList>
             <CloseButton onClick={this.resetDisplayList}>X</CloseButton>
             {this.filterProductList(this.state.searchValue).map(product => {
-              console.log('PRODUCT', product)
               return (
               <ProductCard
                 key={product.id}

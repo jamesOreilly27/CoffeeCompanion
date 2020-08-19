@@ -57,11 +57,21 @@ const incrementQtyResolver = ( parent, { id, bidId, laborRate, laborTotal, labor
   .catch(err => console.log(err))
 }
 
-const decrementQtyResolver = ( parent, { id }, request) => {
-  return AreaProduct.findByPk(id)
+const decrementQtyResolver = ( parent, { id, bidId, laborRate, laborTotal, laborTime } ) => {
+  return Bid.findByPk(bidId)
+  .then(bid => {
+    let newTotal
+    if(laborTotal - (laborRate * laborTime) > 0) newTotal = laborTotal - (laborRate * laborTime)
+    else newTotal = 0
+    bid.update({ laborTotal: newTotal })
+    return
+  })
+  .then(() => AreaProduct.findByPk(id))
   .then(areaProduct => {
     if(areaProduct.qty - 1 === 0) {
-      return areaProduct.destroy()
+      const deleted = Object.assign(areaProduct, { qty: 0 })
+      areaProduct.destroy()
+      return deleted
     }
     else {
       return areaProduct.update({ qty: areaProduct.qty - 1 })
@@ -70,7 +80,7 @@ const decrementQtyResolver = ( parent, { id }, request) => {
   .catch(err => console.log(err))
 }
 
-const removeAreaProductResolver = (parent, { id, bidId, qty, laborTotal, laborRate, laborTime}) => {
+const removeAreaProductResolver = (parent, { id, bidId, qty, laborTotal, laborRate, laborTime }) => {
   return Bid.findByPk(bidId)
   .then(bid => {
     let newTotal
@@ -83,8 +93,10 @@ const removeAreaProductResolver = (parent, { id, bidId, qty, laborTotal, laborRa
     return AreaProduct.findByPk(id)
   })
   .then(areaProduct => {
+    const deleted = Object.assign(areaProduct)
     areaProduct.destroy()
-    return true
+    console.log('DELETED', deleted)
+    return deleted
   })
   .catch(err => console.log(err))
 }
@@ -112,7 +124,7 @@ const updateProductCostResolver = (parent, args) => {
   .catch(err => console.log(err))
 }
 
-const addCustomerResolver = (parent, { companyName, email, phoneNumber, address, town, zipCode, state, id}) => {
+const addCustomerResolver = (parent, { companyName, email, phoneNumber, address, town, zipCode, state, id }) => {
   return BidArea.create({ title: "Area", bidId: id })
   .then(() => {
     return Customer.create({ companyName, email, phoneNumber, address, town, zipCode, state})
@@ -246,7 +258,7 @@ const addAreaProduct = {
 }
 
 const removeAreaProduct = {
-  type: GraphQLBoolean,
+  type: AreaProductType,
   description: 'remove an areaproduct from a bidarea',
   args: {
     id: { type: GraphQLInt },

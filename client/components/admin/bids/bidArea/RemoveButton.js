@@ -14,7 +14,14 @@ const RemoveButton = ({ productId, bidId, qty, laborRate, laborTime, laborTotal 
   <Mutation
     mutation={removeAreaProduct}
     update={( cache, { data: { removeAreaProduct } } ) => {
+      console.log('TESTING', removeAreaProduct)
       const bid = cache.readQuery({ query: getBidDetails, variables: { id: bidId } }).bidDetails
+      if(bid.laborTotal - (bid.laborRate * removeAreaProduct.product.laborTime) > 0) {
+        bid.laborTotal = bid.laborTotal - (bid.laborRate * removeAreaProduct.product.laborTime)
+      }
+      else {
+        bid.laborTotal = 0
+      }
       const areas = bid.bidAreas
       let newAreas;
       areas.forEach(area => {
@@ -26,7 +33,7 @@ const RemoveButton = ({ productId, bidId, qty, laborRate, laborTime, laborTotal 
       })
       cache.writeQuery({
         query: getBidDetails,
-        data: { bidDetails: Object.assign(bid, { bidArea: newAreas } ) }
+        data: { bidDetails: Object.assign(bid, { bidArea: newAreas, laborTotal: bid.laborTotal } ) }
       })
     }}
   >

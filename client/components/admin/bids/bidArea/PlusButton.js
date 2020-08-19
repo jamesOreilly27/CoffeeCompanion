@@ -25,13 +25,14 @@ const PlusButton = ({ qty, productId, bidId, laborRate, laborTime, laborTotal })
         area.products.forEach(product => {
           if(product.id === productId) {
             product = Object.assign(product, { qty: incrementProductQty.qty })
+            bid.laborTotal = bid.laborTotal + (bid.laborRate * product.product.laborTime)
           }
         })
       })
 
       cache.writeQuery({
         query: getBidDetails,
-        data: { bidDetails: Object.assign(bid, { bidArea: areas }) }
+        data: { bidDetails: Object.assign(bid, { bidArea: areas, laborTotal: bid.laborTotal }) }
       })
     }}
   >
