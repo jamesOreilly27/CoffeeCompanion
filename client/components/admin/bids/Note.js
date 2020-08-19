@@ -30,7 +30,6 @@ class Note extends Component {
     const note = this.props.note
     return (
       <Wrapper>
-        {console.log('NOTE', note)}
         {!this.props.created &&
           <div onClick={this.showNote}>
             {note.subject}

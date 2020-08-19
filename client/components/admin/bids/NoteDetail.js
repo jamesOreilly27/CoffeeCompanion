@@ -96,7 +96,6 @@ class NoteDetail extends Component {
             this.props.hideNote()
           }}>
             <Header>
-              {console.log(this.props.note)}
               <Input name="subject" type="text" value={this.state.subject} onChange={this.handleChange} />
               <NoteSave subject={this.props.note.subject} text={this.props.note.text} />
               <NoteDelete bidId={this.props.bidId} id={this.props.note.id} />

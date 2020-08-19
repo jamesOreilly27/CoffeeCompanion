@@ -44,9 +44,7 @@ const MinusButton = ({ qty, productId, bidId, laborRate, laborTime, laborTotal }
         areas.forEach(area => {
           area.products.forEach(product => {
             if(product.id === productId) {
-              console.log('PRODUCT', product)
               newAreas = area.products.splice(area.products.indexOf(product), 1)
-              console.log('BIDAREA',bid.laborTotal - (bid.laborRate * product.product.laborTime) > 0.005)
               if(bid.laborTotal - (bid.laborRate * product.product.laborTime) > 0) {
                 bid.laborTotal = bid.laborTotal - (bid.laborRate * product.product.laborTime)
               }
@@ -56,7 +54,6 @@ const MinusButton = ({ qty, productId, bidId, laborRate, laborTime, laborTotal }
             }
           })
         })
-        console.log('BID', bid)
         cache.writeQuery({
           query: getBidDetails,
           data: { bidDetails: Object.assign(bid, { bidArea: newAreas, laborTotal: bid.laborTotal } )}
