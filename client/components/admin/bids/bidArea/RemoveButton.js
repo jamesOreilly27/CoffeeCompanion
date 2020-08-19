@@ -14,7 +14,6 @@ const RemoveButton = ({ productId, bidId, qty, laborRate, laborTime, laborTotal 
   <Mutation
     mutation={removeAreaProduct}
     update={( cache, { data: { removeAreaProduct } } ) => {
-      console.log('TESTING', removeAreaProduct)
       const bid = cache.readQuery({ query: getBidDetails, variables: { id: bidId } }).bidDetails
       if(bid.laborTotal - (bid.laborRate * removeAreaProduct.product.laborTime) > 0) {
         bid.laborTotal = bid.laborTotal - (bid.laborRate * removeAreaProduct.product.laborTime)

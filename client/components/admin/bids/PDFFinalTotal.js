@@ -17,7 +17,7 @@ const PDFFinalTotal = ({ bid }) => (
         <HeaderItem> {`Total`} </HeaderItem>
       </AreaTableHeader>
       <AreaView>
-        {bid.bidAreas.map(area => <PDFAreaCard key={area.id} area={area} isEven={bid.bidAreas.indexOf(area) % 2 === 0} />)}
+        {bid.bidAreas.map(area => <PDFAreaCard key={area.id} area={area} taxExempt={bid.customer.taxExempt} isEven={bid.bidAreas.indexOf(area) % 2 === 0} />)}
       </AreaView>
     </AreasView>
     <FlexContainer>
@@ -48,7 +48,7 @@ const PDFFinalTotal = ({ bid }) => (
             {"Tax"}
           </ProjectLineItem>
           <ProjectLineItem>
-            {`$${taxExemptTotal((Math.ceil(sumAll(bid.bidAreas, 'price') * .065 * 100) / 100).toFixed(2), true)}`}
+            {`$${taxExemptTotal((Math.ceil(sumAll(bid.bidAreas, 'price') * .065 * 100) / 100).toFixed(2), bid.customer.taxExempt).toFixed(2)}`}
           </ProjectLineItem>
         </ProjectTotalLineContainer>
         <ProjectTotalLineContainer>
@@ -64,10 +64,8 @@ const PDFFinalTotal = ({ bid }) => (
             {"Total Due:"}
           </ProjectLineItem>
           <ProjectLineItem total>
-            {console.log('TESTING', parseFloat(((bid.laborTotal * 100) / 100).toFixed(2)) )}
-            {console.log('TESTING123', parseFloat(sumAll(bid.bidAreas, 'price').toFixed(2)))}
-            {console.log('TESTING456', parseFloat(sumAll(bid.bidAreas, 'price').toFixed(2)) + parseFloat(((bid.laborTotal * 100) / 100).toFixed(2)))}
-            {`$${(parseFloat(sumAll(bid.bidAreas, 'price').toFixed(2)) + parseFloat(((bid.laborTotal * 100) / 100).toFixed(2))).toFixed(2)}`}
+            {console.log( taxExemptTotal(parseFloat((Math.ceil(sumAll(bid.bidAreas, 'price') * .065 * 100) / 100).toFixed(2)), bid.customer.taxExempt) )}
+            {`$${(parseFloat(sumAll(bid.bidAreas, 'price').toFixed(2)) + taxExemptTotal(parseFloat((Math.ceil(sumAll(bid.bidAreas, 'price') * .065 * 100) / 100).toFixed(2)), bid.customer.taxExempt) + parseFloat(((bid.laborTotal * 100) / 100).toFixed(2))).toFixed(2)}`}
           </ProjectLineItem>
         </ProjectTotalLineContainer>
       </ProjectTotals>

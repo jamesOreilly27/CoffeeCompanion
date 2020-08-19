@@ -231,6 +231,7 @@ const CustomerType = new GraphQLObjectType({
     town: { type: GraphQLString },
     zipCode: { type: GraphQLString },
     relayPort: { type: GraphQLString },
+    taxExempt: { type: GraphQLBoolean },
     phoneNumber: { type: GraphQLString },
     state: { type: GraphQLString },
     relayId: { type: GraphQLString },

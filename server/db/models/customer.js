@@ -32,6 +32,10 @@ const Customer = db.define('customer', {
   },
   relayId: {
     type: Sequelize.STRING
+  },
+  taxExempt: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
   }
 })
 

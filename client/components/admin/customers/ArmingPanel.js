@@ -32,7 +32,6 @@ class ArmingPanel extends Component {
     if (number !== 'Arm' && number !== 'Disarm') {
       this.setState({ passcode: `${this.state.passcode}${number}` })
     } else {
-      console.log('PASSCODE', this.state.passcode)
       this.clearPasscode()
     }
   }

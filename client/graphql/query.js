@@ -182,6 +182,7 @@ export const getBidDetails = gql`
         town
         zipCode
         state
+        taxExempt
       }
       notes {
         id
@@ -205,6 +206,7 @@ export const allCustomers = gql`
       email
       relayPort
       relayId
+      taxExempt
       contacts {
         id
         firstName
