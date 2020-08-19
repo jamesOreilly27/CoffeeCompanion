@@ -64,9 +64,6 @@ const PDFFinalTotal = ({ bid }) => (
             {"Total Due:"}
           </ProjectLineItem>
           <ProjectLineItem total>
-            {console.log('TESTING', parseFloat(((bid.laborTotal * 100) / 100).toFixed(2)) )}
-            {console.log('TESTING123', parseFloat(sumAll(bid.bidAreas, 'price').toFixed(2)))}
-            {console.log('TESTING456', parseFloat(sumAll(bid.bidAreas, 'price').toFixed(2)) + parseFloat(((bid.laborTotal * 100) / 100).toFixed(2)))}
             {`$${(parseFloat(sumAll(bid.bidAreas, 'price').toFixed(2)) + parseFloat(((bid.laborTotal * 100) / 100).toFixed(2))).toFixed(2)}`}
           </ProjectLineItem>
         </ProjectTotalLineContainer>
