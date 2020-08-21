@@ -10,7 +10,7 @@ const sendData = () => {
 }
 
 const Wrapper = styled.div`
-
+  width: 100%;
 `
 
 const ChoiceContainer = styled.div`

@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 import { Title } from '../../styled-components'
 import { RemoveButton, UpdateButton } from '../products'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 const Wrapper = styled.div`
   @media(max-width: 960px) {
@@ -17,7 +16,7 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   margin: 3px;
-  padding: 2vh 0;
+  padding: 2vh 5px;
   background-color: #383737;
 `
 
@@ -25,15 +24,35 @@ const CardWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 60%;
 `
 
-const Price = styled.div`
-  font-size: 14px;
+const Image = styled.img`
+  width: 80%;
+  height: 70%;
+`
+
+const ProductName = styled(Title)`
+  text-align: center;
+  margin-top: 5px;
+  margin-left: 11px;
+`
+
+const CostAndPriceContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+`
+
+const DetailContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 20px;
+`
+
+const DetailItem = styled.div`
+  font-size: 15px;
   color: #F8F8FF;
-`
-
-const Image = styled(FontAwesomeIcon)`
-  color: #C1C1C1;
 `
 
 const ButtonsContainer = styled.div`
@@ -41,22 +60,44 @@ const ButtonsContainer = styled.div`
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
+  width: 100%;
+`
+
+const ColumnContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 35%;
 `
 
 const AdminCard = ({ product, all, featured }) => (
   <Wrapper>
     <CardWrapper>
-      <Image icon={["fa", "image"]} size="5x" />
-      <Title size="sm">{product.name}</Title>
-      <Price>{`$${product.price}`}</Price>
+      <Image src={`/images/products/${product.partNumber}.png`}/>
+      <ProductName size="sm">{product.name}</ProductName>
     </CardWrapper>
-    {all &&
-      <ButtonsContainer>
-        <UpdateButton product={product} />
-        <RemoveButton product={product} />
-      </ButtonsContainer>
-    }
+    <ColumnContainer>
+      <CostAndPriceContainer>
+        <DetailContainer>
+          <DetailItem>{` Cost`}</DetailItem>
+          <DetailItem>{`$${product.cost}`}</DetailItem>
+        </DetailContainer>
+        <DetailContainer>
+          <DetailItem>{`Price`}</DetailItem>
+          <DetailItem>{`$${product.price}`}</DetailItem>
+        </DetailContainer>
+      </CostAndPriceContainer>
+      {all &&
+        <ButtonsContainer>
+          <UpdateButton product={product} />
+          <RemoveButton product={product} />
+        </ButtonsContainer>
+      }
+    </ColumnContainer>
   </Wrapper>
 )
 
 export default AdminCard
+
+{/* <ColumnContainer>
+        <Price>{`$${product.price}`}</Price>
+      </ColumnContainer> */}

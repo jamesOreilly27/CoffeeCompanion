@@ -27,6 +27,7 @@ const Show = styled.div`
   text-decoration: underline;
   cursor: pointer;
   padding-bottom: 10px;
+  color: #F8F8FF;
 `
 
 class Products extends Component {
@@ -53,7 +54,6 @@ class Products extends Component {
           <Container>
             <AddAndContainers>
               <Add />
-              <Featured products={filterFeatured(this.props.products)} />
             </AddAndContainers>
             <Show onClick={this.flipShowAll}>
               {`${this.showOrHide()} Products`}
