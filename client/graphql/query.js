@@ -17,7 +17,6 @@ export const getCurrentUser = gql`
           product {
             name
             description
-            image
           }    
         }
       }
@@ -30,7 +29,6 @@ export const getCurrentUser = gql`
           product {
             name
             description
-            image
           }
         }
       }
@@ -79,7 +77,6 @@ export const getAllProducts = gql`
       name
       partNumber
       description
-      image
       cost
       price
       featured
@@ -121,7 +118,6 @@ export const getProductForUpdate = gql`
       name
       description
       price
-      image
       featured
     }
   }

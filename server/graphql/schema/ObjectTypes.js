@@ -41,7 +41,6 @@ const ProductType = new GraphQLObjectType({
     description: { type: GraphQLString },
     cost: { type: GraphQLNonNull(GraphQLFloat) },
     price: { type: GraphQLNonNull(GraphQLFloat) },
-    image: { type: GraphQLString },
     featured: { type: GraphQLBoolean },
     laborTime: { type: GraphQLFloat }
   })
@@ -56,7 +55,6 @@ const ProductDetailType = new GraphQLObjectType({
     description: { type: GraphQLNonNull(GraphQLString) },
     cost: { type: GraphQLNonNull(GraphQLFloat) },
     price: { type: GraphQLNonNull(GraphQLFloat) },
-    image: { type: GraphQLNonNull(GraphQLString) },
     featured: { type: GraphQLBoolean },
     laborTime: { type: GraphQLFloat },
     reviews: {

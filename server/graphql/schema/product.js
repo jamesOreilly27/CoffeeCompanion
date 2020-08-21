@@ -73,7 +73,6 @@ const upsertProduct = {
     cost: { type: GraphQLFloat },
     price: { type: GraphQLFloat },
     laborTime: { type: GraphQLFloat },
-    image: { type: GraphQLString },
     featured: { type: GraphQLBoolean }
   },
   resolve: upsert
