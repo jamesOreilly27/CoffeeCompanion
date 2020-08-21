@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
-import { LocationLink, AddLocation, Note, AddNote } from '../bids'
+import { LocationLink, AddLocation, Note, AddNote, ImageDrop } from '../bids'
 import { BidAreaDetail } from './bidArea'
 import { Title } from '../../styled-components'
 import { sumAll, findArea } from './helpers'
@@ -149,6 +149,7 @@ class BidDetail extends Component {
                 {bid.notes.map(note => <Note note={note} bidId={bid.id} /> )}
                 <AddNote bidId={bid.id} />
               </NoteContainer>
+              <ImageDrop companyName={bid.customer.companyName}/>
               <AreaContainer>
                 <Title size="lg">
                   Sections
