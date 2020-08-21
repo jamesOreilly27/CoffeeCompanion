@@ -18,11 +18,14 @@ router.post('/header-image', upload.single('header'), (req, res, next) => {
 
 router.post('/header-image/delete', (req, res, next) => {
   fs.unlink(req.body.path, (err => { 
-    if (err) console.log(err)
+    if(err) {
+      console.log(err)
+    }
     else { 
       console.log(`\nDeleted file: ${req.body.path}`)
     } 
   }))
+  next()
 })
 
 module.exports = router

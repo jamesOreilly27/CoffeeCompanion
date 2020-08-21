@@ -48,7 +48,7 @@ const PDFFinalTotal = ({ bid }) => (
             {"Tax"}
           </ProjectLineItem>
           <ProjectLineItem>
-            {`$${taxExemptTotal((Math.ceil(sumAll(bid.bidAreas, 'price') * .065 * 100) / 100).toFixed(2), bid.customer.taxExempt).toFixed(2)}`}
+            {`$${taxExemptTotal((Math.ceil(sumAll(bid.bidAreas, 'price') * .065 * 100) / 100).toFixed(2), bid.customer.taxExempt)}`}
           </ProjectLineItem>
         </ProjectTotalLineContainer>
         <ProjectTotalLineContainer>

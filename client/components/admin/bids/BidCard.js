@@ -44,7 +44,7 @@ const FlexContainer = styled.div`
 
 const Title = styled.div`
   display: flex;
-  font-size: 30px;
+  font-size: 15px;
 `
 
 const AmtTitle = styled.div`
