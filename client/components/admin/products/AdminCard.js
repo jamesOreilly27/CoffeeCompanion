@@ -30,6 +30,7 @@ const CardWrapper = styled.div`
 const Image = styled.img`
   width: 80%;
   height: 70%;
+  border-radius: 4px;
 `
 
 const ProductName = styled(Title)`
