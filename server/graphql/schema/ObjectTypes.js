@@ -149,6 +149,7 @@ const BidType = new GraphQLObjectType({
     id: { type: GraphQLInt },
     title: { type: GraphQLString },
     status: { type: GraphQLString },
+    hasHeaderImage: { type: GraphQLBoolean },
     laborRate: { type: GraphQLInt },
     laborTotal: { type: GraphQLFloat },
     bidAreas: {
