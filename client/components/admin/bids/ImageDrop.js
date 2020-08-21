@@ -2,36 +2,33 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import Dropzone from 'react-dropzone'
 import axios from 'axios'
+import { Mutation } from 'react-apollo'
+import { updateHasHeaderImage } from '../../../graphql'
 
 const Wrapper = styled.div`
-  height: 200px;
   width: 100%;
-  background-color: #383837;
-  border: 4px dotted #F8F8FF;
-  padding: 10px;
-  border-radius: 4px;
-`
-
-const Title = styled.div`
-  font-size: 24px;
-  margin-bottom: 65px;
-  color: #F8F8FF;
-  text-align: center;
+  height: 100%;
 `
 
 const Message = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 5px;
   color: #F8F8FF;
   text-align: center;
+  border: 2px dotted #F8F8FF;
+  height: 165px;
+  border-radius: 4px;
 `
 
 class ImageDrop extends Component {
   constructor(props) {
     super(props)
 
-    this.onDrop = this.onDrop.bind(this)
+    this.handleDrop = this.handleDrop.bind(this)
   }
 
-  onDrop(acceptedFiles) {
+  handleDrop(acceptedFiles) {
     const file = acceptedFiles[0]
     let data = new FormData()
 
@@ -42,27 +39,33 @@ class ImageDrop extends Component {
         'Content-Type': 'multipart/form-data'
       }
     })
-    .catch(err => console.log(err))
+      .catch(err => console.log(err))
   }
 
   render() {
     return (
       <Wrapper>
-        <Title> Header Image </Title>
-        <Dropzone
-          onDrop={this.onDrop}
-          accecpt="image/png"
-          minSize={0}
-          maxSize={5242880}
-          name="header"
-        >
-        {({getRootProps, getInputProps}) => (
-            <div {...getRootProps()}>
-              <input {...getInputProps()} />
-                <Message> Drag or Click Here To Add Image </Message>
-            </div>
-        )}
-        </Dropzone>
+        <Mutation mutation={updateHasHeaderImage}>
+          {(updateHasHeaderImage, { data }) => (
+            <Dropzone
+              onDrop={acceptedFiles => {
+                this.handleDrop(acceptedFiles)
+                updateHasHeaderImage({ variables: { id: this.props.bid.id, hasHeaderImage: !this.props.bid.hasHeaderImage } })
+              }}
+              accecpt="image/png"
+              minSize={0}
+              maxSize={5242880}
+              name="header"
+            >
+              {({ getRootProps, getInputProps }) => (
+                <div {...getRootProps()}>
+                  <input {...getInputProps()} />
+                  <Message> Drag or Click Here To Add Image </Message>
+                </div>
+              )}
+            </Dropzone>
+          )}
+        </Mutation>
       </Wrapper>
     )
   }

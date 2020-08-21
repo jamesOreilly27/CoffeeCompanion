@@ -98,6 +98,16 @@ export const updateStatus = gql`
   }
 `
 
+export const updateHasHeaderImage = gql`
+  mutation($id: Int!, $hasHeaderImage: Boolean!) {
+    updateHasHeaderImage(id: $id, hasHeaderImage: $hasHeaderImage) {
+      id
+      status
+      hasHeaderImage
+    }
+  }
+`
+
 export const updateAreaTitle = gql`
   mutation($id: Int!, $title: String!) {
     updateAreaTitle(id: $id, title: $title) {

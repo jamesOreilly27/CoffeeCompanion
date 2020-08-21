@@ -1,4 +1,5 @@
 const express = require('express')
+const fs = require('fs')
 const multer = require('multer')
 const storage = multer.diskStorage({
   destination: function(req, file, cb) {
@@ -12,8 +13,16 @@ const upload = multer({ storage: storage })
 const router = express.Router()
 
 router.post('/header-image', upload.single('header'), (req, res, next) => {
-  console.log('FILE', req.file)
   res.send(req.file)
+})
+
+router.post('/header-image/delete', (req, res, next) => {
+  fs.unlink(req.body.path, (err => { 
+    if (err) console.log(err)
+    else { 
+      console.log(`\nDeleted file: ${req.body.path}`)
+    } 
+  }))
 })
 
 module.exports = router

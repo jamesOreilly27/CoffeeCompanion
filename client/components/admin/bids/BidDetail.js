@@ -2,10 +2,11 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 import { graphql } from 'react-apollo'
 import { getBidDetails } from '../../../graphql'
-import { LocationLink, AddLocation, Note, AddNote, ImageDrop } from '../bids'
+import { LocationLink, AddLocation, Note, AddNote, ImageDrop, RemoveImage } from '../bids'
 import { BidAreaDetail } from './bidArea'
 import { Title } from '../../styled-components'
 import { sumAll, findArea } from './helpers'
+import { nameToUrl } from '../../helpers'
 
 const Wrapper = styled.div`
   
@@ -61,6 +62,33 @@ const Cost = styled.div`
 const Price = styled.div`
   color: #F8F8FF;
   font-size: 18px;
+`
+
+const ImageContainer = styled.div`
+  height: 230px;
+  width: 100%;
+  background-color: #383837;
+  padding: 10px;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 1vh;
+`
+
+const HasImageContainer = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+
+const Image = styled.img`
+  width: 100%;
+  height: 80%;
+  border-radius: 4px;
+  margin-top: 5px;
 `
 
 const AreaContainer = styled.div`
@@ -149,7 +177,19 @@ class BidDetail extends Component {
                 {bid.notes.map(note => <Note note={note} bidId={bid.id} /> )}
                 <AddNote bidId={bid.id} />
               </NoteContainer>
-              <ImageDrop companyName={bid.customer.companyName}/>
+              <ImageContainer>
+                <Title margin={1} size="lg">
+                  Header Image
+                </Title>
+                {bid.hasHeaderImage ?
+                <HasImageContainer>
+                  <Image src={`/images/${nameToUrl(bid.customer.companyName)}.png`} />
+                  <RemoveImage bid={bid} />
+                </HasImageContainer>
+                :
+                  <ImageDrop companyName={bid.customer.companyName} bid={bid} />
+                }
+              </ImageContainer>
               <AreaContainer>
                 <Title size="lg">
                   Sections
