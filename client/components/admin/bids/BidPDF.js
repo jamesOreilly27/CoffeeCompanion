@@ -25,7 +25,7 @@ const BidPDF = props => {
         {bid &&
           <Doc>
             <TitlePage>
-              <PDFTitlePage customer={bid.customer} />
+              <PDFTitlePage bid={bid} customer={bid.customer} />
             </TitlePage>
             <Page>
               <PDFFinalTotal bid={bid} />

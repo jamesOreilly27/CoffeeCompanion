@@ -7,7 +7,8 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store)
 const passport = require('passport')
 const sessionStore = new SequelizeStore({ db })
 const chalk = require('chalk')
-const path = require('path');
+const bodyParser = require('body-parser')
+const path = require('path')
 const PORT = process.env.PORT || 8332
 const https = require('https')
 const fs = require('fs')
@@ -49,16 +50,24 @@ app.use((req, res, next) => {
   options = {}
 
 const createApp = () => {
+  app.use(bodyParser.json())
+  app.use(bodyParser.urlencoded({ extended: true }))
 
   app.use(`/graphql`, require('./graphql'))
 
   app.use('/relay', require('./relay'))
+  app.use('/upload', require('./upload'))
 
   app.use(expressStaticGzip(path.join(__dirname, '..', 'public')))
   app.use('/static', expressStaticGzip(path.join(__dirname, 'public')))
   app.use('*', (req, res, next) => res.sendFile(path.join(__dirname, '..', 'public', 'index.html')))
 
   // server = https.createServer(options, app)
+  app.use(function (err, req, res, next) {
+    console.log('This is the invalid field ->', err.field)
+    next(err)
+  })
+
 }
 
 const syncDb = () => db.sync()

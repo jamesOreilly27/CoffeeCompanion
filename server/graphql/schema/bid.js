@@ -28,6 +28,12 @@ const updateStatusResolver = ( parent, { id, status }) => {
   .catch(err => console.log(err))
 }
 
+const updateHasHeaderImageResolver = ( parent, { id, hasHeaderImage }) => {
+  return Bid.findByPk(id)
+  .then(bid => bid.update({ hasHeaderImage }))
+  .catch(err => console.log(err))
+}
+
 const newAreaResolver = (parent, args) => {
   return BidArea.create(args)
   .then(area => area)
@@ -170,6 +176,16 @@ const updateStatus = {
   resolve: updateStatusResolver
 }
 
+const updateHasHeaderImage = {
+  type: BidType,
+  description: '',
+  args: {
+    id: { type: GraphQLInt },
+    hasHeaderImage: { type: GraphQLBoolean }
+  },
+  resolve: updateHasHeaderImageResolver
+}
+
 const addCustomer = {
   type: BidType,
   description: 'attach a new customer to the newest bid',
@@ -297,6 +313,7 @@ module.exports = {
   bidDetails,
   createBid,
   updateStatus,
+  updateHasHeaderImage,
   addBidArea,
   updateAreaTitle,
   removeBidArea,

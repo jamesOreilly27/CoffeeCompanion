@@ -134,6 +134,7 @@ export const getAllBids = gql`
       id
       title
       status
+      hasHeaderImage
       bidAreas {
         id
         products {
@@ -156,6 +157,7 @@ export const getBidDetails = gql`
       id
       title
       status
+      hasHeaderImage
       laborRate
       laborTotal
       bidAreas {

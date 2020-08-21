@@ -11,7 +11,7 @@ const PDFAreaCard = ({ area, taxExempt, isEven }) => (
       {`$${sumAll([area], 'price').toFixed(2)}`}
     </AreaItem>
     <AreaItem>
-      {`${taxExemptTotal(taxExemptTotal((Math.ceil(sumAll([area], 'price') * .065 * 100) / 100).toFixed(2), taxExempt))}`}
+      {`$${taxExemptTotal(taxExemptTotal((Math.ceil(sumAll([area], 'price') * .065 * 100) / 100).toFixed(2), taxExempt))}`}
     </AreaItem>
     <AreaItem>
       {`$${( sumAll([area], 'price')).toFixed(2) }`}

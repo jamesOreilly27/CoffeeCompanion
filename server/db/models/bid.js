@@ -16,6 +16,10 @@ const Bid = db.define('bid', {
     type: Sequelize.FLOAT,
     defaultValue: 0
   },
+  hasHeaderImage: {
+    type: Sequelize.BOOLEAN,
+    defaultValue: false
+  },
   createdAt: {
     type: Sequelize.DATE,
     allowNull: false,
