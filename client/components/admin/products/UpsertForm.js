@@ -1,40 +1,61 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 import { Mutation } from 'react-apollo'
 import { upsertProduct, getAllProducts, getProductDetail } from '../../../graphql'
-import { Form, Label, LabelName, Select, Option, TextInput, HalfLabel, TextArea, Button } from '../../styled-components'
+import { Label, LabelName, TextInput, HalfLabel, TextArea, Button } from '../../styled-components'
+import { ImageDrop } from '../products'
 
 const Wrapper = styled.div`
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 95%;
+`
 
+const Image = styled.img`
+  height: 85%;
+  width: 50%;
+  border-radius: 12px;
+`
+
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  width: 35%;
+  padding-top: 3vh;
 `
 
 const FlexContainer = styled.div`
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  width: 100%;
 `
 
 class UpsertForm extends Component {
   constructor(props) {
     super(props)
 
-    this.state = { featured: "placeholder" }
+    this.state = { hasImage: false, fileName: '' }
+
+    this.flipHasImage = this.flipHasImage.bind(this)
+    this.updateFileName = this.updateFileName.bind(this)
+  }
+
+  flipHasImage() {
+    this.setState({ hasImage: !this.state.hasImage })
+  }
+
+  updateFileName(name) {
+    this.setState({ fileName: name })
   }
 
   parseBool(string) {
     if(string === "true") return true
     else if(string === "placeholder") return this.props.product.featured
     else return false
-  }
-
-  sendData() {
-    const input = {
-      name: '',
-      description: '',
-      price: 0,
-      image: '',
-      featured: false
-    }
   }
 
   insertCallback(cache, data) {
@@ -62,6 +83,12 @@ class UpsertForm extends Component {
     }
   }
 
+  componentWillUnmount() {
+    if(this.state.fileName) {
+      axios.post('/upload/product/image/delete', { path: `public/images/products/${this.state.fileName}` })
+    }
+  }
+
   render() {
     return (
       <Mutation
@@ -75,47 +102,61 @@ class UpsertForm extends Component {
           }
         }}
       >
-        {(sendData, { data }) => (
+        {(upsertProduct, { data }) => (
           <Wrapper>
-            <Form width={25} padding={3} onSubmit={evt => {
-              evt.preventDefault()
-              sendData({
+            {console.log('HAS IMAGE', this.state.hasImage)}
+            {console.log('FILENAME', this.state.fileName)}
+            {this.state.hasImage ? 
+              <Image src={`/images/products/${this.state.fileName}`} />
+            :
+              <ImageDrop flipHasImage={this.flipHasImage} updateFileName={this.updateFileName} />
+            }
+            <Form width={35} padding={3} onSubmit={evt => {
+              upsertProduct({
                 variables: {
+                  vendor: this.chooseVal(evt, this.props.product, "vendor"),
                   name: this.chooseVal(evt, this.props.product, "name"),
+                  partNumber: this.chooseVal(evt, this.props.product, "partnumber"),
                   description: this.chooseVal(evt, this.props.product, "description"),
-                  price: parseInt(this.chooseVal(evt, this.props.product, "price")),
-                  image: '',
-                  featured: this.parseBool(this.state.featured)
+                  cost: parseFloat(this.chooseVal(evt, this.props.product, "cost")),
+                  price: parseFloat(this.chooseVal(evt, this.props.product, "price")),
+                  laborTime: parseFloat(this.chooseVal(evt, this.props.product, "labortime") / 60),
+                  featured: false
                 }
               })
             }}>
-              <Label margin={1}>
-                <LabelName margin={1}> Name </LabelName>
-                <TextInput type="text" name="name" />
-              </Label>
+              <FlexContainer>
+                <HalfLabel margin={1}>
+                  <LabelName margin={1}> Name </LabelName>
+                  <TextInput type="text" name="name" />
+                </HalfLabel>
+                <HalfLabel>
+                  <LabelName margin={1}> Vendor </LabelName>
+                  <TextInput type="text" name="vendor" />
+                </HalfLabel>
+              </FlexContainer>
               <Label margin={1}>
                 <LabelName margin={1}> Description </LabelName>
                 <TextArea type="text" name="description" />
               </Label>
               <FlexContainer>
                 <HalfLabel margin={1}>
-                  <LabelName margin={1}> Price </LabelName>
-                  <TextInput type="text" name="price" />
+                  <LabelName margin={1}> Part Number </LabelName>
+                  <TextInput type="text" name="partnumber" />
                 </HalfLabel>
                 <HalfLabel>
-                  <LabelName margin={1}> Featured </LabelName>
-                  <Select
-                    height={4.2}
-                    name="featured"
-                    value={this.state.featured}
-                    onChange={evt => {
-                      this.setState({ featured: evt.target.value })
-                    }}
-                    required
-                  >
-                    <Option value="false"> No </Option>
-                    <Option value="true"> Yes </Option>
-                  </Select>
+                  <LabelName margin={1}> Labor Time </LabelName>
+                  <TextInput type="text" name="labortime" />
+                </HalfLabel>
+              </FlexContainer>
+              <FlexContainer>
+                <HalfLabel>
+                  <LabelName margin={1}> Cost </LabelName>
+                  <TextInput type="text" name="cost" />
+                </HalfLabel>
+                <HalfLabel margin={1}>
+                  <LabelName margin={1}> Price </LabelName>
+                  <TextInput type="text" name="price" />
                 </HalfLabel>
               </FlexContainer>
               <Button type="submit" backgroundColor="#296D4D" width={70} height={40}>

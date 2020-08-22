@@ -45,10 +45,12 @@ export const decrementLineitemQty = gql`
 
 //Products
 export const upsertProduct = gql`
-  mutation($vendor: String!, $name: String!, $description: String!, $cost: Float!, $price: Float!, $laborTime: $Float, $featured: Boolean!) {
-    upsertProduct(vendor: $vendor, name: $name, description: $description, cost: $cost, price: $price, laborTime: $laborTime, featured: $featured) {
+  mutation($vendor: String!, $name: String!, $partNumber: String!, $description: String!, $cost: Float!, $price: Float!, $laborTime: Float!, $featured: Boolean!) {
+    upsertProduct(vendor: $vendor, name: $name, partNumber: $partNumber, description: $description, cost: $cost, price: $price, laborTime: $laborTime, featured: $featured) {
+      id
       vendor
       name
+      partNumber
       description
       cost
       price

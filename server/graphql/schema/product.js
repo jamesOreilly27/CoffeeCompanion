@@ -22,6 +22,7 @@ const getByNameResolver = (parent, args) => {
 }
 
 const upsert = (parent, args) => {
+  console.log('ARGS', args)
   return Product.findOne({ where: { name: args.name } })
   .then(product => {
     if(product) {

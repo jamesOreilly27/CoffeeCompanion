@@ -22,10 +22,9 @@ const RemoveImage = ({ bid }) => (
   <Mutation mutation={updateHasHeaderImage}>
     {(updateHasHeaderImage, { data }) => (
       <Wrapper onClick={() => {
-        axios.post('/upload/header-image/delete', { path: `public/images/${nameToUrl(bid.customer.companyName)}.png` })
+        axios.post('/upload/header/image/delete', { path: `public/images/${nameToUrl(bid.customer.companyName)}.png` })
         updateHasHeaderImage({ variables: { id: bid.id, hasHeaderImage: !bid.hasHeaderImage }})
       }}>
-        {console.log('BID TESTING', bid)}
         Remove
       </Wrapper>
     )}

@@ -34,7 +34,7 @@ class ImageDrop extends Component {
 
     data.append('header', file, file.name)
 
-    return axios.post(`/upload/header-image`, data, {
+    return axios.post(`/upload/header/image`, data, {
       headers: {
         'Content-Type': 'multipart/form-data'
       }
