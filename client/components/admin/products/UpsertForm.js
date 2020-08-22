@@ -86,6 +86,7 @@ class UpsertForm extends Component {
   componentWillUnmount() {
     if(this.state.fileName) {
       axios.post('/upload/product/image/delete', { path: `public/images/products/${this.state.fileName}` })
+      .catch()
     }
   }
 
@@ -104,8 +105,6 @@ class UpsertForm extends Component {
       >
         {(upsertProduct, { data }) => (
           <Wrapper>
-            {console.log('HAS IMAGE', this.state.hasImage)}
-            {console.log('FILENAME', this.state.fileName)}
             {this.state.hasImage ? 
               <Image src={`/images/products/${this.state.fileName}`} />
             :
@@ -141,11 +140,11 @@ class UpsertForm extends Component {
               </Label>
               <FlexContainer>
                 <HalfLabel margin={1}>
-                  <LabelName margin={1}> Part Number </LabelName>
+                  <LabelName margin={1}> Part # </LabelName>
                   <TextInput type="text" name="partnumber" />
                 </HalfLabel>
                 <HalfLabel>
-                  <LabelName margin={1}> Labor Time </LabelName>
+                  <LabelName margin={1}> Labor(min) </LabelName>
                   <TextInput type="text" name="labortime" />
                 </HalfLabel>
               </FlexContainer>
