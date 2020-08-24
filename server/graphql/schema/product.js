@@ -1,4 +1,4 @@
-const { GraphQLList, GraphQLInt, GraphQLString, GraphQLBoolean } = require('graphql')
+const { GraphQLList, GraphQLInt, GraphQLFloat, GraphQLString, GraphQLBoolean } = require('graphql')
 const { Product } = require('../../db/models')
 const { ProductType, ProductDetailType } = require('./ObjectTypes')
 
@@ -67,9 +67,12 @@ const upsertProduct = {
   description: 'Add a product to the database',
   args: {
     name: { type: GraphQLString },
+    vendor: { type: GraphQLString },
     description: { type: GraphQLString },
-    price: { type: GraphQLInt },
-    image: { type: GraphQLString },
+    partNumber: { type: GraphQLString },
+    cost: { type: GraphQLFloat },
+    price: { type: GraphQLFloat },
+    laborTime: { type: GraphQLFloat },
     featured: { type: GraphQLBoolean }
   },
   resolve: upsert
@@ -82,4 +85,10 @@ const destroyProduct = {
   resolve: destroy
 }
 
-module.exports = { products, productDetails, getProductByName, upsertProduct, destroyProduct }
+module.exports = {
+  products,
+  productDetails,
+  getProductByName,
+  upsertProduct,
+  destroyProduct
+}

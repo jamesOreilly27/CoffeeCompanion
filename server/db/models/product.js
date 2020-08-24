@@ -33,9 +33,6 @@ const Product = db.define('product', {
   price: {
     type: Sequelize.DECIMAL
   },
-  image: {
-    type: Sequelize.STRING
-  },
   featured: {
     type: Sequelize.BOOLEAN,
     defaultValue: false

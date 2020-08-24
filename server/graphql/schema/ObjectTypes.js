@@ -36,12 +36,12 @@ const ProductType = new GraphQLObjectType({
   name: 'product',
   fields: () => ({
     id: { type: GraphQLNonNull(GraphQLInt) },
+    vendor: { type: GraphQLString },
     name: { type: GraphQLString },
     partNumber: { type: GraphQLString },
     description: { type: GraphQLString },
     cost: { type: GraphQLNonNull(GraphQLFloat) },
     price: { type: GraphQLNonNull(GraphQLFloat) },
-    image: { type: GraphQLString },
     featured: { type: GraphQLBoolean },
     laborTime: { type: GraphQLFloat }
   })
@@ -52,11 +52,11 @@ const ProductDetailType = new GraphQLObjectType({
   fields: () => ({
     id: { type: GraphQLInt },
     name: { type: GraphQLNonNull(GraphQLString) },
+    vendor: { type: GraphQLString },
     partNumber: { type: GraphQLNonNull(GraphQLString) },
     description: { type: GraphQLNonNull(GraphQLString) },
     cost: { type: GraphQLNonNull(GraphQLFloat) },
     price: { type: GraphQLNonNull(GraphQLFloat) },
-    image: { type: GraphQLNonNull(GraphQLString) },
     featured: { type: GraphQLBoolean },
     laborTime: { type: GraphQLFloat },
     reviews: {

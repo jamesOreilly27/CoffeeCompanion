@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import axios from 'axios'
 import { Mutation } from 'react-apollo'
 import { deleteProduct, getAllProducts } from '../../../graphql'
 import { Button, EaseAlert } from '../../styled-components'
@@ -59,6 +60,7 @@ class RemoveButton extends Component {
                 <ChoiceContainer>
                   <Choice onClick={() => {
                     sendData({ variables: { name: this.props.product.name } })
+                    axios.post('/upload/product/image/delete', { path: `public/images/products/${this.props.product.partNumber}.png` })
                   }}>
                     Yes
                   </Choice>
