@@ -2,7 +2,6 @@ const express = require('express')
 const router = express.Router()
 const axios = require('axios')
 const convert = require('xml-js')
-const relayAuth = require('../../secret').RELAY_SECRET
 
 const webRelay = axios.create({
   baseURL: '',
