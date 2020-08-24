@@ -33,6 +33,7 @@ const StartButton = ({ user }) => (
           startNewBid({ variables: { title: " ", status: "open", userId: user.id } })
         }}
       >
+        {console.log('DATA', data)}
         {data && data.createBid && history.push(`/admin/bids/new/${data.createBid.id}`)}
         {data && data.createBid && <Redirect to={`/admin/bids/new/${data.createBid.id}`} /> }
         New Bid +
