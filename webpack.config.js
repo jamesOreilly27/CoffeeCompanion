@@ -35,7 +35,7 @@ module.exports = {
   ],
   optimization: {
     runtimeChunk: 'single',
-    minimizer: new BabelMinifyPlugin(),
+    minimizer: [ new BabelMinifyPlugin() ],
     splitChunks: {
       cacheGroups: {
           vendor: {
