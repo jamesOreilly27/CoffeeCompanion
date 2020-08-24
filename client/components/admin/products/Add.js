@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import { UpsertForm } from '../products'
-import { AdminContainer, Label } from './styledComponents'
+import { Label } from './styledComponents'
 
 const Wrapper = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ const Wrapper = styled.div`
 const Add = () => (
   <Wrapper>
     <Label> Create New Product </Label>
-    <UpsertForm type="Create"/>
+    <UpsertForm type="Create" formWidth={35} />
   </Wrapper>
 )
 

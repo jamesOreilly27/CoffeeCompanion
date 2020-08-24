@@ -89,8 +89,11 @@ export const getProductDetail = gql`
 query($name: String!) {
  productDetails(name: $name) {
    id
+   vendor
    name
    description
+   partNumber
+   laborTime
    cost
    price
    featured

@@ -105,23 +105,24 @@ export const InfoContainer = styled.div`
   flex: 0 0 50%;
   flex-direction: column;
   align-items: flex-start;
-  height: 45vh;
 `
 
 //Price Details
 export const PriceContainer = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   margin: 30px 0;
 `
 
 export const PriceHeader = styled.div`
   font-size: 12px;
+  color: #F8F8FF;
 `
 
 export const Price = styled.div`
-  font-size: 42px;
+  font-size: 20px;
   font-weight: bold;
+  color: #F8F8FF;
 `

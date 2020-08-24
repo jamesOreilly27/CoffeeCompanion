@@ -9,7 +9,7 @@ import { ImageDrop } from '../products'
 const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
-  align-items: center;
+  align-items: flex-start;
   width: 95%;
 `
 
@@ -24,7 +24,7 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  width: 35%;
+  width: ${({ width }) => `${width}%`};
   padding-top: 3vh;
 `
 
@@ -105,26 +105,32 @@ class UpsertForm extends Component {
       >
         {(upsertProduct, { data }) => (
           <Wrapper>
-            {this.state.hasImage ? 
-              <Image src={`/images/products/${this.state.fileName}`} />
-            :
-              <ImageDrop flipHasImage={this.flipHasImage} updateFileName={this.updateFileName} />
+            {this.props.type === "Create" &&
+              <div style={{ width: '60%' }}>
+                {this.state.hasImage ? 
+                  <Image src={`/images/products/${this.state.fileName}`} />
+                :
+                  <ImageDrop flipHasImage={this.flipHasImage} updateFileName={this.updateFileName} />
+                }
+              </div>
             }
-            <Form width={35} padding={3} onSubmit={evt => {
+            <Form width={this.props.formWidth} padding={3} onSubmit={evt => {
+              evt.preventDefault()
               upsertProduct({
                 variables: {
                   vendor: this.chooseVal(evt, this.props.product, "vendor"),
                   name: this.chooseVal(evt, this.props.product, "name"),
-                  partNumber: this.chooseVal(evt, this.props.product, "partnumber"),
+                  partNumber: this.chooseVal(evt, this.props.product, "partNumber"),
                   description: this.chooseVal(evt, this.props.product, "description"),
                   cost: parseFloat(this.chooseVal(evt, this.props.product, "cost")),
                   price: parseFloat(this.chooseVal(evt, this.props.product, "price")),
-                  laborTime: parseFloat(this.chooseVal(evt, this.props.product, "labortime") / 60),
+                  laborTime: parseFloat(this.chooseVal(evt, this.props.product, "laborTime") / 60),
                   featured: false
                 }
               })
             }}>
               <FlexContainer>
+                {console.log('PRODUCT', this.props.product)}
                 <HalfLabel margin={1}>
                   <LabelName margin={1}> Name </LabelName>
                   <TextInput type="text" name="name" />
@@ -141,11 +147,11 @@ class UpsertForm extends Component {
               <FlexContainer>
                 <HalfLabel margin={1}>
                   <LabelName margin={1}> Part # </LabelName>
-                  <TextInput type="text" name="partnumber" />
+                  <TextInput type="text" name="partNumber" />
                 </HalfLabel>
                 <HalfLabel>
                   <LabelName margin={1}> Labor(min) </LabelName>
-                  <TextInput type="text" name="labortime" />
+                  <TextInput type="text" name="laborTime" />
                 </HalfLabel>
               </FlexContainer>
               <FlexContainer>

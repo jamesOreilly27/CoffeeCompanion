@@ -60,7 +60,6 @@ class RemoveButton extends Component {
                 <ChoiceContainer>
                   <Choice onClick={() => {
                     sendData({ variables: { name: this.props.product.name } })
-                    console.log('TESTING', this.props.product)
                     axios.post('/upload/product/image/delete', { path: `public/images/products/${this.props.product.partNumber}.png` })
                   }}>
                     Yes
