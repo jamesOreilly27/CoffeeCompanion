@@ -19,9 +19,5 @@ library.add(
   faTwitter,
   faInstagram,
   faLinkedin,
-  faUserCircle,
-  faMicrophone,
-  faMicrophoneSlash,
-  faAngleLeft,
-  faAngleRight
+  faUserCircle
 )
