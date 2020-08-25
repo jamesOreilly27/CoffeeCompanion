@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Mutation } from 'react-apollo'
 import { updateStatus, getAllBids } from '../../../graphql'
 
-const Wrapper = styled(FontAwesomeIcon)`
+const Wrapper = styled.div`
   color: #F8F8FF;
+  cursor: pointer;
 `
 
 const chooseNewStatus = status => {
@@ -28,12 +29,11 @@ const ArrowLeft = ({ id, status }) => (
   >
     {(updateStatus, { data }) => (
       <Wrapper
-        icon={['fa', 'angle-left']}
-        size="2x"
         onClick={() => {
           updateStatus({ variables: { id: id, status: chooseNewStatus(status) } })
         }}
       >
+        {'<'}
       </Wrapper>
     )}
   </Mutation>
