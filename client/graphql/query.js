@@ -75,6 +75,7 @@ export const getAllProducts = gql`
     products {
       id
       name
+      vendor
       partNumber
       description
       cost
