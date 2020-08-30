@@ -40,7 +40,7 @@ class SearchBar extends Component {
   }
 
   handleChange(evt) {
-    this.setState({ searchValue: evt.target.value.toUpperCase()})
+    this.setState({ searchValue: evt.target.value.toUpperCase(), displayList: true })
   }
 
   handleClick() {
@@ -56,7 +56,12 @@ class SearchBar extends Component {
       return this.props.data.products
     }
     else {
-      return this.props.data.products.filter(product => product.name.includes(filterStr)) 
+      return this.props.data.products.filter(product => {
+        console.log(product.vendor)
+       return product.name.includes(filterStr) ||
+        product.partNumber.includes(filterStr) ||
+        product.vendor.includes(filterStr)
+      }) 
     }
   }
 
