@@ -105,7 +105,6 @@ class UpsertForm extends Component {
       >
         {(upsertProduct, { data }) => (
           <Wrapper>
-           {console.log('FILENAME', this.state.fileName)}
             {this.props.type === "Create" &&
               <div style={{ width: '60%' }}>
                 {this.state.hasImage ? 

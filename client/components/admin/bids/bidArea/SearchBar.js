@@ -40,7 +40,7 @@ class SearchBar extends Component {
   }
 
   handleChange(evt) {
-    this.setState({ searchValue: evt.target.value.toUpperCase()})
+    this.setState({ searchValue: evt.target.value.toUpperCase(), displayList: true })
   }
 
   handleClick() {
