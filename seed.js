@@ -296,7 +296,13 @@ async function seed () {
     Product.create({ name: 'NVR AVIGILON SERVER SOFTWARE', vendor: 'SUPERLOGIC', partNumber: 'SUPERLOGIC', description: '',  cost: 1622, price: 1999, image: '', laborTime: 0.5 }),
     Product.create({ name: '12MP FISHEYE CAMERA', vendor: 'AVIGILON', partNumber: '12-H4F-D01', description: '',  cost: 648, price: 799, image: '', laborTime: 0.335 }),
     Product.create({ name: '4K STARLIGHT FIXED-FOCAL DOME CAMERA', vendor: 'ENS', partNumber: 'HNC3V281E-IRS-S2', description: '',  cost: 109, price: 160, image: '', laborTime: 0.335 }),
-    Product.create({ name: "8TB SURVEILLANCE HARD DIRVE", vendor: "AMAZON", partNumber: "8TB-SUR-HDRV", description: "a hard drive", cost: 154, price: 199, image: "", laborTime: 0.18 })
+    Product.create({ name: "8TB SURVEILLANCE HARD DIRVE", vendor: "AMAZON", partNumber: "8TB-SUR-HDRV", description: "a hard drive", cost: 154, price: 199, image: "", laborTime: 0.18 }),
+    Product.create({ name: "NVR WITH AVIGILON SERVER SOFTWARE", vendor: "AMAZON", partNumber: "FSS-DELL-NVR", description: "Dell Refurb Tower", cost: 400, price: 650, image: "", laborTime: 0.5 }),
+    Product.create({ name: "32 INCH PUBLIC VIEW MONITOR KIT", vendor: "EDI", partNumber: "FSS-PVM-32", description: "PUBLIC VIEW MONITOR WITH CAMERA", cost: 350, price: 499, image: "", laborTime: 0.18 }),
+    Product.create({ name: "4MP IR FIXED-FOCAL DOME NETWORK CAMERA", vendor: "EDI", partNumber: "HNC3I2141E", description: "4 MP", cost: 75, price: 130, image: "", laborTime: 0.335}),
+    Product.create({ name: "ACC ES 8-PORT APPLIANCE", vendor: "AVIGILON", partNumber: "VMA-ENVR1-8P8-NA-B", description: "AVIGILON 8-8PORT 8 TB APPLIANCE", cost: 1200, price: 2200, image: "", laborTime: 0.5 }),
+    Product.create({ name: "ACC-7 ENTERPRISE LICENSE", vendor: "AVIGILON", partNumber: "ACC-7-ENT", description: "ACC-7 ENTERPRISE LICENSE", cost: 174, price: 230, image: "", laborTime: 0 }),
+    Product.create({ name: "UNIFI 8 CHANNEL POE SWITCH", vendor: "UBIQUITI", partNumber: "US-8-150W", description: "8 CHANNEL POE SWITCH", cost: 199.00, price: 250.00, image: "", laborTime: 0 }),
   ])
 
   const categories = await Promise.all([
