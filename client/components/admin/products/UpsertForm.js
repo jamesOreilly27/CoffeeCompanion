@@ -16,7 +16,7 @@ const Wrapper = styled.div`
 const Image = styled.img`
   margin-top: 30px;
   height: 300px;
-  width: 50%;
+  width: 90%;
   border-radius: 12px;
 `
 
@@ -106,7 +106,6 @@ class UpsertForm extends Component {
       >
         {(upsertProduct, { data }) => (
           <Wrapper>
-            {console.log('STATE', this.state.fileName)}
             {this.props.type === "Create" &&
               <div style={{ width: '60%' }}>
                 {this.state.hasImage ? 
@@ -117,7 +116,6 @@ class UpsertForm extends Component {
               </div>
             }
             <Form width={this.props.formWidth} padding={3} onSubmit={evt => {
-              evt.preventDefault()
               upsertProduct({
                 variables: {
                   vendor: this.chooseVal(evt, this.props.product, "vendor"),

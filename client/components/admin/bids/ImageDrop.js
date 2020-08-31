@@ -52,7 +52,7 @@ class ImageDrop extends Component {
                 this.handleDrop(acceptedFiles)
                 updateHasHeaderImage({ variables: { id: this.props.bid.id, hasHeaderImage: !this.props.bid.hasHeaderImage } })
               }}
-              accecpt="image/png"
+              accept="image/png"
               minSize={0}
               maxSize={5242880}
               name="header"

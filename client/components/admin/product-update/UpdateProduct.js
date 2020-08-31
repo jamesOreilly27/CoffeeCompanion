@@ -75,7 +75,7 @@ class UpdateProduct extends Component {
                 </FlexContainer>
                 <FlexContainer>
                   <PriceHeader>Labor Time (minutes)</PriceHeader>
-                  <Price>{product.laborTime}</Price>  
+                  <Price>{Math.ceil(product.laborTime * 60)}</Price>  
                 </FlexContainer>
               </InfoContainer>
             </DetailContainer>

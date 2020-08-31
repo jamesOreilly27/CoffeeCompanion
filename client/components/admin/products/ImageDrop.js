@@ -38,6 +38,8 @@ class ImageDrop extends Component {
     return axios.post(`/upload/product/image`, data, {
       headers: { 'Content-Type': 'multipart/form-data' }
     })
+    .then(() => this.props.flipHasImage())
+    .then(() => this.props.updateFileName(acceptedFiles[0].name))
     .catch(err => console.log(err))
   }
 
@@ -45,12 +47,8 @@ class ImageDrop extends Component {
     return (
       <Wrapper>
         <Dropzone
-          onDrop={acceptedFiles => {
-            this.handleDrop(acceptedFiles)
-            this.props.flipHasImage()
-            this.props.updateFileName(acceptedFiles[0].name)
-          }}
-          accecpt="image/png"
+          onDrop={this.handleDrop}
+          accept="image/png"
           minSize={0}
           maxSize={5242880}
           name="product"
