@@ -165,10 +165,18 @@ class BidDetail extends Component {
                       Price
                     </Title>
                     <Price>
-                      {`$${sumAll(bid.bidAreas, 'price').toFixed(2)}`}
+                      {`$${(sumAll(bid.bidAreas, 'price') + bid.laborTotal).toFixed(2)}`}
                     </Price>
                   </TotalContainer>
                 </PriceAndCostContainer>
+                <TotalContainer>
+                  <Title size="med">
+                    Profit
+                  </Title>
+                  <Price>
+                    {`$${(sumAll(bid.bidAreas, 'price') + bid.laborTotal - sumAll(bid.bidAreas, 'cost')).toFixed(2)}`}
+                  </Price>
+                </TotalContainer>
               </ProjectTotal>
               <NoteContainer>
                 <Title size="lg">

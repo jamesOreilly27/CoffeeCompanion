@@ -14,8 +14,9 @@ const Wrapper = styled.div`
 `
 
 const Image = styled.img`
-  height: 85%;
-  width: 50%;
+  margin-top: 30px;
+  height: 300px;
+  width: 90%;
   border-radius: 12px;
 `
 
@@ -115,7 +116,6 @@ class UpsertForm extends Component {
               </div>
             }
             <Form width={this.props.formWidth} padding={3} onSubmit={evt => {
-              evt.preventDefault()
               upsertProduct({
                 variables: {
                   vendor: this.chooseVal(evt, this.props.product, "vendor"),
@@ -130,7 +130,6 @@ class UpsertForm extends Component {
               })
             }}>
               <FlexContainer>
-                {console.log('PRODUCT', this.props.product)}
                 <HalfLabel margin={1}>
                   <LabelName margin={1}> Name </LabelName>
                   <TextInput type="text" name="name" />
