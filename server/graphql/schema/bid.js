@@ -131,13 +131,25 @@ const updateProductCostResolver = (parent, args) => {
 }
 
 const addCustomerResolver = (parent, { companyName, email, phoneNumber, address, town, zipCode, state, id, taxExempt }) => {
-  return BidArea.create({ title: "Area", bidId: id })
+  return BidArea.create({ title: "Network Rack", bidId: id })
   .then(() => {
     return Customer.create({ companyName, email, phoneNumber, address, town, zipCode, state, taxExempt })
   .then(customer => {
     return Bid.findByPk(id)
   .then(bid => bid.update({ customerId: customer.id, title: customer.companyName }))
     })
+  })
+  .catch(err => console.log(err))
+}
+
+const addExistingResolver = (parent, { customerId, bidId }) => {
+  return BidArea.create({ title: "Network Rack", bidId: bidId })
+  .then(() => {
+    return Customer.findByPk(customerId)
+  })
+  .then(customer => {
+    return Bid.findByPk(bidId)
+  .then(bid => bid.update({ customerId: customer.id, title: customer.companyName }))
   })
   .catch(err => console.log(err))
 }
@@ -200,6 +212,16 @@ const addCustomer = {
     taxExempt: { type: GraphQLBoolean }
   },
   resolve: addCustomerResolver
+}
+
+const addExistingCustomer = {
+  type: BidType,
+  description: 'attach an existing cusstomer to a bid',
+  args: {
+    customerId: { type: GraphQLInt },
+    bidId: { type: GraphQLInt }
+  },
+  resolve: addExistingResolver
 }
 
 const addBidArea = {
@@ -323,5 +345,6 @@ module.exports = {
   addAreaProduct,
   updateAreaProductPrice,
   updateAreaProductCost,
-  addCustomer
+  addCustomer,
+  addExistingCustomer
 }

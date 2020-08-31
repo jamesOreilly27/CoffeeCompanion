@@ -238,6 +238,14 @@ mutation($companyName: String!, $email: String!, $phoneNumber: String!, $address
 }
 `
 
+export const addExistingCustomer = gql`
+  mutation($customerId: Int!, $bidId: Int!) {
+    addExistingCustomer(customerId: $customerId, bidId: $bidId) {
+      id
+    }
+  }
+`
+
 export const createNote = gql`
   mutation($bidId: Int!, $subject: String!, $text: String!) {
     createNote(bidId: $bidId, subject: $subject, text: $text) {
