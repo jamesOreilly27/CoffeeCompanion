@@ -14,7 +14,8 @@ const Wrapper = styled.div`
 `
 
 const Image = styled.img`
-  height: 85%;
+  margin-top: 30px;
+  height: 300px;
   width: 50%;
   border-radius: 12px;
 `
@@ -105,6 +106,7 @@ class UpsertForm extends Component {
       >
         {(upsertProduct, { data }) => (
           <Wrapper>
+            {console.log('STATE', this.state.fileName)}
             {this.props.type === "Create" &&
               <div style={{ width: '60%' }}>
                 {this.state.hasImage ? 
@@ -130,7 +132,6 @@ class UpsertForm extends Component {
               })
             }}>
               <FlexContainer>
-                {console.log('PRODUCT', this.props.product)}
                 <HalfLabel margin={1}>
                   <LabelName margin={1}> Name </LabelName>
                   <TextInput type="text" name="name" />

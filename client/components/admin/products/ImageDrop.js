@@ -12,6 +12,7 @@ const Message = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-top: 30px;
   padding: 5px;
   color: #F8F8FF;
   text-align: center;
